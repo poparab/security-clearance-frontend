@@ -1,315 +1,267 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { height: 100%; font-family: 'Tajawal', sans-serif; }
-        body { display: flex; min-height: 100vh; overflow: hidden; }
+        html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; font-family: 'Tajawal', sans-serif; }
+        body { display: flex; min-height: 100vh; background: #fff; }
 
-        .hero {
-            flex: 0 0 57%;
-            background: linear-gradient(160deg, #040c22 0%, #091535 35%, #0b1e50 65%, #091535 100%);
+        /* ─── Left hero panel (lock image) ─── */
+        .login-left-side {
+            display: none;
+            background: radial-gradient(ellipse at center, #0066cc 0%, #003580 50%, #001a3d 100%);
+            min-height: 100vh; align-content: center; justify-content: center;
+        }
+        .login-left-side img {
+            display: block; width: 100%; max-width: 460px; height: auto; margin: auto;
+        }
+
+        /* ─── Right form panel ─── */
+        .login-right-side {
+            flex: 1; display: flex; flex-direction: column; justify-content: center;
+            padding: 2.5rem; font-size: calc(1rem + .11vw); overflow-y: auto; max-height: 100vh;
+        }
+        .login-logo {
+            display: block; width: auto; height: 100%; max-height: 5.625rem;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* ─── Selector tabs ─── */
+        .selector-container {
+            width: 100%; padding: 1rem; margin-bottom: 1rem;
+            background: #eaf4ff; border-radius: 1rem; font-size: calc(1rem + .11vw) !important;
+            display: inline-flex;
+        }
+        .selector-container .btn {
+            padding: 1.25rem; font-size: calc(1rem + .11vw); font-weight: bold;
+            color: #99ccff; border: none; border-radius: 1rem;
+            transition: all ease .5s; background: transparent; cursor: pointer;
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+        }
+        .selector-container .btn-check:checked + .btn,
+        .selector-container .btn.active {
+            background: #005FCC; color: #fff;
+        }
+        .selector-container .btn-check:checked + .btn .icon,
+        .selector-container .btn.active .icon { filter: brightness(0) invert(1); }
+        .selector-container .btn .icon {
+            width: auto; height: 100%; max-height: calc(1rem + .75vw); margin-left: 0.5rem;
+            filter: brightness(0) saturate(100%) invert(74%) sepia(20%) saturate(800%) hue-rotate(185deg) brightness(100%) contrast(100%);
+            transition: filter .5s ease;
+        }
+
+        /* ─── Input styles ─── */
+        .input-group { position: relative; margin-bottom: 1rem; }
+        input.form-control, select.country-key {
+            border: 0.0625rem solid #99ccff; border-radius: 1rem !important;
+            font-size: calc(1rem + .04vw); color: #003066; align-content: center;
+            background: #f8fbff; direction: rtl; padding: 1rem 3.5rem 1rem 1rem;
+            width: 100%; height: auto; outline: none;
+            transition: all ease .27s; font-family: 'Tajawal', sans-serif;
+        }
+        input.form-control::placeholder { color: #99ccff; }
+        input.form-control:focus { box-shadow: 0 0 0.75rem 0 rgba(0,95,204,.2); border-color: #005FCC; background: #fff; }
+        input.form-control.err { border-color: #E50000; background: #fff5f5; }
+        input.password { padding-left: 3rem; }
+        input.password:focus { background: #fff !important; }
+
+        .input-icon {
+            position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+            width: auto; height: 100%; max-height: calc(1rem + .35vw); z-index: 99;
+            filter: drop-shadow(0 10000px 0 #004799); transform: translateY(-10000px);
+        }
+        .show-hide-icon {
+            position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%);
+            background: transparent; border: none; color: #004799; z-index: 100;
+            cursor: pointer; font-size: calc(1rem + .04vw);
+        }
+
+        select.country-key {
+            direction: ltr; padding: 1rem 0.75rem 1rem 2.125rem;
+            font-size: calc(.875rem + .02vw);
+        }
+
+        .form-check-input { border: 0.0625rem solid #99ccff; accent-color: #005FCC; }
+        label { font-size: calc(1rem + .04vw); }
+
+        /* ─── File upload ─── */
+        .file-upload-group { position: relative; margin-bottom: 1rem; }
+        input.custom-file-input {
+            width: 100%; margin: 0; min-height: 9rem; padding: 1rem; opacity: 0; z-index: 2;
             position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 32px;
         }
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(50,120,255,.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(50,120,255,.07) 1px, transparent 1px);
-            background-size: 44px 44px;
+        label.custom-file-label {
+            position: absolute; top: 0; width: 100%; min-height: 100%; padding: 1rem;
+            background: #f8fbff; text-align: center; font-size: calc(.875rem + .02vw);
+            color: #004799; border: 0.125rem dashed #99ccff; border-radius: 1rem !important;
+            line-height: 1.375rem; cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
         }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px; left: -100px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(0,100,255,.18) 0%, transparent 65%);
-            border-radius: 50%;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 520px;
-            color: #e2e8f0;
-        }
-        .hero-logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 16px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 18px 34px rgba(29, 78, 216, .35);
-        }
-        .hero h1 {
-            font-size: 32px;
-            color: #fff;
-            margin-bottom: 8px;
-            font-weight: 800;
-        }
-        .hero p {
-            font-size: 15px;
-            color: #93c5fd;
-            line-height: 1.9;
+        label.custom-file-label span { display: block; font-size: calc(.75rem + .02vw); color: #66b3ff; }
+        label.custom-file-label img {
+            display: block; width: 100%; max-width: 2.5rem; height: auto;
+            filter: drop-shadow(0 10000px 0 #004799); transform: translateY(-10000px);
         }
 
-        .panel {
-            flex: 0 0 43%;
-            background: #fff;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-        .panel-inner {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 32px 44px;
-            min-height: 100%;
-        }
-
-        .logo-row {
-            display: flex; align-items: center; justify-content: flex-end;
-            gap: 10px; margin-bottom: 24px;
-        }
-        .logo-text h1 { font-size: 15px; font-weight: 700; color: #1e293b; line-height: 1.3; text-align: right; }
-        .logo-text p  { font-size: 11px; color: #94a3b8; text-align: right; }
-        .logo-icon {
-            width: 48px; height: 48px;
-            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .heading { text-align: right; margin-bottom: 20px; }
-        .heading h2 { font-size: 23px; font-weight: 800; color: #0f172a; margin-bottom: 3px; }
-        .heading p  { font-size: 13px; color: #94a3b8; line-height: 1.6; }
-
-        .field { margin-bottom: 13px; }
-        .wrap { position: relative; display: flex; align-items: center; }
-        .inp {
-            width: 100%; height: 48px;
-            background: #f8fafc; border: 1.5px solid #dde3ee;
-            border-radius: 10px;
-            padding: 0 44px 0 14px;
-            font-family: 'Tajawal', sans-serif; font-size: 13.5px;
-            color: #1e293b; direction: rtl; outline: none;
-            transition: border-color .2s, background .2s, box-shadow .2s;
-        }
-        .inp::placeholder { color: #b0bec5; font-size: 13px; }
-        .inp:focus { border-color: #3b7de0; background: #fff; box-shadow: 0 0 0 3px rgba(59,125,224,.1); }
-        .inp.err { border-color: #f87171; background: #fff5f5; }
-
-        .ir { position: absolute; right: 14px; color: #94a3b8; font-size: 15px; pointer-events: none; }
-        .il {
-            position: absolute; left: 13px; color: #94a3b8; font-size: 14px;
-            background: none; border: none; padding: 0; cursor: pointer; line-height: 1;
-        }
-        .il:hover { color: #475569; }
-        .has-eye { padding-left: 38px; }
-
-        .em { font-size: 11px; color: #ef4444; margin-top: 4px; padding-right: 4px; display: none; }
+        /* ─── Errors ─── */
+        .em { font-size: 11px; color: #E50000; margin-top: 4px; padding-right: 4px; display: none; }
         .em.show { display: block; }
 
-        .row-inline {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 14px;
-            gap: 8px;
-        }
-        .remember {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #64748b;
-            font-size: 12px;
-        }
-        .remember input { accent-color: #1d4ed8; }
-
-        .link-btn {
-            background: none;
-            border: none;
-            color: #1d4ed8;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            font-family: 'Tajawal', sans-serif;
-        }
-        .link-btn:hover { text-decoration: underline; }
-
-        .btn-primary-main {
-            width: 100%;
-            height: 50px;
-            background: #1a3a8f;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 16px rgba(26,58,143,.3);
-            margin-bottom: 14px;
-            transition: all .2s;
-        }
-        .btn-primary-main:hover { background: #152e78; transform: translateY(-1px); }
-
+        /* ─── Alert boxes ─── */
         .alert-box {
-            border-radius: 10px;
-            padding: 11px 13px;
-            font-size: 12px;
-            line-height: 1.7;
-            margin-bottom: 14px;
-            display: none;
-            border: 1px solid;
+            border-radius: 1rem; padding: 11px 13px; font-size: 12px; line-height: 1.7;
+            margin-bottom: 14px; display: none; border: 1px solid;
         }
         .alert-box.error { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
         .alert-box.pending { background: #fffbeb; border-color: #fde68a; color: #92400e; }
-        .alert-box.success { background: #f0fdf4; border-color: #bbf7d0; color: #14532d; }
+        .alert-box.success { background: #edf9ec; border-color: #a8e6a1; color: #2d7a26; }
 
+        /* ─── Buttons ─── */
+        .btn-submit {
+            width: 100%; padding: 1rem; margin: 2rem 0; border: none; border-radius: 1rem;
+            background: #005FCC; color: #fff; font-family: 'Tajawal', sans-serif;
+            font-size: calc(1rem + .11vw); font-weight: 700; cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,95,204,.3); transition: all ease .27s;
+        }
+        .btn-submit:hover { background: #4FB848; }
+
+        .line { width: 100%; border-top: 0.0625rem solid #cce4ff; opacity: 1; }
+
+        .btn-login-with {
+            width: 100%; height: 100%; padding: 0.75rem 1rem; font-size: calc(1rem + .21vw);
+            color: #004799; box-shadow: 0 0 0 0.0625rem #66b3ff; border-radius: 1rem;
+            background: transparent; border: none; font-family: 'Tajawal', sans-serif;
+            cursor: pointer; transition: all ease .27s;
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
+        }
+        .btn-login-with:hover { background: #003066; color: #fff; }
+        .btn-login-with i, .btn-login-with img.icon { display: inline-flex; font-size: calc(1rem + .65vw); }
+        .btn-login-with img.icon { width: auto; height: calc(1rem + .45vw); }
+
+        tertiary-link { color: #00AAFF; text-decoration: underline; font-size: calc(1rem + .04vw); transition: all ease .27s; }
+        a.tertiary-link:hover { color: #66ccff; }
+
+        /* ─── Reset box ─── */
         .reset-box {
-            background: #f8fafc;
-            border: 1.5px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 14px;
-            display: none;
+            background: #f8fbff; border: 1.5px dashed #99ccff; border-radius: 1rem;
+            padding: 14px; margin-bottom: 14px; display: none;
         }
-        .reset-box h4 {
-            margin-bottom: 10px;
-            color: #0f172a;
-            font-size: 14px;
-            font-weight: 700;
+        .reset-box h4 { margin-bottom: 10px; color: #003066; font-size: 14px; font-weight: 700; }
+
+        .bottom-link { text-align: center; font-size: calc(1rem + .04vw); color: #64748b; margin-top: 1rem; }
+        .bottom-link a { color: #00AAFF; font-weight: 700; text-decoration: underline; }
+        .bottom-link a:hover { color: #66ccff; }
+
+        /* ─── Responsive ─── */
+        @media (min-width: 1200px) {
+            .login-left-side { display: flex; }
+            .login-right-side { max-width: 600px; }
         }
-
-        .bottom-link { text-align: center; font-size: 13px; color: #64748b; }
-        .bottom-link a { color: #1d4ed8; font-weight: 700; text-decoration: none; }
-        .bottom-link a:hover { text-decoration: underline; }
-
-        @media (max-width: 980px) {
-            body { flex-direction: column; overflow: auto; }
-            .hero, .panel { flex: 0 0 auto; width: 100%; }
-            .hero { min-height: 240px; }
-            .panel { max-height: none; }
-            .panel-inner { padding: 26px 18px; }
+        @media (max-width: 1199px) {
+            .login-right-side { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <div class="hero-content">
-        <div class="hero-logo">
-            <svg width="40" height="40" viewBox="0 0 26 26" fill="none">
-                <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-            </svg>
-        </div>
-        <h1>نظام الموافقات الأمنية</h1>
-        <p>بوابتك لإدارة طلبات الموافقات الأمنية ومتابعة حالة الطلبات والحزم من مكان واحد.</p>
-    </div>
-</div>
+    <div class="container-fluid p-0 d-flex" style="min-height:100vh;">
+        <div class="row g-0 w-100">
+            <!-- Right: Form Panel -->
+            <div class="col-xl-5 col-xxl-5 login-right-side">
+                <img class="login-logo" src="img/logo.png" alt="نظام الموافقات الأمنية">
+                <h2 style="font-family:'Tajawal',sans-serif;font-weight:700;color:#003066;font-size:calc(1rem + .85vw);">أهلاً بك ،،،</h2>
+                <p style="margin-bottom:1.5rem;color:#66b3ff;font-size:calc(1rem + .11vw);">مسرورين برؤيتك مرة أخرى. فضلاً إختر طريقة تسجيل الدخول</p>
 
-<div class="panel">
-    <div class="panel-inner">
-        <div class="logo-row">
-            <div class="logo-text">
-                <h1>نظام الموافقات الأمنية</h1>
-                <p>Security Approval System</p>
-            </div>
-            <div class="logo-icon">
-                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                    <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                    <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                    <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                    <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-                </svg>
-            </div>
-        </div>
+                <form id="loginForm" novalidate>
+                    <!-- Selector: Individual / Agency -->
+                    <div class="selector-container">
+                        <input type="radio" class="btn-check" name="loginType" id="individualLogin" autocomplete="off" checked>
+                        <label class="btn col-6" for="individualLogin"><img class="icon" src="icons/user.svg" alt=""> دخول أفراد</label>
 
-        <div class="heading">
-            <h2>تسجيل الدخول</h2>
-            <p>أدخل بيانات الحساب المعتمد للوصول إلى لوحة الوكالة</p>
-        </div>
-
-        <div id="loginError" class="alert-box error"></div>
-        <div id="loginPending" class="alert-box pending"></div>
-        <div id="resetSuccess" class="alert-box success"></div>
-
-        <form id="loginForm" novalidate>
-            <div class="field">
-                <div class="wrap">
-                    <i class="fas fa-envelope ir"></i>
-                    <input id="email" class="inp" type="email" dir="ltr" style="text-align:left;" placeholder="البريد الإلكتروني" autocomplete="username" required>
-                </div>
-                <div id="emailErr" class="em">يرجى إدخال بريد إلكتروني صحيح.</div>
-            </div>
-
-            <div class="field">
-                <div class="wrap">
-                    <i class="fas fa-lock ir"></i>
-                    <button type="button" class="il" onclick="togglePassword()" aria-label="إظهار أو إخفاء كلمة المرور"><i id="pwEye" class="fas fa-eye"></i></button>
-                    <input id="password" class="inp has-eye" type="password" placeholder="كلمة المرور" autocomplete="current-password" required>
-                </div>
-                <div id="passwordErr" class="em">كلمة المرور مطلوبة.</div>
-            </div>
-
-            <div class="row-inline">
-                <label class="remember">
-                    <input type="checkbox" id="rememberMe">
-                    تذكرني
-                </label>
-                <button type="button" class="link-btn" onclick="toggleResetBox()">نسيت كلمة المرور؟</button>
-            </div>
-
-            <div id="resetBox" class="reset-box">
-                <h4>إعادة تعيين كلمة المرور</h4>
-                <div class="field" style="margin-bottom:10px;">
-                    <div class="wrap">
-                        <i class="fas fa-envelope ir"></i>
-                        <input id="resetEmail" class="inp" type="email" dir="ltr" style="text-align:left;" placeholder="أدخل بريدك الإلكتروني المسجل">
+                        <input type="radio" class="btn-check" name="loginType" id="agencyLogin" autocomplete="off">
+                        <label class="btn col-6" for="agencyLogin"><img class="icon" src="icons/agency.svg" alt=""> دخول وكلاء</label>
                     </div>
-                    <div id="resetEmailErr" class="em">يرجى إدخال بريد إلكتروني صحيح لإعادة التعيين.</div>
+
+                    <div id="loginError" class="alert-box error"></div>
+                    <div id="loginPending" class="alert-box pending"></div>
+                    <div id="resetSuccess" class="alert-box success"></div>
+
+                    <!-- Email -->
+                    <div class="input-group">
+                        <input id="email" type="email" class="form-control" dir="ltr" style="text-align:left;" placeholder="البريد الإلكتروني" autocomplete="username" required>
+                        <img class="input-icon" src="icons/mail.svg">
+                    </div>
+                    <div id="emailErr" class="em">يرجى إدخال بريد إلكتروني صحيح.</div>
+
+                    <!-- Password -->
+                    <div class="input-group" id="show_hide_password">
+                        <input id="password" class="form-control password" type="password" placeholder="كلمة المرور" autocomplete="current-password" required>
+                        <img class="input-icon" src="icons/lock2.svg">
+                        <button class="show-hide-icon" type="button" aria-label="إظهار أو إخفاء كلمة المرور">
+                            <i class="fa-regular fa-eye" id="pwEye"></i>
+                        </button>
+                    </div>
+                    <div id="passwordErr" class="em">كلمة المرور مطلوبة.</div>
+
+                    <!-- Remember + Forgot -->
+                    <div class="col mb-4" style="display:flex;align-items:center;justify-content:space-between;">
+                        <div class="form-check" style="display:flex;align-items:center;gap:6px;">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe" style="font-size:calc(.875rem + .02vw);color:#64748b;">تذكرني</label>
+                        </div>
+                        <button type="button" class="btn p-0" onclick="toggleResetBox()" style="background:none;border:none;color:#00AAFF;font-size:calc(.875rem + .02vw);font-weight:700;text-decoration:underline;cursor:pointer;">نسيت كلمة المرور؟</button>
+                    </div>
+
+                    <!-- Reset password box -->
+                    <div id="resetBox" class="reset-box">
+                        <h4>إعادة تعيين كلمة المرور</h4>
+                        <div class="input-group" style="margin-bottom:10px;">
+                            <input id="resetEmail" type="email" class="form-control" dir="ltr" style="text-align:left;" placeholder="أدخل بريدك الإلكتروني المسجل">
+                            <img class="input-icon" src="icons/mail.svg">
+                        </div>
+                        <div id="resetEmailErr" class="em">يرجى إدخال بريد إلكتروني صحيح لإعادة التعيين.</div>
+                        <button type="button" class="btn-submit" style="margin:0.5rem 0;" onclick="sendResetLink()">
+                            <i class="fas fa-paper-plane"></i> إرسال رابط إعادة التعيين
+                        </button>
+                    </div>
+
+                    <button type="submit" class="btn-submit">تسجيل الدخول</button>
+                </form>
+
+                <!-- Divider -->
+                <div class="row align-items-center mb-4">
+                    <div class="col"><hr class="line"/></div>
+                    <div class="col-auto" style="color:#99ccff;">أو</div>
+                    <div class="col"><hr class="line"/></div>
                 </div>
-                <button type="button" class="btn btn-secondary" style="height:42px;width:100%;" onclick="sendResetLink()">
-                    <i class="fas fa-paper-plane"></i> إرسال رابط إعادة التعيين
-                </button>
+
+                <!-- Social login -->
+                <div class="row g-3">
+                    <div class="col-6">
+                        <button class="btn-login-with">Apple <i class="fa-brands fa-apple"></i></button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn-login-with">Google <img class="icon" src="icons/google.svg" alt=""></button>
+                    </div>
+                </div>
+
+                <div class="bottom-link">
+                    ليس لديك حساب؟ <a href="registration.html">تسجيل وكالة جديدة</a>
+                </div>
             </div>
 
-            <button type="submit" class="btn-primary-main">تسجيل الدخول</button>
-        </form>
-
-        <div class="bottom-link">
-            ليس لديك حساب؟
-            <a href="registration.html">تسجيل وكالة جديدة</a>
+            <!-- Left: Hero Image -->
+            <div class="col-xl-7 col-xxl-7 login-left-side">
+                <img src="img/login-Lock.png" alt="">
+            </div>
         </div>
     </div>
-</div>
 
 <script>
 function hideAlerts() {
@@ -345,6 +297,16 @@ function togglePassword() {
     eye.className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.querySelector('#show_hide_password .show-hide-icon');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            togglePassword();
+        });
+    }
+});
+
 function toggleResetBox() {
     const box = document.getElementById('resetBox');
     box.style.display = box.style.display === 'block' ? 'none' : 'block';
@@ -360,18 +322,13 @@ function sendResetLink() {
     document.getElementById('resetEmailErr').classList.toggle('show', invalid);
     if (invalid) return;
 
-    const expiryDate = new Date(Date.now() + 30 * 60 * 1000);
-    const resetToken = 'RST-' + Math.random().toString(36).slice(2, 10).toUpperCase();
-    const resetLink = window.location.origin + window.location.pathname + '?resetToken=' + encodeURIComponent(resetToken);
-
     if (window.EmailNotifications) {
+        const expiryDate = new Date(Date.now() + 30 * 60 * 1000);
+        const resetToken = 'RST-' + Math.random().toString(36).slice(2, 10).toUpperCase();
+        const resetLink = window.location.origin + window.location.pathname + '?resetToken=' + encodeURIComponent(resetToken);
         window.EmailNotifications.sendTemplateEmail(
-            'EMAIL-PASSWORD-RESET',
-            value,
-            {
-                Reset_Link: resetLink,
-                Expiry_DateTime: expiryDate.toLocaleString()
-            },
+            'EMAIL-PASSWORD-RESET', value,
+            { Reset_Link: resetLink, Expiry_DateTime: expiryDate.toLocaleString() },
             { event: 'password_reset_requested' }
         );
     }

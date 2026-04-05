@@ -1,17 +1,18 @@
-// ── Brand ──────────────────────────────────────────────────────────────
-$color-primary:         #1d4ed8;
-$color-primary-dark:    #1e3a8a;
-$color-primary-mid:     #1a3a8f;
-$color-primary-light:   #eff6ff;
-$color-primary-muted:   #bfdbfe;
-$color-primary-subtle:  #dbeafe;
+// ── Brand (SCG Design System) ──────────────────────────────────────────
+$color-primary:         #005FCC;
+$color-primary-dark:    #003d8a;
+$color-primary-mid:     #004799;
+$color-primary-light:   #eaf4ff;
+$color-primary-muted:   #99ccff;
+$color-primary-subtle:  #cce4ff;
+$color-tertiary:        #00AAFF;
 
 // ── Semantic ────────────────────────────────────────────────────────────
-$color-success:         #16a34a;
-$color-success-dark:    #15803d;
-$color-success-light:   #dcfce7;
-$color-success-bg:      #f0fdf4;
-$color-success-border:  #bbf7d0;
+$color-success:         #4FB848;
+$color-success-dark:    #3a9e32;
+$color-success-light:   #d4f0d1;
+$color-success-bg:      #edf9ec;
+$color-success-border:  #a8e6a1;
 
 $color-warning:         #d97706;
 $color-warning-dark:    #b45309;
@@ -29,8 +30,8 @@ $color-danger-border:   #fecaca;
 $color-info-light:      #e0f2fe;
 
 // ── Neutrals ────────────────────────────────────────────────────────────
-$color-text-primary:    #0f172a;
-$color-text-body:       #1e293b;
+$color-text-primary:    #00244d;
+$color-text-body:       #002e5c;
 $color-text-secondary:  #475569;
 $color-text-muted:      #64748b;
 $color-text-placeholder:#94a3b8;
@@ -51,7 +52,7 @@ $color-purple-dark:     #6d28d9;
 $color-purple-light:    #f5f3ff;
 
 // ── Hero gradient ────────────────────────────────────────────────────────
-$hero-gradient:         linear-gradient(160deg, #040c22 0%, #091535 35%, #0b1e50 65%, #091535 100%);
+$hero-gradient:         linear-gradient(160deg, #001a3d 0%, #002555 35%, #003580 65%, #002555 100%);
 
 // ── Typography ───────────────────────────────────────────────────────────
 $font-family:           'Tajawal', sans-serif;

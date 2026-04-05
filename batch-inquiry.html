@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حزمة طلبات جديدة — نظام الموافقات الأمنية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.rtl.min.css">`n    <link rel="stylesheet" href="styles/main.css">
     <style>
         /* ═══════════════════════════════════════════════
            BATCH WIZARD — PAGE-SPECIFIC STYLES
         ═══════════════════════════════════════════════ */
         .gc-icon-btn { width:32px; height:32px; border-radius:8px; border:1.5px solid #e2e8f0; background:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; cursor:pointer; color:#64748b; transition:all .2s; font-family:inherit; }
-        .gc-icon-btn:hover { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
+        .gc-icon-btn:hover { background:#eaf4ff; border-color:#99ccff; color:#005FCC; }
         .gc-icon-btn.danger:hover { background:#fee2e2; border-color:#fca5a5; color:#dc2626; }
 
         /* Flight data pills */
@@ -26,61 +23,61 @@
         .ff-field { display:flex; flex-direction:column; gap:5px; }
         .ff-field label { font-size:12px; font-weight:700; color:#475569; }
         .ff-field input, .ff-field select { height:38px; border:1.5px solid #e2e8f0; border-radius:8px; padding:0 12px; font-family:'Tajawal',sans-serif; font-size:13px; color:#1e293b; background:#fff; outline:none; transition:border-color .2s; }
-        .ff-field input:focus, .ff-field select:focus { border-color:#1d4ed8; background:#fff; }
+        .ff-field input:focus, .ff-field select:focus { border-color:#005FCC; background:#fff; }
         .ff-req { color:#dc2626; }
 
         /* Empty builder state */
         .builder-empty { text-align:center; padding:48px 24px; }
-        .be-icon { width:72px; height:72px; margin:0 auto 16px; background:#eff6ff; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:30px; color:#1d4ed8; }
-        .be-title { font-size:16px; font-weight:800; color:#0f172a; margin-bottom:6px; }
+        .be-icon { width:72px; height:72px; margin:0 auto 16px; background:#eaf4ff; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:30px; color:#005FCC; }
+        .be-title { font-size:16px; font-weight:800; color:#00244d; margin-bottom:6px; }
         .be-sub { font-size:13px; color:#64748b; margin-bottom:20px; line-height:1.7; }
 
         /* Running total bar — sticky bottom inside wizard */
-        .running-total-bar { background:#1a3a8f; color:#fff; padding:12px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; border-top:2px solid #2563eb; margin:20px -28px -28px; position:sticky; bottom:0; z-index:40; }
+        .running-total-bar { background:#004799; color:#fff; padding:12px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; border-top:2px solid #2563eb; margin:20px -28px -28px; position:sticky; bottom:0; z-index:40; }
         .rtb-stat { display:flex; align-items:center; gap:6px; font-size:13px; }
         .rtb-stat i { opacity:.7; font-size:12px; }
         .rtb-val { font-weight:800; }
         .rtb-sep { color:rgba(255,255,255,.25); }
         .rtb-fee-label { font-size:13px; }
-        .rtb-fee-amount { font-size:15px; font-weight:800; color:#86efac; }
+        .rtb-fee-amount { font-size:15px; font-weight:800; color:#7fd68a; }
 
         /* Review traveler card */
         .review-group-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:10px; overflow:hidden; margin-bottom:14px; }
         .rgc-header { padding:12px 16px; background:#f8fafc; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
         .rgc-header-left { display:flex; align-items:center; gap:10px; flex-wrap:wrap; flex:1; }
-        .rgc-name { font-size:13px; font-weight:800; color:#0f172a; }
+        .rgc-name { font-size:13px; font-weight:800; color:#00244d; }
 
         /* Step 1 info box */
         .info-how-it-works { background:#f0f9ff; border:1.5px solid #bae6fd; border-radius:10px; padding:16px 20px; max-width:520px; margin-top:20px; }
         .info-how-it-works h4 { font-size:13px; font-weight:800; color:#0369a1; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
         .info-how-it-works li { font-size:12.5px; color:#0369a1; line-height:2; }
 
-        .draft-saved-toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); background:#0f172a; color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.25); z-index:9999; opacity:0; transition:opacity .3s; pointer-events:none; }
+        .draft-saved-toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); background:#00244d; color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.25); z-index:9999; opacity:0; transition:opacity .3s; pointer-events:none; }
         .draft-saved-toast.show { opacity:1; }
 
         /* Section titles */
         .sect-title { font-size:13px; font-weight:800; color:#334155; margin:20px 0 10px; display:flex; align-items:center; gap:8px; }
-        .sect-count { background:#dbeafe; color:#1d4ed8; font-size:10px; font-weight:800; padding:2px 8px; border-radius:12px; }
+        .sect-count { background:#cce4ff; color:#005FCC; font-size:10px; font-weight:800; padding:2px 8px; border-radius:12px; }
 
         /* Individual traveler cards */
         .ind-list { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
         .ind-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:10px; padding:14px 18px; transition:box-shadow .2s; }
         .ind-card:hover { box-shadow:0 2px 12px rgba(0,0,0,.06); }
         .ind-row1 { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
-        .ind-num { width:26px; height:26px; border-radius:50%; background:#1d4ed8; color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .ind-name { font-size:14px; font-weight:700; color:#0f172a; }
-        .ind-fee { font-size:13px; font-weight:800; color:#1d4ed8; margin-right:auto; }
+        .ind-num { width:26px; height:26px; border-radius:50%; background:#005FCC; color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .ind-name { font-size:14px; font-weight:700; color:#00244d; }
+        .ind-fee { font-size:13px; font-weight:800; color:#005FCC; margin-right:auto; }
         .ind-row2 { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding-right:36px; }
         .ind-doc { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; padding:3px 9px; border-radius:6px; }
-        .ind-doc.ok { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+        .ind-doc.ok { background:#edf9ec; color:#3a9e32; border:1px solid #a8e6a1; }
         .ind-doc.missing { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; cursor:pointer; transition:all .2s; }
         .ind-doc.missing:hover { background:#fee2e2; border-color:#f87171; }
         .ind-doc.missing input[type=file] { display:none; }
 
         /* Individual form card */
-        .ind-form-card { background:#fff; border:2px solid #1d4ed8; border-radius:12px; padding:20px; box-shadow:0 0 0 4px rgba(29,78,232,.08); margin-bottom:16px; }
+        .ind-form-card { background:#fff; border:2px solid #005FCC; border-radius:12px; padding:20px; box-shadow:0 0 0 4px rgba(29,78,232,.08); margin-bottom:16px; }
         .ind-form-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
-        .ind-form-title { font-size:14px; font-weight:800; color:#1e3a8a; display:flex; align-items:center; gap:8px; }
+        .ind-form-title { font-size:14px; font-weight:800; color:#003d8a; display:flex; align-items:center; gap:8px; }
         .ind-form-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:12px; }
         .ind-form-grid-5 { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-bottom:12px; }
         .copy-flight-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; padding:8px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; cursor:pointer; user-select:none; }
@@ -88,14 +85,14 @@
         .copy-flight-row label { font-size:12px; font-weight:600; color:#92400e; cursor:pointer; }
         .doc-upload-row { display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
         .doc-upload-btn { display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px dashed #cbd5e1; border-radius:10px; background:#f8fafc; cursor:pointer; transition:all .2s; flex:1; min-width:180px; }
-        .doc-upload-btn:hover { border-color:#1d4ed8; background:#eff6ff; }
-        .doc-upload-btn.uploaded { border-color:#bbf7d0; background:#f0fdf4; border-style:solid; }
+        .doc-upload-btn:hover { border-color:#005FCC; background:#eaf4ff; }
+        .doc-upload-btn.uploaded { border-color:#a8e6a1; background:#edf9ec; border-style:solid; }
         .doc-upload-btn input[type=file] { display:none; }
         .doc-upload-icon { font-size:20px; color:#94a3b8; }
-        .doc-upload-btn.uploaded .doc-upload-icon { color:#16a34a; }
+        .doc-upload-btn.uploaded .doc-upload-icon { color:#4FB848; }
         .doc-upload-label { font-size:12px; font-weight:700; color:#334155; }
         .doc-upload-hint { font-size:10.5px; color:#94a3b8; }
-        .doc-upload-btn.uploaded .doc-upload-label { color:#15803d; }
+        .doc-upload-btn.uploaded .doc-upload-label { color:#3a9e32; }
         .ind-form-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
         .ind-form-section-label { font-size:11.5px; font-weight:700; color:#64748b; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
     </style>
@@ -172,7 +169,7 @@
         <span class="nd-mark" data-i18n="portal.notifications.markAllRead" onclick="markAllRead()">تعليم الكل كمقروء</span>
     </div>
     <div class="nd-item">
-        <div class="nd-dot" style="background:#22c55e;"></div>
+        <div class="nd-dot" style="background:#4FB848;"></div>
         <div class="nd-text">
             <strong>طلب BTH-2024-0234 — موافقة</strong>
             <span>تمت الموافقة على حزمة الطلبات لـ 15 مسافر</span>
@@ -188,7 +185,7 @@
         </div>
     </div>
     <div class="nd-item">
-        <div class="nd-dot" style="background:#3b82f6;"></div>
+        <div class="nd-dot" style="background:#3392FF;"></div>
         <div class="nd-text">
             <strong>رصيد المحفظة منخفض</strong>
             <span>رصيدك الحالي $450 — يُنصح بالشحن قريباً</span>
@@ -277,7 +274,7 @@
             <!-- ══ STEP 1: Batch Name ══ -->
             <div class="step-panel active" id="panel-1">
                 <div class="step-heading">
-                    <h3><i class="fas fa-tag" style="color:#1d4ed8;margin-left:8px;"></i>إضافة حزمة طلبات جديدة</h3>
+                    <h3><i class="fas fa-tag" style="color:#005FCC;margin-left:8px;"></i>إضافة حزمة طلبات جديدة</h3>
                     <p>أعطِ الحزمة اسماً واضحاً يساعدك على الرجوع والتعرف عليها لاحقاً.</p>
                 </div>
 
@@ -292,7 +289,7 @@
                         <label for="batch-notes">ملاحظات (اختياري)</label>
                         <textarea id="batch-notes" placeholder="أي ملاحظات تتعلق بهذه الحزمة…"
                             style="height:80px;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 12px;font-family:'Tajawal',sans-serif;font-size:13px;color:#1e293b;background:#fff;outline:none;resize:vertical;transition:border-color .2s;"
-                            onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e2e8f0'"></textarea>
+                            onfocus="this.style.borderColor='#005FCC'" onblur="this.style.borderColor='#e2e8f0'"></textarea>
                     </div>
                 </div>
 
@@ -310,7 +307,7 @@
             <!-- ══ STEP 2: Travelers ══ -->
             <div class="step-panel" id="panel-2">
                 <div class="step-heading">
-                    <h3><i class="fas fa-users" style="color:#1d4ed8;margin-left:8px;"></i>إضافة مسافرين إلى الحزمة</h3>
+                    <h3><i class="fas fa-users" style="color:#005FCC;margin-left:8px;"></i>إضافة مسافرين إلى الحزمة</h3>
                 </div>
 
                 <!-- Batch info summary card -->
@@ -354,7 +351,7 @@
                 <!-- PRE-CONFIRM state -->
                 <div id="s3-confirm">
                     <div class="step-heading">
-                        <h3><i class="fas fa-clipboard-check" style="color:#1d4ed8;margin-left:8px;"></i>المراجعة والتأكيد</h3>
+                        <h3><i class="fas fa-clipboard-check" style="color:#005FCC;margin-left:8px;"></i>المراجعة والتأكيد</h3>
                     </div>
 
                     <!-- Batch data summary -->
@@ -364,8 +361,8 @@
                     <div style="margin-bottom:20px;">
                         <div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:12px 16px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px 10px 0 0;" onclick="toggleReviewList()" id="review-list-header">
                             <div style="display:flex;align-items:center;gap:10px;">
-                                <i class="fas fa-users" style="color:#1d4ed8;"></i>
-                                <span style="font-size:14px;font-weight:800;color:#0f172a;">قائمة المسافرون</span>
+                                <i class="fas fa-users" style="color:#005FCC;"></i>
+                                <span style="font-size:14px;font-weight:800;color:#00244d;">قائمة المسافرون</span>
                                 <span class="sect-count" id="review-traveler-count">0</span>
                             </div>
                             <div style="display:flex;align-items:center;gap:10px;">
@@ -409,19 +406,19 @@
 
                 <!-- LOADING state -->
                 <div id="s3-loading" style="display:none; text-align:center; padding:48px;">
-                    <div style="font-size:48px; color:#1d4ed8; margin-bottom:16px;">
+                    <div style="font-size:48px; color:#005FCC; margin-bottom:16px;">
                         <i class="fas fa-spinner fa-spin"></i>
                     </div>
-                    <h4 style="font-size:16px; font-weight:700; color:#0f172a; margin-bottom:6px;">جارٍ معالجة الطلب…</h4>
+                    <h4 style="font-size:16px; font-weight:700; color:#00244d; margin-bottom:6px;">جارٍ معالجة الطلب…</h4>
                     <p style="font-size:13px; color:#64748b;">يُرجى الانتظار. يتم إرسال طلبات المسافرين.</p>
                 </div>
 
                 <!-- SUCCESS state -->
                 <div id="s3-success" style="display:none; text-align:center; padding:48px 24px;">
-                    <div style="width:80px;height:80px;border-radius:50%;background:#dcfce7;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
-                        <i class="fas fa-circle-check" style="font-size:40px;color:#16a34a;"></i>
+                    <div style="width:80px;height:80px;border-radius:50%;background:#d4f0d1;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
+                        <i class="fas fa-circle-check" style="font-size:40px;color:#4FB848;"></i>
                     </div>
-                    <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">تم إرسال الحزمة بنجاح</h3>
+                    <h3 style="font-size:20px;font-weight:800;color:#00244d;margin-bottom:8px;">تم إرسال الحزمة بنجاح</h3>
                     <p style="font-size:14px;color:#64748b;margin-bottom:24px;">تم خصم الرسوم من المحفظة وإرسال طلبات جميع المسافرين إلى محرك الفرز</p>
                     <div class="confirm-summary-card" id="success-summary-card" style="text-align:right;max-width:440px;margin:0 auto 24px;"></div>
                     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
@@ -787,7 +784,7 @@ function renderBuilder() {
             indHtml += `<div style="display:flex;justify-content:center;gap:6px;margin-bottom:16px;">`;
             indHtml += `<button class="gc-icon-btn" onclick="changeTravelerPage(${currentTravelerPage - 1})" ${currentTravelerPage <= 1 ? 'disabled style="opacity:.4;cursor:default;"' : ''}><i class="fas fa-chevron-right"></i></button>`;
             for (let p = 1; p <= totalPages; p++) {
-                indHtml += `<button class="gc-icon-btn" onclick="changeTravelerPage(${p})" style="${p === currentTravelerPage ? 'background:#1d4ed8;color:#fff;border-color:#1d4ed8;' : ''}">${String(p).padStart(2,'0')}</button>`;
+                indHtml += `<button class="gc-icon-btn" onclick="changeTravelerPage(${p})" style="${p === currentTravelerPage ? 'background:#005FCC;color:#fff;border-color:#005FCC;' : ''}">${String(p).padStart(2,'0')}</button>`;
             }
             indHtml += `<button class="gc-icon-btn" onclick="changeTravelerPage(${currentTravelerPage + 1})" ${currentTravelerPage >= totalPages ? 'disabled style="opacity:.4;cursor:default;"' : ''}><i class="fas fa-chevron-left"></i></button>`;
             indHtml += `</div>`;
@@ -1036,7 +1033,7 @@ function renderIndividualForm() {
     <div class="ind-form-card">
         <div class="ind-form-header">
             <div class="ind-form-title">
-                <i class="fas fa-user-plus" style="color:#1d4ed8;"></i>
+                <i class="fas fa-user-plus" style="color:#005FCC;"></i>
                 ${editing ? 'تعديل بيانات المسافر' : 'إضافة مسافر جديد'}
             </div>
             <button class="gc-icon-btn" onclick="hideIndForm()"><i class="fas fa-times"></i></button>
@@ -1228,7 +1225,7 @@ function buildReviewStep() {
     const successCardHtml = `
         <div class="cs-row"><span class="cs-label">رقم مرجعي للحزمة</span><span class="cs-value" dir="ltr">${batchRef}</span></div>
         <div class="cs-row"><span class="cs-label">عدد المسافرين</span><span class="cs-value">${totalTravelers} مسافراً</span></div>
-        <div class="cs-row"><span class="cs-label">إجمالي المبلغ المخصوم</span><span class="cs-value" style="font-weight:800;color:#1d4ed8;">${fmt(totalFee)} دولار أمريكي</span></div>`;
+        <div class="cs-row"><span class="cs-label">إجمالي المبلغ المخصوم</span><span class="cs-value" style="font-weight:800;color:#005FCC;">${fmt(totalFee)} دولار أمريكي</span></div>`;
     document.getElementById('success-summary-card').innerHTML = successCardHtml;
 }
 

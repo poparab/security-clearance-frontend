@@ -1,14 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إنشاء حساب جديد — نظام الموافقات الأمنية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.rtl.min.css">`n    <link rel="stylesheet" href="styles/main.css">
     <style>
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,7 +15,7 @@
         /* ─── Left hero panel ─── */
         .hero {
             flex: 0 0 57%;
-            background: linear-gradient(160deg, #040c22 0%, #091535 35%, #0b1e50 65%, #091535 100%);
+            background: linear-gradient(160deg, #001a3d 0%, #002555 35%, #003580 65%, #002555 100%);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -70,7 +67,7 @@
         .logo-text p  { font-size: 11px; color: #94a3b8; text-align: right; }
         .logo-icon {
             width: 48px; height: 48px;
-            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            background: linear-gradient(135deg, #005FCC, #003d8a);
             border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
@@ -79,13 +76,13 @@
         /* ─── Step pips ─── */
         .pips { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 5px; }
         .pip { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; transition: all .3s; }
-        .pip.cur  { width: 24px; border-radius: 4px; background: #1a3a8f; }
-        .pip.done { background: #22c55e; }
+        .pip.cur  { width: 24px; border-radius: 4px; background: #004799; }
+        .pip.done { background: #4FB848; }
         .pip-lbl  { text-align: center; font-size: 11px; color: #94a3b8; margin-bottom: 18px; }
 
         /* ─── Heading ─── */
         .heading { text-align: right; margin-bottom: 20px; }
-        .heading h2 { font-size: 23px; font-weight: 800; color: #0f172a; margin-bottom: 3px; }
+        .heading h2 { font-size: 23px; font-weight: 800; color: #00244d; margin-bottom: 3px; }
         .heading p  { font-size: 13px; color: #94a3b8; line-height: 1.6; }
 
         /* ─── Tabs ─── */
@@ -102,8 +99,8 @@
             transition: all .2s; background: transparent; color: #64748b;
         }
         .tab.active {
-            background: #1a3a8f; color: #fff;
-            box-shadow: 0 3px 10px rgba(26,58,143,.35);
+            background: #004799; color: #fff;
+            box-shadow: 0 3px 10px rgba(0,95,204,.35);
         }
         .tab i { font-size: 13px; }
 
@@ -124,9 +121,9 @@
             transition: border-color .2s, background .2s, box-shadow .2s;
         }
         .inp::placeholder { color: #b0bec5; font-size: 13px; }
-        .inp:focus { border-color: #3b7de0; background: #fff; box-shadow: 0 0 0 3px rgba(59,125,224,.1); }
+        .inp:focus { border-color: #005FCC; background: #fff; box-shadow: 0 0 0 3px rgba(0,140,255,.1); }
         .inp.err { border-color: #f87171; background: #fff5f5; }
-        .inp.ok  { border-color: #86efac; }
+        .inp.ok  { border-color: #7fd68a; }
 
         /* icon right (semantic) */
         .ir { position: absolute; right: 14px; color: #94a3b8; font-size: 15px; pointer-events: none; }
@@ -152,7 +149,7 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%2394a3b8' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
             background-repeat: no-repeat; background-position: left 6px center;
         }
-        .cc:focus { border-color: #3b7de0; box-shadow: 0 0 0 3px rgba(59,125,224,.1); }
+        .cc:focus { border-color: #005FCC; box-shadow: 0 0 0 3px rgba(0,140,255,.1); }
 
         /* ─── File upload ─── */
         .upload-zone {
@@ -163,14 +160,14 @@
             gap: 6px; cursor: pointer; transition: all .2s;
             padding: 14px;
         }
-        .upload-zone:hover, .upload-zone.drag { background: #eff6ff; border-color: #3b7de0; }
-        .upload-zone.has-file { background: #f0fdf4; border-color: #86efac; border-style: solid; }
+        .upload-zone:hover, .upload-zone.drag { background: #eaf4ff; border-color: #005FCC; }
+        .upload-zone.has-file { background: #edf9ec; border-color: #7fd68a; border-style: solid; }
         .upload-zone.err-zone { border-color: #f87171; background: #fff5f5; }
         .upload-zone i { font-size: 22px; color: #94a3b8; }
-        .upload-zone.has-file i { color: #22c55e; }
+        .upload-zone.has-file i { color: #4FB848; }
         .upload-zone p { font-size: 12px; color: #64748b; text-align: center; }
         .upload-zone .sub { font-size: 11px; color: #94a3b8; }
-        .upload-zone .fname { font-size: 12px; color: #166534; font-weight: 600; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .upload-zone .fname { font-size: 12px; color: #2d7a26; font-weight: 600; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
         /* ─── Password strength ─── */
         .str-row { display: flex; gap: 4px; margin-top: 6px; }
@@ -190,14 +187,14 @@
         /* ─── Main button ─── */
         .btn {
             width: 100%; height: 50px;
-            background: #1a3a8f; color: #fff; border: none;
+            background: #004799; color: #fff; border: none;
             border-radius: 10px; font-family: 'Tajawal', sans-serif;
             font-size: 15px; font-weight: 700; cursor: pointer;
             transition: background .2s, box-shadow .2s, transform .15s;
-            box-shadow: 0 4px 16px rgba(26,58,143,.3);
+            box-shadow: 0 4px 16px rgba(0,95,204,.3);
             margin-bottom: 16px;
         }
-        .btn:hover { background: #152e78; box-shadow: 0 6px 20px rgba(26,58,143,.4); transform: translateY(-1px); }
+        .btn:hover { background: #003066; box-shadow: 0 6px 20px rgba(0,95,204,.4); transform: translateY(-1px); }
         .btn:active { transform: translateY(0); }
         .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
 
@@ -216,7 +213,7 @@
 
         /* ─── Bottom link ─── */
         .bl { text-align: center; font-size: 13px; color: #64748b; }
-        .bl a { color: #1d4ed8; font-weight: 600; text-decoration: none; }
+        .bl a { color: #005FCC; font-weight: 600; text-decoration: none; }
         .bl a:hover { text-decoration: underline; }
 
         /* ─── OTP boxes ─── */
@@ -228,21 +225,21 @@
             background: #f8fafc; color: #1e293b; outline: none;
             transition: all .2s;
         }
-        .otp:focus { border-color: #3b7de0; background: #fff; box-shadow: 0 0 0 3px rgba(59,125,224,.1); }
-        .otp.filled { border-color: #3b7de0; background: #eff6ff; }
+        .otp:focus { border-color: #005FCC; background: #fff; box-shadow: 0 0 0 3px rgba(0,140,255,.1); }
+        .otp.filled { border-color: #005FCC; background: #eaf4ff; }
         .otp.shake { animation: shake .4s; }
         @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-5px)} 40%,80%{transform:translateX(5px)} }
 
         /* ─── Success card ─── */
         .scard {
-            background: #f0fdf4; border: 1.5px solid #bbf7d0;
+            background: #edf9ec; border: 1.5px solid #a8e6a1;
             border-radius: 10px; padding: 11px 14px;
             display: flex; align-items: flex-start; gap: 10px;
             margin-bottom: 18px;
         }
-        .scard i { color: #22c55e; font-size: 18px; margin-top: 1px; }
-        .scard strong { font-size: 13px; color: #166534; display: block; }
-        .scard span   { font-size: 11px; color: #15803d; }
+        .scard i { color: #4FB848; font-size: 18px; margin-top: 1px; }
+        .scard strong { font-size: 13px; color: #2d7a26; display: block; }
+        .scard span   { font-size: 11px; color: #3a9e32; }
 
         /* ─── Final / Pending screens ─── */
         .end-screen { text-align: center; padding: 10px 0; }
@@ -251,7 +248,7 @@
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 18px; font-size: 36px;
         }
-        .end-screen h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .end-screen h2 { font-size: 22px; font-weight: 800; color: #00244d; margin-bottom: 8px; }
         .end-screen p  { font-size: 13px; color: #64748b; line-height: 1.8; margin-bottom: 24px; }
         .end-detail {
             background: #f8fafc; border: 1px solid #e2e8f0;
@@ -272,7 +269,7 @@
         /* terms row */
         .terms-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 16px; }
         .terms-row p { font-size: 12px; color: #64748b; flex: 1; line-height: 1.7; text-align: right; }
-        .terms-row input { margin-top: 3px; width: 15px; height: 15px; accent-color: #1d4ed8; cursor: pointer; flex-shrink: 0; }
+        .terms-row input { margin-top: 3px; width: 15px; height: 15px; accent-color: #005FCC; cursor: pointer; flex-shrink: 0; }
     
     </style>
 </head>
@@ -463,7 +460,7 @@
 
         <!-- Terms -->
         <div class="terms-row">
-            <p>بإنشاء الحساب أوافق على <a href="#" style="color:#1d4ed8;font-weight:600;">شروط الاستخدام</a> و<a href="#" style="color:#1d4ed8;font-weight:600;">سياسة الخصوصية</a></p>
+            <p>بإنشاء الحساب أوافق على <a href="#" style="color:#005FCC;font-weight:600;">شروط الاستخدام</a> و<a href="#" style="color:#005FCC;font-weight:600;">سياسة الخصوصية</a></p>
             <input type="checkbox" id="iTerms">
         </div>
 
@@ -588,7 +585,7 @@
 
         <!-- Terms -->
         <div class="terms-row">
-            <p>بإرسال الطلب أوافق على <a href="#" style="color:#1d4ed8;font-weight:600;">شروط الاستخدام</a> و<a href="#" style="color:#1d4ed8;font-weight:600;">سياسة الخصوصية</a></p>
+            <p>بإرسال الطلب أوافق على <a href="#" style="color:#005FCC;font-weight:600;">شروط الاستخدام</a> و<a href="#" style="color:#005FCC;font-weight:600;">سياسة الخصوصية</a></p>
             <input type="checkbox" id="aTerms">
         </div>
 
@@ -625,7 +622,7 @@
         <span class="em" id="eOtp" style="display:block;text-align:center;margin-bottom:8px;"></span>
 
         <p style="text-align:center;font-size:12px;color:#94a3b8;margin-bottom:20px;">
-            صلاحية الرمز تنتهي خلال <span style="color:#1d4ed8;font-weight:700;" id="tmr">10:00</span>
+            صلاحية الرمز تنتهي خلال <span style="color:#005FCC;font-weight:700;" id="tmr">10:00</span>
         </p>
 
         <button class="btn" id="vBtn" onclick="verifyOtp()" disabled>تأكيد الرمز وتفعيل الحساب</button>
@@ -637,7 +634,7 @@
                 إعادة الإرسال
             </button>
             <p style="font-size:11px;color:#94a3b8;margin-top:3px;" id="rsndRow">
-                يمكنك الطلب بعد <span style="color:#1d4ed8;font-weight:700;" id="rsndC">60</span> ثانية
+                يمكنك الطلب بعد <span style="color:#005FCC;font-weight:700;" id="rsndC">60</span> ثانية
             </p>
         </div>
 
@@ -654,7 +651,7 @@
          SCREEN D — INDIVIDUAL SUCCESS
     ═════════════════════════════════════ -->
     <div id="sIndDone" class="hidden end-screen">
-        <div class="end-icon" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#16a34a;">
+        <div class="end-icon" style="background:linear-gradient(135deg,#d4f0d1,#a8e6a1);color:#4FB848;">
             <i class="fas fa-check"></i>
         </div>
         <h2>تم تفعيل حسابك!</h2>
@@ -697,9 +694,9 @@
         </div>
 
         <!-- Info note -->
-        <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:12px 14px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start;text-align:right;">
-            <i class="fas fa-envelope" style="color:#3b82f6;margin-top:2px;flex-shrink:0;"></i>
-            <p style="font-size:12px;color:#1e40af;line-height:1.7;">
+        <div style="background:#eaf4ff;border:1.5px solid #99ccff;border-radius:10px;padding:12px 14px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start;text-align:right;">
+            <i class="fas fa-envelope" style="color:#3392FF;margin-top:2px;flex-shrink:0;"></i>
+            <p style="font-size:12px;color:#0052b3;line-height:1.7;">
                 تم إرسال رسالة تأكيد إلى بريدك الإلكتروني. إذا لم تجدها في الوارد، تحقق من مجلد البريد غير المرغوب فيه.
             </p>
         </div>
@@ -848,7 +845,7 @@ function setUploadFile(file) {
     zone.classList.remove('err-zone');
     zone.classList.add('has-file');
     ico.className = 'fas fa-file-pdf';
-    ico.style.color = '#22c55e';
+    ico.style.color = '#4FB848';
     txt.innerHTML = `<span class="fname">${file.name}</span>`;
     sub.textContent = (file.size / 1024).toFixed(0) + ' KB — PDF';
     err.className = 'em';
@@ -994,7 +991,7 @@ function startResend(s) {
         cnt.textContent = s;
         if (s-- <= 0) {
             clearInterval(rsndInt);
-            btn.disabled = false; btn.style.color = '#1d4ed8'; btn.style.cursor = 'pointer';
+            btn.disabled = false; btn.style.color = '#005FCC'; btn.style.cursor = 'pointer';
             document.getElementById('rsndRow').style.display = 'none';
         }
     }, 1000);
