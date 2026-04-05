@@ -3,408 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المحفظة — نظام الموافقات الأمنية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.rtl.min.css">`n    <link rel="stylesheet" href="styles/main.css">
+    <title>المحفظة الإلكترونية — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.rtl.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/portal.css">
+    <link rel="shortcut icon" href="img/favicon.png">
 </head>
-<body>
+<body class="portal-page">
 
-<header class="top-header">
-    <div class="top-header-inner">
-        <div class="logo-wrap">
-            <div class="logo-icon">
-                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                    <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                    <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                    <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                    <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-                </svg>
+<!-- ════════════════ HEADER ════════════════ -->
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="home.html"></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inquiry-list.html">قائمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="batch-list.html">حزمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">التقارير</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="wallet.html">الإعدادات</a></li>
+                </ul>
             </div>
-            <div class="logo-text">
-                <h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1>
-                <p data-i18n="common.brand.subtitle">Security Approval System</p>
-            </div>
-        </div>
-
-        <nav class="top-nav">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-gauge-high"></i> <span data-i18n="portal.nav.dashboard">لوحة التحكم</span>
-            </a>
-            <a class="nav-link" href="inquiry-list.html">
-                <i class="fas fa-file-lines"></i> <span data-i18n="portal.nav.inquiries">الاستعلامات</span>
-                <span class="nav-badge">3</span>
-            </a>
-            <a class="nav-link" href="batch-list.html">
-                <i class="fas fa-layer-group"></i> <span data-i18n="portal.nav.batch">حزمة طلبات</span>
-            </a>
-            <a class="nav-link active" href="wallet.html">
-                <i class="fas fa-wallet"></i> <span data-i18n="portal.nav.wallet">المحفظة</span>
-            </a>
-            <a class="nav-link" href="#">
-                <i class="fas fa-building"></i> <span data-i18n="portal.nav.agency">الوكالة</span>
-            </a>
-            <a class="nav-link" href="#">
-                <i class="fas fa-circle-question"></i> <span data-i18n="portal.nav.help">المساعدة</span>
-            </a>
+            <a class="header-cta d-none d-lg-inline-flex" href="batch-inquiry.html"><i class="fa-solid fa-plus"></i> طلب جديد</a>
+            <a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><img class="icon" src="icons/language.svg" alt="">EN</a>
         </nav>
-
-        <div class="top-right">
-            <div class="notif-btn" id="bellBtn" onclick="toggleNotif()">
-                <i class="fas fa-bell"></i>
-                <span class="notif-dot" id="notifDot"></span>
-            </div>
-            <div class="lang-toggle">
-                <button class="active" data-lang="ar" onclick="setLang(this)">ع</button>
-                <button data-lang="en" onclick="setLang(this)">EN</button>
-            </div>
-            <div class="user-chip" id="userChip" onclick="toggleUser()">
-                <div class="user-avatar"><i class="fas fa-user"></i></div>
-                <div class="user-info">
-                    <div class="uname">وكالة النيل للسياحة</div>
-                    <div class="urole">وكالة معتمدة</div>
-                </div>
-                <i class="fas fa-chevron-down chevron"></i>
-            </div>
-        </div>
     </div>
 </header>
 
-<div class="notif-drawer" id="notifDrawer">
-    <div class="nd-header">
-        <h4><span data-i18n="portal.notifications.title">الإشعارات</span> <span style="background:#ef4444;color:#fff;font-size:10px;padding:1px 7px;border-radius:10px;margin-right:5px;">3</span></h4>
-        <span class="nd-mark" data-i18n="portal.notifications.markAllRead" onclick="markAllRead()">تعليم الكل كمقروء</span>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#4FB848;"></div>
-        <div class="nd-text">
-            <strong>اعتماد حزمة جديدة</strong>
-            <span>تمت الموافقة على طلب 14 مسافراً</span>
-            <div class="nd-time">منذ 45 دقيقة</div>
-        </div>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#f59e0b;"></div>
-        <div class="nd-text">
-            <strong>تنبيه رصيد</strong>
-            <span>يرجى متابعة الرصيد مع مسؤول النظام</span>
-            <div class="nd-time">منذ 3 ساعات</div>
-        </div>
-    </div>
-</div>
-
-<div class="user-dropdown" id="userDropdown">
-    <div class="ud-top">
-        <div class="udname" data-i18n="portal.user.name">وكالة النيل للسياحة</div>
-        <div class="udrole" data-i18n="portal.user.role">وكالة معتمدة</div>
-        <div class="udid" dir="ltr">AG-2024-0156</div>
-    </div>
-    <a class="ud-item" href="#"><i class="fas fa-building"></i> <span data-i18n="portal.user.profile">بيانات الوكالة</span></a>
-    <a class="ud-item logout" href="login.html"><i class="fas fa-right-from-bracket"></i> <span data-i18n="portal.user.logout">تسجيل الخروج</span></a>
-</div>
-
-<div class="breadcrumb-bar">
-    <div class="breadcrumb-inner">
-        <a href="index.html"><i class="fas fa-home" style="font-size:11px;"></i></a>
-        <i class="fas fa-chevron-left sep"></i>
-        <span class="cur" data-i18n="portal.wallet.breadcrumb.current">المحفظة</span>
-    </div>
-</div>
-
-<section class="page-hero">
-    <div class="hero-inner">
-        <div class="hero-text">
-            <h2 data-i18n="portal.wallet.hero.title">رصيد المحفظة وحركة العمليات</h2>
-            <p data-i18n="portal.wallet.hero.subtitle">عرض الرصيد الحالي وسجل الإيداعات والخصومات</p>
-        </div>
-        <div class="hero-agency">
-            <div class="hero-agency-icon"><i class="fas fa-wallet"></i></div>
-            <div class="hero-agency-text">
-                <div class="aname">وكالة النيل للسياحة</div>
-                <div class="amid" dir="ltr">AG-2024-0156</div>
-                <span class="hero-badge"><i class="fas fa-circle-check"></i> حساب نشط</span>
-            </div>
-        </div>
+<!-- ════════════════ HERO ════════════════ -->
+<section class="portal-hero">
+    <div class="container">
+        <h1>المحفظة الإلكترونية</h1>
+        <p>إدارة رصيد المحفظة وعرض سجلات المعاملات المالية</p>
     </div>
 </section>
 
-<div class="page-body">
-    <div class="cards-row" style="margin-bottom:18px;">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon cw-icon"><i class="fas fa-wallet"></i></div>
-                <span class="card-label">الرصيد الحالي</span>
-            </div>
-            <div class="card-value cw-value" dir="ltr">2,100.00</div>
-            <div class="card-sub">USD · الرصيد المتاح حالياً</div>
-            <div class="alert alert-warning" style="margin-top:10px; margin-bottom:0;">
-                <i class="fas fa-circle-info"></i>
-                <span>شحن المحفظة يتم من خلال مسؤول النظام فقط. يرجى التواصل مع الإدارة عند الحاجة.</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon" style="background:#eaf4ff;color:#005FCC;"><i class="fas fa-arrow-down"></i></div>
-                <span class="card-label">إجمالي الإيداعات</span>
-            </div>
-            <div class="card-value" dir="ltr">25,000.00</div>
-            <div class="card-sub">آخر إيداع: 12 مارس 2026</div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon" style="background:#fef2f2;color:#dc2626;"><i class="fas fa-arrow-up"></i></div>
-                <span class="card-label">إجمالي الخصومات</span>
-            </div>
-            <div class="card-value" dir="ltr">22,900.00</div>
-            <div class="card-sub">عدد عمليات الخصم: 17 عملية</div>
-        </div>
-    </div>
-
-    <div class="stats-row" style="margin-bottom:18px;">
-        <div class="stat stat-blue">
-            <div class="s-title">عمليات هذا الشهر</div>
-            <div class="s-value" dir="ltr">8</div>
-        </div>
-        <div class="stat stat-green">
-            <div class="s-title">عمليات إيداع</div>
-            <div class="s-value" dir="ltr">2</div>
-        </div>
-        <div class="stat stat-red">
-            <div class="s-title">عمليات خصم</div>
-            <div class="s-value" dir="ltr">6</div>
-        </div>
-        <div class="stat stat-amber">
-            <div class="s-title">آخر عملية</div>
-            <div class="s-value" style="font-size:14px;">14 مارس 2026</div>
-        </div>
-    </div>
-
-    <div class="table-card" style="margin-bottom:18px;">
-        <div class="table-header" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-            <div>
-                <h3 style="margin:0;"><i class="fas fa-table-cells-large"></i> تغطية الرصيد حسب الجنسية</h3>
-                <div style="font-size:12px; color:#64748b; margin-top:4px;">يوضح هذا القسم عدد الطلبات التي يمكن تمويلها من الرصيد الحالي لكل جنسية وفقاً للرسوم المعتمدة.</div>
-            </div>
-            <span style="font-size:12px; color:#00244d; background:#f8fafc; border:1px solid #e2e8f0; border-radius:999px; padding:6px 10px;">الرصيد الحالي المستخدم في الحساب: <strong dir="ltr">$2,100.00</strong></span>
-        </div>
-
-        <div style="overflow-x:auto;">
-            <table style="width:100%; table-layout:fixed;">
-                <colgroup>
-                    <col style="width:34%;">
-                    <col style="width:33%;">
-                    <col style="width:33%;">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th style="text-align:center;">الجنسية</th>
-                        <th style="text-align:center;">الرسوم لكل طلب</th>
-                        <th style="text-align:center;">الطلبات الممكن تمويلها</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center;"><span class="pill pill-blue">السودان</span></td>
-                        <td dir="ltr" style="text-align:center;">$100.00</td>
-                        <td dir="ltr" style="text-align:center; font-weight:700; color:#00244d;">21</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center;"><span class="pill pill-blue">اليمن</span></td>
-                        <td dir="ltr" style="text-align:center;">$200.00</td>
-                        <td dir="ltr" style="text-align:center; font-weight:700; color:#00244d;">10</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center;"><span class="pill pill-blue">الهند</span></td>
-                        <td dir="ltr" style="text-align:center;">$250.00</td>
-                        <td dir="ltr" style="text-align:center; font-weight:700; color:#00244d;">8</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center;"><span class="pill pill-blue">الأردن</span></td>
-                        <td dir="ltr" style="text-align:center;">$275.00</td>
-                        <td dir="ltr" style="text-align:center; font-weight:700; color:#00244d;">7</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center;"><span class="pill pill-blue">باكستان</span></td>
-                        <td dir="ltr" style="text-align:center;">$350.00</td>
-                        <td dir="ltr" style="text-align:center; font-weight:700; color:#00244d;">6</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center;"><span class="pill pill-blue">إثيوبيا</span></td>
-                        <td dir="ltr" style="text-align:center;">$400.00</td>
-                        <td dir="ltr" style="text-align:center; font-weight:700; color:#00244d;">5</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="table-card">
-        <div class="table-header" style="display:flex; align-items:center; justify-content:space-between;">
-            <h3 style="margin:0;"><i class="fas fa-clock-rotate-left"></i> سجل حركة المحفظة</h3>
-            <span style="font-size:11px;color:#64748b;">آخر 10 عمليات</span>
-        </div>
-        <div style="overflow-x:auto;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>التاريخ</th>
-                        <th>نوع العملية</th>
-                        <th>الوصف</th>
-                        <th>المبلغ</th>
-                        <th>الرصيد بعد العملية</th>
-                        <th>المرجع</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>14 مارس 2026</td>
-                        <td><span class="pill pill-red"><i class="fas fa-arrow-up"></i> خصم</span></td>
-                        <td>خصم رسوم حزمة طلبات</td>
-                        <td style="color:#dc2626;font-weight:700;" dir="ltr">-10,400.00</td>
-                        <td dir="ltr">2,100.00</td>
-                        <td dir="ltr">BTH-2026-0312</td>
-                    </tr>
-                    <tr>
-                        <td>12 مارس 2026</td>
-                        <td><span class="pill pill-green"><i class="fas fa-arrow-down"></i> إيداع</span></td>
-                        <td>إضافة رصيد بواسطة المسؤول</td>
-                        <td style="color:#4FB848;font-weight:700;" dir="ltr">+15,000.00</td>
-                        <td dir="ltr">12,500.00</td>
-                        <td dir="ltr">CRD-2026-1182</td>
-                    </tr>
-                    <tr>
-                        <td>10 مارس 2026</td>
-                        <td><span class="pill pill-red"><i class="fas fa-arrow-up"></i> خصم</span></td>
-                        <td>خصم رسوم استعلام فردي</td>
-                        <td style="color:#dc2626;font-weight:700;" dir="ltr">-350.00</td>
-                        <td dir="ltr">-</td>
-                        <td dir="ltr">INQ-2026-1041</td>
-                    </tr>
-                    <tr>
-                        <td>08 مارس 2026</td>
-                        <td><span class="pill pill-red"><i class="fas fa-arrow-up"></i> خصم</span></td>
-                        <td>خصم رسوم حزمة طلبات</td>
-                        <td style="color:#dc2626;font-weight:700;" dir="ltr">-3,750.00</td>
-                        <td dir="ltr">-</td>
-                        <td dir="ltr">BTH-2026-0305</td>
-                    </tr>
-                    <tr>
-                        <td>01 مارس 2026</td>
-                        <td><span class="pill pill-green"><i class="fas fa-arrow-down"></i> إيداع</span></td>
-                        <td>إضافة رصيد بواسطة المسؤول</td>
-                        <td style="color:#4FB848;font-weight:700;" dir="ltr">+10,000.00</td>
-                        <td dir="ltr">-</td>
-                        <td dir="ltr">CRD-2026-1103</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="alert alert-warning" style="margin-top:16px;">
-        <i class="fas fa-headset"></i>
-        <span>لطلب شحن المحفظة، يرجى التواصل مع مسؤول النظام أو الاتصال على الخط الساخن: 16999</span>
+<!-- ════════════════ BREADCRUMB ════════════════ -->
+<div class="portal-breadcrumb">
+    <div class="container">
+        <nav>
+            <a href="home.html"><i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-chevron-left separator"></i>
+            <span class="current">المحفظة الإلكترونية</span>
+        </nav>
     </div>
 </div>
 
-<footer class="footer-rich">
-    <div class="footer-rich-inner">
-        <div class="fr-brand">
-            <div class="logo-wrap">
-                <div class="logo-icon">
-                    <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                        <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                        <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                        <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <h1>نظام الموافقات الأمنية</h1>
-                    <p>Security Approval System</p>
-                </div>
+<!-- ════════════════ PAGE BODY ════════════════ -->
+<div class="container portal-body">
+
+    <!-- Wallet Stat Cards -->
+    <div class="wallet-stats">
+        <div class="wallet-stat-card wsc-green">
+            <div class="wsc-icon"><i class="fa-solid fa-wallet"></i></div>
+            <div class="wsc-info">
+                <div class="wsc-amount" dir="ltr">$2,450</div>
+                <div class="wsc-label">الرصيد الحالي</div>
             </div>
-            <p class="fr-desc">منصة متكاملة لإدارة وتتبع الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة · إدارة الطلبات بكل سهولة ويسر من خلال نظام متكامل</p>
-            <div class="fr-social">
-                <a href="#" title="Google+"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="wallet-stat-card wsc-blue">
+            <div class="wsc-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <div class="wsc-info">
+                <div class="wsc-amount" dir="ltr">$23,780</div>
+                <div class="wsc-label">إجمالي الإيداعات</div>
             </div>
-            <div class="fr-hotline"><i class="fas fa-phone-volume"></i>&nbsp; الخط الساخن: 16999</div>
         </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.quickLinks">روابط سريعة</h5>
-            <ul>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> عن النظام</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> حقوق الوصول</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> الاستعلام</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> المساعدة</a></li>
-            </ul>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.services">خدمات</h5>
-            <ul>
-                <li><a href="batch-inquiry.html"><i class="fas fa-chevron-left"></i> طلب جديد</a></li>
-                <li><a href="batch-list.html"><i class="fas fa-chevron-left"></i> متابعة الطلب</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> خدمة الدفع</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
-            </ul>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.contact">اتصل بنا</h5>
-            <div class="fr-contact-item"><i class="fas fa-phone"></i><span dir="ltr">+20 10 9070 2229</span></div>
-            <div class="fr-contact-item"><i class="fas fa-envelope"></i><span dir="ltr">info@esecurity.gov.eg</span></div>
-            <div class="fr-contact-item"><i class="fas fa-location-dot"></i><span>شارع جزيرة العرب، المهندسين، الجيزة، مصر</span></div>
-            <div class="fr-contact-item" style="margin-top:6px;"><i class="fas fa-headset"></i><span style="font-size:18px;font-weight:800;color:#e2e8f0;">الخط الساخن: 16999 📞</span></div>
+        <div class="wallet-stat-card wsc-red">
+            <div class="wsc-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+            <div class="wsc-info">
+                <div class="wsc-amount" dir="ltr">$18,630</div>
+                <div class="wsc-label">إجمالي المسحوبات</div>
+            </div>
         </div>
     </div>
-    <div class="footer-bottom-bar"><span data-i18n="portal.footer.copyright">جميع الحقوق محفوظة © 2024 نظام الموافقات الأمنية</span></div>
+
+    <!-- Quick Stats -->
+    <div class="section-header">
+        <h2><span class="title-icon"><i class="fa-solid fa-chart-simple"></i></span> إحصائيات سريعة</h2>
+    </div>
+
+    <div class="quick-stats">
+        <div class="quick-stat qs-blue">
+            <div class="qs-icon"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="qs-info">
+                <div class="qs-value">350</div>
+                <div class="qs-label">إجمالي الطلبات</div>
+            </div>
+        </div>
+        <div class="quick-stat qs-green">
+            <div class="qs-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="qs-info">
+                <div class="qs-value">198</div>
+                <div class="qs-label">الموافق عليها</div>
+            </div>
+        </div>
+        <div class="quick-stat qs-orange">
+            <div class="qs-icon"><i class="fa-solid fa-gear"></i></div>
+            <div class="qs-info">
+                <div class="qs-value">107</div>
+                <div class="qs-label">قيد المعالجة</div>
+            </div>
+        </div>
+        <div class="quick-stat qs-red">
+            <div class="qs-icon"><i class="fa-solid fa-circle-xmark"></i></div>
+            <div class="qs-info">
+                <div class="qs-value">45</div>
+                <div class="qs-label">المرفوضة</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nationality Coverage -->
+    <div class="section-header" style="margin-top:2rem;">
+        <h2><span class="title-icon"><i class="fa-solid fa-earth-americas"></i></span> تغطية الجنسيات</h2>
+    </div>
+
+    <div class="data-table-card">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>الجنسية</th>
+                    <th>عدد الطلبات</th>
+                    <th>تمت الموافقة</th>
+                    <th>مرفوض</th>
+                    <th>قيد المعالجة</th>
+                    <th>الرسوم المحصّلة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>تركي</td>
+                    <td>120</td>
+                    <td><span class="status-pill sp-green" style="font-size:0.75rem;">72</span></td>
+                    <td><span class="status-pill sp-red" style="font-size:0.75rem;">18</span></td>
+                    <td><span class="status-pill sp-orange" style="font-size:0.75rem;">30</span></td>
+                    <td dir="ltr" style="text-align:center;">$7,200</td>
+                </tr>
+                <tr>
+                    <td>إيراني</td>
+                    <td>95</td>
+                    <td><span class="status-pill sp-green" style="font-size:0.75rem;">55</span></td>
+                    <td><span class="status-pill sp-red" style="font-size:0.75rem;">15</span></td>
+                    <td><span class="status-pill sp-orange" style="font-size:0.75rem;">25</span></td>
+                    <td dir="ltr" style="text-align:center;">$5,700</td>
+                </tr>
+                <tr>
+                    <td>عراقي</td>
+                    <td>80</td>
+                    <td><span class="status-pill sp-green" style="font-size:0.75rem;">45</span></td>
+                    <td><span class="status-pill sp-red" style="font-size:0.75rem;">8</span></td>
+                    <td><span class="status-pill sp-orange" style="font-size:0.75rem;">27</span></td>
+                    <td dir="ltr" style="text-align:center;">$4,800</td>
+                </tr>
+                <tr>
+                    <td>سوري</td>
+                    <td>35</td>
+                    <td><span class="status-pill sp-green" style="font-size:0.75rem;">18</span></td>
+                    <td><span class="status-pill sp-red" style="font-size:0.75rem;">3</span></td>
+                    <td><span class="status-pill sp-orange" style="font-size:0.75rem;">14</span></td>
+                    <td dir="ltr" style="text-align:center;">$2,100</td>
+                </tr>
+                <tr>
+                    <td>ليبي</td>
+                    <td>15</td>
+                    <td><span class="status-pill sp-green" style="font-size:0.75rem;">6</span></td>
+                    <td><span class="status-pill sp-red" style="font-size:0.75rem;">1</span></td>
+                    <td><span class="status-pill sp-orange" style="font-size:0.75rem;">8</span></td>
+                    <td dir="ltr" style="text-align:center;">$900</td>
+                </tr>
+                <tr>
+                    <td>يمني</td>
+                    <td>5</td>
+                    <td><span class="status-pill sp-green" style="font-size:0.75rem;">2</span></td>
+                    <td><span class="status-pill sp-red" style="font-size:0.75rem;">0</span></td>
+                    <td><span class="status-pill sp-orange" style="font-size:0.75rem;">3</span></td>
+                    <td dir="ltr" style="text-align:center;">$300</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="section-header" style="margin-top:2rem;">
+        <h2><span class="title-icon"><i class="fa-solid fa-clock-rotate-left"></i></span> سجل المعاملات</h2>
+    </div>
+
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label>البحث</label>
+            <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="رقم العملية...">
+            </div>
+        </div>
+        <div class="filter-group">
+            <label>النوع</label>
+            <select>
+                <option value="">الكل</option>
+                <option>إيداع</option>
+                <option>خصم</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>التاريخ</label>
+            <input type="date">
+        </div>
+        <div class="filter-actions">
+            <button class="btn-filter btn-search"><i class="fa-solid fa-magnifying-glass"></i> بحث</button>
+            <button class="btn-filter btn-reset"><i class="fa-solid fa-rotate-right"></i> إعادة تعيين</button>
+        </div>
+    </div>
+
+    <div class="data-table-card">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>رقم العملية</th>
+                    <th>التاريخ</th>
+                    <th>النوع</th>
+                    <th>المبلغ</th>
+                    <th>الرصيد بعد العملية</th>
+                    <th>الوصف</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ref-cell" dir="ltr">TXN-2024-0098</td>
+                    <td>2024/03/15</td>
+                    <td><span class="txn-badge txn-credit"><i class="fa-solid fa-arrow-up"></i> إيداع</span></td>
+                    <td dir="ltr" style="color:#2e7d32; font-weight:600;">+$5,000</td>
+                    <td dir="ltr" style="text-align:center;">$2,450</td>
+                    <td>تعبئة رصيد عبر بوابة الدفع</td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">TXN-2024-0097</td>
+                    <td>2024/03/15</td>
+                    <td><span class="txn-badge txn-debit"><i class="fa-solid fa-arrow-down"></i> خصم</span></td>
+                    <td dir="ltr" style="color:#dc2626; font-weight:600;">–$3,250</td>
+                    <td dir="ltr" style="text-align:center;">–$2,550</td>
+                    <td>خصم رسوم حزمة BTH-2024-0234</td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">TXN-2024-0096</td>
+                    <td>2024/03/14</td>
+                    <td><span class="txn-badge txn-debit"><i class="fa-solid fa-arrow-down"></i> خصم</span></td>
+                    <td dir="ltr" style="color:#dc2626; font-weight:600;">–$650</td>
+                    <td dir="ltr" style="text-align:center;">$700</td>
+                    <td>خصم رسوم حزمة BTH-2024-0235</td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">TXN-2024-0095</td>
+                    <td>2024/03/13</td>
+                    <td><span class="txn-badge txn-credit"><i class="fa-solid fa-arrow-up"></i> إيداع</span></td>
+                    <td dir="ltr" style="color:#2e7d32; font-weight:600;">+$10,000</td>
+                    <td dir="ltr" style="text-align:center;">$1,350</td>
+                    <td>تعبئة رصيد عبر بوابة الدفع</td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">TXN-2024-0094</td>
+                    <td>2024/03/12</td>
+                    <td><span class="txn-badge txn-debit"><i class="fa-solid fa-arrow-down"></i> خصم</span></td>
+                    <td dir="ltr" style="color:#dc2626; font-weight:600;">–$8,650</td>
+                    <td dir="ltr" style="text-align:center;">–$8,650</td>
+                    <td>خصم رسوم حزمة BTH-2024-0236</td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">TXN-2024-0093</td>
+                    <td>2024/03/10</td>
+                    <td><span class="txn-badge txn-credit"><i class="fa-solid fa-arrow-up"></i> إيداع</span></td>
+                    <td dir="ltr" style="color:#2e7d32; font-weight:600;">+$8,780</td>
+                    <td dir="ltr" style="text-align:center;">$0</td>
+                    <td>تعبئة رصيد — تحويل بنكي</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="table-pagination">
+            <div class="pagination-pages">
+                <a class="page-btn disabled"><i class="fa-solid fa-chevron-right"></i></a>
+                <a class="page-btn active">1</a>
+                <a class="page-btn">2</a>
+                <a class="page-btn">3</a>
+                <a class="page-btn"><i class="fa-solid fa-chevron-left"></i></a>
+            </div>
+            <div class="pagination-info">
+                <span>عرض</span>
+                <select>
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                </select>
+                <span>سطر</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-12 col-lg-4">
+                <img class="logo" src="img/logo-light.png" alt="نظام الموافقات الأمنية">
+                <p class="mb">منصة إلكترونية موحّدة لإصدار ومتابعة الموافقات الأمنية. لإدارة الطلبات بسهولة وأمان من خلال نظام رقمي متكامل.</p>
+                <div class="social-media-container">
+                    <a href="javascript:;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <h4>روابط سريعة</h4>
+                <a class="light-link" href="login.html">الاستعلام الفردي</a>
+                <a class="light-link" href="login.html">دخول الوكلاء</a>
+                <a class="light-link" href="home.html#about">عن النظام</a>
+                <a class="light-link" href="home.html#help">المساعدة</a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <h4>خدمات</h4>
+                <a class="light-link" href="login.html">طلب موافقة جديد</a>
+                <a class="light-link" href="login.html">متابعة الطلب</a>
+                <a class="light-link" href="login.html">طباعة الموافقة</a>
+                <a class="light-link" href="home.html#help">الدعم الفني</a>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <h4>اتصل بنا</h4>
+                <ul>
+                    <li><img class="icon" src="icons/cell-phone.svg"><p class="contacts direction-ltr">+20 10 5070 2229</p></li>
+                    <li><img class="icon" src="icons/mail.svg"><p class="contacts">info@security.gov.eg</p></li>
+                    <li><img class="icon" src="icons/location.svg"><p class="contacts">شارع جزيرة العرب، المهندسين، الجيزة، مصر</p></li>
+                    <li class="hot-line">
+                        <h4>الخط الساخن</h4>
+                        <img class="icon" src="icons/hot-line.svg">
+                        <p class="contacts">16999</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <p class="copy-rights">جميع الحقوق محفوظة &copy; 2024 نظام الموافقات الأمنية</p>
+        </div>
+    </div>
 </footer>
 
-<script>
-function toggleNotif() {
-    const d = document.getElementById('notifDrawer');
-    const u = document.getElementById('userDropdown');
-    u.classList.remove('open');
-    d.classList.toggle('open');
-}
-function markAllRead() {
-    document.getElementById('notifDot').style.display = 'none';
-    document.querySelectorAll('.nd-dot').forEach(d => d.style.opacity = '.25');
-}
-function toggleUser() {
-    const d = document.getElementById('userDropdown');
-    const n = document.getElementById('notifDrawer');
-    n.classList.remove('open');
-    d.classList.toggle('open');
-    const chip = document.getElementById('userChip');
-    const rect = chip.getBoundingClientRect();
-    d.style.top = (rect.bottom + 8) + 'px';
-    d.style.right = (window.innerWidth - rect.right) + 'px';
-    d.style.left = 'auto';
-}
-function setLang(btn) {
-    if (window.i18n && typeof window.i18n.setLang === 'function') {
-        window.i18n.setLang(btn);
-        return;
-    }
-    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
-document.addEventListener('click', function(e) {
-    const bell = document.getElementById('bellBtn');
-    const notifD = document.getElementById('notifDrawer');
-    const userC = document.getElementById('userChip');
-    const userD = document.getElementById('userDropdown');
-    if (!bell.contains(e.target) && !notifD.contains(e.target)) notifD.classList.remove('open');
-    if (!userC.contains(e.target) && !userD.contains(e.target)) userD.classList.remove('open');
-});
-</script>
-<script src="i18n/i18n.js"></script>
-<script>
-    i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
-</script>
+<script src="js/jquery-4.0.0.min.js"></script>
+<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

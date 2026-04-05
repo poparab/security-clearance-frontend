@@ -3,548 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل الاستعلام — نظام الموافقات الأمنية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.rtl.min.css">`n    <link rel="stylesheet" href="styles/main.css">
+    <title>عرض طلب مسافر — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.rtl.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/portal.css">
+    <link rel="shortcut icon" href="img/favicon.png">
 </head>
-<body>
+<body class="portal-page">
 
-<header class="top-header">
-    <div class="top-header-inner">
-        <div class="logo-wrap">
-            <div class="logo-icon">
-                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                    <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                    <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                    <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                    <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-                </svg>
+<!-- ════════════════ HEADER ════════════════ -->
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="home.html"></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inquiry-list.html">قائمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="batch-list.html">حزمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">التقارير</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wallet.html">الإعدادات</a></li>
+                </ul>
             </div>
-            <div class="logo-text">
-                <h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1>
-                <p data-i18n="common.brand.subtitle">Security Approval System</p>
-            </div>
-        </div>
-
-        <nav class="top-nav">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-gauge-high"></i> <span data-i18n="portal.nav.dashboard">لوحة التحكم</span>
-            </a>
-            <a class="nav-link active" href="inquiry-list.html">
-                <i class="fas fa-file-lines"></i> <span data-i18n="portal.nav.inquiries">الاستعلامات</span>
-                <span class="nav-badge">3</span>
-            </a>
-            <a class="nav-link" href="batch-list.html">
-                <i class="fas fa-layer-group"></i> <span data-i18n="portal.nav.batch">حزمة طلبات</span>
-            </a>
-            <a class="nav-link" href="wallet.html">
-                <i class="fas fa-wallet"></i> <span data-i18n="portal.nav.wallet">المحفظة</span>
-            </a>
-            <a class="nav-link" href="#">
-                <i class="fas fa-building"></i> <span data-i18n="portal.nav.agency">الوكالة</span>
-            </a>
-            <a class="nav-link" href="#">
-                <i class="fas fa-circle-question"></i> <span data-i18n="portal.nav.help">المساعدة</span>
-            </a>
+            <a class="header-cta d-none d-lg-inline-flex" href="batch-inquiry.html"><i class="fa-solid fa-plus"></i> طلب جديد</a>
+            <a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><img class="icon" src="icons/language.svg" alt="">EN</a>
         </nav>
-
-        <div class="top-right">
-            <div class="notif-btn" id="bellBtn" onclick="toggleNotif()">
-                <i class="fas fa-bell"></i>
-                <span class="notif-dot" id="notifDot"></span>
-            </div>
-            <div class="lang-toggle">
-                <button class="active" data-lang="ar" onclick="setLang(this)">ع</button>
-                <button data-lang="en" onclick="setLang(this)">EN</button>
-            </div>
-            <div class="user-chip" id="userChip" onclick="toggleUser()">
-                <div class="user-avatar"><i class="fas fa-user"></i></div>
-                <div class="user-info">
-                    <div class="uname">وكالة النيل للسياحة</div>
-                    <div class="urole">وكالة معتمدة</div>
-                </div>
-                <i class="fas fa-chevron-down chevron"></i>
-            </div>
-        </div>
     </div>
 </header>
 
-<div class="notif-drawer" id="notifDrawer">
-    <div class="nd-header">
-        <h4><span data-i18n="portal.notifications.title">الإشعارات</span> <span style="background:#ef4444;color:#fff;font-size:10px;padding:1px 7px;border-radius:10px;margin-right:5px;">3</span></h4>
-        <span class="nd-mark" data-i18n="portal.notifications.markAllRead" onclick="markAllRead()">تعليم الكل كمقروء</span>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#4FB848;"></div>
-        <div class="nd-text">
-            <strong>INQ-2024-0787 — موافقة</strong>
-            <span>تمت الموافقة على طلب خالد محمود عبدالله</span>
-            <div class="nd-time">منذ 12 دقيقة</div>
-        </div>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#f59e0b;"></div>
-        <div class="nd-text">
-            <strong>INQ-2024-0789 — قيد المعالجة</strong>
-            <span>طلب محمد أحمد السيد قيد الفحص الأمني</span>
-            <div class="nd-time">منذ 2 ساعة</div>
-        </div>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#3392FF;"></div>
-        <div class="nd-text">
-            <strong>رصيد المحفظة منخفض</strong>
-            <span>رصيدك الحالي $450 — يُنصح بالشحن قريباً</span>
-            <div class="nd-time">أمس، 6:30 م</div>
-        </div>
-    </div>
-</div>
-
-<div class="user-dropdown" id="userDropdown">
-    <div class="ud-top">
-        <div class="udname" data-i18n="portal.user.name">وكالة النيل للسياحة</div>
-        <div class="udrole" data-i18n="portal.user.role">وكالة معتمدة</div>
-        <div class="udid" dir="ltr">AG-2024-0156</div>
-    </div>
-    <a class="ud-item" href="#"><i class="fas fa-building"></i> <span data-i18n="portal.user.profile">بيانات الوكالة</span></a>
-    <a class="ud-item logout" href="login.html"><i class="fas fa-right-from-bracket"></i> <span data-i18n="portal.user.logout">تسجيل الخروج</span></a>
-</div>
-
-<div class="breadcrumb-bar">
-    <div class="breadcrumb-inner">
-        <a href="index.html"><i class="fas fa-home" style="font-size:11px;"></i></a>
-        <i class="fas fa-chevron-left sep"></i>
-        <a id="sourceBreadcrumbLink" href="inquiry-list.html" data-i18n="portal.inquiryView.breadcrumb.parent">الاستعلامات</a>
-        <i class="fas fa-chevron-left sep"></i>
-        <span class="cur" id="breadcrumbRef" data-i18n="portal.inquiryView.breadcrumb.current">تفاصيل الاستعلام</span>
-    </div>
-</div>
-
-<section class="page-hero">
-    <div class="hero-inner">
-        <div class="hero-text">
-            <h2 id="heroTitle" data-i18n="portal.inquiryView.hero.title">تفاصيل الاستعلام</h2>
-            <p data-i18n="portal.inquiryView.hero.subtitle">عرض حالة الاستعلام والبيانات الكاملة للمسافر والرحلة</p>
-        </div>
-        <div class="hero-agency">
-            <div class="hero-agency-icon"><i class="fas fa-building"></i></div>
-            <div class="hero-agency-text">
-                <div class="aname">وكالة النيل للسياحة</div>
-                <div class="amid" dir="ltr">AG-2024-0156</div>
-                <span class="hero-badge"><i class="fas fa-circle-check"></i> حساب نشط</span>
-            </div>
-        </div>
+<!-- ════════════════ HERO ════════════════ -->
+<section class="portal-hero">
+    <div class="container">
+        <h1>عرض طلب مسافر</h1>
+        <p>عرض حالة الاستعلام والبيانات الكاملة للمسافر والرحلة</p>
     </div>
 </section>
 
-<div class="page-body">
-    <div class="page-top-row">
-        <h2 class="section-title" style="margin-bottom:0;">
-            <i class="fas fa-file-lines"></i> <span id="pageTitle">تفاصيل الاستعلام</span>
-        </h2>
-        <div style="display:flex;gap:8px;align-items:center;">
-            <button id="downloadPdfBtn" class="action-btn action-btn-primary" style="display:none;" onclick="downloadInquiryPdf()">
-                <i class="fas fa-file-pdf"></i> تحميل PDF
-            </button>
-            <a id="backBtn" href="inquiry-list.html" class="action-btn action-btn-outline">
-                <i class="fas fa-arrow-right"></i> الرجوع
-            </a>
-        </div>
-    </div>
-
-    <div class="alert alert-info" style="margin-bottom:16px;" id="statusAlert">
-        <div class="alert-icon"><i class="fas fa-circle-info"></i></div>
-        <div class="alert-body">
-            <strong id="statusAlertTitle">حالة الاستعلام</strong>
-            <span id="statusAlertText">يتم تحديث الحالة تلقائياً بناءً على نتيجة المعالجة.</span>
-        </div>
-    </div>
-
-    <div class="stats-row">
-        <div class="stat stat-blue">
-            <div class="stat-icon-wrap"><i class="fas fa-hashtag"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">رقم المرجع</div>
-                <div class="stat-num" id="statRef" style="font-size:19px;" dir="ltr">-</div>
-                <div class="stat-period">الرقم الفريد للطلب</div>
-            </div>
-        </div>
-        <div class="stat stat-amber">
-            <div class="stat-icon-wrap"><i class="fas fa-calendar-days"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">تاريخ الإرسال</div>
-                <div class="stat-num" id="statSubmitted" style="font-size:22px;">-</div>
-                <div class="stat-period">تاريخ إنشاء الاستعلام</div>
-            </div>
-        </div>
-        <div class="stat stat-green">
-            <div class="stat-icon-wrap"><i class="fas fa-user"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">اسم المسافر</div>
-                <div class="stat-num" id="statName" style="font-size:20px;">-</div>
-                <div class="stat-period">مقدم له الطلب</div>
-            </div>
-        </div>
-        <div class="stat stat-red">
-            <div class="stat-icon-wrap"><i class="fas fa-circle-check"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">الحالة الحالية</div>
-                <div class="stat-num" style="font-size:15px;"><span class="pill" id="statStatusPill"><i class="fas fa-hourglass-half"></i> -</span></div>
-                <div class="stat-period" id="statusPhase">مرحلة الاستعلام</div>
-            </div>
-        </div>
-    </div>
-
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-bottom:20px;">
-        <div class="confirm-summary-card" style="margin-bottom:0;">
-            <div class="cs-row"><span class="cs-label">الاسم الكامل</span><span class="cs-value" id="fName">-</span></div>
-            <div class="cs-row"><span class="cs-label">الجنسية</span><span class="cs-value" id="fNationality">-</span></div>
-            <div class="cs-row"><span class="cs-label">رقم جواز السفر</span><span class="cs-value" id="fPassport" dir="ltr">-</span></div>
-            <div class="cs-row"><span class="cs-label">تاريخ انتهاء الجواز</span><span class="cs-value" id="fPassportExpiry">-</span></div>
-            <div class="cs-row"><span class="cs-label">الغرض من الزيارة</span><span class="cs-value" id="fPurpose">-</span></div>
-        </div>
-        <div class="confirm-summary-card" style="margin-bottom:0;">
-            <div class="cs-row"><span class="cs-label">تاريخ السفر</span><span class="cs-value" id="fTravelDate">-</span></div>
-            <div class="cs-row"><span class="cs-label">دولة المغادرة</span><span class="cs-value" id="fDeparture">-</span></div>
-            <div class="cs-row"><span class="cs-label">مطار الوصول بمصر</span><span class="cs-value" id="fArrival">-</span></div>
-            <div class="cs-row"><span class="cs-label">رقم الرحلة</span><span class="cs-value" id="fFlight" dir="ltr">-</span></div>
-            <div class="cs-row"><span class="cs-label">رقم الحزمة</span><a id="fBatchLink" href="#" class="tbl-link" dir="ltr">-</a></div>
-        </div>
-    </div>
-
-    <div class="table-card">
-        <div class="table-header">
-            <h3><i class="fas fa-clock-rotate-left" style="color:#005FCC;margin-left:6px;"></i>تتبع الحالة</h3>
-        </div>
-        <div style="padding:16px 20px;">
-            <div class="confirm-summary-card" style="margin-bottom:0;">
-                <div class="cs-row"><span class="cs-label">Submitted</span><span class="cs-value" id="tSubmitted">✅ تم تسجيل الطلب</span></div>
-                <div class="cs-row"><span class="cs-label">Payment Confirmed</span><span class="cs-value" id="tPayment">-</span></div>
-                <div class="cs-row"><span class="cs-label">Under Processing</span><span class="cs-value" id="tProcessing">-</span></div>
-                <div class="cs-row"><span class="cs-label">Final Decision</span><span class="cs-value" id="tFinal">-</span></div>
-            </div>
-        </div>
+<!-- ════════════════ BREADCRUMB ════════════════ -->
+<div class="portal-breadcrumb">
+    <div class="container">
+        <nav>
+            <a href="home.html"><i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-chevron-left separator"></i>
+            <a href="batch-list.html">حزمة الطلبات</a>
+            <i class="fa-solid fa-chevron-left separator"></i>
+            <a href="batch-view.html">تفاصيل حزمة الطلب</a>
+            <i class="fa-solid fa-chevron-left separator"></i>
+            <span class="current">عرض طلب مسافر</span>
+        </nav>
     </div>
 </div>
 
-<footer class="footer-rich">
-    <div class="footer-rich-inner">
-        <div class="fr-brand">
-            <div class="logo-wrap">
-                <div class="logo-icon">
-                    <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                        <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                        <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                        <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <h1>نظام الموافقات الأمنية</h1>
-                    <p>Security Approval System</p>
-                </div>
+<!-- ════════════════ PAGE BODY ════════════════ -->
+<div class="container portal-body">
+
+    <!-- Back Button -->
+    <a href="batch-view.html" class="btn-back"><i class="fa-solid fa-arrow-right"></i> العودة</a>
+
+    <!-- Section Header -->
+    <div class="section-header">
+        <h2><span class="title-icon"><i class="fa-solid fa-file-lines"></i></span> عرض طلب مسافر</h2>
+        <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> تحميل PDF</a>
+    </div>
+
+    <!-- Traveler Detail Card -->
+    <div class="detail-card">
+        <div class="detail-header">
+            <h3><i class="fa-solid fa-user"></i> بيانات المسافر والرحلة</h3>
+            <span class="status-pill sp-green" style="font-size:calc(0.8125rem + 0.02vw);"><i class="fa-solid fa-circle-check"></i> تمت الموافقة</span>
+        </div>
+        <div class="detail-grid">
+            <div class="detail-row">
+                <span class="detail-label">رقم المرجع</span>
+                <span class="detail-value" dir="ltr">INQ-2024-0787</span>
             </div>
-            <p class="fr-desc">منصة متكاملة لإدارة وتتبع الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة · إدارة الطلبات بكل سهولة ويسر من خلال نظام متكامل</p>
-            <div class="fr-social">
-                <a href="#" title="Google+"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <div class="detail-row">
+                <span class="detail-label">رقم الحزمة</span>
+                <span class="detail-value" dir="ltr">BTH-2024-0234</span>
             </div>
-            <div class="fr-hotline"><i class="fas fa-phone-volume"></i>&nbsp; الخط الساخن: 16999</div>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.quickLinks">روابط سريعة</h5>
-            <ul>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> عن النظام</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> حقوق الوصول</a></li>
-                <li><a href="inquiry-list.html"><i class="fas fa-chevron-left"></i> الاستعلام</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> المساعدة</a></li>
-            </ul>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.services">خدمات</h5>
-            <ul>
-                <li><a href="batch-inquiry.html"><i class="fas fa-chevron-left"></i> طلب جديد</a></li>
-                <li><a href="batch-list.html"><i class="fas fa-chevron-left"></i> متابعة الطلب</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> خدمة الدفع</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
-            </ul>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.contact">اتصل بنا</h5>
-            <div class="fr-contact-item"><i class="fas fa-phone"></i><span dir="ltr">+20 10 9070 2229</span></div>
-            <div class="fr-contact-item"><i class="fas fa-envelope"></i><span dir="ltr">info@esecurity.gov.eg</span></div>
-            <div class="fr-contact-item"><i class="fas fa-location-dot"></i><span>شارع جزيرة العرب، المهندسين، الجيزة، مصر</span></div>
-            <div class="fr-contact-item" style="margin-top:6px;"><i class="fas fa-headset"></i><span style="font-size:18px;font-weight:800;color:#e2e8f0;">الخط الساخن: 16999 📞</span></div>
+            <div class="detail-row">
+                <span class="detail-label">تاريخ الإرسال</span>
+                <span class="detail-value">2024/03/15 — 10:30 ص</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">الاسم الكامل</span>
+                <span class="detail-value">أحمد محمد حسن</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">الجنسية</span>
+                <span class="detail-value">تركي</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">رقم جواز السفر</span>
+                <span class="detail-value" dir="ltr">U12345678</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">الغرض من الزيارة</span>
+                <span class="detail-value">سياحة</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">تاريخ الوصول</span>
+                <span class="detail-value">2024/04/01</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">دولة المغادرة</span>
+                <span class="detail-value">تركيا</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">مطار الوصول بمصر</span>
+                <span class="detail-value">مطار القاهرة الدولي</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">رقم الرحلة</span>
+                <span class="detail-value" dir="ltr">TK-692</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">تاريخ انتهاء الجواز</span>
+                <span class="detail-value">2028/06/15</span>
+            </div>
         </div>
     </div>
-    <div class="footer-bottom-bar"><span data-i18n="portal.footer.copyright">جميع الحقوق محفوظة © 2024 نظام الموافقات الأمنية</span></div>
+
+    <!-- Status Tracking Section -->
+    <div class="status-tracker">
+        <h3><i class="fa-solid fa-route"></i> تتبع الحالة</h3>
+
+        <!-- Status Phase Cards -->
+        <div class="status-cards-row">
+            <div class="status-phase-card spc-done">
+                <div class="spc-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+                <div class="spc-title">حالة التسجيل</div>
+                <div class="spc-status"><i class="fa-solid fa-circle-check"></i> مكتمل</div>
+            </div>
+            <div class="status-phase-card spc-done">
+                <div class="spc-icon"><i class="fa-solid fa-credit-card"></i></div>
+                <div class="spc-title">حالة الدفع</div>
+                <div class="spc-status"><i class="fa-solid fa-circle-check"></i> تم الدفع</div>
+            </div>
+            <div class="status-phase-card spc-done">
+                <div class="spc-icon"><i class="fa-solid fa-gears"></i></div>
+                <div class="spc-title">حالة المعالجة</div>
+                <div class="spc-status"><i class="fa-solid fa-circle-check"></i> تمت المعالجة</div>
+            </div>
+            <div class="status-phase-card spc-done">
+                <div class="spc-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="spc-title">حالة القرار</div>
+                <div class="spc-status"><i class="fa-solid fa-circle-check"></i> تمت الموافقة</div>
+            </div>
+        </div>
+
+        <!-- Timeline Stepper -->
+        <div class="tracker-steps" style="position:relative;">
+            <div class="tracker-line"><div class="line-fill" style="width:100%;"></div></div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تم الإرسال</div>
+                <div class="step-date">2024/03/15 — 10:30 ص</div>
+            </div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تم الدفع</div>
+                <div class="step-date">2024/03/15 — 10:31 ص</div>
+            </div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">قيد المعالجة</div>
+                <div class="step-date">2024/03/15 — 10:35 ص</div>
+            </div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تمت الموافقة</div>
+                <div class="step-date">2024/03/15 — 02:15 م</div>
+            </div>
+        </div>
+
+        <!-- Scenario 2: Pending Processing -->
+        <hr style="border-color:#e8edf3; margin:1.5rem 0;">
+        <p style="font-size:calc(0.8125rem + 0.02vw);color:#64748b;margin-bottom:1rem;"><i class="fa-solid fa-clock" style="color:#f59e0b;"></i> مثال: طلب قيد المعالجة</p>
+        <div class="tracker-steps" style="position:relative;">
+            <div class="tracker-line"><div class="line-fill" style="width:50%;"></div></div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تم الإرسال</div>
+            </div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تم الدفع</div>
+            </div>
+            <div class="tracker-step ts-active">
+                <div class="step-icon"><i class="fa-solid fa-spinner"></i></div>
+                <div class="step-title">قيد المعالجة</div>
+            </div>
+            <div class="tracker-step ts-pending">
+                <div class="step-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                <div class="step-title">في انتظار القرار</div>
+            </div>
+        </div>
+
+        <!-- Scenario 3: Rejected -->
+        <hr style="border-color:#e8edf3; margin:1.5rem 0;">
+        <p style="font-size:calc(0.8125rem + 0.02vw);color:#64748b;margin-bottom:1rem;"><i class="fa-solid fa-circle-xmark" style="color:#dc2626;"></i> مثال: طلب مرفوض</p>
+        <div class="tracker-steps" style="position:relative;">
+            <div class="tracker-line"><div class="line-fill" style="width:100%;background:#ef4444;"></div></div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تم الإرسال</div>
+            </div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تم الدفع</div>
+            </div>
+            <div class="tracker-step ts-completed">
+                <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="step-title">تمت المعالجة</div>
+            </div>
+            <div class="tracker-step ts-rejected">
+                <div class="step-icon"><i class="fa-solid fa-xmark"></i></div>
+                <div class="step-title">تم الرفض</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-12 col-lg-4">
+                <img class="logo" src="img/logo-light.png" alt="نظام الموافقات الأمنية">
+                <p class="mb">منصة إلكترونية موحّدة لإصدار ومتابعة الموافقات الأمنية. لإدارة الطلبات بسهولة وأمان من خلال نظام رقمي متكامل.</p>
+                <div class="social-media-container">
+                    <a href="javascript:;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <h4>روابط سريعة</h4>
+                <a class="light-link" href="login.html">الاستعلام الفردي</a>
+                <a class="light-link" href="login.html">دخول الوكلاء</a>
+                <a class="light-link" href="home.html#about">عن النظام</a>
+                <a class="light-link" href="home.html#help">المساعدة</a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <h4>خدمات</h4>
+                <a class="light-link" href="login.html">طلب موافقة جديد</a>
+                <a class="light-link" href="login.html">متابعة الطلب</a>
+                <a class="light-link" href="login.html">طباعة الموافقة</a>
+                <a class="light-link" href="home.html#help">الدعم الفني</a>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <h4>اتصل بنا</h4>
+                <ul>
+                    <li><img class="icon" src="icons/cell-phone.svg"><p class="contacts direction-ltr">+20 10 5070 2229</p></li>
+                    <li><img class="icon" src="icons/mail.svg"><p class="contacts">info@security.gov.eg</p></li>
+                    <li><img class="icon" src="icons/location.svg"><p class="contacts">شارع جزيرة العرب، المهندسين، الجيزة، مصر</p></li>
+                    <li class="hot-line">
+                        <h4>الخط الساخن</h4>
+                        <img class="icon" src="icons/hot-line.svg">
+                        <p class="contacts">16999</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <p class="copy-rights">جميع الحقوق محفوظة &copy; 2024 نظام الموافقات الأمنية</p>
+        </div>
+    </div>
 </footer>
 
-<script>
-const INQUIRIES = {
-    'INQ-2024-0789': { ref: 'INQ-2024-0789', name: 'محمد أحمد السيد', nationality: 'سوريا', submittedAt: '16 ديسمبر 2025', status: 'processing', statusLabel: 'قيد المعالجة', passport: 'P640111', passportExpiry: '15 يونيو 2030', purpose: 'سياحة', travelDate: '22 ديسمبر 2025', departure: 'سوريا', arrival: 'مطار القاهرة الدولي', flight: 'MS718', batch: 'BTH-2024-0235' },
-    'INQ-2024-0788': { ref: 'INQ-2024-0788', name: 'فاطمة علي حسن', nationality: 'العراق', submittedAt: '17 ديسمبر 2025', status: 'submitted', statusLabel: 'تم الإرسال', passport: 'P640222', passportExpiry: '10 أبريل 2031', purpose: 'زيارة عائلية', travelDate: '28 ديسمبر 2025', departure: 'العراق', arrival: 'مطار برج العرب', flight: 'IA131', batch: 'BTH-2024-0235' },
-    'INQ-2024-0787': { ref: 'INQ-2024-0787', name: 'خالد محمود عبدالله', nationality: 'اليمن', submittedAt: '16 ديسمبر 2025', status: 'approved', statusLabel: 'تمت الموافقة', passport: 'P640333', passportExpiry: '12 يناير 2032', purpose: 'عمل', travelDate: '23 ديسمبر 2025', departure: 'اليمن', arrival: 'مطار القاهرة الدولي', flight: 'MS904', batch: 'BTH-2024-0234' },
-    'INQ-2024-0786': { ref: 'INQ-2024-0786', name: 'نور الدين يوسف', nationality: 'فلسطين', submittedAt: '15 ديسمبر 2025', status: 'processing', statusLabel: 'قيد المعالجة', passport: 'P640444', passportExpiry: '01 سبتمبر 2030', purpose: 'سياحة', travelDate: '29 ديسمبر 2025', departure: 'فلسطين', arrival: 'مطار سفنكس', flight: 'RJ503', batch: 'BTH-2024-0237' },
-    'INQ-2024-0785': { ref: 'INQ-2024-0785', name: 'سارة إبراهيم خليل', nationality: 'لبنان', submittedAt: '14 ديسمبر 2025', status: 'approved', statusLabel: 'تمت الموافقة', passport: 'P640555', passportExpiry: '18 مايو 2033', purpose: 'سياحة', travelDate: '26 ديسمبر 2025', departure: 'لبنان', arrival: 'مطار القاهرة الدولي', flight: 'ME301', batch: 'BTH-2024-0234' },
-    'INQ-2024-0784': { ref: 'INQ-2024-0784', name: 'عمر حسن محمد', nationality: 'سوريا', submittedAt: '13 ديسمبر 2025', status: 'processing', statusLabel: 'قيد المعالجة', passport: 'P640666', passportExpiry: '07 فبراير 2031', purpose: 'مؤتمر', travelDate: '31 ديسمبر 2025', departure: 'سوريا', arrival: 'مطار القاهرة الدولي', flight: 'SY220', batch: 'BTH-2024-0236' },
-    'INQ-2024-0783': { ref: 'INQ-2024-0783', name: 'ليل أحمد سمير', nationality: 'العراق', submittedAt: '12 ديسمبر 2025', status: 'rejected', statusLabel: 'مرفوض', passport: 'P640777', passportExpiry: '09 أكتوبر 2030', purpose: 'سياحة', travelDate: '27 ديسمبر 2025', departure: 'العراق', arrival: 'مطار الأقصر', flight: 'IA701', batch: 'BTH-2024-0237' },
-    'INQ-2024-0782': { ref: 'INQ-2024-0782', name: 'أحمد عبدالرحمن علي', nationality: 'السودان', submittedAt: '11 ديسمبر 2025', status: 'submitted', statusLabel: 'تم الإرسال', passport: 'P640888', passportExpiry: '20 مارس 2031', purpose: 'عمل', travelDate: '24 ديسمبر 2025', departure: 'السودان', arrival: 'مطار القاهرة الدولي', flight: 'SV602', batch: 'BTH-2024-0238' }
-};
-
-const NATIONALITIES = ['سوريا', 'العراق', 'اليمن', 'فلسطين', 'لبنان', 'السودان', 'ليبيا'];
-const PURPOSES = ['سياحة', 'عمل', 'زيارة عائلية', 'مؤتمر'];
-const ARRIVALS = ['مطار القاهرة الدولي', 'مطار برج العرب', 'مطار سفنكس', 'مطار الأقصر'];
-
-function getStatusMeta(status) {
-    if (status === 'approved') {
-        return {
-            pillClass: 'pill-green', icon: 'fa-circle-check', text: 'تمت الموافقة',
-            alertTitle: 'تمت الموافقة على الاستعلام',
-            alertText: 'الطلب مكتمل ويمكن استخدامه ضمن إجراءات السفر.',
-            phase: 'Approved'
-        };
-    }
-    if (status === 'rejected') {
-        return {
-            pillClass: 'pill-red', icon: 'fa-circle-xmark', text: 'مرفوض',
-            alertTitle: 'تم رفض الاستعلام',
-            alertText: 'لا يمكن استخدام هذا الطلب للسفر، راجع البيانات أو أعد التقديم.',
-            phase: 'Rejected'
-        };
-    }
-    if (status === 'submitted') {
-        return {
-            pillClass: 'pill-blue', icon: 'fa-paper-plane', text: 'تم الإرسال',
-            alertTitle: 'تم إرسال الاستعلام',
-            alertText: 'تم استلام الطلب وبانتظار انتقاله لمرحلة المعالجة.',
-            phase: 'Submitted'
-        };
-    }
-    return {
-        pillClass: 'pill-amber', icon: 'fa-hourglass-half', text: 'قيد المعالجة',
-        alertTitle: 'الاستعلام تحت المعالجة',
-        alertText: 'الطلب قيد الفحص الأمني وسيتم تحديث النتيجة تلقائياً.',
-        phase: 'Under Processing'
-    };
-}
-
-function generateInquiryFromRef(ref, batchId) {
-    const seed = ref.split('').reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
-    const nationality = NATIONALITIES[seed % NATIONALITIES.length];
-    const purpose = PURPOSES[seed % PURPOSES.length];
-    const arrival = ARRIVALS[seed % ARRIVALS.length];
-    const statusPool = ['processing', 'approved', 'submitted', 'rejected'];
-    const status = statusPool[seed % statusPool.length];
-
-    return {
-        ref,
-        name: 'مسافر من الحزمة',
-        nationality,
-        submittedAt: '16 ديسمبر 2025',
-        status,
-        statusLabel: getStatusMeta(status).text,
-        passport: 'P' + String(700000 + (seed % 200000)),
-        passportExpiry: '01 يناير 2031',
-        purpose,
-        travelDate: '30 ديسمبر 2025',
-        departure: nationality,
-        arrival,
-        flight: 'MS' + String(500 + (seed % 300)),
-        batch: batchId || 'BTH-2024-0235'
-    };
-}
-
-function applyInquiry(inquiry, sourceMode) {
-    document.title = `${inquiry.ref} — نظام الموافقات الأمنية`;
-    document.getElementById('breadcrumbRef').textContent = inquiry.ref;
-    document.getElementById('heroTitle').textContent = `تفاصيل الاستعلام ${inquiry.ref}`;
-    document.getElementById('pageTitle').textContent = `تفاصيل الاستعلام ${inquiry.ref}`;
-
-    document.getElementById('statRef').textContent = inquiry.ref;
-    document.getElementById('statSubmitted').textContent = inquiry.submittedAt;
-    document.getElementById('statName').textContent = inquiry.name;
-
-    document.getElementById('fName').textContent = inquiry.name;
-    document.getElementById('fNationality').textContent = inquiry.nationality;
-    document.getElementById('fPassport').textContent = inquiry.passport;
-    document.getElementById('fPassportExpiry').textContent = inquiry.passportExpiry;
-    document.getElementById('fPurpose').textContent = inquiry.purpose;
-    document.getElementById('fTravelDate').textContent = inquiry.travelDate;
-    document.getElementById('fDeparture').textContent = inquiry.departure;
-    document.getElementById('fArrival').textContent = inquiry.arrival;
-    document.getElementById('fFlight').textContent = inquiry.flight;
-
-    const batchLink = document.getElementById('fBatchLink');
-    batchLink.textContent = inquiry.batch;
-    batchLink.setAttribute('href', `batch-view.html?batch=${encodeURIComponent(inquiry.batch)}`);
-
-    const statusMeta = getStatusMeta(inquiry.status);
-    const statusPill = document.getElementById('statStatusPill');
-    statusPill.className = `pill ${statusMeta.pillClass}`;
-    statusPill.innerHTML = `<i class="fas ${statusMeta.icon}"></i> ${statusMeta.text}`;
-    document.getElementById('statusPhase').textContent = statusMeta.phase;
-
-    document.getElementById('statusAlertTitle').textContent = statusMeta.alertTitle;
-    document.getElementById('statusAlertText').textContent = statusMeta.alertText;
-
-    document.getElementById('tPayment').textContent = '✅ تم تأكيد الدفع';
-    document.getElementById('tProcessing').textContent = inquiry.status === 'submitted' ? '—' : (inquiry.status === 'processing' ? '⏳ قيد المعالجة' : '✅ اكتملت المعالجة');
-    document.getElementById('tFinal').textContent = inquiry.status === 'approved' ? '✅ تمت الموافقة' : (inquiry.status === 'rejected' ? '❌ مرفوض' : '— لم تصدر نتيجة نهائية');
-
-    const downloadBtn = document.getElementById('downloadPdfBtn');
-    if (inquiry.status === 'approved') {
-        downloadBtn.style.display = 'inline-flex';
-    } else {
-        downloadBtn.style.display = 'none';
-    }
-
-    const sourceLink = document.getElementById('sourceBreadcrumbLink');
-    const backBtn = document.getElementById('backBtn');
-    if (sourceMode === 'batch') {
-        sourceLink.textContent = 'تفاصيل الحزمة';
-        sourceLink.setAttribute('href', `batch-view.html?batch=${encodeURIComponent(inquiry.batch)}`);
-        backBtn.setAttribute('href', `batch-view.html?batch=${encodeURIComponent(inquiry.batch)}`);
-        backBtn.innerHTML = '<i class="fas fa-arrow-right"></i> الرجوع للحزمة';
-    } else {
-        sourceLink.textContent = 'الاستعلامات';
-        sourceLink.setAttribute('href', 'inquiry-list.html');
-        backBtn.setAttribute('href', 'inquiry-list.html');
-        backBtn.innerHTML = '<i class="fas fa-arrow-right"></i> الرجوع لقائمة الاستعلامات';
-    }
-}
-
-function escapePdfText(value) {
-    return String(value || '')
-        .replace(/\\/g, '\\\\')
-        .replace(/\(/g, '\\(')
-        .replace(/\)/g, '\\)');
-}
-
-function buildSimplePdf(lines) {
-    const contentLines = ['BT', '/F1 14 Tf', '50 790 Td'];
-    lines.forEach((line, index) => {
-        const safe = escapePdfText(line);
-        if (index === 0) {
-            contentLines.push(`(${safe}) Tj`);
-        } else {
-            contentLines.push('T*');
-            contentLines.push(`(${safe}) Tj`);
-        }
-    });
-    contentLines.push('ET');
-
-    const streamContent = contentLines.join('\n');
-    const objects = [];
-    objects.push('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
-    objects.push('2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n');
-    objects.push('3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n');
-    objects.push(`4 0 obj\n<< /Length ${streamContent.length} >>\nstream\n${streamContent}\nendstream\nendobj\n`);
-    objects.push('5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n');
-
-    let pdf = '%PDF-1.4\n';
-    const offsets = [0];
-    objects.forEach((obj) => {
-        offsets.push(pdf.length);
-        pdf += obj;
-    });
-
-    const xrefStart = pdf.length;
-    pdf += `xref\n0 ${objects.length + 1}\n`;
-    pdf += '0000000000 65535 f \n';
-    for (let index = 1; index <= objects.length; index += 1) {
-        pdf += `${String(offsets[index]).padStart(10, '0')} 00000 n \n`;
-    }
-
-    pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`;
-    return new Blob([pdf], { type: 'application/pdf' });
-}
-
-function downloadInquiryPdf() {
-    const params = new URLSearchParams(window.location.search);
-    const ref = params.get('ref') || 'INQ-2024-0789';
-    const inquiry = INQUIRIES[ref] || generateInquiryFromRef(ref, params.get('batch'));
-
-    if (inquiry.status !== 'approved') {
-        alert('PDF متاح فقط للحالات الموافق عليها.');
-        return;
-    }
-
-    const lines = [
-        'Security Approval Document',
-        `Reference: ${inquiry.ref}`,
-        `Traveler: ${inquiry.name}`,
-        `Status: Approved`,
-        `Travel Date: ${inquiry.travelDate}`,
-        `Issued At: ${new Date().toLocaleString('en-GB')}`,
-    ];
-
-    const pdfBlob = buildSimplePdf(lines);
-    const url = URL.createObjectURL(pdfBlob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${inquiry.ref}-approval.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-}
-
-function initPage() {
-    const params = new URLSearchParams(window.location.search);
-    const ref = params.get('ref') || 'INQ-2024-0789';
-    const batch = params.get('batch') || null;
-    const source = params.get('source') || (batch ? 'batch' : 'list');
-    const inquiry = INQUIRIES[ref] || generateInquiryFromRef(ref, batch);
-    applyInquiry(inquiry, source);
-}
-
-function toggleNotif() {
-    const d = document.getElementById('notifDrawer');
-    const u = document.getElementById('userDropdown');
-    u.classList.remove('open');
-    d.classList.toggle('open');
-}
-function markAllRead() {
-    document.getElementById('notifDot').style.display = 'none';
-    document.querySelectorAll('.nd-dot').forEach(d => d.style.opacity = '.25');
-}
-function toggleUser() {
-    const d = document.getElementById('userDropdown');
-    const n = document.getElementById('notifDrawer');
-    n.classList.remove('open');
-    d.classList.toggle('open');
-    const chip = document.getElementById('userChip');
-    const rect = chip.getBoundingClientRect();
-    d.style.top = (rect.bottom + 8) + 'px';
-    d.style.right = (window.innerWidth - rect.right) + 'px';
-    d.style.left = 'auto';
-}
-function setLang(btn) {
-    if (window.i18n && typeof window.i18n.setLang === 'function') {
-        window.i18n.setLang(btn);
-        return;
-    }
-    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
-document.addEventListener('click', function(e) {
-    const bell = document.getElementById('bellBtn');
-    const notifD = document.getElementById('notifDrawer');
-    const userC = document.getElementById('userChip');
-    const userD = document.getElementById('userDropdown');
-    if (!bell.contains(e.target) && !notifD.contains(e.target)) notifD.classList.remove('open');
-    if (!userC.contains(e.target) && !userD.contains(e.target)) userD.classList.remove('open');
-});
-
-initPage();
-</script>
-
-<script src="i18n/i18n.js"></script>
-<script>
-    i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
-</script>
+<script src="js/jquery-4.0.0.min.js"></script>
+<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
