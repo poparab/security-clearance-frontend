@@ -450,6 +450,12 @@
     if (legacyToggle) {
       legacyToggle.textContent = state.currentLang === 'ar' ? 'EN' : 'ع';
     }
+
+    document.querySelectorAll('a.language').forEach((link) => {
+      const img = link.querySelector('img');
+      const imgHtml = img ? img.outerHTML : '';
+      link.innerHTML = imgHtml + (state.currentLang === 'ar' ? 'EN' : 'ع');
+    });
   }
 
   function ensureLegacyAdminToggle() {
@@ -482,6 +488,14 @@
 
     ensureLegacyAdminToggle();
     updateToggleState();
+
+    document.querySelectorAll('a.language').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const nextLang = state.currentLang === 'ar' ? 'en' : 'ar';
+        setLanguage(nextLang);
+      });
+    });
   }
 
   function setLang(button) {

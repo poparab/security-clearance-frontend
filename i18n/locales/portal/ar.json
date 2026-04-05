@@ -4,6 +4,7 @@
   "dictionary": {
     "common.brand.name": "نظام الموافقات الأمنية",
     "common.brand.subtitle": "Security Approval System",
+    "common.lang.toggle": "EN",
     "portal.nav.dashboard": "لوحة التحكم",
     "portal.nav.inquiries": "الاستعلامات",
     "portal.nav.batch": "حزمة طلبات",

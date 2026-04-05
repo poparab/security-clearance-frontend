@@ -20,6 +20,11 @@
           <img src="https://i.pravatar.cc/80?img=12" alt="admin">
           <div><div class="name">أحمد محمود</div><div class="role">مشرف النظام</div></div>
         </div>
+        <div class="topbar-actions">
+          <i class="fas fa-bell"></i>
+          <span>EN</span>
+          <i class="fas fa-globe"></i>
+        </div>
       </div>
       <div class="topbar-right">
         <a class="admin-btn light" href="inquiries.html"><i class="fas fa-arrow-right"></i> عودة لقائمة الطلبات</a>
@@ -96,5 +101,7 @@
 
 </div>
 <script>function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}</script>
+<script src="../i18n/i18n.js"></script>
+<script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
 </body>
 </html>
