@@ -384,7 +384,7 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
 }
 .data-table th {
     padding: 0.75rem 1rem;
-    text-align: right;
+    text-align: center;
     font-family: Tajawal-Medium, sans-serif;
     font-size: calc(0.8125rem + 0.02vw);
     color: #ffffff;
@@ -397,6 +397,7 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
     color: #374151;
     border-bottom: 1px solid #f1f5f9;
     vertical-align: middle;
+    text-align: center;
 }
 .data-table tbody tr:last-child td { border-bottom: none; }
 .data-table tbody tr { transition: background 0.15s; }
