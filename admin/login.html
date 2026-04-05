@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +57,7 @@ form.addEventListener('submit',function(e){
   if(badEmail||badPwd) return;
   if(email==='expired@admin.gov.eg'){showAlert('aWarn','انتهت الجلسة بسبب عدم النشاط لمدة 30 دقيقة. يرجى تسجيل الدخول مرة أخرى.');return;}
   if(password!=='Admin@123'){showAlert('aError','البريد الإلكتروني أو كلمة المرور غير صحيحة.');return;}
-  window.location.href='dashboard.html';
+  window.location.href='admin-index.html';
 });
 </script>
 <script src="../i18n/i18n.js"></script>
