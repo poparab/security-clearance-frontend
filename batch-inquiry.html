@@ -1,0 +1,1257 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حزمة طلبات جديدة — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* ═══════════════════════════════════════════════
+           BATCH WIZARD — PAGE-SPECIFIC STYLES
+        ═══════════════════════════════════════════════ */
+        .gc-icon-btn { width:32px; height:32px; border-radius:8px; border:1.5px solid #e2e8f0; background:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; cursor:pointer; color:#64748b; transition:all .2s; font-family:inherit; }
+        .gc-icon-btn:hover { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
+        .gc-icon-btn.danger:hover { background:#fee2e2; border-color:#fca5a5; color:#dc2626; }
+
+        /* Flight data pills */
+        .fd-pill { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; color:#0369a1; background:#e0f2fe; padding:4px 10px; border-radius:20px; }
+        .fd-pill i { font-size:10px; }
+
+        /* Form fields */
+        .ff-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .ff-field { display:flex; flex-direction:column; gap:5px; }
+        .ff-field label { font-size:12px; font-weight:700; color:#475569; }
+        .ff-field input, .ff-field select { height:38px; border:1.5px solid #e2e8f0; border-radius:8px; padding:0 12px; font-family:'Tajawal',sans-serif; font-size:13px; color:#1e293b; background:#fff; outline:none; transition:border-color .2s; }
+        .ff-field input:focus, .ff-field select:focus { border-color:#1d4ed8; background:#fff; }
+        .ff-req { color:#dc2626; }
+
+        /* Empty builder state */
+        .builder-empty { text-align:center; padding:48px 24px; }
+        .be-icon { width:72px; height:72px; margin:0 auto 16px; background:#eff6ff; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:30px; color:#1d4ed8; }
+        .be-title { font-size:16px; font-weight:800; color:#0f172a; margin-bottom:6px; }
+        .be-sub { font-size:13px; color:#64748b; margin-bottom:20px; line-height:1.7; }
+
+        /* Running total bar — sticky bottom inside wizard */
+        .running-total-bar { background:#1a3a8f; color:#fff; padding:12px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; border-top:2px solid #2563eb; margin:20px -28px -28px; position:sticky; bottom:0; z-index:40; }
+        .rtb-stat { display:flex; align-items:center; gap:6px; font-size:13px; }
+        .rtb-stat i { opacity:.7; font-size:12px; }
+        .rtb-val { font-weight:800; }
+        .rtb-sep { color:rgba(255,255,255,.25); }
+        .rtb-fee-label { font-size:13px; }
+        .rtb-fee-amount { font-size:15px; font-weight:800; color:#86efac; }
+
+        /* Review traveler card */
+        .review-group-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:10px; overflow:hidden; margin-bottom:14px; }
+        .rgc-header { padding:12px 16px; background:#f8fafc; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+        .rgc-header-left { display:flex; align-items:center; gap:10px; flex-wrap:wrap; flex:1; }
+        .rgc-name { font-size:13px; font-weight:800; color:#0f172a; }
+
+        /* Step 1 info box */
+        .info-how-it-works { background:#f0f9ff; border:1.5px solid #bae6fd; border-radius:10px; padding:16px 20px; max-width:520px; margin-top:20px; }
+        .info-how-it-works h4 { font-size:13px; font-weight:800; color:#0369a1; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+        .info-how-it-works li { font-size:12.5px; color:#0369a1; line-height:2; }
+
+        .draft-saved-toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); background:#0f172a; color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.25); z-index:9999; opacity:0; transition:opacity .3s; pointer-events:none; }
+        .draft-saved-toast.show { opacity:1; }
+
+        /* Section titles */
+        .sect-title { font-size:13px; font-weight:800; color:#334155; margin:20px 0 10px; display:flex; align-items:center; gap:8px; }
+        .sect-count { background:#dbeafe; color:#1d4ed8; font-size:10px; font-weight:800; padding:2px 8px; border-radius:12px; }
+
+        /* Individual traveler cards */
+        .ind-list { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+        .ind-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:10px; padding:14px 18px; transition:box-shadow .2s; }
+        .ind-card:hover { box-shadow:0 2px 12px rgba(0,0,0,.06); }
+        .ind-row1 { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+        .ind-num { width:26px; height:26px; border-radius:50%; background:#1d4ed8; color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .ind-name { font-size:14px; font-weight:700; color:#0f172a; }
+        .ind-fee { font-size:13px; font-weight:800; color:#1d4ed8; margin-right:auto; }
+        .ind-row2 { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding-right:36px; }
+        .ind-doc { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; padding:3px 9px; border-radius:6px; }
+        .ind-doc.ok { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+        .ind-doc.missing { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; cursor:pointer; transition:all .2s; }
+        .ind-doc.missing:hover { background:#fee2e2; border-color:#f87171; }
+        .ind-doc.missing input[type=file] { display:none; }
+
+        /* Individual form card */
+        .ind-form-card { background:#fff; border:2px solid #1d4ed8; border-radius:12px; padding:20px; box-shadow:0 0 0 4px rgba(29,78,232,.08); margin-bottom:16px; }
+        .ind-form-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+        .ind-form-title { font-size:14px; font-weight:800; color:#1e3a8a; display:flex; align-items:center; gap:8px; }
+        .ind-form-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:12px; }
+        .ind-form-grid-5 { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-bottom:12px; }
+        .copy-flight-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; padding:8px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; cursor:pointer; user-select:none; }
+        .copy-flight-row input[type=checkbox] { accent-color:#d97706; width:16px; height:16px; }
+        .copy-flight-row label { font-size:12px; font-weight:600; color:#92400e; cursor:pointer; }
+        .doc-upload-row { display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+        .doc-upload-btn { display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px dashed #cbd5e1; border-radius:10px; background:#f8fafc; cursor:pointer; transition:all .2s; flex:1; min-width:180px; }
+        .doc-upload-btn:hover { border-color:#1d4ed8; background:#eff6ff; }
+        .doc-upload-btn.uploaded { border-color:#bbf7d0; background:#f0fdf4; border-style:solid; }
+        .doc-upload-btn input[type=file] { display:none; }
+        .doc-upload-icon { font-size:20px; color:#94a3b8; }
+        .doc-upload-btn.uploaded .doc-upload-icon { color:#16a34a; }
+        .doc-upload-label { font-size:12px; font-weight:700; color:#334155; }
+        .doc-upload-hint { font-size:10.5px; color:#94a3b8; }
+        .doc-upload-btn.uploaded .doc-upload-label { color:#15803d; }
+        .ind-form-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+        .ind-form-section-label { font-size:11.5px; font-weight:700; color:#64748b; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+    </style>
+</head>
+<body>
+
+<!-- TOP HEADER BAR -->
+<header class="top-header">
+    <div class="top-header-inner">
+
+        <div class="logo-wrap">
+            <div class="logo-icon">
+                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                    <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+                    <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
+                    <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1>
+                <p data-i18n="common.brand.subtitle">Security Approval System</p>
+            </div>
+        </div>
+
+        <nav class="top-nav">
+            <a class="nav-link" href="agency-dashboard.html">
+                <i class="fas fa-gauge-high"></i> <span data-i18n="portal.nav.dashboard">لوحة التحكم</span>
+            </a>
+            <a class="nav-link" href="inquiry-list.html">
+                <i class="fas fa-file-lines"></i> <span data-i18n="portal.nav.inquiries">الاستعلامات</span>
+                <span class="nav-badge">3</span>
+            </a>
+            <a class="nav-link active" href="batch-list.html">
+                <i class="fas fa-layer-group"></i> <span data-i18n="portal.nav.batch">حزمة طلبات</span>
+            </a>
+            <a class="nav-link" href="wallet.html">
+                <i class="fas fa-wallet"></i> <span data-i18n="portal.nav.wallet">المحفظة</span>
+            </a>
+            <a class="nav-link" href="#">
+                <i class="fas fa-building"></i> <span data-i18n="portal.nav.agency">الوكالة</span>
+            </a>
+            <a class="nav-link" href="#">
+                <i class="fas fa-circle-question"></i> <span data-i18n="portal.nav.help">المساعدة</span>
+            </a>
+        </nav>
+
+        <div class="top-right">
+            <div class="notif-btn" id="bellBtn" onclick="toggleNotif()">
+                <i class="fas fa-bell"></i>
+                <span class="notif-dot" id="notifDot"></span>
+            </div>
+            <div class="lang-toggle">
+                <button class="active" data-lang="ar" onclick="setLang(this)">ع</button>
+                <button data-lang="en" onclick="setLang(this)">EN</button>
+            </div>
+            <div class="user-chip" id="userChip" onclick="toggleUser()">
+                <div class="user-avatar"><i class="fas fa-user"></i></div>
+                <div class="user-info">
+                    <div class="uname">وكالة النيل للسياحة</div>
+                    <div class="urole">وكالة معتمدة</div>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<!-- Notification drawer -->
+<div class="notif-drawer" id="notifDrawer">
+    <div class="nd-header">
+        <h4><span data-i18n="portal.notifications.title">الإشعارات</span> <span style="background:#ef4444;color:#fff;font-size:10px;padding:1px 7px;border-radius:10px;margin-right:5px;">3</span></h4>
+        <span class="nd-mark" data-i18n="portal.notifications.markAllRead" onclick="markAllRead()">تعليم الكل كمقروء</span>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#22c55e;"></div>
+        <div class="nd-text">
+            <strong>طلب BTH-2024-0234 — موافقة</strong>
+            <span>تمت الموافقة على حزمة الطلبات لـ 15 مسافر</span>
+            <div class="nd-time">منذ 12 دقيقة</div>
+        </div>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#f59e0b;"></div>
+        <div class="nd-text">
+            <strong>INQ-2024-0891 — قيد المعالجة</strong>
+            <span>تحت الفحص الأمني</span>
+            <div class="nd-time">منذ 2 ساعة</div>
+        </div>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#3b82f6;"></div>
+        <div class="nd-text">
+            <strong>رصيد المحفظة منخفض</strong>
+            <span>رصيدك الحالي $450 — يُنصح بالشحن قريباً</span>
+        </div>
+    </div>
+</div>
+
+<!-- User dropdown -->
+<div class="user-dropdown" id="userDropdown">
+    <div class="ud-top">
+        <div class="udname" data-i18n="portal.user.name">وكالة النيل للسياحة</div>
+        <div class="udrole" data-i18n="portal.user.role">وكالة معتمدة</div>
+        <div class="udid" dir="ltr">AG-2024-0156</div>
+    </div>
+    <a class="ud-item" href="#"><i class="fas fa-building"></i> <span data-i18n="portal.user.profile">بيانات الوكالة</span></a>
+    <a class="ud-item logout" href="login.html"><i class="fas fa-right-from-bracket"></i> <span data-i18n="portal.user.logout">تسجيل الخروج</span></a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <div class="breadcrumb-inner">
+        <a href="agency-dashboard.html"><i class="fas fa-home" style="font-size:11px;"></i></a>
+        <i class="fas fa-chevron-left sep"></i>
+        <a href="#" data-i18n="portal.batchInquiry.breadcrumb.parent">حزم الطلبات</a>
+        <i class="fas fa-chevron-left sep"></i>
+        <span class="cur" data-i18n="portal.batchInquiry.breadcrumb.current">حزمة طلبات جديدة</span>
+    </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h2 data-i18n="portal.batchInquiry.hero.title">حزمة طلبات جديدة</h2>
+            <p data-i18n="portal.batchInquiry.hero.subtitle">أضف مسافريك بسرعة وسهولة — بشكل فردي أو ضمن مجموعات</p>
+        </div>
+        <div class="hero-agency">
+            <div class="hero-agency-icon"><i class="fas fa-building"></i></div>
+            <div class="hero-agency-text">
+                <div class="aname">وكالة النيل للسياحة</div>
+                <div class="amid">AG-2024-0156</div>
+                <div class="hero-badge"><i class="fas fa-circle-check"></i> وكالة معتمدة</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+    <!-- Wallet + page title row -->
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+        <h2 class="section-title" style="margin-bottom:0;">
+            <i class="fas fa-layer-group"></i> حزمة طلبات جديدة
+        </h2>
+
+    </div>
+
+    <!-- Draft saved toast -->
+    <div class="draft-saved-toast" id="draft-toast">تم حفظ المسودة ✓</div>
+
+    <!-- WIZARD -->
+    <div class="wizard-wrap">
+
+        <!-- STEPPER -->
+        <div class="stepper">
+            <div class="step-node active" id="node-1" onclick="goToStep(1)">
+                <div class="step-circle">1</div>
+                <div class="step-label">تسمية الحزمة</div>
+            </div>
+            <div class="step-line" id="line-1-2"></div>
+            <div class="step-node locked" id="node-2" onclick="goToStep(2)">
+                <div class="step-circle"><i class="fas fa-lock"></i></div>
+                <div class="step-label">المسافرون</div>
+            </div>
+            <div class="step-line" id="line-2-3"></div>
+            <div class="step-node locked" id="node-3" onclick="goToStep(3)">
+                <div class="step-circle"><i class="fas fa-lock"></i></div>
+                <div class="step-label">المراجعة والتأكيد</div>
+            </div>
+        </div>
+
+        <!-- STEP PANELS -->
+        <div class="step-panels">
+
+            <!-- ══ STEP 1: Batch Name ══ -->
+            <div class="step-panel active" id="panel-1">
+                <div class="step-heading">
+                    <h3><i class="fas fa-tag" style="color:#1d4ed8;margin-left:8px;"></i>تسمية الحزمة</h3>
+                    <p>أعطِ الحزمة اسماً واضحاً يساعدك على التعرف عليها لاحقاً.</p>
+                </div>
+
+                <div style="max-width:520px;">
+                    <div class="ff-field" style="margin-bottom:18px;">
+                        <label for="batch-name">اسم الحزمة <span class="ff-req">*</span></label>
+                        <input type="text" id="batch-name" placeholder="مثال: رحلة السياحة — أبريل 2026" maxlength="80"
+                               style="height:42px;font-size:14px;" oninput="onBatchNameInput()">
+                        <span style="font-size:11px;color:#94a3b8;margin-top:3px;" id="batch-name-count">0 / 80</span>
+                    </div>
+                    <div class="ff-field">
+                        <label for="batch-notes">ملاحظات (اختياري)</label>
+                        <textarea id="batch-notes" placeholder="أي ملاحظات تتعلق بهذه الحزمة…"
+                            style="height:80px;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 12px;font-family:'Tajawal',sans-serif;font-size:13px;color:#1e293b;background:#fff;outline:none;resize:vertical;transition:border-color .2s;"
+                            onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e2e8f0'"></textarea>
+                    </div>
+                </div>
+
+                <div class="info-how-it-works">
+                    <h4><i class="fas fa-circle-info"></i> كيف يعمل بناء الحزمة؟</h4>
+                    <ul style="padding-right:16px;">
+                        <li>أضف كل <strong>مسافر على حدة</strong> مع بيانات رحلته وصور جوازه وتذكرته.</li>
+                        <li>إذا كان هناك مسافرون يشتركون في <strong>نفس التذكرة</strong> (عائلة مثلاً)، أنشئ مجموعة.</li>
+                        <li>في المجموعة، ارفع التذكرة مرة واحدة وتُطبَّق على جميع مسافريها.</li>
+                        <li>راجع بيانات المسافرين وأكّد الإرسال.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ══ STEP 2: Travelers ══ -->
+            <div class="step-panel" id="panel-2">
+                <div class="step-heading">
+                    <h3><i class="fas fa-users" style="color:#1d4ed8;margin-left:8px;"></i>المسافرون</h3>
+                    <p>أضف المسافرين بسرعة — كل مسافر ببياناته وتذكرته الخاصة.</p>
+                </div>
+
+                <!-- Add traveler button -->
+                <div style="margin-bottom:16px;">
+                    <button class="btn btn-primary btn-sm" onclick="startIndForm()" style="font-size:13px;">
+                        <i class="fas fa-user-plus"></i> إضافة مسافر
+                    </button>
+                </div>
+
+                <!-- Demo controls -->
+                <div style="margin-bottom:16px; padding:10px 14px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:8px; font-size:12px; color:#64748b; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                    <strong>أدوات العرض التجريبي:</strong>
+                    <button onclick="loadDemoData()" style="padding:4px 12px; font-size:11px; cursor:pointer; border:1px solid #cbd5e1; border-radius:5px; background:#fff; font-family:inherit;">
+                        <i class="fas fa-magic" style="color:#7c3aed;"></i> تحميل بيانات تجريبية
+                    </button>
+                    <button onclick="clearAll()" style="padding:4px 12px; font-size:11px; cursor:pointer; border:1px solid #fca5a5; border-radius:5px; background:#fff; font-family:inherit; color:#dc2626;">
+                        <i class="fas fa-trash"></i> مسح الكل
+                    </button>
+                </div>
+
+                <!-- Individuals container (form + cards) -->
+                <div id="individuals-container"></div>
+
+                <!-- Running total bar — sticky bottom -->
+                <div class="running-total-bar" id="running-total-bar" style="display:none;">
+                    <i class="fas fa-users" style="opacity:.7;"></i>
+                    <span class="rtb-stat">
+                        <i class="fas fa-user"></i>
+                        <span id="rtb-travelers">0</span>
+                        <span class="rtb-val">مسافر</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- ══ STEP 3: Review & Confirm ══ -->
+            <div class="step-panel" id="panel-3">
+
+                <!-- PRE-CONFIRM state -->
+                <div id="s3-confirm">
+                    <div class="step-heading">
+                        <h3><i class="fas fa-circle-check" style="color:#1d4ed8;margin-left:8px;"></i>المراجعة والتأكيد</h3>
+                        <p>راجع بيانات جميع المسافرين. بعد التأكيد لن يمكن التراجع.</p>
+                    </div>
+
+                    <!-- Review travelers (dynamically generated) -->
+                    <div id="review-groups-summary"></div>
+
+                    <!-- Insufficient balance warning (shown only when needed) -->
+                    <div id="fee-wallet-insufficient" style="display:none; margin-bottom:16px;">
+                        <div class="alert alert-warning">
+                            <div class="alert-icon"><i class="fas fa-wallet"></i></div>
+                            <div class="alert-body">
+                                <strong>رصيد غير كافٍ</strong>
+                                <span id="wallet-insufficient-msg"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm summary card -->
+                    <div class="confirm-summary-card" id="confirm-summary-card" style="margin-bottom:20px;"></div>
+
+                    <div class="irreversible-warning" style="margin-bottom:20px;">
+                        <i class="fas fa-triangle-exclamation"></i>
+                        بعد التأكيد، يُرسَل طلب كل مسافر إلى محرك الفرز تلقائياً. لا يمكن التراجع.
+                    </div>
+
+                    <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+                        <button class="btn btn-primary btn-lg" id="btn-confirm-deduct" onclick="simulateDeduction()">
+                            <i class="fas fa-circle-check"></i> تأكيد وإرسال الطلبات
+                        </button>
+                        <button class="btn btn-secondary btn-sm" onclick="goBack()">
+                            <i class="fas fa-arrow-right"></i> العودة للتعديل
+                        </button>
+                    </div>
+                </div>
+
+                <!-- LOADING state -->
+                <div id="s3-loading" style="display:none; text-align:center; padding:48px;">
+                    <div style="font-size:48px; color:#1d4ed8; margin-bottom:16px;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <h4 style="font-size:16px; font-weight:700; color:#0f172a; margin-bottom:6px;">جارٍ معالجة الطلب…</h4>
+                    <p style="font-size:13px; color:#64748b;">يُرجى الانتظار. يتم إرسال طلبات المسافرين.</p>
+                </div>
+
+                <!-- SUCCESS state -->
+                <div id="s3-success" style="display:none; text-align:center; padding:48px 24px;">
+                    <div style="width:80px;height:80px;border-radius:50%;background:#dcfce7;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
+                        <i class="fas fa-circle-check" style="font-size:40px;color:#16a34a;"></i>
+                    </div>
+                    <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">تم إرسال الحزمة بنجاح</h3>
+                    <p style="font-size:14px;color:#64748b;margin-bottom:24px;">جميع الطلبات قيد المعالجة الآن.</p>
+                    <div class="confirm-summary-card" id="success-summary-card" style="text-align:right;max-width:440px;margin:0 auto 24px;"></div>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                        <a href="batch-list.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-layer-group"></i> عرض قائمة الحزم
+                        </a>
+                        <a href="agency-dashboard.html" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-gauge-high"></i> لوحة التحكم
+                        </a>
+                    </div>
+                    <a href="batch-inquiry.html" class="success-new-link">
+                        <i class="fas fa-plus"></i> إنشاء حزمة جديدة
+                    </a>
+                </div>
+
+                <!-- FAILURE state -->
+                <div id="s3-failure" style="display:none; text-align:center; padding:48px 24px;">
+                    <div style="width:80px;height:80px;border-radius:50%;background:#fee2e2;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
+                        <i class="fas fa-circle-xmark" style="font-size:40px;color:#dc2626;"></i>
+                    </div>
+                    <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">فشل إرسال الحزمة</h3>
+                    <p style="font-size:14px;color:#64748b;margin-bottom:8px;">حدث خطأ أثناء المعالجة. لم يُخصم أي مبلغ من محفظتك.</p>
+                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 16px;max-width:440px;margin:0 auto 24px;text-align:right;">
+                        <div style="font-size:12px;font-weight:600;color:#991b1b;margin-bottom:4px;">رقم مرجعي للدعم الفني</div>
+                        <span style="font-size:15px;font-weight:700;color:#dc2626;" dir="ltr">ERR-2026-0312-4781</span>
+                    </div>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                        <button class="btn btn-primary btn-lg" onclick="retryFromFailure()">
+                            <i class="fas fa-rotate-right"></i> إعادة المحاولة
+                        </button>
+                        <a href="agency-dashboard.html" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-gauge-high"></i> العودة للوحة التحكم
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end panel-3 -->
+
+        </div>
+        <!-- end step-panels -->
+
+        <!-- STEP FOOTER -->
+        <div class="step-footer" id="step-footer">
+            <button class="btn btn-secondary btn-sm" id="btn-back" onclick="goBack()" style="visibility:hidden;">
+                <i class="fas fa-arrow-right"></i> السابق
+            </button>
+            <div class="step-footer-right">
+                <button class="btn btn-secondary btn-sm" onclick="cancelWizard()">إلغاء</button>
+                <button class="btn btn-secondary btn-sm" id="btn-save-draft" onclick="saveDraft(true)" title="حفظ كمسودة">
+                    <i class="fas fa-floppy-disk"></i> حفظ كمسودة
+                </button>
+                <button class="btn btn-primary btn-sm" id="btn-next" onclick="goNext()">
+                    التالي <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <!-- end wizard-wrap -->
+
+</div>
+<!-- end page-body -->
+
+<!-- ══════════════════════════════════════
+     RICH FOOTER
+═══════════════════════════════════════ -->
+<footer class="footer-rich">
+    <div class="footer-rich-inner">
+        <div class="fr-brand">
+            <div class="logo-wrap">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                        <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+                        <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
+                        <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>نظام الموافقات الأمنية</h1>
+                    <p>Security Approval System</p>
+                </div>
+            </div>
+            <p class="fr-desc">منصة متكاملة لإدارة وتتبع الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة · إدارة الطلبات بكل سهولة ويسر من خلال نظام متكامل</p>
+            <div class="fr-social">
+                <a href="#" title="Google+"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="fr-hotline"><i class="fas fa-phone-volume"></i>&nbsp; الخط الساخن: 16999</div>
+        </div>
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.quickLinks">روابط سريعة</h5>
+            <ul>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> عن النظام</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> حقوق الوصول</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> الاستعلام</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> المساعدة</a></li>
+            </ul>
+        </div>
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.services">خدمات</h5>
+            <ul>
+                <li><a href="batch-inquiry.html"><i class="fas fa-chevron-left"></i> طلب جديد</a></li>
+                <li><a href="batch-list.html"><i class="fas fa-chevron-left"></i> متابعة الطلب</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> خدمة الدفع</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
+            </ul>
+        </div>
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.contact">اتصل بنا</h5>
+            <div class="fr-contact-item"><i class="fas fa-phone"></i><span dir="ltr">+20 10 9070 2229</span></div>
+            <div class="fr-contact-item"><i class="fas fa-envelope"></i><span dir="ltr">info@esecurity.gov.eg</span></div>
+            <div class="fr-contact-item"><i class="fas fa-location-dot"></i><span>شارع جزيرة العرب، المهندسين، الجيزة، مصر</span></div>
+            <div class="fr-contact-item" style="margin-top:6px;"><i class="fas fa-headset"></i><span style="font-size:18px;font-weight:800;color:#e2e8f0;">الخط الساخن: 16999 📞</span></div>
+        </div>
+    </div>
+    <div class="footer-bottom-bar">
+        <span data-i18n="portal.footer.copyright">جميع الحقوق محفوظة © 2024 نظام الموافقات الأمنية</span>
+    </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+//  BATCH WIZARD — State
+// ════════════════════════════════════════════════════════════════
+
+const WALLET_BALANCE = 12500;
+function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+
+const FEES_BY_NAT = {
+    'سوداني':100,'يمني':200,'هندي':250,'أردني':275,
+    'باكستاني':350,'إثيوبي':400,'أمريكي':250,'بريطاني':200,'كندي':200,
+    'ليبي':150,'سوري':150,'عراقي':175
+};
+const DEFAULT_FEE = 200;
+
+const NATIONALITIES = [
+    'سوداني','يمني','هندي','أردني','باكستاني','إثيوبي',
+    'أمريكي','بريطاني','كندي','ليبي','سوري','عراقي'
+];
+const AIRPORTS = [
+    'مطار القاهرة الدولي','مطار شرم الشيخ الدولي',
+    'مطار الأقصر الدولي','مطار أسوان الدولي','مطار مرسى مطروح'
+];
+const PURPOSES_AR = ['سياحة','عمل','علاج','عائلة','تعليم','مؤتمر','عبور'];
+const COUNTRIES = [
+    'السودان','اليمن','الهند','الأردن','باكستان','إثيوبيا',
+    'أمريكا','بريطانيا','كندا','ليبيا','سوريا','العراق',
+    'المملكة العربية السعودية','تركيا','الإمارات'
+];
+
+let individuals     = [];
+let nextIndId       = 1;
+let currentStep     = 1;
+const maxStep       = 3;
+const completed     = new Set();
+let showIndForm             = false;
+let editingIndId            = null;
+let indPassportFile = null;
+let indPassportName = null;
+let indTicketFile   = null;
+let indTicketName   = null;
+let s3State         = 'confirm';
+
+function getFee(nat) { return FEES_BY_NAT[nat] || DEFAULT_FEE; }
+
+function computeTotal() {
+    let totalFee = 0, totalTravelers = 0;
+    individuals.forEach(ind => { totalTravelers++; totalFee += getFee(ind.nationality); });
+    return { totalFee, totalTravelers, totalIndividuals: individuals.length };
+}
+
+// ════════════════════════════════════════════════════════════════
+//  STEPPER
+// ════════════════════════════════════════════════════════════════
+function renderStepper() {
+    for (let i = 1; i <= maxStep; i++) {
+        const node   = document.getElementById('node-' + i);
+        const circle = node.querySelector('.step-circle');
+        node.className = 'step-node';
+        if (completed.has(i) && i !== currentStep) {
+            node.classList.add('completed');
+            circle.innerHTML = '<i class="fas fa-check"></i>';
+        } else if (i === currentStep) {
+            node.classList.add('active');
+            circle.textContent = i;
+        } else {
+            node.classList.add('locked');
+            circle.innerHTML = '<i class="fas fa-lock"></i>';
+        }
+        if (i < maxStep) {
+            const line = document.getElementById('line-' + i + '-' + (i + 1));
+            line.className = 'step-line' +
+                (completed.has(i) ? ' completed' : (i === currentStep ? ' active' : ''));
+        }
+    }
+    document.getElementById('btn-back').style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+    updateNextButton();
+}
+
+function showPanel(step) {
+    for (let i = 1; i <= maxStep; i++) document.getElementById('panel-' + i).classList.remove('active');
+    document.getElementById('panel-' + step).classList.add('active');
+}
+
+// ════════════════════════════════════════════════════════════════
+//  NAVIGATION
+// ════════════════════════════════════════════════════════════════
+function canProceed() {
+    if (currentStep === 1) return (document.getElementById('batch-name')?.value?.trim().length > 0);
+    if (currentStep === 2) {
+        return individuals.length > 0;
+    }
+    return false;
+}
+
+function updateNextButton() {
+    const btn = document.getElementById('btn-next');
+    if (!btn) return;
+    if (currentStep === maxStep) { btn.style.display = 'none'; return; }
+    btn.style.display = '';
+    btn.disabled = !canProceed();
+    const draftBtn = document.getElementById('btn-save-draft');
+    if (draftBtn) draftBtn.style.display = currentStep > 1 ? '' : 'none';
+}
+
+function goToStep(step) {
+    if (step === currentStep) return;
+    if (!completed.has(step) && step > currentStep) return;
+    currentStep = step;
+    showPanel(step);
+    renderStepper();
+    if (step === 3) buildReviewStep();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goNext() {
+    if (!canProceed()) return;
+    const leavingStep1 = currentStep === 1;
+    completed.add(currentStep);
+    if (currentStep < maxStep) {
+        currentStep++;
+        showPanel(currentStep);
+        renderStepper();
+        if (currentStep === 3) buildReviewStep();
+        if (leavingStep1) saveDraft(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+function goBack() {
+    if (currentStep > 1) {
+        currentStep--;
+        showPanel(currentStep);
+        renderStepper();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+function cancelWizard() {
+    if (confirm('هل تريد إلغاء هذا الطلب؟')) window.location.href = 'agency-dashboard.html';
+}
+
+// ════════════════════════════════════════════════════════════════
+//  DRAFT — Save / Restore / Discard
+// ════════════════════════════════════════════════════════════════
+const DRAFT_KEY = 'batch_inquiry_draft';
+
+function saveDraft(showToast) {
+    const batchName  = document.getElementById('batch-name')?.value?.trim() || '';
+    const batchNotes = document.getElementById('batch-notes')?.value?.trim() || '';
+    if (!batchName && individuals.length === 0) {
+        if (showToast) alert('لا يوجد شيء لحفظه — أضف اسم الحزمة أو مسافراً على الأقل.'); return;
+    }
+    const draft = {
+        savedAt:     new Date().toISOString(),
+        currentStep,
+        batchName,
+        batchNotes,
+        individuals: individuals.map(ind => ({
+            id: ind.id, name: ind.name, nationality: ind.nationality,
+            passportNo: ind.passportNo, expiry: ind.expiry,
+            flight:        ind.flight,
+            passportName:  ind.passportName  || null,
+            ticketName:    ind.ticketName    || null
+        }))
+    };
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    if (showToast) showDraftToast();
+}
+
+function showDraftToast() {
+    const t = document.getElementById('draft-toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function loadDraftOnInit() {}
+
+// ════════════════════════════════════════════════════════════════
+//  STEP 1
+// ════════════════════════════════════════════════════════════════
+function onBatchNameInput() {
+    const val   = document.getElementById('batch-name').value;
+    document.getElementById('batch-name-count').textContent = val.length + ' / 80';
+    updateNextButton();
+}
+
+// ════════════════════════════════════════════════════════════════
+//  STEP 2 — TRAVELER BUILDER RENDER
+// ════════════════════════════════════════════════════════════════
+function renderBuilder() {
+    const indContainer = document.getElementById('individuals-container');
+    const totalBar     = document.getElementById('running-total-bar');
+    const { totalFee, totalTravelers, totalIndividuals } = computeTotal();
+
+    // Running total bar
+    if (totalTravelers > 0) {
+        totalBar.style.display = 'flex';
+        document.getElementById('rtb-travelers').textContent = totalTravelers;
+    } else {
+        totalBar.style.display = 'none';
+    }
+
+    // ── Individual travelers section ──
+    let indHtml = '';
+    if (showIndForm || editingIndId !== null) {
+        indHtml += renderIndividualForm();
+    }
+    if (individuals.length > 0) {
+        indHtml += `<div class="sect-title"><i class="fas fa-user"></i> المسافرون <span class="sect-count">${totalIndividuals}</span></div>`;
+        indHtml += `<div class="ind-list">` + individuals.map((ind, i) => renderIndividualCard(ind, i)).join('') + `</div>`;
+    }
+    // Empty state
+    if (totalTravelers === 0 && !showIndForm) {
+        indHtml = `
+            <div class="builder-empty">
+                <div class="be-icon"><i class="fas fa-users"></i></div>
+                <div class="be-title">لم تضف أي مسافر بعد</div>
+                <div class="be-sub">استخدم زر "إضافة مسافر" أعلاه لإضافة مسافرين.</div>
+            </div>`;
+    }
+    indContainer.innerHTML = indHtml;
+
+    updateNextButton();
+}
+
+// ════════════════════════════════════════════════════════════════
+//  INDIVIDUAL TRAVELER FUNCTIONS
+// ════════════════════════════════════════════════════════════════
+function startIndForm() {
+    showIndForm = true;
+    editingIndId = null;
+    indPassportName = null; indPassportFile = null;
+    indTicketName = null; indTicketFile = null;
+    renderBuilder();
+    setTimeout(() => document.getElementById('ind-name')?.focus(), 80);
+}
+
+function hideIndForm() {
+    showIndForm = false;
+    editingIndId = null;
+    indPassportName = null; indPassportFile = null;
+    indTicketName = null; indTicketFile = null;
+    renderBuilder();
+}
+
+function editIndividual(id) {
+    const ind = individuals.find(i => i.id === id);
+    if (!ind) return;
+    editingIndId = id;
+    showIndForm = true;
+    indPassportName = ind.passportName;
+    indPassportFile = ind.passportFile;
+    indTicketName = ind.ticketName;
+    indTicketFile = ind.ticketFile;
+    renderBuilder();
+    setTimeout(() => document.getElementById('ind-name')?.focus(), 80);
+}
+
+function deleteIndividual(id) {
+    individuals = individuals.filter(i => i.id !== id);
+    renderBuilder();
+    saveDraft(false);
+}
+
+function onIndPassportChange(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    indPassportFile = file; indPassportName = file.name;
+    const btn = event.target.closest('.doc-upload-btn');
+    btn.classList.add('uploaded');
+    btn.querySelector('.doc-upload-icon i').className = 'fas fa-check-circle';
+    btn.querySelector('.doc-upload-label').textContent = file.name;
+    btn.querySelector('.doc-upload-hint').textContent = 'تم الرفع — انقر للتغيير';
+}
+
+function onIndTicketChange(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    indTicketFile = file; indTicketName = file.name;
+    const btn = event.target.closest('.doc-upload-btn');
+    btn.classList.add('uploaded');
+    btn.querySelector('.doc-upload-icon i').className = 'fas fa-check-circle';
+    btn.querySelector('.doc-upload-label').textContent = file.name;
+    btn.querySelector('.doc-upload-hint').textContent = 'تم الرفع — انقر للتغيير';
+}
+
+function getLastFlightData() {
+    if (individuals.length > 0) return individuals[individuals.length - 1].flight;
+    return null;
+}
+
+function toggleCopyFlight() {
+    const cb = document.getElementById('copy-flight-check');
+    if (!cb) return;
+    cb.checked = !cb.checked;
+    if (cb.checked) {
+        const prev = getLastFlightData();
+        if (prev) {
+            document.getElementById('ind-from').value = prev.from || '';
+            document.getElementById('ind-airport').value = prev.airport || '';
+            document.getElementById('ind-date').value = prev.date || '';
+            document.getElementById('ind-purpose').value = prev.purpose || '';
+            document.getElementById('ind-flightno').value = prev.flightNo || '';
+        }
+    }
+}
+
+function saveIndividual(addAnother) {
+    const name       = document.getElementById('ind-name')?.value.trim();
+    const nationality = document.getElementById('ind-nat')?.value;
+    const passportNo = document.getElementById('ind-passport')?.value.trim();
+    const expiry     = document.getElementById('ind-expiry')?.value;
+    const from       = document.getElementById('ind-from')?.value;
+    const airport    = document.getElementById('ind-airport')?.value;
+    const date       = document.getElementById('ind-date')?.value;
+    const purpose    = document.getElementById('ind-purpose')?.value;
+    const flightNo   = document.getElementById('ind-flightno')?.value.trim();
+
+    if (!name || !nationality || !passportNo || !expiry || !from || !airport || !date || !purpose) {
+        alert('يرجى ملء جميع الحقول المطلوبة.'); return;
+    }
+
+    // Duplicate passport check
+    const passUpper = passportNo.toUpperCase();
+    for (const ind of individuals) {
+        if (ind.id !== editingIndId && ind.passportNo.toUpperCase() === passUpper) {
+            alert('رقم الجواز "' + passportNo + '" مسجّل بالفعل.'); return;
+        }
+    }
+
+    const flight = { from, airport, date, purpose, flightNo };
+
+    if (editingIndId !== null) {
+        const ind = individuals.find(i => i.id === editingIndId);
+        if (ind) {
+            Object.assign(ind, { name, nationality, passportNo, expiry, flight,
+                passportFile: indPassportFile, passportName: indPassportName,
+                ticketFile: indTicketFile, ticketName: indTicketName });
+        }
+        editingIndId = null; showIndForm = false;
+        indPassportName = null; indPassportFile = null;
+        indTicketName = null; indTicketFile = null;
+        renderBuilder();
+        saveDraft(false);
+    } else if (addAnother) {
+        individuals.push({ id: nextIndId++, name, nationality, passportNo, expiry, flight,
+            passportFile: indPassportFile, passportName: indPassportName,
+            ticketFile: indTicketFile, ticketName: indTicketName });
+        indPassportName = null; indPassportFile = null;
+        indTicketName = null;   indTicketFile = null;
+        renderBuilder();
+        saveDraft(false);
+        setTimeout(() => {
+            document.getElementById('ind-name').value = '';
+            document.getElementById('ind-nat').value = '';
+            document.getElementById('ind-passport').value = '';
+            document.getElementById('ind-expiry').value = '';
+            // Keep flight fields for rapid entry
+            document.getElementById('ind-from').value = from;
+            document.getElementById('ind-airport').value = airport;
+            document.getElementById('ind-date').value = date;
+            document.getElementById('ind-purpose').value = purpose;
+            document.getElementById('ind-flightno').value = flightNo;
+            document.getElementById('ind-name')?.focus();
+        }, 50);
+    } else {
+        individuals.push({ id: nextIndId++, name, nationality, passportNo, expiry, flight,
+            passportFile: indPassportFile, passportName: indPassportName,
+            ticketFile: indTicketFile, ticketName: indTicketName });
+        showIndForm = false;
+        indPassportName = null; indPassportFile = null;
+        indTicketName = null;   indTicketFile = null;
+        renderBuilder();
+        saveDraft(false);
+    }
+}
+
+function handleIndPassportUpload(id, event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const ind = individuals.find(i => i.id === id);
+    if (ind) { ind.passportFile = file; ind.passportName = file.name; renderBuilder(); }
+}
+
+function handleIndTicketUpload(id, event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const ind = individuals.find(i => i.id === id);
+    if (ind) { ind.ticketFile = file; ind.ticketName = file.name; renderBuilder(); }
+}
+
+function renderIndividualCard(ind, index) {
+    const fee = getFee(ind.nationality);
+    const f = ind.flight;
+    const ppDoc = ind.passportName
+        ? `<span class="ind-doc ok"><i class="fas fa-id-card"></i> جواز</span>`
+        : `<label class="ind-doc missing" for="card-pp-${ind.id}" title="انقر لرفع صورة الجواز">
+             <i class="fas fa-upload"></i> رفع جواز
+             <input type="file" id="card-pp-${ind.id}" accept="image/*,.pdf" onchange="handleIndPassportUpload(${ind.id},event)">
+           </label>`;
+    const tkDoc = ind.ticketName
+        ? `<span class="ind-doc ok"><i class="fas fa-ticket"></i> تذكرة</span>`
+        : `<label class="ind-doc missing" for="card-tk-${ind.id}" title="انقر لرفع صورة التذكرة">
+             <i class="fas fa-upload"></i> رفع تذكرة
+             <input type="file" id="card-tk-${ind.id}" accept="image/*,.pdf" onchange="handleIndTicketUpload(${ind.id},event)">
+           </label>`;
+    return `
+    <div class="ind-card">
+        <div class="ind-row1">
+            <div class="ind-num">${index + 1}</div>
+            <span class="ind-name">${escHtml(ind.name)}</span>
+            <span class="pill pill-blue">${escHtml(ind.nationality)}</span>
+            <span class="tv-passport" dir="ltr">${escHtml(ind.passportNo)}</span>
+            <button class="gc-icon-btn" onclick="editIndividual(${ind.id})" title="تعديل"><i class="fas fa-pen"></i></button>
+            <button class="gc-icon-btn danger" onclick="deleteIndividual(${ind.id})" title="حذف"><i class="fas fa-trash"></i></button>
+        </div>
+        <div class="ind-row2">
+            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-plane-departure"></i> ${escHtml(f.from)}</span>
+            <i class="fas fa-long-arrow-alt-left" style="color:#94a3b8;font-size:10px;"></i>
+            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-plane-arrival"></i> ${escHtml(f.airport)}</span>
+            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-calendar-days"></i> ${escHtml(f.date)}</span>
+            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-bullseye"></i> ${escHtml(f.purpose)}</span>
+            ${f.flightNo ? `<span class="fd-pill" style="font-size:11px;"><i class="fas fa-hashtag"></i> ${escHtml(f.flightNo)}</span>` : ''}
+            ${ppDoc}
+            ${tkDoc}
+        </div>
+    </div>`;
+}
+
+function renderIndividualForm() {
+    const editing = editingIndId !== null;
+    const ind = editing ? individuals.find(i => i.id === editingIndId) : null;
+    const f = ind ? ind.flight : {};
+    const hasPrev = !editing && getLastFlightData();
+
+    const natOpts = NATIONALITIES.map(n =>
+        `<option value="${n}" ${(ind && ind.nationality === n) ? 'selected' : ''}>${n}</option>`
+    ).join('');
+    const coo = COUNTRIES.map(c =>
+        `<option value="${c}" ${(f.from === c) ? 'selected' : ''}>${c}</option>`
+    ).join('');
+    const aoo = AIRPORTS.map(a =>
+        `<option value="${a}" ${(f.airport === a) ? 'selected' : ''}>${a}</option>`
+    ).join('');
+    const poo = PURPOSES_AR.map(p =>
+        `<option value="${p}" ${(f.purpose === p) ? 'selected' : ''}>${p}</option>`
+    ).join('');
+
+    return `
+    <div class="ind-form-card">
+        <div class="ind-form-header">
+            <div class="ind-form-title">
+                <i class="fas fa-user-plus" style="color:#1d4ed8;"></i>
+                ${editing ? 'تعديل بيانات المسافر' : 'إضافة مسافر جديد'}
+            </div>
+            <button class="gc-icon-btn" onclick="hideIndForm()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="ind-form-section-label"><i class="fas fa-user"></i> البيانات الشخصية</div>
+        <div class="ind-form-grid">
+            <div class="ff-field">
+                <label>الاسم الكامل <span class="ff-req">*</span></label>
+                <input type="text" id="ind-name" placeholder="كما في جواز السفر" maxlength="80" value="${ind ? escHtml(ind.name) : ''}">
+            </div>
+            <div class="ff-field">
+                <label>الجنسية <span class="ff-req">*</span></label>
+                <select id="ind-nat"><option value="">اختر</option>${natOpts}</select>
+            </div>
+            <div class="ff-field">
+                <label>رقم الجواز <span class="ff-req">*</span></label>
+                <input type="text" id="ind-passport" placeholder="AB123456" maxlength="20" dir="ltr" value="${ind ? escHtml(ind.passportNo) : ''}">
+            </div>
+            <div class="ff-field">
+                <label>انتهاء الجواز <span class="ff-req">*</span></label>
+                <input type="date" id="ind-expiry" value="${ind ? ind.expiry : ''}">
+            </div>
+        </div>
+
+        <div class="ind-form-section-label"><i class="fas fa-plane"></i> بيانات الرحلة</div>
+        ${hasPrev ? `
+        <div class="copy-flight-row" onclick="toggleCopyFlight()">
+            <input type="checkbox" id="copy-flight-check">
+            <label for="copy-flight-check"><i class="fas fa-copy" style="margin-left:4px;"></i>نسخ بيانات الرحلة من المسافر السابق</label>
+        </div>` : ''}
+        <div class="ind-form-grid-5">
+            <div class="ff-field">
+                <label>دولة المغادرة <span class="ff-req">*</span></label>
+                <select id="ind-from"><option value="">اختر</option>${coo}</select>
+            </div>
+            <div class="ff-field">
+                <label>مطار الوصول <span class="ff-req">*</span></label>
+                <select id="ind-airport"><option value="">اختر</option>${aoo}</select>
+            </div>
+            <div class="ff-field">
+                <label>تاريخ السفر <span class="ff-req">*</span></label>
+                <input type="date" id="ind-date" value="${ind ? f.date || '' : ''}">
+            </div>
+            <div class="ff-field">
+                <label>غرض الزيارة <span class="ff-req">*</span></label>
+                <select id="ind-purpose"><option value="">اختر</option>${poo}</select>
+            </div>
+            <div class="ff-field">
+                <label>رقم الرحلة</label>
+                <input type="text" id="ind-flightno" placeholder="MS-777" maxlength="10" value="${ind ? (f.flightNo || '') : ''}">
+            </div>
+        </div>
+
+        <div class="ind-form-section-label"><i class="fas fa-paperclip"></i> المستندات</div>
+        <div class="doc-upload-row">
+            <label class="doc-upload-btn ${indPassportName ? 'uploaded' : ''}" for="ind-pp-file">
+                <span class="doc-upload-icon"><i class="fas fa-${indPassportName ? 'check-circle' : 'id-card'}"></i></span>
+                <span>
+                    <span class="doc-upload-label">${indPassportName ? escHtml(indPassportName) : 'صورة جواز السفر'}</span>
+                    <span class="doc-upload-hint">${indPassportName ? 'تم الرفع — انقر للتغيير' : 'JPG · PNG · PDF'}</span>
+                </span>
+                <input type="file" id="ind-pp-file" accept="image/*,.pdf" onchange="onIndPassportChange(event)">
+            </label>
+            <label class="doc-upload-btn ${indTicketName ? 'uploaded' : ''}" for="ind-tk-file">
+                <span class="doc-upload-icon"><i class="fas fa-${indTicketName ? 'check-circle' : 'ticket'}"></i></span>
+                <span>
+                    <span class="doc-upload-label">${indTicketName ? escHtml(indTicketName) : 'صورة التذكرة'}</span>
+                    <span class="doc-upload-hint">${indTicketName ? 'تم الرفع — انقر للتغيير' : 'JPG · PNG · PDF'}</span>
+                </span>
+                <input type="file" id="ind-tk-file" accept="image/*,.pdf" onchange="onIndTicketChange(event)">
+            </label>
+        </div>
+
+        <div class="ind-form-actions">
+            ${!editing ? `<button class="btn btn-primary btn-sm" onclick="saveIndividual(true)"><i class="fas fa-plus"></i> حفظ وإضافة آخر</button>` : ''}
+            <button class="btn btn-${editing ? 'primary' : 'secondary'} btn-sm" onclick="saveIndividual(false)"><i class="fas fa-check"></i> ${editing ? 'حفظ التعديلات' : 'حفظ'}</button>
+            <button class="btn btn-secondary btn-sm" onclick="hideIndForm()">إلغاء</button>
+        </div>
+    </div>`;
+}
+
+// ════════════════════════════════════════════════════════════════
+//  DEMO HELPERS
+// ════════════════════════════════════════════════════════════════
+function loadDemoData() {
+    individuals = [
+        {
+            id: nextIndId++, name: 'عمر حسن المنصوري', nationality: 'يمني',
+            passportNo: 'YE887766', expiry: '2028-06-20',
+            flight: { from: 'اليمن', airport: 'مطار القاهرة الدولي', date: '2026-04-20', purpose: 'علاج', flightNo: 'YU-302' },
+            passportFile: null, passportName: 'pp_omar.jpg',
+            ticketFile: null, ticketName: 'ticket_omar.jpg'
+        },
+        {
+            id: nextIndId++, name: 'Raj Patel', nationality: 'هندي',
+            passportNo: 'IN998877', expiry: '2027-11-05',
+            flight: { from: 'الهند', airport: 'مطار شرم الشيخ الدولي', date: '2026-04-22', purpose: 'سياحة', flightNo: 'AI-445' },
+            passportFile: null, passportName: 'pp_raj.jpg',
+            ticketFile: null, ticketName: null
+        },
+        {
+            id: nextIndId++, name: 'سارة خالد الأحمدي', nationality: 'سوري',
+            passportNo: 'SY556677', expiry: '2029-01-15',
+            flight: { from: 'سوريا', airport: 'مطار القاهرة الدولي', date: '2026-04-20', purpose: 'عائلة', flightNo: 'YU-302' },
+            passportFile: null, passportName: null,
+            ticketFile: null, ticketName: 'ticket_sara.pdf'
+        }
+    ];
+    document.getElementById('batch-name').value = 'رحلات أبريل 2026';
+    document.getElementById('batch-name-count').textContent = document.getElementById('batch-name').value.length + ' / 80';
+    renderBuilder();
+    updateNextButton();
+}
+
+function clearAll() {
+    if (individuals.length === 0) return;
+    if (!confirm('هل تريد مسح جميع المسافرين؟')) return;
+    individuals = [];
+    nextIndId = 1;
+    showIndForm = false; editingIndId = null;
+    indPassportName = null; indPassportFile = null;
+    indTicketName = null; indTicketFile = null;
+    renderBuilder();
+}
+
+// ════════════════════════════════════════════════════════════════
+//  STEP 3 — REVIEW
+// ════════════════════════════════════════════════════════════════
+function buildReviewStep() {
+    const { totalFee, totalTravelers } = computeTotal();
+    const batchName = document.getElementById('batch-name')?.value?.trim() || '—';
+
+    // Individual travelers review
+    const summaryEl = document.getElementById('review-groups-summary');
+    let reviewHtml = '';
+
+    if (individuals.length > 0) {
+        reviewHtml += `<div class="sect-title" style="margin-top:0;"><i class="fas fa-user"></i> مسافرون أفراد <span class="sect-count">${individuals.length}</span></div>`;
+        reviewHtml += individuals.map(ind => {
+            const f = ind.flight;
+            const fee = getFee(ind.nationality);
+            return `
+            <div class="review-group-card" style="margin-bottom:10px;">
+                <div class="rgc-header">
+                    <div class="rgc-header-left">
+                        <span class="rgc-name">${escHtml(ind.name)}</span>
+                        <span class="pill pill-blue" style="font-size:10px;">${escHtml(ind.nationality)}</span>
+                        <span style="font-size:11px;color:#64748b;" dir="ltr">${escHtml(ind.passportNo)}</span>
+                        <span class="fd-pill" style="font-size:10px;"><i class="fas fa-plane-departure"></i> ${escHtml(f.from)}</span>
+                        <span class="fd-pill" style="font-size:10px;"><i class="fas fa-plane-arrival"></i> ${escHtml(f.airport)}</span>
+                        <span class="fd-pill" style="font-size:10px;"><i class="fas fa-calendar-days"></i> ${escHtml(f.date)}</span>
+                        ${ind.passportName
+                            ? '<span class="pill pill-green" style="font-size:9px;"><i class="fas fa-id-card"></i> جواز</span>'
+                            : '<span class="pill pill-amber" style="font-size:9px;"><i class="fas fa-warning"></i> جواز</span>'}
+                        ${ind.ticketName
+                            ? '<span class="pill pill-green" style="font-size:9px;"><i class="fas fa-ticket"></i> تذكرة</span>'
+                            : '<span class="pill pill-amber" style="font-size:9px;"><i class="fas fa-warning"></i> تذكرة</span>'}
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    summaryEl.innerHTML = reviewHtml;
+
+    // Wallet check
+    const insufficient = totalFee > WALLET_BALANCE;
+    const insufEl = document.getElementById('fee-wallet-insufficient');
+    insufEl.style.display = insufficient ? '' : 'none';
+    if (insufficient) {
+        document.getElementById('wallet-insufficient-msg').textContent =
+            `رصيدك الحالي ${fmt(WALLET_BALANCE)} — الرسوم المطلوبة ${fmt(totalFee)}. يرجى شحن المحفظة أولاً.`;
+    }
+    document.getElementById('btn-confirm-deduct').disabled = insufficient;
+
+    // Summary card
+    const batchRef = 'BTH-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + (Math.floor(Math.random()*9000)+1000);
+    const summaryCardHtml = `
+        <div class="cs-row"><span class="cs-label">اسم الحزمة</span><span class="cs-value">${escHtml(batchName)}</span></div>
+        <div class="cs-row"><span class="cs-label">الرقم المرجعي</span><span class="cs-value" dir="ltr">${batchRef}</span></div>
+        <div class="cs-row"><span class="cs-label">عدد المسافرين</span><span class="cs-value">${totalTravelers} مسافراً</span></div>`;
+    document.getElementById('confirm-summary-card').innerHTML = summaryCardHtml;
+    document.getElementById('success-summary-card').innerHTML = summaryCardHtml;
+}
+
+// ════════════════════════════════════════════════════════════════
+//  STEP 3 — CONFIRM & DEDUCT
+// ════════════════════════════════════════════════════════════════
+function setS3State(state) {
+    s3State = state;
+    ['confirm','loading','success','failure'].forEach(s => {
+        document.getElementById('s3-' + s).style.display = s === state ? '' : 'none';
+    });
+    document.getElementById('step-footer').style.display =
+        (state === 'loading' || state === 'success' || state === 'failure') ? 'none' : '';
+}
+
+function simulateDeduction() {
+    setS3State('loading');
+    setTimeout(() => {
+        const result = Math.random() > 0.2 ? 'success' : 'failure';
+        if (result === 'success') {
+            const raw = localStorage.getItem(DRAFT_KEY);
+            if (raw) {
+                try {
+                    const draft = JSON.parse(raw);
+                    draft.status = 'submitted';
+                    localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+                } catch(e) {}
+            }
+        }
+        setS3State(result);
+    }, 2000);
+}
+
+function retryFromFailure() { setS3State('confirm'); }
+
+// ════════════════════════════════════════════════════════════════
+//  UTILITY
+// ════════════════════════════════════════════════════════════════
+function escHtml(str) {
+    return String(str || '')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ════════════════════════════════════════════════════════════════
+//  NOTIFICATION & USER DROPDOWNS (unchanged)
+// ════════════════════════════════════════════════════════════════
+function toggleNotif() {
+    document.getElementById('notifDrawer').classList.toggle('open');
+    document.getElementById('userDropdown').classList.remove('open');
+}
+function toggleUser() {
+    const d = document.getElementById('userDropdown');
+    const n = document.getElementById('notifDrawer');
+    n.classList.remove('open');
+    d.classList.toggle('open');
+    const chip = document.getElementById('userChip');
+    const rect = chip.getBoundingClientRect();
+    d.style.top   = (rect.bottom + 8) + 'px';
+    d.style.right = (window.innerWidth - rect.right) + 'px';
+    d.style.left  = 'auto';
+}
+function markAllRead() {
+    document.getElementById('notifDot').style.display = 'none';
+    document.getElementById('notifDrawer').classList.remove('open');
+}
+function setLang(btn) {
+    if (window.i18n && typeof window.i18n.setLang === 'function') { window.i18n.setLang(btn); return; }
+    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+document.addEventListener('click', e => {
+    if (!e.target.closest('#bellBtn') && !e.target.closest('#notifDrawer'))
+        document.getElementById('notifDrawer')?.classList.remove('open');
+    if (!e.target.closest('#userChip') && !e.target.closest('#userDropdown'))
+        document.getElementById('userDropdown')?.classList.remove('open');
+});
+
+// ════════════════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════════════════
+renderStepper();
+renderBuilder();
+loadDraftOnInit();
+</script>
+<script src="i18n/i18n.js"></script>
+<script>
+    i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
+</script>
+</body>
+</html>

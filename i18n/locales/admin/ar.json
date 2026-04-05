@@ -1,0 +1,15 @@
+{
+  "lang": "ar",
+  "dir": "rtl",
+  "dictionary": {
+    "common.brand.name": "نظام الموافقات الأمنية",
+    "common.brand.subtitle": "Security Approval System",
+    "common.lang.toggle": "EN",
+    "admin.topbar.searchPlaceholder": "إبحث هنا ...",
+    "admin.sidebar.dashboard": "لوحة التحكم",
+    "admin.sidebar.inquiries": "إدارة الطلبات",
+    "admin.sidebar.agencies": "إدارة الوكلاء",
+    "admin.sidebar.logout": "تسجيل الخروج"
+  },
+  "phrases": {}
+}

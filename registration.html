@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; font-family: 'Tajawal', sans-serif; }
+        body { display: flex; min-height: 100vh; overflow: hidden; }
+
+        /* ─── Left hero panel ─── */
+        .hero {
+            flex: 0 0 57%;
+            background: linear-gradient(160deg, #040c22 0%, #091535 35%, #0b1e50 65%, #091535 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(50,120,255,.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(50,120,255,.07) 1px, transparent 1px);
+            background-size: 44px 44px;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,100,255,.18) 0%, transparent 65%);
+            border-radius: 50%;
+        }
+
+        /* ─── Right form panel ─── */
+        .panel {
+            flex: 0 0 43%;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+        .panel-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 32px 44px;
+            min-height: 100%;
+        }
+
+        /* ─── Logo ─── */
+        .logo-row {
+            display: flex; align-items: center; justify-content: flex-end;
+            gap: 10px; margin-bottom: 24px;
+        }
+        .logo-text h1 { font-size: 15px; font-weight: 700; color: #1e293b; line-height: 1.3; text-align: right; }
+        .logo-text p  { font-size: 11px; color: #94a3b8; text-align: right; }
+        .logo-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* ─── Step pips ─── */
+        .pips { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 5px; }
+        .pip { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; transition: all .3s; }
+        .pip.cur  { width: 24px; border-radius: 4px; background: #1a3a8f; }
+        .pip.done { background: #22c55e; }
+        .pip-lbl  { text-align: center; font-size: 11px; color: #94a3b8; margin-bottom: 18px; }
+
+        /* ─── Heading ─── */
+        .heading { text-align: right; margin-bottom: 20px; }
+        .heading h2 { font-size: 23px; font-weight: 800; color: #0f172a; margin-bottom: 3px; }
+        .heading p  { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+        /* ─── Tabs ─── */
+        .tabs {
+            display: flex; background: #f1f5f9;
+            border-radius: 12px; padding: 4px; gap: 4px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            display: flex; align-items: center; justify-content: center; gap: 7px;
+            padding: 10px 8px; border-radius: 9px; border: none; cursor: pointer;
+            font-family: 'Tajawal', sans-serif; font-size: 13.5px; font-weight: 600;
+            transition: all .2s; background: transparent; color: #64748b;
+        }
+        .tab.active {
+            background: #1a3a8f; color: #fff;
+            box-shadow: 0 3px 10px rgba(26,58,143,.35);
+        }
+        .tab i { font-size: 13px; }
+
+        /* ─── Fields ─── */
+        .field { margin-bottom: 13px; }
+        .field-row { display: flex; gap: 10px; margin-bottom: 13px; }
+        .field-row .field { flex: 1; margin-bottom: 0; }
+
+        .wrap { position: relative; display: flex; align-items: center; }
+
+        .inp {
+            width: 100%; height: 48px;
+            background: #f8fafc; border: 1.5px solid #dde3ee;
+            border-radius: 10px;
+            padding: 0 44px 0 14px;
+            font-family: 'Tajawal', sans-serif; font-size: 13.5px;
+            color: #1e293b; direction: rtl; outline: none;
+            transition: border-color .2s, background .2s, box-shadow .2s;
+        }
+        .inp::placeholder { color: #b0bec5; font-size: 13px; }
+        .inp:focus { border-color: #3b7de0; background: #fff; box-shadow: 0 0 0 3px rgba(59,125,224,.1); }
+        .inp.err { border-color: #f87171; background: #fff5f5; }
+        .inp.ok  { border-color: #86efac; }
+
+        /* icon right (semantic) */
+        .ir { position: absolute; right: 14px; color: #94a3b8; font-size: 15px; pointer-events: none; }
+        /* icon / button left (eye toggle) */
+        .il { position: absolute; left: 13px; color: #94a3b8; font-size: 14px; background: none; border: none; padding: 0; cursor: pointer; line-height: 1; }
+        .il:hover { color: #475569; }
+
+        /* input with left icon needs right padding only */
+        .has-eye { padding-left: 38px; }
+
+        /* error text */
+        .em { font-size: 11px; color: #ef4444; margin-top: 4px; padding-right: 4px; display: none; }
+        .em.show { display: block; }
+
+        /* country code + mobile */
+        .cc-row { display: flex; gap: 8px; }
+        .cc {
+            height: 48px; min-width: 86px; flex-shrink: 0;
+            background: #f8fafc; border: 1.5px solid #dde3ee; border-radius: 10px;
+            padding: 0 8px; font-family: 'Tajawal', sans-serif; font-size: 13px;
+            color: #1e293b; outline: none; cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%2394a3b8' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: left 6px center;
+        }
+        .cc:focus { border-color: #3b7de0; box-shadow: 0 0 0 3px rgba(59,125,224,.1); }
+
+        /* ─── File upload ─── */
+        .upload-zone {
+            width: 100%; min-height: 80px;
+            background: #f8fafc; border: 1.5px dashed #c8d5e8;
+            border-radius: 10px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 6px; cursor: pointer; transition: all .2s;
+            padding: 14px;
+        }
+        .upload-zone:hover, .upload-zone.drag { background: #eff6ff; border-color: #3b7de0; }
+        .upload-zone.has-file { background: #f0fdf4; border-color: #86efac; border-style: solid; }
+        .upload-zone.err-zone { border-color: #f87171; background: #fff5f5; }
+        .upload-zone i { font-size: 22px; color: #94a3b8; }
+        .upload-zone.has-file i { color: #22c55e; }
+        .upload-zone p { font-size: 12px; color: #64748b; text-align: center; }
+        .upload-zone .sub { font-size: 11px; color: #94a3b8; }
+        .upload-zone .fname { font-size: 12px; color: #166534; font-weight: 600; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        /* ─── Password strength ─── */
+        .str-row { display: flex; gap: 4px; margin-top: 6px; }
+        .str-bar { flex: 1; height: 3px; border-radius: 2px; background: #e2e8f0; transition: background .3s; }
+        .str-hint { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+
+        /* ─── Pending notice ─── */
+        .info-box {
+            background: #fffbeb; border: 1.5px solid #fde68a;
+            border-radius: 10px; padding: 12px 14px;
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 18px;
+        }
+        .info-box i { color: #d97706; font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+        .info-box p { font-size: 12px; color: #92400e; line-height: 1.7; text-align: right; }
+
+        /* ─── Main button ─── */
+        .btn {
+            width: 100%; height: 50px;
+            background: #1a3a8f; color: #fff; border: none;
+            border-radius: 10px; font-family: 'Tajawal', sans-serif;
+            font-size: 15px; font-weight: 700; cursor: pointer;
+            transition: background .2s, box-shadow .2s, transform .15s;
+            box-shadow: 0 4px 16px rgba(26,58,143,.3);
+            margin-bottom: 16px;
+        }
+        .btn:hover { background: #152e78; box-shadow: 0 6px 20px rgba(26,58,143,.4); transform: translateY(-1px); }
+        .btn:active { transform: translateY(0); }
+        .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+        /* ─── OR + social ─── */
+        .or { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #94a3b8; margin-bottom: 13px; }
+        .or::before, .or::after { content: ''; flex: 1; height: 1px; background: #e8edf3; }
+        .soc { display: flex; gap: 10px; margin-bottom: 16px; }
+        .sbtn {
+            flex: 1; height: 46px;
+            display: flex; align-items: center; justify-content: center; gap: 7px;
+            background: #fff; border: 1.5px solid #dde3ee; border-radius: 10px;
+            font-family: 'Tajawal', sans-serif; font-size: 13px; font-weight: 500; color: #374151;
+            cursor: pointer; transition: background .15s, border-color .15s;
+        }
+        .sbtn:hover { background: #f8fafc; border-color: #c0cad8; }
+
+        /* ─── Bottom link ─── */
+        .bl { text-align: center; font-size: 13px; color: #64748b; }
+        .bl a { color: #1d4ed8; font-weight: 600; text-decoration: none; }
+        .bl a:hover { text-decoration: underline; }
+
+        /* ─── OTP boxes ─── */
+        .otp-row { display: flex; justify-content: center; gap: 8px; direction: ltr; margin-bottom: 6px; }
+        .otp {
+            width: 48px; height: 54px;
+            text-align: center; font-size: 22px; font-weight: 700;
+            border: 1.5px solid #dde3ee; border-radius: 10px;
+            background: #f8fafc; color: #1e293b; outline: none;
+            transition: all .2s;
+        }
+        .otp:focus { border-color: #3b7de0; background: #fff; box-shadow: 0 0 0 3px rgba(59,125,224,.1); }
+        .otp.filled { border-color: #3b7de0; background: #eff6ff; }
+        .otp.shake { animation: shake .4s; }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-5px)} 40%,80%{transform:translateX(5px)} }
+
+        /* ─── Success card ─── */
+        .scard {
+            background: #f0fdf4; border: 1.5px solid #bbf7d0;
+            border-radius: 10px; padding: 11px 14px;
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 18px;
+        }
+        .scard i { color: #22c55e; font-size: 18px; margin-top: 1px; }
+        .scard strong { font-size: 13px; color: #166534; display: block; }
+        .scard span   { font-size: 11px; color: #15803d; }
+
+        /* ─── Final / Pending screens ─── */
+        .end-screen { text-align: center; padding: 10px 0; }
+        .end-icon {
+            width: 80px; height: 80px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 18px; font-size: 36px;
+        }
+        .end-screen h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .end-screen p  { font-size: 13px; color: #64748b; line-height: 1.8; margin-bottom: 24px; }
+        .end-detail {
+            background: #f8fafc; border: 1px solid #e2e8f0;
+            border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; text-align: right;
+        }
+        .end-detail .row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #f1f5f9; }
+        .end-detail .row:last-child { border-bottom: none; }
+        .end-detail .lbl { font-size: 12px; color: #94a3b8; }
+        .end-detail .val { font-size: 12px; font-weight: 600; color: #374151; }
+
+        /* hidden */
+        .hidden { display: none !important; }
+
+        /* scrollbar */
+        .panel::-webkit-scrollbar { width: 3px; }
+        .panel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+
+        /* terms row */
+        .terms-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 16px; }
+        .terms-row p { font-size: 12px; color: #64748b; flex: 1; line-height: 1.7; text-align: right; }
+        .terms-row input { margin-top: 3px; width: 15px; height: 15px; accent-color: #1d4ed8; cursor: pointer; flex-shrink: 0; }
+    
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ LEFT HERO ══════════════ -->
+<div class="hero">
+    <!-- Decorative rings -->
+    <div style="position:absolute;top:-80px;right:-80px;width:300px;height:300px;border:1.5px solid rgba(50,120,255,.1);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;top:-130px;right:-130px;width:420px;height:420px;border:1px solid rgba(50,120,255,.06);border-radius:50%;pointer-events:none;"></div>
+
+    <!-- Shield SVG -->
+    <svg width="320" height="360" viewBox="0 0 340 380" xmlns="http://www.w3.org/2000/svg"
+         style="position:relative;z-index:1;filter:drop-shadow(0 20px 60px rgba(0,80,255,.35))">
+        <defs>
+            <radialGradient id="sg" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#1e4fcf"/>
+                <stop offset="100%" stop-color="#0a1a5e"/>
+            </radialGradient>
+            <linearGradient id="eg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="rgba(100,180,255,.6)"/>
+                <stop offset="100%" stop-color="rgba(30,80,200,.2)"/>
+            </linearGradient>
+            <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00d4ff"/>
+                <stop offset="100%" stop-color="#0080ff"/>
+            </linearGradient>
+            <filter id="gw"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="sg2"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <ellipse cx="170" cy="200" rx="155" ry="170" fill="rgba(0,100,255,.06)"/>
+        <path d="M170 28 L296 80 L296 210 C296 285 170 345 170 345 C170 345 44 285 44 210 L44 80 Z" fill="url(#sg)" filter="url(#gw)"/>
+        <path d="M170 28 L44 80 L44 210 C44 260 85 300 130 322" fill="none" stroke="url(#eg)" stroke-width="2.5" opacity=".7"/>
+        <path d="M170 50 L278 95 L278 208 C278 273 170 325 170 325 C170 325 62 273 62 208 L62 95 Z" fill="none" stroke="rgba(80,150,255,.2)" stroke-width="1.5"/>
+        <!-- circuit nodes -->
+        <line x1="80" y1="130" x2="115" y2="130" stroke="rgba(0,212,255,.55)" stroke-width="1.5" filter="url(#sg2)"/>
+        <line x1="80" y1="130" x2="80" y2="155" stroke="rgba(0,212,255,.55)" stroke-width="1.5" filter="url(#sg2)"/>
+        <circle cx="80" cy="130" r="3.5" fill="#00d4ff" opacity=".8"/>
+        <circle cx="115" cy="130" r="2.5" fill="#00d4ff" opacity=".6"/>
+        <circle cx="80" cy="155" r="2.5" fill="#00d4ff" opacity=".6"/>
+        <line x1="260" y1="130" x2="225" y2="130" stroke="rgba(0,212,255,.55)" stroke-width="1.5" filter="url(#sg2)"/>
+        <line x1="260" y1="130" x2="260" y2="155" stroke="rgba(0,212,255,.55)" stroke-width="1.5" filter="url(#sg2)"/>
+        <circle cx="260" cy="130" r="3.5" fill="#00d4ff" opacity=".8"/>
+        <circle cx="225" cy="130" r="2.5" fill="#00d4ff" opacity=".6"/>
+        <circle cx="260" cy="155" r="2.5" fill="#00d4ff" opacity=".6"/>
+        <line x1="95" y1="260" x2="95" y2="285" stroke="rgba(0,212,255,.4)" stroke-width="1.5"/>
+        <line x1="245" y1="260" x2="245" y2="285" stroke="rgba(0,212,255,.4)" stroke-width="1.5"/>
+        <circle cx="95" cy="260" r="2.5" fill="#00d4ff" opacity=".5"/>
+        <circle cx="245" cy="260" r="2.5" fill="#00d4ff" opacity=".5"/>
+        <!-- lock -->
+        <rect x="136" y="188" width="68" height="56" rx="9" fill="none" stroke="url(#cg)" stroke-width="2.8" filter="url(#sg2)"/>
+        <path d="M148 188 L148 168 C148 149 192 149 192 168 L192 188" fill="none" stroke="url(#cg)" stroke-width="2.8" stroke-linecap="round" filter="url(#sg2)"/>
+        <circle cx="170" cy="210" r="8" fill="rgba(0,212,255,.85)" filter="url(#sg2)"/>
+        <rect x="166.5" y="215" width="7" height="13" rx="3" fill="rgba(0,212,255,.85)"/>
+        <line x1="65" y1="216" x2="136" y2="216" stroke="rgba(0,212,255,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="204" y1="216" x2="275" y2="216" stroke="rgba(0,212,255,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+    </svg>
+
+    <!-- Dynamic hero caption -->
+    <div style="position:absolute;bottom:36px;left:0;right:0;text-align:center;z-index:2;">
+        <p style="color:rgba(148,180,255,.6);font-size:13px;letter-spacing:1px;">SECURITY APPROVAL SYSTEM</p>
+    </div>
+</div>
+
+
+<!-- ══════════════ RIGHT PANEL ══════════════ -->
+<div class="panel" id="mainPanel">
+<div class="panel-inner" id="panelInner">
+
+    <!-- Logo -->
+    <div class="logo-row">
+        <div class="logo-text">
+            <h1>نظام الموافقات الأمنية</h1>
+            <p>Security Approval System</p>
+        </div>
+        <div class="logo-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+                <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
+                <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Step pips -->
+    <div class="pips" id="pipRow">
+        <div class="pip cur" id="p1"></div>
+        <div class="pip hidden" id="p2"></div>
+    </div>
+    <p class="pip-lbl" id="pipLbl">بيانات الحساب</p>
+
+
+    <!-- ══════════════════════════════════
+         SCREEN A — INDIVIDUAL FORM
+    ═════════════════════════════════════ -->
+    <div id="sIndForm">
+        <div class="heading">
+            <h2>إنشاء حساب فردي</h2>
+            <p>فضلاً أدخل بياناتك الشخصية لإنشاء حسابك</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab" id="tAgency" onclick="switchType('agency')">
+                <i class="fas fa-building"></i> تسجيل وكالة
+            </div>
+            <div class="tab active" id="tInd" onclick="switchType('ind')">
+                <i class="fas fa-user"></i> تسجيل أفراد
+            </div>
+        </div>
+
+        <!-- Name row -->
+        <div class="field-row">
+            <div class="field">
+                <div class="wrap">
+                    <input id="iNameAr" class="inp" type="text" placeholder="الاسم بالعربية"
+                           onblur="vld('iNameAr','ar')" oninput="vld('iNameAr','ar',true)">
+                    <i class="fas fa-user ir"></i>
+                </div>
+                <span class="em" id="e_iNameAr">الاسم بالعربية مطلوب (حروف عربية)</span>
+            </div>
+            <div class="field">
+                <div class="wrap">
+                    <input id="iNameEn" class="inp" type="text" placeholder="Full Name"
+                           style="direction:ltr;text-align:left;padding-right:14px;padding-left:40px;"
+                           onblur="vld('iNameEn','en')" oninput="vld('iNameEn','en',true)">
+                    <i class="fas fa-user il" style="pointer-events:none;"></i>
+                </div>
+                <span class="em" id="e_iNameEn">English name required (Latin only)</span>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+            <div class="wrap">
+                <input id="iEmail" class="inp" type="email" placeholder="البريد الإلكتروني"
+                       style="direction:ltr;text-align:right;"
+                       onblur="vld('iEmail','email')" oninput="vld('iEmail','email',true)">
+                <i class="fas fa-envelope ir"></i>
+            </div>
+            <span class="em" id="e_iEmail">يرجى إدخال بريد إلكتروني صحيح.</span>
+        </div>
+
+        <!-- Mobile -->
+        <div class="field">
+            <div class="wrap cc-row">
+                <select class="cc">
+                    <option>🇪🇬 +20</option><option>🇸🇦 +966</option>
+                    <option>🇦🇪 +971</option><option>🇺🇸 +1</option><option>🇬🇧 +44</option>
+                </select>
+                <div style="position:relative;flex:1;">
+                    <input id="iMobile" class="inp" type="tel" placeholder="رقم الجوال"
+                           style="direction:ltr;text-align:right;"
+                           onblur="vld('iMobile','mobile')" oninput="vld('iMobile','mobile',true)">
+                    <i class="fas fa-phone ir"></i>
+                </div>
+            </div>
+            <span class="em" id="e_iMobile">يرجى إدخال رقم جوال صحيح.</span>
+        </div>
+
+        <!-- Password -->
+        <div class="field">
+            <div class="wrap">
+                <input id="iPwd" class="inp has-eye" type="password" placeholder="كلمة المرور"
+                       oninput="strBar('iPwd');vld('iPwd','pwd',true)" onblur="vld('iPwd','pwd')">
+                <i class="fas fa-lock ir"></i>
+                <button class="il" type="button" onclick="eye('iPwd','ie1')"><i id="ie1" class="fas fa-eye-slash"></i></button>
+            </div>
+            <div class="str-row">
+                <div class="str-bar" id="isb1"></div><div class="str-bar" id="isb2"></div>
+                <div class="str-bar" id="isb3"></div><div class="str-bar" id="isb4"></div>
+            </div>
+            <p class="str-hint" id="iStrHint">يجب أن تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز</p>
+            <span class="em" id="e_iPwd">كلمة المرور ضعيفة. استخدم 8 أحرف على الأقل.</span>
+        </div>
+
+        <!-- Confirm -->
+        <div class="field" style="margin-bottom:16px;">
+            <div class="wrap">
+                <input id="iCpwd" class="inp has-eye" type="password" placeholder="تأكيد كلمة المرور"
+                       onblur="vld('iCpwd','cpwd','iPwd')" oninput="vld('iCpwd','cpwd','iPwd',true)">
+                <i class="fas fa-lock ir"></i>
+                <button class="il" type="button" onclick="eye('iCpwd','ie2')"><i id="ie2" class="fas fa-eye-slash"></i></button>
+            </div>
+            <span class="em" id="e_iCpwd">كلمات المرور غير متطابقة.</span>
+        </div>
+
+        <!-- Terms -->
+        <div class="terms-row">
+            <p>بإنشاء الحساب أوافق على <a href="#" style="color:#1d4ed8;font-weight:600;">شروط الاستخدام</a> و<a href="#" style="color:#1d4ed8;font-weight:600;">سياسة الخصوصية</a></p>
+            <input type="checkbox" id="iTerms">
+        </div>
+
+        <button class="btn" onclick="submitInd()">إنشاء الحساب والمتابعة</button>
+        <div class="or">أو</div>
+        <div class="soc">
+            <button class="sbtn">
+                <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                Google
+            </button>
+            <button class="sbtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-3.95 2.555-6.04 5.071-6.04 1.567 0 2.757.96 3.7.96.897 0 2.354-1.01 4.17-1.01.686 0 2.967.09 4.41 2.36h-.06z"/></svg>
+                Apple
+            </button>
+        </div>
+        <p class="bl">لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+    </div>
+
+
+    <!-- ══════════════════════════════════
+         SCREEN B — AGENCY FORM
+    ═════════════════════════════════════ -->
+    <div id="sAgencyForm" class="hidden">
+        <div class="heading">
+            <h2>تسجيل وكالة سفر</h2>
+            <p>فضلاً أدخل بيانات الوكالة وقم برفع المستندات المطلوبة للمراجعة</p>
+        </div>
+
+        <!-- Tabs (mirrored) -->
+        <div class="tabs">
+            <div class="tab active" id="tAgency2" onclick="switchType('agency')">
+                <i class="fas fa-building"></i> تسجيل وكالة
+            </div>
+            <div class="tab" id="tInd2" onclick="switchType('ind')">
+                <i class="fas fa-user"></i> تسجيل أفراد
+            </div>
+        </div>
+
+        <!-- Pending approval notice -->
+        <div class="info-box">
+            <i class="fas fa-circle-info"></i>
+            <p>بعد إرسال الطلب، سيتم مراجعة بيانات الوكالة من قِبَل المشرف. ستُبلَّغ بنتيجة المراجعة عبر البريد الإلكتروني.</p>
+        </div>
+
+        <!-- Agency Name -->
+        <div class="field">
+            <div class="wrap">
+                <input id="aName" class="inp" type="text" placeholder="اسم الوكالة"
+                       onblur="vld('aName','min3')" oninput="vld('aName','min3',true)">
+                <i class="fas fa-building ir"></i>
+            </div>
+            <span class="em" id="e_aName">اسم الوكالة مطلوب (3–200 حرف).</span>
+        </div>
+
+        <!-- Commercial Reg Number -->
+        <div class="field">
+            <div class="wrap">
+                <input id="aRegNum" class="inp" type="text" placeholder="رقم السجل التجاري"
+                       style="direction:ltr;text-align:right;"
+                       onblur="vld('aRegNum','alnum')" oninput="vld('aRegNum','alnum',true)">
+                <i class="fas fa-id-card ir"></i>
+            </div>
+            <span class="em" id="e_aRegNum">يرجى إدخال رقم سجل تجاري صحيح (أرقام وأحرف).</span>
+        </div>
+
+        <!-- Representative Name -->
+        <div class="field">
+            <div class="wrap">
+                <input id="aRep" class="inp" type="text" placeholder="اسم المندوب المفوّض"
+                       onblur="vld('aRep','min2')" oninput="vld('aRep','min2',true)">
+                <i class="fas fa-user-tie ir"></i>
+            </div>
+            <span class="em" id="e_aRep">اسم المندوب مطلوب (2 أحرف على الأقل).</span>
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+            <div class="wrap">
+                <input id="aEmail" class="inp" type="email" placeholder="البريد الإلكتروني للوكالة"
+                       style="direction:ltr;text-align:right;"
+                       onblur="vld('aEmail','email')" oninput="vld('aEmail','email',true)">
+                <i class="fas fa-envelope ir"></i>
+            </div>
+            <span class="em" id="e_aEmail">يرجى إدخال بريد إلكتروني صحيح وفريد.</span>
+        </div>
+
+        <!-- Mobile -->
+        <div class="field">
+            <div class="wrap cc-row">
+                <select class="cc">
+                    <option>🇪🇬 +20</option><option>🇸🇦 +966</option>
+                    <option>🇦🇪 +971</option><option>🇺🇸 +1</option><option>🇬🇧 +44</option>
+                </select>
+                <div style="position:relative;flex:1;">
+                    <input id="aMobile" class="inp" type="tel" placeholder="رقم الجوال"
+                           style="direction:ltr;text-align:right;"
+                           onblur="vld('aMobile','mobile')" oninput="vld('aMobile','mobile',true)">
+                    <i class="fas fa-phone ir"></i>
+                </div>
+            </div>
+            <span class="em" id="e_aMobile">يرجى إدخال رقم جوال صحيح.</span>
+        </div>
+
+        <!-- Document upload -->
+        <div class="field" style="margin-bottom:16px;">
+            <p style="font-size:12px;font-weight:600;color:#475569;margin-bottom:6px;text-align:right;">
+                وثيقة الوكالة (رخصة تجارية) <span style="color:#ef4444;">*</span>
+            </p>
+            <div class="upload-zone" id="uploadZone"
+                 onclick="document.getElementById('fileIn').click()"
+                 ondragover="e=>e.preventDefault()"
+                 ondragenter="this.classList.add('drag')"
+                 ondragleave="this.classList.remove('drag')"
+                 ondrop="handleDrop(event)">
+                <i class="fas fa-cloud-arrow-up" id="uploadIco"></i>
+                <p id="uploadTxt">اضغط لرفع الملف أو اسحبه هنا</p>
+                <p class="sub" id="uploadSub">PDF فقط — الحجم الأقصى 5 ميجابايت</p>
+            </div>
+            <input type="file" id="fileIn" accept=".pdf" style="display:none" onchange="handleFile(this)">
+            <span class="em" id="e_aFile">يرجى رفع وثيقة الوكالة (PDF، بحد أقصى 5MB).</span>
+        </div>
+
+        <!-- Terms -->
+        <div class="terms-row">
+            <p>بإرسال الطلب أوافق على <a href="#" style="color:#1d4ed8;font-weight:600;">شروط الاستخدام</a> و<a href="#" style="color:#1d4ed8;font-weight:600;">سياسة الخصوصية</a></p>
+            <input type="checkbox" id="aTerms">
+        </div>
+
+        <button class="btn" onclick="submitAgency()">إرسال طلب تسجيل الوكالة</button>
+        <p class="bl" style="margin-top:4px;">لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+    </div>
+
+
+    <!-- ══════════════════════════════════
+         SCREEN C — INDIVIDUAL OTP
+    ═════════════════════════════════════ -->
+    <div id="sOtp" class="hidden">
+        <div class="heading">
+            <h2>التحقق من الهوية</h2>
+            <p>أدخل الرمز المكوّن من ٦ أرقام المُرسَل إلى <strong id="maskedEmail" style="color:#1e293b;"></strong></p>
+        </div>
+
+        <div class="scard">
+            <i class="fas fa-circle-check"></i>
+            <div>
+                <strong>تم إرسال رمز التحقق!</strong>
+                <span>أُرسل الرمز إلى بريدك الإلكتروني ورقم جوالك المسجّلَين</span>
+            </div>
+        </div>
+
+        <div class="otp-row">
+            <input type="text" maxlength="1" class="otp" id="o1" oninput="oi(this,null,'o2')">
+            <input type="text" maxlength="1" class="otp" id="o2" oninput="oi(this,'o1','o3')">
+            <input type="text" maxlength="1" class="otp" id="o3" oninput="oi(this,'o2','o4')">
+            <input type="text" maxlength="1" class="otp" id="o4" oninput="oi(this,'o3','o5')">
+            <input type="text" maxlength="1" class="otp" id="o5" oninput="oi(this,'o4','o6')">
+            <input type="text" maxlength="1" class="otp" id="o6" oninput="oi(this,'o5',null);otpDone()">
+        </div>
+        <span class="em" id="eOtp" style="display:block;text-align:center;margin-bottom:8px;"></span>
+
+        <p style="text-align:center;font-size:12px;color:#94a3b8;margin-bottom:20px;">
+            صلاحية الرمز تنتهي خلال <span style="color:#1d4ed8;font-weight:700;" id="tmr">10:00</span>
+        </p>
+
+        <button class="btn" id="vBtn" onclick="verifyOtp()" disabled>تأكيد الرمز وتفعيل الحساب</button>
+
+        <div style="text-align:center;margin-top:2px;">
+            <p style="font-size:12px;color:#94a3b8;margin-bottom:5px;">لم تستلم الرمز؟</p>
+            <button id="rsndBtn" onclick="resendOtp()" disabled
+                    style="background:none;border:none;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;color:#94a3b8;cursor:not-allowed;">
+                إعادة الإرسال
+            </button>
+            <p style="font-size:11px;color:#94a3b8;margin-top:3px;" id="rsndRow">
+                يمكنك الطلب بعد <span style="color:#1d4ed8;font-weight:700;" id="rsndC">60</span> ثانية
+            </p>
+        </div>
+
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f1f5f9;text-align:center;">
+            <button onclick="show('sIndForm');pipState(2,'ind')"
+                    style="background:none;border:none;font-family:'Tajawal',sans-serif;font-size:12px;color:#94a3b8;cursor:pointer;display:flex;align-items:center;gap:5px;margin:0 auto;">
+                <i class="fas fa-arrow-right" style="font-size:10px;"></i> العودة لتعديل البيانات
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════
+         SCREEN D — INDIVIDUAL SUCCESS
+    ═════════════════════════════════════ -->
+    <div id="sIndDone" class="hidden end-screen">
+        <div class="end-icon" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#16a34a;">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2>تم تفعيل حسابك!</h2>
+        <p>مرحباً بك في نظام الموافقات الأمنية.<br>يمكنك الآن البدء في تقديم الاستفسارات الأمنية.</p>
+        <button class="btn" style="max-width:260px;margin:0 auto 12px;">
+            <i class="fas fa-home" style="margin-left:8px;"></i> الانتقال إلى لوحة التحكم
+        </button>
+        <p style="font-size:11px;color:#94a3b8;">ستنتقل تلقائياً خلال <span id="rdI">5</span> ثوانٍ…</p>
+    </div>
+
+
+    <!-- ══════════════════════════════════
+         SCREEN E — AGENCY PENDING
+    ═════════════════════════════════════ -->
+    <div id="sAgencyPending" class="hidden end-screen">
+        <div class="end-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a);color:#d97706;font-size:34px;">
+            <i class="fas fa-clock"></i>
+        </div>
+        <h2>طلبك قيد المراجعة</h2>
+        <p>تم استلام طلب تسجيل الوكالة بنجاح.<br>سيقوم المشرف بمراجعة بياناتك وستُبلَّغ بالقرار عبر البريد الإلكتروني.</p>
+
+        <!-- Summary card -->
+        <div class="end-detail">
+            <div class="row">
+                <span class="val" id="pAgencyName">—</span>
+                <span class="lbl">اسم الوكالة</span>
+            </div>
+            <div class="row">
+                <span class="val" id="pRegNum">—</span>
+                <span class="lbl">رقم السجل التجاري</span>
+            </div>
+            <div class="row">
+                <span class="val" id="pEmail">—</span>
+                <span class="lbl">البريد الإلكتروني</span>
+            </div>
+            <div class="row">
+                <span class="val" style="color:#d97706;">قيد المراجعة</span>
+                <span class="lbl">حالة الطلب</span>
+            </div>
+        </div>
+
+        <!-- Info note -->
+        <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:12px 14px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start;text-align:right;">
+            <i class="fas fa-envelope" style="color:#3b82f6;margin-top:2px;flex-shrink:0;"></i>
+            <p style="font-size:12px;color:#1e40af;line-height:1.7;">
+                تم إرسال رسالة تأكيد إلى بريدك الإلكتروني. إذا لم تجدها في الوارد، تحقق من مجلد البريد غير المرغوب فيه.
+            </p>
+        </div>
+
+        <a class="btn" href="login.html" style="max-width:260px;margin:0 auto;display:flex;align-items:center;justify-content:center;text-decoration:none;">
+            <i class="fas fa-right-to-bracket" style="margin-left:8px;"></i> تسجيل الدخول
+        </a>
+    </div>
+
+</div><!-- /panel-inner -->
+</div><!-- /panel -->
+
+
+<script>
+/* ══════════════════ NAVIGATION ══════════════════ */
+let currentScreen = 'sIndForm';
+function show(id) {
+    ['sIndForm','sAgencyForm','sOtp','sIndDone','sAgencyPending'].forEach(s => {
+        document.getElementById(s).classList.toggle('hidden', s !== id);
+    });
+    currentScreen = id;
+    document.getElementById('mainPanel').scrollTop = 0;
+}
+
+/* pip states: mode = 'ind' | 'agency', step = 1 | 2 */
+function pipState(step, mode) {
+    const p1 = document.getElementById('p1');
+    const p2 = document.getElementById('p2');
+    const lbl = document.getElementById('pipLbl');
+    if (mode === 'agency') {
+        p2.classList.add('hidden');
+        p1.className = step === 1 ? 'pip cur' : 'pip done';
+        lbl.textContent = step === 1 ? 'بيانات الوكالة' : 'طلب مُرسَل ✓';
+    } else {
+        p2.classList.remove('hidden');
+        if (step === 1) { p1.className = 'pip cur'; p2.className = 'pip'; lbl.textContent = 'الخطوة ١ من ٢ — بيانات الحساب'; }
+        if (step === 2) { p1.className = 'pip done'; p2.className = 'pip cur'; lbl.textContent = 'الخطوة ٢ من ٢ — التحقق بالرمز'; }
+        if (step === 3) { p1.className = 'pip done'; p2.className = 'pip done'; lbl.textContent = 'تم التسجيل بنجاح ✓'; }
+    }
+}
+
+/* Switch tab */
+function switchType(type) {
+    if (type === 'ind') {
+        show('sIndForm'); pipState(1, 'ind');
+    } else {
+        show('sAgencyForm'); pipState(1, 'agency');
+    }
+}
+
+/* ══════════════════ VALIDATION ══════════════════ */
+const rules = {
+    ar:    v => v.length >= 3 && /^[\u0600-\u06FF\s]+$/.test(v),
+    en:    v => v.length >= 3 && /^[A-Za-z\s]+$/.test(v),
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    mobile:v => /^\d{8,15}$/.test(v.replace(/\D/g,'')),
+    pwd:   v => v.length>=8 && /[A-Z]/.test(v) && /[a-z]/.test(v) && /\d/.test(v) && /[^A-Za-z0-9]/.test(v),
+    min3:  v => v.length >= 3,
+    min2:  v => v.length >= 2,
+    alnum: v => /^[A-Za-z0-9\u0600-\u06FF\-\/]+$/.test(v) && v.length >= 3,
+};
+
+function vld(id, type, refOrSilent, silent) {
+    const el = document.getElementById(id);
+    const errEl = document.getElementById('e_' + id);
+    const v = el.value.trim();
+    if (!v) { el.className = 'inp'; if (errEl) errEl.className = 'em'; return true; }
+
+    let ok;
+    if (type === 'cpwd') {
+        const refId = typeof refOrSilent === 'string' ? refOrSilent : 'iPwd';
+        ok = v === document.getElementById(refId).value;
+    } else {
+        ok = rules[type] ? rules[type](v) : true;
+    }
+
+    const isSilent = (typeof refOrSilent === 'boolean' && refOrSilent) || (typeof silent === 'boolean' && silent);
+    if (!isSilent || !ok) {
+        el.className = ok ? 'inp ok' : 'inp err';
+        if (errEl) errEl.className = ok ? 'em' : 'em show';
+    }
+    return ok;
+}
+
+/* ══════════════════ PASSWORD STRENGTH ══════════════════ */
+const SC = ['#f87171','#fb923c','#facc15','#4ade80'];
+const SL = ['ضعيفة جداً','ضعيفة','متوسطة','قوية'];
+function strBar(pwdId) {
+    const v = document.getElementById(pwdId).value;
+    const prefix = pwdId === 'iPwd' ? 'isb' : 'asb';
+    let s = 0;
+    if (v.length >= 8) s++;
+    if (/[A-Z]/.test(v) && /[a-z]/.test(v)) s++;
+    if (/\d/.test(v)) s++;
+    if (/[^A-Za-z0-9]/.test(v)) s++;
+    for (let i = 1; i <= 4; i++) {
+        const b = document.getElementById(prefix + i);
+        if (b) b.style.background = i <= s ? SC[s-1] : '#e2e8f0';
+    }
+    const hint = document.getElementById(pwdId === 'iPwd' ? 'iStrHint' : 'aStrHint');
+    if (hint) {
+        hint.textContent = !v ? 'يجب أن تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز'
+                               : 'قوة كلمة المرور: ' + (SL[s-1] || 'ضعيفة جداً');
+        hint.style.color = !v ? '#94a3b8' : SC[s-1];
+    }
+}
+
+/* ══════════════════ EYE TOGGLE ══════════════════ */
+function eye(fid, eid) {
+    const f = document.getElementById(fid);
+    const e = document.getElementById(eid);
+    f.type = f.type === 'password' ? 'text' : 'password';
+    e.className = f.type === 'text' ? 'fas fa-eye' : 'fas fa-eye-slash';
+}
+
+/* ══════════════════ FILE UPLOAD ══════════════════ */
+let uploadedFile = null;
+function handleFile(input) {
+    const file = input.files[0];
+    setUploadFile(file);
+}
+function handleDrop(e) {
+    e.preventDefault();
+    document.getElementById('uploadZone').classList.remove('drag');
+    const file = e.dataTransfer.files[0];
+    setUploadFile(file);
+}
+function setUploadFile(file) {
+    const zone = document.getElementById('uploadZone');
+    const ico  = document.getElementById('uploadIco');
+    const txt  = document.getElementById('uploadTxt');
+    const sub  = document.getElementById('uploadSub');
+    const err  = document.getElementById('e_aFile');
+    if (!file) return;
+    if (file.type !== 'application/pdf') {
+        zone.classList.add('err-zone');
+        err.className = 'em show'; err.textContent = 'نوع الملف غير مدعوم. يُرجى رفع ملف PDF فقط.';
+        return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+        zone.classList.add('err-zone');
+        err.className = 'em show'; err.textContent = 'حجم الملف يتجاوز 5 ميجابايت. يُرجى اختيار ملف أصغر.';
+        return;
+    }
+    uploadedFile = file;
+    zone.classList.remove('err-zone');
+    zone.classList.add('has-file');
+    ico.className = 'fas fa-file-pdf';
+    ico.style.color = '#22c55e';
+    txt.innerHTML = `<span class="fname">${file.name}</span>`;
+    sub.textContent = (file.size / 1024).toFixed(0) + ' KB — PDF';
+    err.className = 'em';
+}
+
+/* ══════════════════ SUBMIT INDIVIDUAL ══════════════════ */
+function submitInd() {
+    const checks = [
+        vld('iNameAr','ar'), vld('iNameEn','en'),
+        vld('iEmail','email'), vld('iMobile','mobile'),
+        vld('iPwd','pwd'), vld('iCpwd','cpwd','iPwd'),
+    ];
+    if (checks.some(c => !c)) return;
+    if (!document.getElementById('iTerms').checked) { alert('يرجى الموافقة على شروط الاستخدام والخصوصية.'); return; }
+
+    const em = document.getElementById('iEmail').value;
+    const [u, d] = em.split('@');
+    document.getElementById('maskedEmail').textContent = u.slice(0,2) + '***@' + d;
+
+    show('sOtp');
+    pipState(2, 'ind');
+    clearOtp();
+    startTimer(600);
+    startResend(60);
+    setTimeout(() => document.getElementById('o1').focus(), 50);
+}
+
+/* ══════════════════ SUBMIT AGENCY ══════════════════ */
+function submitAgency() {
+    const checks = [
+        vld('aName','min3'), vld('aRegNum','alnum'),
+        vld('aRep','min2'), vld('aEmail','email'),
+        vld('aMobile','mobile'),
+    ];
+    if (checks.some(c => !c)) return;
+    if (!uploadedFile) {
+        document.getElementById('e_aFile').className = 'em show';
+        document.getElementById('uploadZone').classList.add('err-zone');
+        return;
+    }
+    if (!document.getElementById('aTerms').checked) { alert('يرجى الموافقة على شروط الاستخدام والخصوصية.'); return; }
+
+    // Fill summary
+    const agencyName = document.getElementById('aName').value;
+    const regNumber = document.getElementById('aRegNum').value;
+    const contactName = document.getElementById('aRep').value;
+    const agencyEmail = document.getElementById('aEmail').value;
+    const agencyId = 'AGN' + String(Date.now()).slice(-6);
+    const registrationReference = 'REG-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + String(Date.now()).slice(-4);
+    const submissionDateTime = new Date().toLocaleString();
+
+    document.getElementById('pAgencyName').textContent = agencyName;
+    document.getElementById('pRegNum').textContent     = regNumber;
+    document.getElementById('pEmail').textContent      = agencyEmail;
+
+    localStorage.setItem('pendingAgencyRegistration', JSON.stringify({
+        agencyName,
+        regNumber,
+        contactName,
+        email: agencyEmail,
+        agencyId,
+        registrationReference,
+        submissionDateTime,
+        status: 'pending'
+    }));
+
+    if (window.EmailNotifications) {
+        window.EmailNotifications.sendTemplateEmail(
+            'EMAIL-REG-SUBMITTED',
+            agencyEmail,
+            {
+                Contact_Name: contactName,
+                Registration_Reference: registrationReference,
+                Submission_DateTime: submissionDateTime
+            },
+            { event: 'agency_registration_submitted' }
+        );
+    }
+
+    show('sAgencyPending');
+    pipState(2, 'agency');
+}
+
+/* ══════════════════ OTP ══════════════════ */
+function oi(el, prev, next) {
+    el.value = el.value.replace(/\D/g,'').slice(-1);
+    el.className = el.value ? 'otp filled' : 'otp';
+    if (el.value && next) document.getElementById(next).focus();
+    if (!el.value && prev) document.getElementById(prev).focus();
+}
+function otpDone() {
+    const full = ['o1','o2','o3','o4','o5','o6'].every(id => document.getElementById(id).value);
+    const btn = document.getElementById('vBtn');
+    btn.disabled = !full;
+}
+function clearOtp() {
+    ['o1','o2','o3','o4','o5','o6'].forEach(id => {
+        const el = document.getElementById(id);
+        el.value = ''; el.className = 'otp';
+        el.style.borderColor = ''; el.style.background = '';
+    });
+    document.getElementById('vBtn').disabled = true;
+    document.getElementById('eOtp').style.display = 'none';
+}
+function verifyOtp() {
+    const code = ['o1','o2','o3','o4','o5','o6'].map(id => document.getElementById(id).value).join('');
+    if (code === '123456') {
+        show('sIndDone'); pipState(3,'ind');
+        clearInterval(timerInt); clearInterval(rsndInt);
+        let s = 5;
+        const rd = setInterval(() => { document.getElementById('rdI').textContent = --s; if(s<0) clearInterval(rd); }, 1000);
+        return;
+    }
+    const errEl = document.getElementById('eOtp');
+    errEl.textContent = 'الرمز الذي أدخلته غير صحيح أو انتهت صلاحيته. اطلب رمزاً جديداً.';
+    errEl.style.display = 'block';
+    ['o1','o2','o3','o4','o5','o6'].forEach(id => {
+        const el = document.getElementById(id);
+        el.className = 'otp shake';
+        el.style.borderColor = '#f87171'; el.style.background = '#fff5f5';
+        setTimeout(() => { el.className='otp'; el.style.borderColor=''; el.style.background=''; }, 450);
+    });
+}
+
+/* ══════════════════ TIMERS ══════════════════ */
+let timerInt, rsndInt;
+function startTimer(s) {
+    clearInterval(timerInt);
+    timerInt = setInterval(() => {
+        const m = String(Math.floor(s/60)).padStart(2,'0');
+        const sec = String(s % 60).padStart(2,'0');
+        document.getElementById('tmr').textContent = m + ':' + sec;
+        if (s-- <= 0) clearInterval(timerInt);
+    }, 1000);
+}
+function startResend(s) {
+    const btn = document.getElementById('rsndBtn');
+    const cnt = document.getElementById('rsndC');
+    btn.disabled = true; btn.style.color = '#94a3b8'; btn.style.cursor = 'not-allowed';
+    document.getElementById('rsndRow').style.display = 'block';
+    clearInterval(rsndInt);
+    rsndInt = setInterval(() => {
+        cnt.textContent = s;
+        if (s-- <= 0) {
+            clearInterval(rsndInt);
+            btn.disabled = false; btn.style.color = '#1d4ed8'; btn.style.cursor = 'pointer';
+            document.getElementById('rsndRow').style.display = 'none';
+        }
+    }, 1000);
+}
+function resendOtp() {
+    clearOtp();
+    startTimer(600); startResend(60);
+    document.getElementById('eOtp').style.display = 'none';
+    setTimeout(() => document.getElementById('o1').focus(), 50);
+}
+
+/* init */
+pipState(1, 'ind');
+</script>
+<script src="scripts/email-notifications.js"></script>
+<script src="i18n/i18n.js"></script>
+<script>
+    i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
+</script>
+</body>
+</html>

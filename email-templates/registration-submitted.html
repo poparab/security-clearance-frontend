@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Template - Registration Submitted</title>
+  <style>
+    body { margin:0; background:linear-gradient(180deg,#f8fbff 0%,#eef4ff 100%); font-family:Arial, sans-serif; color:#0f172a; }
+    .wrap { max-width:760px; margin:30px auto; padding:0 14px; }
+    .card { background:#fff; border:1px solid #dbe7ff; border-radius:16px; overflow:hidden; margin-bottom:18px; box-shadow:0 12px 34px rgba(30,58,138,.08); }
+    .head { background:linear-gradient(120deg,#1e3a8a,#1d4ed8); color:#fff; padding:18px 22px; font-weight:700; font-size:15px; display:flex; align-items:center; justify-content:space-between; }
+    .body { padding:22px; line-height:1.8; font-size:15px; }
+    .subject { margin:0 0 10px; font-size:15px; color:#1e3a8a; }
+    .meta { background:#f8fbff; border:1px solid #dbeafe; border-radius:10px; padding:12px 14px; margin:16px 0; }
+    .meta div + div { margin-top:6px; }
+    .k { color:#64748b; display:inline-block; min-width:160px; font-weight:600; }
+    .footer { color:#64748b; font-size:13px; margin-top:16px; padding-top:10px; border-top:1px dashed #dbeafe; }
+    .rtl { direction:rtl; text-align:right; font-family:'Tajawal', Arial, sans-serif; }
+    .tag { display:inline-block; background:rgba(255,255,255,.2); color:#fff; font-size:12px; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">EMAIL-REG-SUBMITTED <span class="tag">EN</span></div>
+      <div class="body">
+        <p class="subject"><strong>Subject:</strong> Agency Registration Received - Pending Review</p>
+        <p>Dear [Contact_Name],</p>
+        <p>Your agency registration has been successfully submitted and is now pending Admin review.</p>
+        <div class="meta">
+          <div><span class="k">Reference:</span> [Registration_Reference]</div>
+          <div><span class="k">Submission Date:</span> [Submission_DateTime]</div>
+        </div>
+        <p>We will notify you by email once your account is approved.</p>
+        <p class="footer">Security Clearance & Inquiry System</p>
+      </div>
+    </div>
+
+    <div class="card rtl">
+      <div class="head">EMAIL-REG-SUBMITTED <span class="tag">AR</span></div>
+      <div class="body">
+        <p class="subject"><strong>الموضوع:</strong> تم استلام تسجيل الوكالة — قيد المراجعة</p>
+        <p>عزيزي/عزيزتي [Contact_Name]،</p>
+        <p>تم استلام طلب تسجيل الوكالة بنجاح وهو الآن قيد مراجعة الإدارة.</p>
+        <div class="meta">
+          <div><span class="k">الرقم المرجعي:</span> [Registration_Reference]</div>
+          <div><span class="k">تاريخ التقديم:</span> [Submission_DateTime]</div>
+        </div>
+        <p>سيتم إشعاركم عبر البريد الإلكتروني عند اعتماد الحساب.</p>
+        <p class="footer">نظام الموافقات الأمنية والاستعلامات</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

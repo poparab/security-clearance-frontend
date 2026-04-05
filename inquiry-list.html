@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة الاستعلامات — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* New Inquiry Modal – form fields */
+        .ff-field { display:flex; flex-direction:column; gap:4px; }
+        .ff-field label { font-size:11px; font-weight:700; color:#475569; }
+        .ff-field input, .ff-field select {
+            border:1.5px solid #e2e8f0; border-radius:8px;
+            padding:7px 10px; font-family:inherit; font-size:13px; color:#0f172a;
+            background:#fafafe; transition:border-color .15s; outline:none; width:100%;
+        }
+        .ff-field input:focus, .ff-field select:focus { border-color:#1d4ed8; background:#fff; }
+        /* Document upload button */
+        .doc-upload-btn {
+            display:flex; align-items:center; gap:8px;
+            padding:10px 16px; border:1.5px dashed #cbd5e1; border-radius:10px;
+            background:#f8fafc; cursor:pointer; transition:all .2s;
+        }
+        .doc-upload-btn:hover { border-color:#1d4ed8; background:#eff6ff; }
+        .doc-upload-btn.uploaded { border-color:#bbf7d0; background:#f0fdf4; border-style:solid; }
+        .doc-upload-btn input[type=file] { display:none; }
+        .doc-upload-icon { font-size:20px; color:#94a3b8; width:24px; text-align:center; flex-shrink:0; }
+        .doc-upload-btn.uploaded .doc-upload-icon { color:#16a34a; }
+        .doc-upload-label { font-size:13px; font-weight:600; color:#334155; display:block; }
+        .doc-upload-btn.uploaded .doc-upload-label { color:#15803d; }
+        .doc-upload-hint { font-size:11px; color:#94a3b8; }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TOP HEADER BAR
+═══════════════════════════════════════ -->
+<header class="top-header">
+    <div class="top-header-inner">
+        <div class="logo-wrap">
+            <div class="logo-icon">
+                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                    <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+                    <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
+                    <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1>
+                <p data-i18n="common.brand.subtitle">Security Approval System</p>
+            </div>
+        </div>
+
+        <nav class="top-nav">
+            <a class="nav-link" href="agency-dashboard.html">
+                <i class="fas fa-gauge-high"></i> <span data-i18n="portal.nav.dashboard">لوحة التحكم</span>
+            </a>
+            <a class="nav-link active" href="inquiry-list.html">
+                <i class="fas fa-file-lines"></i> <span data-i18n="portal.nav.inquiries">الاستعلامات</span>
+                <span class="nav-badge">3</span>
+            </a>
+            <a class="nav-link" href="batch-list.html">
+                <i class="fas fa-layer-group"></i> <span data-i18n="portal.nav.batch">حزمة طلبات</span>
+            </a>
+            <a class="nav-link" href="wallet.html">
+                <i class="fas fa-wallet"></i> <span data-i18n="portal.nav.wallet">المحفظة</span>
+            </a>
+            <a class="nav-link" href="#">
+                <i class="fas fa-building"></i> <span data-i18n="portal.nav.agency">الوكالة</span>
+            </a>
+            <a class="nav-link" href="#">
+                <i class="fas fa-circle-question"></i> <span data-i18n="portal.nav.help">المساعدة</span>
+            </a>
+        </nav>
+
+        <div class="top-right">
+            <div class="notif-btn" id="bellBtn" onclick="toggleNotif()">
+                <i class="fas fa-bell"></i>
+                <span class="notif-dot" id="notifDot"></span>
+            </div>
+            <div class="lang-toggle">
+                <button class="active" data-lang="ar" onclick="setLang(this)">ع</button>
+                <button data-lang="en" onclick="setLang(this)">EN</button>
+            </div>
+            <div class="user-chip" id="userChip" onclick="toggleUser()">
+                <div class="user-avatar"><i class="fas fa-user"></i></div>
+                <div class="user-info">
+                    <div class="uname">وكالة النيل للسياحة</div>
+                    <div class="urole">وكالة معتمدة</div>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Notification drawer -->
+<div class="notif-drawer" id="notifDrawer">
+    <div class="nd-header">
+        <h4><span data-i18n="portal.notifications.title">الإشعارات</span> <span style="background:#ef4444;color:#fff;font-size:10px;padding:1px 7px;border-radius:10px;margin-right:5px;">3</span></h4>
+        <span class="nd-mark" data-i18n="portal.notifications.markAllRead" onclick="markAllRead()">تعليم الكل كمقروء</span>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#22c55e;"></div>
+        <div class="nd-text">
+            <strong>INQ-2024-0787 — موافقة</strong>
+            <span>تمت الموافقة على طلب خالد محمود عبدالله</span>
+            <div class="nd-time">منذ 12 دقيقة</div>
+        </div>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#f59e0b;"></div>
+        <div class="nd-text">
+            <strong>INQ-2024-0789 — قيد المعالجة</strong>
+            <span>طلب محمد أحمد السيد قيد الفحص الأمني</span>
+            <div class="nd-time">منذ 2 ساعة</div>
+        </div>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#3b82f6;"></div>
+        <div class="nd-text">
+            <strong>رصيد المحفظة منخفض</strong>
+            <span>رصيدك الحالي $450 — يُنصح بالشحن قريباً</span>
+            <div class="nd-time">أمس، 6:30 م</div>
+        </div>
+    </div>
+</div>
+
+<!-- User dropdown -->
+<div class="user-dropdown" id="userDropdown">
+    <div class="ud-top">
+        <div class="udname" data-i18n="portal.user.name">وكالة النيل للسياحة</div>
+        <div class="udrole" data-i18n="portal.user.role">وكالة معتمدة</div>
+        <div class="udid" dir="ltr">AG-2024-0156</div>
+    </div>
+    <a class="ud-item" href="#"><i class="fas fa-building"></i> <span data-i18n="portal.user.profile">بيانات الوكالة</span></a>
+    <a class="ud-item logout" href="login.html"><i class="fas fa-right-from-bracket"></i> <span data-i18n="portal.user.logout">تسجيل الخروج</span></a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <div class="breadcrumb-inner">
+        <a href="agency-dashboard.html"><i class="fas fa-home" style="font-size:11px;"></i></a>
+        <i class="fas fa-chevron-left sep"></i>
+        <span class="cur" data-i18n="portal.inquiryList.breadcrumb.current">قائمة الاستعلامات</span>
+    </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h2 data-i18n="portal.inquiryList.hero.title">قائمة الطلبات الأمنية</h2>
+            <p data-i18n="portal.inquiryList.hero.subtitle">مراجعة ومتابعة طلبات الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة</p>
+        </div>
+        <div class="hero-agency">
+            <div class="hero-agency-icon"><i class="fas fa-building"></i></div>
+            <div class="hero-agency-text">
+                <div class="aname">وكالة النيل للسياحة</div>
+                <div class="amid" dir="ltr">AG-2024-0156</div>
+                <span class="hero-badge"><i class="fas fa-circle-check"></i> حساب نشط</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+    <!-- Stats row -->
+    <div class="stats-row">
+        <div class="stat stat-blue">
+            <div class="stat-icon-wrap"><i class="fas fa-file-lines"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">إجمالي الاستعلامات</div>
+                <div class="stat-num">247</div>
+                <div class="stat-period">منذ بداية الحساب</div>
+            </div>
+        </div>
+        <div class="stat stat-amber">
+            <div class="stat-icon-wrap"><i class="fas fa-hourglass-half"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">قيد المعالجة</div>
+                <div class="stat-num">38</div>
+                <div class="stat-period">تحت الفحص الأمني</div>
+            </div>
+        </div>
+        <div class="stat stat-green">
+            <div class="stat-icon-wrap"><i class="fas fa-circle-check"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">موافق عليها</div>
+                <div class="stat-num">198</div>
+                <div class="stat-period">موافق عليها بالكامل</div>
+            </div>
+        </div>
+        <div class="stat stat-red">
+            <div class="stat-icon-wrap"><i class="fas fa-circle-xmark"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">مرفوضة</div>
+                <div class="stat-num">11</div>
+                <div class="stat-period">مرفوضة أو فاشلة</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-card">
+        <div class="filter-row">
+            <div class="filter-group fg-search">
+                <label>البحث</label>
+                <input type="text" placeholder="رقم المرجع أو إسم المسافر...">
+            </div>
+            <div class="filter-group fg-status">
+                <label>حالة الطلب</label>
+                <select>
+                    <option value="">جميع الحالات</option>
+                    <option>قيد المعالجة</option>
+                    <option>تم الإرسال</option>
+                    <option>تمت الموافقة</option>
+                    <option>مرفوض</option>
+                    <option>قيد المراجعة</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>الجنسية</label>
+                <select style="width:160px;">
+                    <option value="">جميع الجنسيات</option>
+                    <option>سوريا</option>
+                    <option>العراق</option>
+                    <option>اليمن</option>
+                    <option>فلسطين</option>
+                    <option>لبنان</option>
+                    <option>السودان</option>
+                    <option>ليبيا</option>
+                </select>
+            </div>
+            <div class="filter-btns">
+                <button class="action-btn action-btn-primary" onclick="applyFilter()">
+                    <i class="fas fa-magnifying-glass"></i> بحث
+                </button>
+                <button class="action-btn action-btn-outline" onclick="resetFilter()">
+                    <i class="fas fa-rotate-right"></i> إعادة تعيين
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiries table -->
+    <div class="table-card">
+        <div class="table-header">
+            <h3>
+                <i class="fas fa-list-check" style="color:#1d4ed8;margin-left:6px;"></i>
+                قائمة الطلب
+                <span class="batch-count-badge" style="margin-right:8px;"><i class="fas fa-hashtag"></i> 8 نتائج</span>
+            </h3>
+            <button class="btn btn-primary btn-sm" onclick="openNewInquiryModal()" style="margin-right:auto;">
+                <i class="fas fa-plus"></i> استعلام جديد
+            </button>
+        </div>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المرجع</th>
+                        <th>إسم المسافر</th>
+                        <th>الجنسية</th>
+                        <th>تاريخ الإرسال</th>
+                        <th>الحالة</th>
+                        <th style="text-align:center;">الإجراء</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0789</span></td>
+                        <td>محمد أحمد السيد</td>
+                        <td>سوريا</td>
+                        <td>16 ديسمبر 2025</td>
+                        <td><span class="pill pill-amber"><i class="fas fa-hourglass-half"></i> قيد المعالجة</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0789&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0789" data-name="محمد أحمد السيد" data-nationality="سوريا" data-submitted="16 ديسمبر 2025" data-status-class="pill-amber" data-status-icon="fa-hourglass-half" data-status-text="قيد المعالجة" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr style="outline:2px dashed #93c5fd;outline-offset:-2px;">
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0788</span></td>
+                        <td>فاطمة علي حسن</td>
+                        <td>العراق</td>
+                        <td>17 ديسمبر 2025</td>
+                        <td><span class="pill pill-blue"><i class="fas fa-paper-plane"></i> تم الإرسال</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0788&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0788" data-name="فاطمة علي حسن" data-nationality="العراق" data-submitted="17 ديسمبر 2025" data-status-class="pill-blue" data-status-icon="fa-paper-plane" data-status-text="تم الإرسال" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0787</span></td>
+                        <td>خالد محمود عبدالله</td>
+                        <td>اليمن</td>
+                        <td>16 ديسمبر 2025</td>
+                        <td><span class="pill pill-green"><i class="fas fa-circle-check"></i> تمت الموافقة</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0787&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0787" data-name="خالد محمود عبدالله" data-nationality="اليمن" data-submitted="16 ديسمبر 2025" data-status-class="pill-green" data-status-icon="fa-circle-check" data-status-text="تمت الموافقة" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0786</span></td>
+                        <td>نور الدين يوسف</td>
+                        <td>فلسطين</td>
+                        <td>15 ديسمبر 2025</td>
+                        <td><span class="pill pill-amber"><i class="fas fa-hourglass-half"></i> قيد المعالجة</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0786&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0786" data-name="نور الدين يوسف" data-nationality="فلسطين" data-submitted="15 ديسمبر 2025" data-status-class="pill-amber" data-status-icon="fa-hourglass-half" data-status-text="قيد المعالجة" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0785</span></td>
+                        <td>سارة إبراهيم خليل</td>
+                        <td>لبنان</td>
+                        <td>14 ديسمبر 2025</td>
+                        <td><span class="pill pill-green"><i class="fas fa-circle-check"></i> تمت الموافقة</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0785&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0785" data-name="سارة إبراهيم خليل" data-nationality="لبنان" data-submitted="14 ديسمبر 2025" data-status-class="pill-green" data-status-icon="fa-circle-check" data-status-text="تمت الموافقة" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0784</span></td>
+                        <td>عمر حسن محمد</td>
+                        <td>سوريا</td>
+                        <td>13 ديسمبر 2025</td>
+                        <td><span class="pill pill-amber"><i class="fas fa-hourglass-half"></i> قيد المعالجة</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0784&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0784" data-name="عمر حسن محمد" data-nationality="سوريا" data-submitted="13 ديسمبر 2025" data-status-class="pill-amber" data-status-icon="fa-hourglass-half" data-status-text="قيد المعالجة" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0783</span></td>
+                        <td>ليل أحمد سمير</td>
+                        <td>العراق</td>
+                        <td>12 ديسمبر 2025</td>
+                        <td><span class="pill pill-red"><i class="fas fa-circle-xmark"></i> مرفوض</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0783&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0783" data-name="ليل أحمد سمير" data-nationality="العراق" data-submitted="12 ديسمبر 2025" data-status-class="pill-red" data-status-icon="fa-circle-xmark" data-status-text="مرفوض" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">INQ-2024-0782</span></td>
+                        <td>أحمد عبدالرحمن علي</td>
+                        <td>السودان</td>
+                        <td>11 ديسمبر 2025</td>
+                        <td><span class="pill pill-blue"><i class="fas fa-paper-plane"></i> تم الإرسال</span></td>
+                        <td style="text-align:center;">
+                            <a href="inquiry-view.html?ref=INQ-2024-0782&source=list" class="tbl-icon-btn" title="عرض التفاصيل" data-ref="INQ-2024-0782" data-name="أحمد عبدالرحمن علي" data-nationality="السودان" data-submitted="11 ديسمبر 2025" data-status-class="pill-blue" data-status-icon="fa-paper-plane" data-status-text="تم الإرسال" onclick="openInquiryPreview(event, this)"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Pagination -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid #f1f5f9;">
+            <span style="font-size:12px;color:#64748b;">عرض 8 من أصل 247 · عدد <span style="color:#475569;font-weight:700;">8 ▼</span></span>
+            <div style="display:flex;gap:4px;align-items:center;">
+                <button style="width:30px;height:30px;border:1.5px solid #e2e8f0;background:#fff;border-radius:7px;cursor:pointer;font-size:11px;color:#64748b;" disabled>‹</button>
+                <button style="width:30px;height:30px;border:1.5px solid #1a3a8f;background:#1a3a8f;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;color:#fff;">1</button>
+                <button style="width:30px;height:30px;border:1.5px solid #e2e8f0;background:#fff;border-radius:7px;cursor:pointer;font-size:12px;color:#475569;">2</button>
+                <button style="width:30px;height:30px;border:1.5px solid #e2e8f0;background:#fff;border-radius:7px;cursor:pointer;font-size:12px;color:#475569;">3</button>
+                <span style="font-size:12px;color:#94a3b8;padding:0 4px;">...</span>
+                <button style="width:30px;height:30px;border:1.5px solid #e2e8f0;background:#fff;border-radius:7px;cursor:pointer;font-size:12px;color:#475569;">8</button>
+                <button style="width:30px;height:30px;border:1.5px solid #e2e8f0;background:#fff;border-radius:7px;cursor:pointer;font-size:11px;color:#475569;">›</button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end page-body -->
+
+<!-- ══════════════════════ NEW INQUIRY MODAL ══════════════════════ -->
+<div id="newInquiryModal" style="position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:400;display:none;align-items:flex-start;justify-content:center;padding:24px 18px;overflow-y:auto;">
+    <div style="width:min(660px,100%);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(2,6,23,.3);margin:auto;">
+
+        <!-- Modal header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #f1f5f9;background:#f8fafc;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:36px;height:36px;background:#1d4ed8;border-radius:9px;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-file-circle-plus" style="color:#fff;font-size:15px;"></i>
+                </div>
+                <div>
+                    <div style="font-size:15px;font-weight:800;color:#0f172a;">استعلام جديد</div>
+                    <div style="font-size:11px;color:#64748b;">بيانات المسافر وبيانات الرحلة</div>
+                </div>
+            </div>
+            <button onclick="closeNewInquiryModal()" style="width:32px;height:32px;border:none;background:#f1f5f9;border-radius:8px;color:#64748b;cursor:pointer;font-size:14px;">
+                <i class="fas fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Wallet balance bar (no cost shown) -->
+        <div id="nim-balance-bar" style="display:flex;align-items:center;gap:12px;padding:10px 20px;background:#eff6ff;border-bottom:1px solid #bfdbfe;">
+            <i class="fas fa-wallet" style="color:#1d4ed8;"></i>
+            <span style="font-size:13px;color:#1e3a8a;font-weight:600;">رصيد المحفظة:</span>
+            <span style="font-size:14px;font-weight:800;color:#1d4ed8;" dir="ltr">$12,500</span>
+            <a href="wallet.html" style="margin-right:auto;font-size:11.5px;color:#1d4ed8;font-weight:600;"><i class="fas fa-arrow-up-right-from-square" style="font-size:10px;"></i> شحن المحفظة</a>
+        </div>
+
+        <!-- Insufficient balance warning -->
+        <div id="nim-insuf" style="display:none;margin:12px 20px 0;padding:10px 14px;background:#fef2f2;border:1.5px solid #fecaca;border-radius:8px;font-size:13px;color:#b91c1c;">
+            <i class="fas fa-triangle-exclamation"></i>
+            رصيدك الحالي غير كافٍ لإرسال هذا الطلب. يرجى <a href="wallet.html" style="color:#b91c1c;font-weight:700;">شحن المحفظة</a> أولاً.
+        </div>
+
+        <!-- Form body -->
+        <div style="padding:20px;display:flex;flex-direction:column;gap:16px;">
+
+            <!-- Traveler info -->
+            <div>
+                <div style="font-size:12px;font-weight:700;color:#64748b;margin-bottom:10px;display:flex;align-items:center;gap:6px;"><i class="fas fa-user"></i> بيانات المسافر</div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;">
+                    <div class="ff-field">
+                        <label>الاسم الكامل <span style="color:#dc2626;">*</span></label>
+                        <input type="text" id="nim-name" placeholder="كما في جواز السفر" maxlength="80">
+                    </div>
+                    <div class="ff-field">
+                        <label>الجنسية <span style="color:#dc2626;">*</span></label>
+                        <select id="nim-nat">
+                            <option value="">اختر</option>
+                            <option>سوداني</option><option>يمني</option><option>هندي</option>
+                            <option>أردني</option><option>باكستاني</option><option>إثيوبي</option>
+                            <option>أمريكي</option><option>بريطاني</option><option>كندي</option>
+                            <option>ليبي</option><option>سوري</option><option>عراقي</option>
+                        </select>
+                    </div>
+                    <div class="ff-field">
+                        <label>رقم الجواز <span style="color:#dc2626;">*</span></label>
+                        <input type="text" id="nim-passport" placeholder="AB123456" maxlength="20" dir="ltr">
+                    </div>
+                    <div class="ff-field">
+                        <label>انتهاء الجواز <span style="color:#dc2626;">*</span></label>
+                        <input type="date" id="nim-expiry">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flight info -->
+            <div>
+                <div style="font-size:12px;font-weight:700;color:#64748b;margin-bottom:10px;display:flex;align-items:center;gap:6px;"><i class="fas fa-plane"></i> بيانات الرحلة</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:12px;">
+                    <div class="ff-field">
+                        <label>دولة المغادرة <span style="color:#dc2626;">*</span></label>
+                        <select id="nim-from">
+                            <option value="">اختر</option>
+                            <option>السودان</option><option>اليمن</option><option>الهند</option>
+                            <option>الأردن</option><option>باكستان</option><option>إثيوبيا</option>
+                            <option>أمريكا</option><option>بريطانيا</option><option>كندا</option>
+                            <option>ليبيا</option><option>سوريا</option><option>العراق</option>
+                            <option>تركيا</option><option>الإمارات</option>
+                        </select>
+                    </div>
+                    <div class="ff-field">
+                        <label>مطار الوصول <span style="color:#dc2626;">*</span></label>
+                        <select id="nim-airport">
+                            <option value="">اختر</option>
+                            <option>مطار القاهرة الدولي</option>
+                            <option>مطار شرم الشيخ الدولي</option>
+                            <option>مطار الأقصر الدولي</option>
+                            <option>مطار أسوان الدولي</option>
+                            <option>مطار مرسى مطروح</option>
+                        </select>
+                    </div>
+                    <div class="ff-field">
+                        <label>تاريخ السفر <span style="color:#dc2626;">*</span></label>
+                        <input type="date" id="nim-date">
+                    </div>
+                    <div class="ff-field">
+                        <label>غرض الزيارة <span style="color:#dc2626;">*</span></label>
+                        <select id="nim-purpose">
+                            <option value="">اختر</option>
+                            <option>سياحة</option><option>عمل</option><option>علاج</option>
+                            <option>عائلة</option><option>تعليم</option><option>عبور</option>
+                        </select>
+                    </div>
+                    <div class="ff-field">
+                        <label>رقم الرحلة</label>
+                        <input type="text" id="nim-flightno" placeholder="MS-777" maxlength="10" dir="ltr">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document uploads -->
+            <div>
+                <div style="font-size:12px;font-weight:700;color:#64748b;margin-bottom:10px;display:flex;align-items:center;gap:6px;"><i class="fas fa-paperclip"></i> المستندات</div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                    <label id="nim-pp-btn" class="doc-upload-btn" for="nim-pp-file" style="flex:1;min-width:180px;">
+                        <span class="doc-upload-icon"><i class="fas fa-id-card"></i></span>
+                        <span>
+                            <span class="doc-upload-label" id="nim-pp-label">صورة جواز السفر</span>
+                            <span class="doc-upload-hint">JPG · PNG · PDF</span>
+                        </span>
+                        <input type="file" id="nim-pp-file" accept="image/*,.pdf" onchange="nimDocUpload('pp',event)">
+                    </label>
+                    <label id="nim-tk-btn" class="doc-upload-btn" for="nim-tk-file" style="flex:1;min-width:180px;">
+                        <span class="doc-upload-icon"><i class="fas fa-ticket"></i></span>
+                        <span>
+                            <span class="doc-upload-label" id="nim-tk-label">صورة التذكرة</span>
+                            <span class="doc-upload-hint">JPG · PNG · PDF</span>
+                        </span>
+                        <input type="file" id="nim-tk-file" accept="image/*,.pdf" onchange="nimDocUpload('tk',event)">
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal footer -->
+        <div style="display:flex;gap:10px;align-items:center;padding:16px 20px;border-top:1px solid #f1f5f9;background:#f8fafc;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" id="nim-submit-btn" onclick="submitNewInquiry()">
+                <i class="fas fa-paper-plane"></i> إرسال الطلب
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="closeNewInquiryModal()">إلغاء</button>
+        </div>
+    </div>
+</div>
+
+<!-- NIM Success state swap -->
+<div id="nimSuccessOverlay" style="position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:401;display:none;align-items:center;justify-content:center;padding:24px;">
+    <div style="background:#fff;border-radius:16px;padding:40px 32px;text-align:center;max-width:420px;width:100%;box-shadow:0 24px 80px rgba(2,6,23,.3);">
+        <div style="width:72px;height:72px;border-radius:50%;background:#dcfce7;display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px;">
+            <i class="fas fa-circle-check" style="font-size:36px;color:#16a34a;"></i>
+        </div>
+        <div style="font-size:19px;font-weight:800;color:#0f172a;margin-bottom:6px;">تم إرسال الطلب</div>
+        <div style="font-size:13px;color:#64748b;margin-bottom:6px;">طلبك قيد المعالجة الآن.</div>
+        <div style="font-size:13px;font-weight:700;color:#1d4ed8;margin-bottom:22px;" id="nim-success-ref" dir="ltr">INQ-2026-XXXX</div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="closeNimSuccess()">إضافة طلب آخر</button>
+            <a href="inquiry-view.html" class="btn btn-secondary btn-sm">عرض التفاصيل</a>
+        </div>
+    </div>
+</div>
+<div id="inquiryPreviewModal" style="position:fixed; inset:0; background:rgba(15,23,42,.55); z-index:300; display:none; align-items:center; justify-content:center; padding:18px;">
+    <div style="width:min(520px,100%); background:#fff; border:1.5px solid #dde3ee; border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(2,6,23,.28);">
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid #f1f5f9;">
+            <h4 style="font-size:15px; font-weight:800; color:#0f172a;">عرض سريع للاستعلام</h4>
+            <button onclick="closeInquiryPreview()" style="width:30px; height:30px; border:none; background:#f8fafc; border-radius:8px; color:#64748b; cursor:pointer;">
+                <i class="fas fa-xmark"></i>
+            </button>
+        </div>
+        <div style="padding:16px;">
+            <div class="confirm-summary-card" style="margin-bottom:12px;">
+                <div class="cs-row"><span class="cs-label">رقم المرجع</span><span class="cs-value" id="pvRef" dir="ltr">-</span></div>
+                <div class="cs-row"><span class="cs-label">اسم المسافر</span><span class="cs-value" id="pvName">-</span></div>
+                <div class="cs-row"><span class="cs-label">الجنسية</span><span class="cs-value" id="pvNationality">-</span></div>
+                <div class="cs-row"><span class="cs-label">تاريخ الإرسال</span><span class="cs-value" id="pvSubmitted">-</span></div>
+                <div class="cs-row"><span class="cs-label">الحالة</span><span id="pvStatusWrap"><span class="pill pill-blue"><i class="fas fa-paper-plane"></i> تم الإرسال</span></span></div>
+            </div>
+            <div style="display:flex; gap:8px; justify-content:flex-start;">
+                <a id="pvOpenFull" href="#" class="btn btn-primary btn-sm"><i class="fas fa-up-right-from-square"></i> فتح الصفحة الكاملة</a>
+                <button onclick="closeInquiryPreview()" class="btn btn-secondary btn-sm">إغلاق</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     RICH FOOTER
+═══════════════════════════════════════ -->
+<footer class="footer-rich">
+    <div class="footer-rich-inner">
+        <div class="fr-brand">
+            <div class="logo-wrap">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                        <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+                        <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
+                        <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>نظام الموافقات الأمنية</h1>
+                    <p>Security Approval System</p>
+                </div>
+            </div>
+            <p class="fr-desc">منصة متكاملة لإدارة وتتبع الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة · إدارة الطلبات بكل سهولة ويسر من خلال نظام متكامل</p>
+            <div class="fr-social">
+                <a href="#" title="Google+"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="fr-hotline"><i class="fas fa-phone-volume"></i>&nbsp; الخط الساخن: 16999</div>
+        </div>
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.quickLinks">روابط سريعة</h5>
+            <ul>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> عن النظام</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> حقوق الوصول</a></li>
+                <li><a href="inquiry-list.html"><i class="fas fa-chevron-left"></i> الاستعلام</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> المساعدة</a></li>
+            </ul>
+        </div>
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.services">خدمات</h5>
+            <ul>
+                <li><a href="batch-inquiry.html"><i class="fas fa-chevron-left"></i> طلب جديد</a></li>
+                <li><a href="batch-list.html"><i class="fas fa-chevron-left"></i> متابعة الطلب</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> خدمة الدفع</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
+            </ul>
+        </div>
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.contact">اتصل بنا</h5>
+            <div class="fr-contact-item"><i class="fas fa-phone"></i><span dir="ltr">+20 10 9070 2229</span></div>
+            <div class="fr-contact-item"><i class="fas fa-envelope"></i><span dir="ltr">info@esecurity.gov.eg</span></div>
+            <div class="fr-contact-item"><i class="fas fa-location-dot"></i><span>شارع جزيرة العرب، المهندسين، الجيزة، مصر</span></div>
+            <div class="fr-contact-item" style="margin-top:6px;"><i class="fas fa-headset"></i><span style="font-size:18px;font-weight:800;color:#e2e8f0;">الخط الساخن: 16999 📞</span></div>
+        </div>
+    </div>
+    <div class="footer-bottom-bar">
+        <span data-i18n="portal.footer.copyright">جميع الحقوق محفوظة © 2024 نظام الموافقات الأمنية</span>
+    </div>
+</footer>
+
+
+<script>
+function toggleNotif() {
+    const d = document.getElementById('notifDrawer');
+    const u = document.getElementById('userDropdown');
+    u.classList.remove('open');
+    d.classList.toggle('open');
+}
+function markAllRead() {
+    document.getElementById('notifDot').style.display = 'none';
+    document.querySelectorAll('.nd-dot').forEach(d => d.style.opacity = '.25');
+}
+function toggleUser() {
+    const d = document.getElementById('userDropdown');
+    const n = document.getElementById('notifDrawer');
+    n.classList.remove('open');
+    d.classList.toggle('open');
+    const chip = document.getElementById('userChip');
+    const rect = chip.getBoundingClientRect();
+    d.style.top   = (rect.bottom + 8) + 'px';
+    d.style.right = (window.innerWidth - rect.right) + 'px';
+    d.style.left  = 'auto';
+}
+document.addEventListener('click', function(e) {
+    const bell   = document.getElementById('bellBtn');
+    const notifD = document.getElementById('notifDrawer');
+    const userC  = document.getElementById('userChip');
+    const userD  = document.getElementById('userDropdown');
+    if (!bell.contains(e.target)  && !notifD.contains(e.target)) notifD.classList.remove('open');
+    if (!userC.contains(e.target) && !userD.contains(e.target))  userD.classList.remove('open');
+});
+function setLang(btn) {
+    if (window.i18n && typeof window.i18n.setLang === 'function') {
+        window.i18n.setLang(btn);
+        return;
+    }
+    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+function applyFilter() { /* stub */ }
+function resetFilter() {
+    document.querySelectorAll('.filter-card input, .filter-card select').forEach(el => {
+        el.value = el.defaultValue || '';
+    });
+}
+
+function openNewInquiryModal() {
+    document.getElementById('nim-insuf').style.display = 'none';
+    document.getElementById('newInquiryModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('nim-name')?.focus(), 80);
+}
+function closeNewInquiryModal() {
+    document.getElementById('newInquiryModal').style.display = 'none';
+    document.body.style.overflow = '';
+}
+function nimDocUpload(type, event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const btn  = document.getElementById('nim-' + type + '-btn');
+    const lbl  = document.getElementById('nim-' + type + '-label');
+    btn.classList.add('uploaded');
+    btn.querySelector('.doc-upload-icon i').className = 'fas fa-check-circle';
+    lbl.textContent = file.name;
+}
+const NIM_WALLET = 12500;
+const NIM_ZERO_BALANCE = false; // set true to demo insufficient balance
+
+function submitNewInquiry() {
+    const name     = document.getElementById('nim-name').value.trim();
+    const nat      = document.getElementById('nim-nat').value;
+    const passport = document.getElementById('nim-passport').value.trim();
+    const expiry   = document.getElementById('nim-expiry').value;
+    const from     = document.getElementById('nim-from').value;
+    const airport  = document.getElementById('nim-airport').value;
+    const date     = document.getElementById('nim-date').value;
+    const purpose  = document.getElementById('nim-purpose').value;
+    if (!name || !nat || !passport || !expiry || !from || !airport || !date || !purpose) {
+        alert('يرجى ملء جميع الحقول المطلوبة.'); return;
+    }
+    // Balance check only — no cost shown
+    if (NIM_ZERO_BALANCE) {
+        document.getElementById('nim-insuf').style.display = 'block';
+        document.getElementById('nim-insuf').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+    // Simulate success
+    const ref = 'INQ-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000).padStart(4,'0');
+    closeNewInquiryModal();
+    document.getElementById('nim-success-ref').textContent = ref;
+    document.getElementById('nimSuccessOverlay').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeNimSuccess() {
+    document.getElementById('nimSuccessOverlay').style.display = 'none';
+    document.body.style.overflow = '';
+    // Reset modal form
+    ['nim-name','nim-passport','nim-flightno'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+    ['nim-nat','nim-from','nim-airport','nim-purpose'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+    const expiry = document.getElementById('nim-expiry'); if(expiry) expiry.value='';
+    const date = document.getElementById('nim-date'); if(date) date.value='';
+    ['nim-pp-btn','nim-tk-btn'].forEach(id => {
+        const btn = document.getElementById(id); if (!btn) return;
+        btn.classList.remove('uploaded');
+        btn.querySelector('.doc-upload-icon i').className = btn.id === 'nim-pp-btn' ? 'fas fa-id-card' : 'fas fa-ticket';
+    });
+    document.getElementById('nim-pp-label').textContent = 'صورة جواز السفر';
+    document.getElementById('nim-tk-label').textContent = 'صورة التذكرة';
+    openNewInquiryModal();
+}
+document.getElementById('newInquiryModal').addEventListener('click', e => {
+    if (e.target.id === 'newInquiryModal') closeNewInquiryModal();
+});
+document.getElementById('nimSuccessOverlay').addEventListener('click', e => {
+    if (e.target.id === 'nimSuccessOverlay') {
+        document.getElementById('nimSuccessOverlay').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+});
+
+function openInquiryPreview(event, link) {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.button === 1) return;
+    event.preventDefault();
+    document.getElementById('pvRef').textContent = link.dataset.ref || '-';
+    document.getElementById('pvName').textContent = link.dataset.name || '-';
+    document.getElementById('pvNationality').textContent = link.dataset.nationality || '-';
+    document.getElementById('pvSubmitted').textContent = link.dataset.submitted || '-';
+    document.getElementById('pvStatusWrap').innerHTML = `<span class="pill ${link.dataset.statusClass || 'pill-blue'}"><i class="fas ${link.dataset.statusIcon || 'fa-paper-plane'}"></i> ${link.dataset.statusText || '-'}</span>`;
+    document.getElementById('pvOpenFull').setAttribute('href', link.getAttribute('href'));
+    document.getElementById('inquiryPreviewModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeInquiryPreview() {
+    document.getElementById('inquiryPreviewModal').style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+document.getElementById('inquiryPreviewModal').addEventListener('click', function(e) {
+    if (e.target.id === 'inquiryPreviewModal') closeInquiryPreview();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeInquiryPreview();
+});
+</script>
+
+<script src="i18n/i18n.js"></script>
+<script>
+    i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>معرض قوالب البريد الإلكتروني</title>
+  <style>
+    body { margin:0; font-family:'Tajawal', Arial, sans-serif; background:#f8fafc; color:#0f172a; }
+    .wrap { max-width:980px; margin:28px auto; padding:0 14px; }
+    .head { margin-bottom:18px; }
+    .head h1 { margin:0 0 6px; font-size:26px; }
+    .head p { margin:0; color:#64748b; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px; }
+    .id { display:inline-block; font-size:12px; background:#dbeafe; color:#1e40af; border-radius:999px; padding:4px 10px; margin-bottom:10px; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    p { margin:0 0 12px; color:#475569; line-height:1.7; }
+    a.btn { display:inline-block; text-decoration:none; background:#1d4ed8; color:#fff; border-radius:8px; padding:9px 12px; font-weight:700; }
+    a.btn:hover { background:#1e40af; }
+    .note { margin-top:18px; background:#fff7ed; border:1px solid #fdba74; border-radius:10px; padding:12px; color:#9a3412; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <h1>معرض قوالب البريد الإلكتروني</h1>
+      <p>افتح أي قالب لمشاهدة شكله ومحتواه باللغتين (AR / EN).</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="id">EMAIL-REG-SUBMITTED</div>
+        <h3>تأكيد استلام تسجيل الوكالة</h3>
+        <p>يُرسل عند تقديم طلب التسجيل لأول مرة وقبل الاعتماد.</p>
+        <a class="btn" href="registration-submitted.html">فتح القالب</a>
+      </div>
+
+      <div class="card">
+        <div class="id">EMAIL-REG-APPROVED</div>
+        <h3>إشعار اعتماد الوكالة</h3>
+        <p>يُرسل بعد موافقة الإدارة مع رابط الدخول والبيانات الأساسية.</p>
+        <a class="btn" href="registration-approved.html">فتح القالب</a>
+      </div>
+
+      <div class="card">
+        <div class="id">EMAIL-PASSWORD-RESET</div>
+        <h3>إعادة تعيين كلمة المرور</h3>
+        <p>يُرسل عند طلب إعادة التعيين من شاشة تسجيل الدخول.</p>
+        <a class="btn" href="password-reset.html">فتح القالب</a>
+      </div>
+    </div>
+
+    <div class="note">ملاحظة: القيم بين الأقواس المربعة مثل [Contact_Name] هي متغيرات ديناميكية يتم استبدالها وقت الإرسال.</div>
+  </div>
+</body>
+</html>

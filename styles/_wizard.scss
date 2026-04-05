@@ -1,0 +1,269 @@
+/* ══ Wizard Container ══════════════════════════════════════════════════ */
+.wizard-wrap {
+    background: $color-bg-card;
+    border: 1.5px solid $color-border-card;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-card;
+}
+
+/* ══ Stepper Bar ══════════════════════════════════════════════════════ */
+.stepper {
+    display: flex; align-items: center;
+    padding: $space-6 $space-7;
+    background: $color-bg-alt;
+    border-bottom: 1px solid $color-border;
+    gap: 0;
+}
+
+.step-node {
+    display: flex; flex-direction: column; align-items: center; gap: 7px;
+    flex-shrink: 0; cursor: default;
+}
+.step-circle {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 800; border: 2px solid;
+    transition: all .25s;
+}
+.step-label {
+    font-size: $font-size-sm; font-weight: 600; white-space: nowrap;
+    transition: color .25s;
+}
+
+/* Locked state */
+.step-node.locked .step-circle {
+    background: $color-bg-alt; border-color: $color-border;
+    color: $color-text-subtle;
+}
+.step-node.locked .step-label { color: $color-text-subtle; }
+
+/* Active state */
+.step-node.active .step-circle {
+    background: $color-primary-mid; border-color: $color-primary-mid;
+    color: #fff; box-shadow: $shadow-blue;
+}
+.step-node.active .step-label { color: $color-primary-mid; font-weight: 700; }
+
+/* Completed state */
+.step-node.completed .step-circle {
+    background: $color-success-light; border-color: $color-success;
+    color: $color-success;
+}
+.step-node.completed .step-label { color: $color-success-dark; }
+.step-node.completed { cursor: pointer; }
+.step-node.completed:hover .step-circle {
+    background: $color-success; color: #fff;
+}
+
+/* Connector line */
+.step-line {
+    flex: 1; height: 2px; background: $color-border; margin-bottom: 28px;
+    transition: background .25s;
+}
+.step-line.completed { background: $color-success; }
+.step-line.active    { background: $color-primary-muted; }
+
+/* ══ Step Panels ══════════════════════════════════════════════════════ */
+.step-panels { padding: $space-7; }
+.step-panel { display: none; }
+.step-panel.active { display: block; animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Step panel heading ── */
+.step-heading {
+    margin-bottom: $space-5;
+}
+.step-heading h3 {
+    font-size: $font-size-2xl; font-weight: 800; color: $color-text-primary;
+    margin-bottom: 4px;
+}
+.step-heading p { font-size: $font-size-md; color: $color-text-muted; }
+
+/* ── Step footer (nav buttons) ── */
+.step-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: $space-5 $space-7;
+    border-top: 1px solid $color-border;
+    background: $color-bg-alt;
+}
+.step-footer-right { display: flex; gap: $space-3; }
+
+/* ══ Step 1: Download Template ════════════════════════════════════════ */
+.template-info-card {
+    background: $color-primary-light; border: 1.5px solid $color-primary-muted;
+    border-radius: $radius-lg; padding: $space-5 $space-6; margin-bottom: $space-5;
+}
+.template-info-card h4 { font-size: $font-size-xl; font-weight: 800; color: $color-primary-dark; margin-bottom: 8px; }
+.template-info-card p  { font-size: $font-size-md; color: $color-primary; line-height: 1.7; }
+
+.download-btns { display: flex; gap: $space-3; margin-bottom: $space-5; }
+
+.columns-toggle {
+    display: flex; align-items: center; gap: 7px;
+    font-size: $font-size-md; color: $color-primary; font-weight: 600;
+    cursor: pointer; background: none; border: none; font-family: $font-family;
+    margin-bottom: $space-3; padding: 0;
+}
+.columns-toggle:hover { text-decoration: underline; }
+
+.columns-table-wrap { overflow: hidden; }
+.columns-table-wrap.hidden { display: none; }
+.columns-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid $color-border; border-radius: $radius-lg; overflow: hidden;
+}
+.columns-table th {
+    background: $color-bg-alt; padding: 9px 14px;
+    font-size: $font-size-sm; font-weight: 700; color: $color-text-muted;
+    text-align: right; border-bottom: 1px solid $color-border;
+    text-transform: uppercase; letter-spacing: .4px;
+}
+.columns-table td {
+    padding: 9px 14px; font-size: $font-size-md; color: $color-text-body;
+    border-bottom: 1px solid $color-bg-alt;
+}
+.columns-table tbody tr:last-child td { border-bottom: none; }
+.col-req  { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+.col-req.required    { background: $color-danger-light; color: $color-danger-dark; }
+.col-req.optional    { background: $color-bg-alt; color: $color-text-muted; border: 1px solid $color-border; }
+.col-req.conditional { background: $color-warning-light; color: $color-warning-dark; }
+
+/* ══ Step 2: Upload & Validate ═════════════════════════════════════════ */
+.dropzone {
+    border: 2px dashed $color-border-strong;
+    border-radius: $radius-xl; padding: $space-8;
+    text-align: center; cursor: pointer;
+    transition: border-color .2s, background .2s;
+    background: $color-bg-alt; margin-bottom: $space-5;
+    display: block;
+}
+.dropzone:hover, .dropzone.drag-over {
+    border-color: $color-primary; background: $color-primary-light;
+}
+.dropzone-icon { font-size: 40px; color: $color-text-subtle; margin-bottom: $space-3; }
+.dropzone h4 { font-size: $font-size-xl; font-weight: 800; color: $color-text-primary; margin-bottom: 6px; }
+.dropzone p  { font-size: $font-size-md; color: $color-text-muted; margin-bottom: $space-4; }
+.dropzone small { font-size: $font-size-sm; color: $color-text-placeholder; }
+.dropzone input[type="file"] { display: none; }
+
+.dropzone.loading {
+    pointer-events: none; position: relative;
+}
+.dropzone.loading::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(255,255,255,.75); border-radius: inherit;
+}
+
+.error-table-wrap { margin-top: $space-4; }
+.error-count-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: $color-danger-light; color: $color-danger-dark;
+    border-radius: 20px; padding: 4px 12px;
+    font-size: $font-size-base; font-weight: 700; margin-bottom: $space-3;
+}
+.reupload-zone {
+    border: 2px dashed $color-danger-border;
+    border-radius: $radius-xl; padding: $space-6;
+    text-align: center; cursor: pointer; background: $color-danger-bg;
+    transition: border-color .2s;
+    margin-top: $space-5;
+    display: block;
+}
+.reupload-zone:hover { border-color: $color-danger; }
+.reupload-zone input[type="file"] { display: none; }
+
+/* ══ Step 3: Fee Review ════════════════════════════════════════════════ */
+.fee-table-card {
+    background: $color-bg-card; border: 1.5px solid $color-border-card;
+    border-radius: $radius-lg; overflow: hidden; margin-bottom: $space-5;
+}
+.fee-table { width: 100%; border-collapse: collapse; }
+.fee-table th {
+    background: $color-bg-alt; padding: 11px 16px; text-align: right;
+    font-size: $font-size-sm; font-weight: 700; color: $color-text-muted;
+    border-bottom: 1px solid $color-border; text-transform: uppercase; letter-spacing: .4px;
+}
+.fee-table td { padding: 13px 16px; font-size: $font-size-md; color: $color-text-body; border-bottom: 1px solid $color-bg-alt; }
+.fee-table tbody tr:last-child td { border-bottom: none; }
+.fee-table .fee-total-row td {
+    border-top: 2px solid $color-border; font-size: $font-size-lg; font-weight: 800;
+    color: $color-text-primary; background: $color-bg-alt;
+}
+.non-refundable-note {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: $color-warning-bg; border: 1px solid $color-warning-border;
+    border-radius: $radius-lg; padding: 8px 14px;
+    font-size: $font-size-base; color: $color-warning-dark; font-weight: 600;
+    margin-bottom: $space-5;
+}
+
+/* ══ Step 4: Confirm & Deduct ══════════════════════════════════════════ */
+.confirm-summary-card {
+    background: $color-bg-alt; border: 1.5px solid $color-border;
+    border-radius: $radius-lg; padding: $space-5 $space-6; margin-bottom: $space-5;
+}
+.confirm-summary-card .cs-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 0; border-bottom: 1px solid $color-border;
+}
+.confirm-summary-card .cs-row:last-child { border-bottom: none; }
+.confirm-summary-card .cs-label { font-size: $font-size-md; color: $color-text-muted; }
+.confirm-summary-card .cs-value { font-size: $font-size-md; font-weight: 700; color: $color-text-primary; }
+.confirm-summary-card .cs-value.total { font-size: $font-size-xl; color: $color-primary; }
+.confirm-summary-card .cs-value.balance-after { color: $color-success; }
+
+.irreversible-warning {
+    display: flex; align-items: center; gap: 8px;
+    background: $color-warning-bg; border: 1.5px solid $color-warning-border;
+    border-radius: $radius-lg; padding: 12px 16px; margin-bottom: $space-5;
+    font-size: $font-size-md; color: $color-warning-deep; font-weight: 600;
+}
+
+/* Success screen */
+.success-screen {
+    text-align: center; padding: $space-8 $space-6;
+}
+.success-icon-wrap {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: $color-success-light; border: 3px solid $color-success;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto $space-5; font-size: 36px; color: $color-success;
+}
+.success-screen h3 { font-size: $font-size-3xl; font-weight: 800; color: $color-text-primary; margin-bottom: 8px; }
+.success-screen p  { font-size: $font-size-lg; color: $color-text-muted; margin-bottom: $space-6; }
+.success-detail-card {
+    display: inline-block; text-align: right; min-width: 340px;
+    background: $color-bg-alt; border: 1.5px solid $color-border;
+    border-radius: $radius-lg; padding: $space-5; margin-bottom: $space-6;
+}
+.success-detail-card .sd-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: $space-5; padding: 7px 0; border-bottom: 1px solid $color-border;
+    font-size: $font-size-md;
+}
+.success-detail-card .sd-row:last-child { border-bottom: none; }
+.success-detail-card .sd-label { color: $color-text-muted; }
+.success-detail-card .sd-value { font-weight: 700; color: $color-text-primary; }
+.success-actions { display: flex; gap: $space-3; justify-content: center; flex-wrap: wrap; }
+.success-new-link {
+    display: block; margin-top: $space-4;
+    font-size: $font-size-md; color: $color-primary; font-weight: 600;
+    text-decoration: none;
+}
+.success-new-link:hover { text-decoration: underline; }
+
+/* System error screen */
+.error-screen { text-align: center; padding: $space-8 $space-6; }
+.error-icon-wrap {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: $color-danger-light; border: 3px solid $color-danger-border;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto $space-5; font-size: 36px; color: $color-danger;
+}
+.error-ref {
+    display: inline-block; font-size: $font-size-base; font-weight: 700;
+    background: $color-danger-light; color: $color-danger-dark;
+    padding: 4px 14px; border-radius: 20px; margin-bottom: $space-5;
+    letter-spacing: .5px;
+}

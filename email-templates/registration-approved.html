@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Template - Registration Approved</title>
+  <style>
+    body { margin:0; background:linear-gradient(180deg,#f8fdf9 0%,#ecfaf0 100%); font-family:Arial, sans-serif; color:#0f172a; }
+    .wrap { max-width:760px; margin:30px auto; padding:0 14px; }
+    .card { background:#fff; border:1px solid #d1fae5; border-radius:16px; overflow:hidden; margin-bottom:18px; box-shadow:0 12px 34px rgba(22,101,52,.08); }
+    .head { background:linear-gradient(120deg,#166534,#15803d); color:#fff; padding:18px 22px; font-weight:700; font-size:15px; display:flex; align-items:center; justify-content:space-between; }
+    .body { padding:22px; line-height:1.8; font-size:15px; }
+    .subject { margin:0 0 10px; font-size:15px; color:#166534; }
+    .meta { background:#f7fff9; border:1px solid #bbf7d0; border-radius:10px; padding:12px 14px; margin:16px 0; }
+    .meta div + div { margin-top:6px; }
+    .k { color:#64748b; display:inline-block; min-width:170px; font-weight:600; }
+    .footer { color:#64748b; font-size:13px; margin-top:16px; padding-top:10px; border-top:1px dashed #bbf7d0; }
+    .rtl { direction:rtl; text-align:right; font-family:'Tajawal', Arial, sans-serif; }
+    .tag { display:inline-block; background:rgba(255,255,255,.22); color:#fff; font-size:12px; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">EMAIL-REG-APPROVED <span class="tag">EN</span></div>
+      <div class="body">
+        <p class="subject"><strong>Subject:</strong> Agency Registration Approved - Account Activated</p>
+        <p>Dear [Contact_Name],</p>
+        <p>Your agency registration has been approved. Your account is now active.</p>
+        <div class="meta">
+          <div><span class="k">Login URL:</span> [Portal_Login_URL]</div>
+          <div><span class="k">Registered Email:</span> [Registered_Email]</div>
+          <div><span class="k">Agency ID:</span> [Agency_ID]</div>
+        </div>
+        <p>You can now sign in and submit batch inquiries.</p>
+        <p class="footer">Security Clearance & Inquiry System</p>
+      </div>
+    </div>
+
+    <div class="card rtl">
+      <div class="head">EMAIL-REG-APPROVED <span class="tag">AR</span></div>
+      <div class="body">
+        <p class="subject"><strong>الموضوع:</strong> تمت الموافقة على تسجيل الوكالة — تم تفعيل الحساب</p>
+        <p>عزيزي/عزيزتي [Contact_Name]،</p>
+        <p>تمت الموافقة على تسجيل الوكالة وتم تفعيل الحساب.</p>
+        <div class="meta">
+          <div><span class="k">رابط تسجيل الدخول:</span> [Portal_Login_URL]</div>
+          <div><span class="k">البريد الإلكتروني المسجل:</span> [Registered_Email]</div>
+          <div><span class="k">رقم الوكالة:</span> [Agency_ID]</div>
+        </div>
+        <p>يمكنكم الآن تسجيل الدخول وإرسال الاستعلامات الدفعية.</p>
+        <p class="footer">نظام الموافقات الأمنية والاستعلامات</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

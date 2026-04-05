@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إدارة الطلبات — لوحة الإدارة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <main class="admin-content">
+      <div class="admin-topbar">
+        <div class="topbar-left">
+          <div class="topbar-user">
+            <img src="https://i.pravatar.cc/80?img=12" alt="admin">
+            <div>
+              <div class="name">طلعت جادو</div>
+              <div class="role">مدير تنفيذي</div>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <i class="fas fa-bell"></i>
+            <span data-i18n="common.lang.toggle">EN</span>
+            <i class="fas fa-globe"></i>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="search-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" data-i18n-placeholder="admin.topbar.searchPlaceholder" placeholder="إبحث هنا ...">
+          </div>
+          <i class="fas fa-bars" style="color:#3b82f6;font-size:18px;"></i>
+        </div>
+      </div>
+
+      <div class="content-shell">
+        <section class="admin-stats-row">
+          <article class="admin-stat stat-blue">
+            <div class="meta"><div class="num">128</div><div class="lbl">طلبات جديد</div></div>
+            <div class="icon"><i class="fas fa-file-lines"></i></div>
+          </article>
+          <article class="admin-stat stat-green">
+            <div class="meta"><div class="num">96</div><div class="lbl">طلبات موافق عليها</div></div>
+            <div class="icon"><i class="fas fa-file-circle-check"></i></div>
+          </article>
+          <article class="admin-stat stat-amber">
+            <div class="meta"><div class="num">175</div><div class="lbl">طلبات قيد المعالجة</div></div>
+            <div class="icon"><i class="fas fa-gear"></i></div>
+          </article>
+          <article class="admin-stat stat-red">
+            <div class="meta"><div class="num">23</div><div class="lbl">طلبات مرفوضة</div></div>
+            <div class="icon"><i class="fas fa-circle-xmark"></i></div>
+          </article>
+        </section>
+
+        <section class="admin-toolbar">
+          <div class="toolbar-group">
+            <button class="admin-btn primary"><i class="fas fa-rotate"></i> تحديث</button>
+            <div class="search-wrap"><i class="fas fa-search"></i><input class="admin-input" placeholder="إبحث برقم الطلب أو اسم المسافر ..."></div>
+          </div>
+          <div class="toolbar-group">
+            <select class="admin-select"><option>مصدر الطلب</option><option>فردي</option><option>وكيل</option></select>
+            <select class="admin-select"><option>جميع الطلبات</option><option>جديد</option><option>قيد المعالجة</option><option>تم الرد</option><option>موقوف</option></select>
+            <button class="admin-btn light" title="فلاتر متقدمة: الوكالة + التاريخ"><i class="fas fa-sliders"></i></button>
+          </div>
+        </section>
+
+        <section class="admin-table-wrap">
+          <div class="admin-table-head"><div class="title">إدارة الطلبات</div></div>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>رقم الطلب</th><th>اسم المسافر</th><th>الجنسية</th><th>مصدر الطلب</th><th>تاريخ التقديم</th><th>الحالة</th><th>الإجراء</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td dir="ltr">REQ-2024-001257</td><td>محمد أحمد السيد<br><small dir="ltr">Mohamed Ahmed Sayed</small></td><td>مصري</td><td><span class="source-pill">فردي</span></td><td>2024-12-18<br><small dir="ltr">02:30 PM</small></td><td><span class="status new"><span class="dot"></span>جديد</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+              <tr><td dir="ltr">REQ-2024-001256</td><td>سارة محمود علي<br><small dir="ltr">Sarah Mahmoud Ali</small></td><td>سودانية</td><td><span class="source-pill agency">وكيل</span></td><td>2024-12-18<br><small dir="ltr">01:45 PM</small></td><td><span class="status processing"><span class="dot"></span>قيد المعالجة</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+              <tr><td dir="ltr">REQ-2024-001255</td><td>أحمد عبدالله حسن<br><small dir="ltr">Aymed Abdullah Hassan</small></td><td>يمني</td><td><span class="source-pill">فردي</span></td><td>2024-12-18<br><small dir="ltr">12:30 PM</small></td><td><span class="status done"><span class="dot"></span>تم الرد</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+              <tr><td dir="ltr">REQ-2024-001254</td><td>فاطمة علي محمد<br><small dir="ltr">Fatma Ali Mohamed</small></td><td>ليبية</td><td><span class="source-pill agency">وكيل</span></td><td>2024-12-18<br><small dir="ltr">11:16 AM</small></td><td><span class="status new"><span class="dot"></span>جديد</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+              <tr><td dir="ltr">REQ-2024-001253</td><td>خالد محمد أحمد<br><small dir="ltr">Khaled Mohamed Ahmed</small></td><td>أردني</td><td><span class="source-pill agency">وكيل</span></td><td>2024-12-18<br><small dir="ltr">10:32 AM</small></td><td><span class="status processing"><span class="dot"></span>قيد المعالجة</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+              <tr><td dir="ltr">REQ-2024-001252</td><td>باسم سليمان رياض<br><small dir="ltr">Bassem Soliman Ryad</small></td><td>سوري</td><td><span class="source-pill">فردي</span></td><td>2024-12-18<br><small dir="ltr">10:29 AM</small></td><td><span class="status new"><span class="dot"></span>جديد</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+              <tr><td dir="ltr">REQ-2024-001251</td><td>عبد الله أبو علي جد<br><small dir="ltr">Alex Alih Abu Ali Gad</small></td><td>سعودي</td><td><span class="source-pill">فردي</span></td><td>2024-12-18<br><small dir="ltr">09:56 AM</small></td><td><span class="status new"><span class="dot"></span>جديد</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+              <tr><td dir="ltr">REQ-2024-001250</td><td>نوريان أبو السيد طارق<br><small dir="ltr">Norian Abo Alsaid Tarek</small></td><td>إيراني</td><td><span class="source-pill">فردي</span></td><td>2024-12-18<br><small dir="ltr">09:42 AM</small></td><td><span class="status done"><span class="dot"></span>تم الرد</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
+            </tbody>
+          </table>
+          <div class="admin-pagination">
+            <div class="pg-pages"><a href="#"><i class="fas fa-chevron-right"></i></a><a href="#">8</a><a href="#">7</a><a href="#">6</a><a href="#">5</a><a href="#">4</a><a href="#">3</a><a href="#">2</a><a href="#">1</a><a href="#"><i class="fas fa-chevron-left"></i></a></div>
+            <div class="pg-right">عرض <select class="admin-select" style="min-width:62px;height:26px;"><option>10</option></select> سطر</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <aside class="admin-sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <svg width="52" height="52" viewBox="0 0 26 26" fill="none"><path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="#0b56b2" stroke-width="1.7" stroke-linejoin="round"/><rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#37a34a" stroke-width="1.5"/><path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#37a34a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="brand-text"><h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1><p data-i18n="common.brand.subtitle">Security Approval System</p></div>
+        </div>
+        <nav class="sidebar-nav">
+          <a class="sidebar-link" href="dashboard.html"><span data-i18n="admin.sidebar.dashboard">لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a>
+          <a class="sidebar-link active" href="inquiries.html"><span data-i18n="admin.sidebar.inquiries">إدارة الطلبات</span><i class="fas fa-file-lines"></i></a>
+          <a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a>
+          <a class="sidebar-link" href="agencies.html"><span data-i18n="admin.sidebar.agencies">إدارة الوكلاء</span><i class="fas fa-building"></i></a>
+          <a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a>
+          <a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a>
+          <a class="sidebar-link" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
+          <a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a>
+          <a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span data-i18n="admin.sidebar.logout">تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div>
+    </aside>
+  </div>
+<script src="../i18n/i18n.js"></script>
+<script>
+  i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });
+</script>
+</body>
+</html>

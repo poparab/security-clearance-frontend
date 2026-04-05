@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة حزم الطلبات — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TOP HEADER BAR
+═══════════════════════════════════════ -->
+<header class="top-header">
+    <div class="top-header-inner">
+        <div class="logo-wrap">
+            <div class="logo-icon">
+                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                    <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+                    <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
+                    <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1>
+                <p data-i18n="common.brand.subtitle">Security Approval System</p>
+            </div>
+        </div>
+
+        <nav class="top-nav">
+            <a class="nav-link" href="agency-dashboard.html">
+                <i class="fas fa-gauge-high"></i> <span data-i18n="portal.nav.dashboard">لوحة التحكم</span>
+            </a>
+            <a class="nav-link" href="inquiry-list.html">
+                <i class="fas fa-file-lines"></i> <span data-i18n="portal.nav.inquiries">الاستعلامات</span>
+                <span class="nav-badge">3</span>
+            </a>
+            <a class="nav-link active" href="batch-list.html">
+                <i class="fas fa-layer-group"></i> <span data-i18n="portal.nav.batch">حزمة طلبات</span>
+            </a>
+            <a class="nav-link" href="wallet.html">
+                <i class="fas fa-wallet"></i> <span data-i18n="portal.nav.wallet">المحفظة</span>
+            </a>
+            <a class="nav-link" href="#">
+                <i class="fas fa-building"></i> <span data-i18n="portal.nav.agency">الوكالة</span>
+            </a>
+            <a class="nav-link" href="#">
+                <i class="fas fa-circle-question"></i> <span data-i18n="portal.nav.help">المساعدة</span>
+            </a>
+        </nav>
+
+        <div class="top-right">
+            <div class="notif-btn" id="bellBtn" onclick="toggleNotif()">
+                <i class="fas fa-bell"></i>
+                <span class="notif-dot" id="notifDot"></span>
+            </div>
+            <div class="lang-toggle">
+                <button class="active" data-lang="ar" onclick="setLang(this)">ع</button>
+                <button data-lang="en" onclick="setLang(this)">EN</button>
+            </div>
+            <div class="user-chip" id="userChip" onclick="toggleUser()">
+                <div class="user-avatar"><i class="fas fa-user"></i></div>
+                <div class="user-info">
+                    <div class="uname">وكالة النيل للسياحة</div>
+                    <div class="urole">وكالة معتمدة</div>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Notification drawer -->
+<div class="notif-drawer" id="notifDrawer">
+    <div class="nd-header">
+        <h4><span data-i18n="portal.notifications.title">الإشعارات</span> <span style="background:#ef4444;color:#fff;font-size:10px;padding:1px 7px;border-radius:10px;margin-right:5px;">3</span></h4>
+        <span class="nd-mark" data-i18n="portal.notifications.markAllRead" onclick="markAllRead()">تعليم الكل كمقروء</span>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#22c55e;"></div>
+        <div class="nd-text">
+            <strong>طلب BTH-2024-0234 — موافقة</strong>
+            <span>تمت الموافقة على حزمة الطلبات لـ 15 مسافر</span>
+            <div class="nd-time">منذ 12 دقيقة</div>
+        </div>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#f59e0b;"></div>
+        <div class="nd-text">
+            <strong>INQ-2024-0891 — قيد المعالجة</strong>
+            <span>تحت الفحص الأمني</span>
+            <div class="nd-time">منذ 2 ساعة</div>
+        </div>
+    </div>
+    <div class="nd-item">
+        <div class="nd-dot" style="background:#3b82f6;"></div>
+        <div class="nd-text">
+            <strong>رصيد المحفظة منخفض</strong>
+            <span>رصيدك الحالي $450 — يُنصح بالشحن قريباً</span>
+            <div class="nd-time">أمس، 6:30 م</div>
+        </div>
+    </div>
+</div>
+
+<!-- User dropdown -->
+<div class="user-dropdown" id="userDropdown">
+    <div class="ud-top">
+        <div class="udname" data-i18n="portal.user.name">وكالة النيل للسياحة</div>
+        <div class="udrole" data-i18n="portal.user.role">وكالة معتمدة</div>
+        <div class="udid" dir="ltr">AG-2024-0156</div>
+    </div>
+    <a class="ud-item" href="#"><i class="fas fa-building"></i> <span data-i18n="portal.user.profile">بيانات الوكالة</span></a>
+    <a class="ud-item logout" href="login.html"><i class="fas fa-right-from-bracket"></i> <span data-i18n="portal.user.logout">تسجيل الخروج</span></a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <div class="breadcrumb-inner">
+        <a href="agency-dashboard.html"><i class="fas fa-home" style="font-size:11px;"></i></a>
+        <i class="fas fa-chevron-left sep"></i>
+        <span class="cur" data-i18n="portal.batchList.breadcrumb.current">حزم الطلبات</span>
+    </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h2 data-i18n="portal.batchList.hero.title">قائمة حزم الطلبات</h2>
+            <p data-i18n="portal.batchList.hero.subtitle">مراجعة ومتابعة طلبات الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة</p>
+        </div>
+        <div class="hero-agency">
+            <div class="hero-agency-icon"><i class="fas fa-building"></i></div>
+            <div class="hero-agency-text">
+                <div class="aname">وكالة النيل للسياحة</div>
+                <div class="amid" dir="ltr">AG-2024-0156</div>
+                <span class="hero-badge"><i class="fas fa-circle-check"></i> حساب نشط</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+    <!-- Stats row -->
+    <div class="stats-row">
+        <div class="stat stat-red">
+            <div class="stat-icon-wrap"><i class="fas fa-layer-group"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">الحزم الإجمالية</div>
+                <div class="stat-num">17</div>
+                <div class="stat-period">منذ بداية الشهر</div>
+            </div>
+        </div>
+        <div class="stat stat-green">
+            <div class="stat-icon-wrap"><i class="fas fa-circle-check"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">مكتملة</div>
+                <div class="stat-num">8</div>
+                <div class="stat-period">مكتملة بالكامل</div>
+            </div>
+        </div>
+        <div class="stat stat-amber">
+            <div class="stat-icon-wrap"><i class="fas fa-hourglass-half"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">تحت المعالجة</div>
+                <div class="stat-num">6</div>
+                <div class="stat-period">قيد الفحص الأمني</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top action row -->
+    <div class="page-top-row">
+        <h2 class="section-title" style="margin-bottom:0;">
+            <i class="fas fa-layer-group"></i> قائمة حزمة الطلبات
+        </h2>
+        <a href="batch-inquiry.html" class="action-btn action-btn-primary">
+            <i class="fas fa-plus"></i> إنشاء حزمة جديدة
+        </a>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-card">
+        <div class="filter-row">
+            <div class="filter-group fg-search">
+                <label>البحث</label>
+                <input type="text" placeholder="ابحث برقم الحزمة...">
+            </div>
+            <div class="filter-group fg-status">
+                <label>الحالة</label>
+                <select>
+                    <option value="">جميع الحالات</option>
+                    <option>تحت المعالجة</option>
+                    <option>موافق عليها</option>
+                    <option>مرفوضة</option>
+                </select>
+            </div>
+            <div class="filter-group fg-date">
+                <label>من</label>
+                <input type="date" value="2025-12-01">
+            </div>
+            <span class="filter-date-sep">—</span>
+            <div class="filter-group fg-date">
+                <label>إلى</label>
+                <input type="date" value="2025-12-31">
+            </div>
+            <div class="filter-btns">
+                <button class="action-btn action-btn-primary" onclick="applyFilter()">
+                    <i class="fas fa-magnifying-glass"></i> بحث
+                </button>
+                <button class="action-btn action-btn-outline" onclick="resetFilter()">
+                    <i class="fas fa-rotate-right"></i> إعادة تعيين
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Batch table -->
+    <div class="table-card">
+        <div class="table-header">
+            <h3>
+                <i class="fas fa-table-list" style="color:#1d4ed8;margin-left:6px;"></i>
+                قائمة حزمة الطلبات
+                <span class="batch-count-badge" style="margin-right:8px;"><i class="fas fa-hashtag"></i> 7 نتائج</span>
+            </h3>
+            <a href="batch-inquiry.html"><i class="fas fa-plus"></i> إنشاء حزمة جديدة</a>
+        </div>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:44px;"><input type="checkbox" id="selectAll" onchange="toggleAll(this)"></th>
+                        <th>رقم الحزمة</th>
+                        <th>عدد المسافرين</th>
+                        <th>تاريخ الإرسال</th>
+                        <th>الحالة</th>
+                        <th style="text-align:center;">الإجراء</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">BTH-2024-0234</span></td>
+                        <td>98 مسافر</td>
+                        <td>16 ديسمبر 2025</td>
+                        <td><span class="pill pill-green"><i class="fas fa-circle-check"></i> موافق عليها</span></td>
+                        <td>
+                            <div class="tbl-actions" style="justify-content:center;">
+                                <a href="batch-view.html?batch=BTH-2024-0234" class="tbl-icon-btn" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                                <a href="batch-inquiry.html" class="tbl-icon-btn" title="تعديل"><i class="fas fa-pen"></i></a>
+                                <a href="#" class="tbl-icon-btn danger" title="حذف" onclick="confirmDelete('BTH-2024-0234')"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="outline:2px dashed #93c5fd;outline-offset:-2px;">
+                        <td><input type="checkbox" checked></td>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">BTH-2024-0235</span></td>
+                        <td>66 مسافر</td>
+                        <td>16 ديسمبر 2025</td>
+                        <td><span class="pill pill-amber"><i class="fas fa-hourglass-half"></i> تحت المعالجة</span></td>
+                        <td>
+                            <div class="tbl-actions" style="justify-content:center;">
+                                <a href="batch-view.html?batch=BTH-2024-0235" class="tbl-icon-btn" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                                <a href="batch-inquiry.html" class="tbl-icon-btn" title="تعديل"><i class="fas fa-pen"></i></a>
+                                <a href="#" class="tbl-icon-btn danger" title="حذف" onclick="confirmDelete('BTH-2024-0235')"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">BTH-2024-0236</span></td>
+                        <td>108 مسافر</td>
+                        <td>15 ديسمبر 2025</td>
+                        <td><span class="pill pill-amber"><i class="fas fa-hourglass-half"></i> تحت المعالجة</span></td>
+                        <td>
+                            <div class="tbl-actions" style="justify-content:center;">
+                                <a href="batch-view.html?batch=BTH-2024-0236" class="tbl-icon-btn" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                                <a href="batch-inquiry.html" class="tbl-icon-btn" title="تعديل"><i class="fas fa-pen"></i></a>
+                                <a href="#" class="tbl-icon-btn danger" title="حذف" onclick="confirmDelete('BTH-2024-0236')"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">BTH-2024-0237</span></td>
+                        <td>87 مسافر</td>
+                        <td>15 ديسمبر 2025</td>
+                        <td><span class="pill pill-red"><i class="fas fa-circle-xmark"></i> مرفوض</span></td>
+                        <td>
+                            <div class="tbl-actions" style="justify-content:center;">
+                                <a href="batch-view.html?batch=BTH-2024-0237" class="tbl-icon-btn" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                                <a href="batch-inquiry.html" class="tbl-icon-btn" title="إعادة الإرسال"><i class="fas fa-rotate-right"></i></a>
+                                <a href="#" class="tbl-icon-btn danger" title="حذف" onclick="confirmDelete('BTH-2024-0237')"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">BTH-2024-0238</span></td>
+                        <td>206 مسافر</td>
+                        <td>15 ديسمبر 2025</td>
+                        <td><span class="pill pill-amber"><i class="fas fa-hourglass-half"></i> تحت المعالجة</span></td>
+                        <td>
+                            <div class="tbl-actions" style="justify-content:center;">
+                                <a href="batch-view.html?batch=BTH-2024-0238" class="tbl-icon-btn" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                                <a href="batch-inquiry.html" class="tbl-icon-btn" title="تعديل"><i class="fas fa-pen"></i></a>
+                                <a href="#" class="tbl-icon-btn danger" title="حذف" onclick="confirmDelete('BTH-2024-0238')"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">BTH-2024-0239</span></td>
+                        <td>48 مسافر</td>
+                        <td>13 ديسمبر 2025</td>
+                        <td><span class="pill pill-green"><i class="fas fa-circle-check"></i> موافق عليها</span></td>
+                        <td>
+                            <div class="tbl-actions" style="justify-content:center;">
+                                <a href="batch-view.html?batch=BTH-2024-0239" class="tbl-icon-btn" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                                <a href="batch-inquiry.html" class="tbl-icon-btn" title="تعديل"><i class="fas fa-pen"></i></a>
+                                <a href="#" class="tbl-icon-btn danger" title="حذف" onclick="confirmDelete('BTH-2024-0239')"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><span style="font-weight:700;color:#0f172a;" dir="ltr">BTH-2024-0240</span></td>
+                        <td>196 مسافر</td>
+                        <td>11 ديسمبر 2025</td>
+                        <td><span class="pill pill-green"><i class="fas fa-circle-check"></i> موافق عليها</span></td>
+                        <td>
+                            <div class="tbl-actions" style="justify-content:center;">
+                                <a href="batch-view.html?batch=BTH-2024-0240" class="tbl-icon-btn" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                                <a href="batch-inquiry.html" class="tbl-icon-btn" title="تعديل"><i class="fas fa-pen"></i></a>
+                                <a href="#" class="tbl-icon-btn danger" title="حذف" onclick="confirmDelete('BTH-2024-0240')"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Pagination -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid #f1f5f9;">
+            <span style="font-size:12px;color:#64748b;">عرض 7 من أصل 7 · عدد 8 <span style="color:#475569;font-weight:700;">▼</span></span>
+            <div style="display:flex;gap:4px;">
+                <button style="width:30px;height:30px;border:1.5px solid #e2e8f0;background:#fff;border-radius:7px;cursor:pointer;font-size:11px;color:#64748b;" disabled>‹</button>
+                <button style="width:30px;height:30px;border:1.5px solid #1a3a8f;background:#1a3a8f;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;color:#fff;">1</button>
+                <button style="width:30px;height:30px;border:1.5px solid #e2e8f0;background:#fff;border-radius:7px;cursor:pointer;font-size:11px;color:#64748b;" disabled>›</button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end page-body -->
+
+
+<!-- ══════════════════════════════════════
+     RICH FOOTER
+═══════════════════════════════════════ -->
+<footer class="footer-rich">
+    <div class="footer-rich-inner">
+        <!-- Brand -->
+        <div class="fr-brand">
+            <div class="logo-wrap">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                        <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+                        <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
+                        <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>نظام الموافقات الأمنية</h1>
+                    <p>Security Approval System</p>
+                </div>
+            </div>
+            <p class="fr-desc">منصة متكاملة لإدارة وتتبع الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة · إدارة الطلبات بكل سهولة ويسر من خلال نظام متكامل</p>
+            <div class="fr-social">
+                <a href="#" title="Google+"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="fr-hotline"><i class="fas fa-phone-volume"></i>&nbsp; الخط الساخن: 16999</div>
+        </div>
+
+        <!-- Quick links -->
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.quickLinks">روابط سريعة</h5>
+            <ul>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> عن النظام</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> حقوق الوصول</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> الاستعلام</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> المساعدة</a></li>
+            </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.services">خدمات</h5>
+            <ul>
+                <li><a href="batch-inquiry.html"><i class="fas fa-chevron-left"></i> طلب جديد</a></li>
+                <li><a href="batch-list.html"><i class="fas fa-chevron-left"></i> متابعة الطلب</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> خدمة الدفع</a></li>
+                <li><a href="#"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="fr-col">
+            <h5 data-i18n="portal.footer.contact">اتصل بنا</h5>
+            <div class="fr-contact-item">
+                <i class="fas fa-phone"></i>
+                <span dir="ltr">+20 10 9070 2229</span>
+            </div>
+            <div class="fr-contact-item">
+                <i class="fas fa-envelope"></i>
+                <span dir="ltr">info@esecurity.gov.eg</span>
+            </div>
+            <div class="fr-contact-item">
+                <i class="fas fa-location-dot"></i>
+                <span>شارع جزيرة العرب، المهندسين، الجيزة، مصر</span>
+            </div>
+            <div class="fr-contact-item" style="margin-top:6px;">
+                <i class="fas fa-headset"></i>
+                <span style="font-size:18px;font-weight:800;color:#e2e8f0;">الخط الساخن: 16999 <span style="font-size:16px;">📞</span></span>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom-bar">
+        <span data-i18n="portal.footer.copyright">جميع الحقوق محفوظة © 2024 نظام الموافقات الأمنية</span>
+    </div>
+</footer>
+
+
+<script>
+/* Notification drawer */
+function toggleNotif() {
+    const d = document.getElementById('notifDrawer');
+    const u = document.getElementById('userDropdown');
+    u.classList.remove('open');
+    d.classList.toggle('open');
+}
+function markAllRead() {
+    document.getElementById('notifDot').style.display = 'none';
+    document.querySelectorAll('.nd-dot').forEach(d => d.style.opacity = '.25');
+}
+
+/* User dropdown */
+function toggleUser() {
+    const d = document.getElementById('userDropdown');
+    const n = document.getElementById('notifDrawer');
+    n.classList.remove('open');
+    d.classList.toggle('open');
+    const chip = document.getElementById('userChip');
+    const rect = chip.getBoundingClientRect();
+    d.style.top   = (rect.bottom + 8) + 'px';
+    d.style.right = (window.innerWidth - rect.right) + 'px';
+    d.style.left  = 'auto';
+}
+
+/* Close on outside click */
+document.addEventListener('click', function(e) {
+    const bell   = document.getElementById('bellBtn');
+    const notifD = document.getElementById('notifDrawer');
+    const userC  = document.getElementById('userChip');
+    const userD  = document.getElementById('userDropdown');
+    if (!bell.contains(e.target)  && !notifD.contains(e.target)) notifD.classList.remove('open');
+    if (!userC.contains(e.target) && !userD.contains(e.target))  userD.classList.remove('open');
+});
+
+/* Language toggle */
+function setLang(btn) {
+    if (window.i18n && typeof window.i18n.setLang === 'function') {
+        window.i18n.setLang(btn);
+        return;
+    }
+    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+/* Select all checkboxes */
+function toggleAll(cb) {
+    document.querySelectorAll('tbody input[type="checkbox"]').forEach(c => c.checked = cb.checked);
+}
+
+/* Delete confirmation */
+function confirmDelete(id) {
+    if (confirm('هل تريد حذف الحزمة ' + id + '؟ لا يمكن التراجع عن هذا الإجراء.')) {
+        alert('تم حذف الحزمة ' + id);
+    }
+}
+
+/* Filter actions */
+function applyFilter() { /* stub — would call API in production */ }
+function resetFilter() {
+    document.querySelectorAll('.filter-card input, .filter-card select').forEach(el => {
+        if (el.type === 'checkbox') el.checked = false;
+        else el.value = el.defaultValue || '';
+    });
+}
+</script>
+
+<script src="i18n/i18n.js"></script>
+<script>
+    i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
+</script>
+</body>
+</html>
