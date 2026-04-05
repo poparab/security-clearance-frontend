@@ -309,6 +309,18 @@
     "الاستعلام الفردي": "Individual Inquiry",
     "دخول الوكلاء": "Agency Login",
     "عن النظام": "About",
-    "جميع الحقوق محفوظة": "All rights reserved"
+    "جميع الحقوق محفوظة": "All rights reserved",
+    "يناير": "January",
+    "فبراير": "February",
+    "مارس": "March",
+    "أبريل": "April",
+    "مايو": "May",
+    "يونيو": "June",
+    "يوليو": "July",
+    "أغسطس": "August",
+    "سبتمبر": "September",
+    "أكتوبر": "October",
+    "نوفمبر": "November",
+    "ديسمبر": "December"
   }
 }

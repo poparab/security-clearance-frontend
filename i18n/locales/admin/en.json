@@ -209,6 +209,20 @@
     "تم رفض الوكالة.": "Agency rejected.",
     "تم حفظ السعر الخاص بالوكالة بنجاح": "Agency price saved successfully.",
     "هل أنت متأكد من حذف هذا السعر؟ سيتم تطبيق السعر العام بدلاً منه.": "Are you sure you want to delete this price? The general price will apply instead.",
-    "مرجع ESC-2026-48812": "Ref ESC-2026-48812"
+    "مرجع ESC-2026-48812": "Ref ESC-2026-48812",
+    "هذه الأسعار الافتراضية تُطبَّق على جميع الطلبات ما لم يتم تعيين تسعير خاص للوكالة من صفحة ": "These default prices apply to all requests unless an agency-specific price is set from the ",
+    ". جميع الرسوم بالدولار الأمريكي (USD).": ". All fees are in USD.",
+    "يناير": "January",
+    "فبراير": "February",
+    "مارس": "March",
+    "أبريل": "April",
+    "مايو": "May",
+    "يونيو": "June",
+    "يوليو": "July",
+    "أغسطس": "August",
+    "سبتمبر": "September",
+    "أكتوبر": "October",
+    "نوفمبر": "November",
+    "ديسمبر": "December"
   }
 }

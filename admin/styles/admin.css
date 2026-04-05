@@ -962,3 +962,24 @@ body.admin-body {
         height: 32px;
     }
 }
+
+/* ── LTR OVERRIDES (English mode) ────────────────────────── */
+[dir="ltr"] .sidebar-link {
+    justify-content: flex-start;
+}
+
+[dir="ltr"] .sidebar-link i {
+    order: 0;
+}
+
+[dir="ltr"] .sidebar-link span {
+    order: 1;
+}
+
+[dir="ltr"] .sidebar-logout i {
+    order: 0;
+}
+
+[dir="ltr"] .sidebar-logout span {
+    order: 1;
+}
