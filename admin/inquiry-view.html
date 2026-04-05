@@ -1,43 +1,100 @@
 ﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تفاصيل الطلب — الإدارة</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="styles/admin.css">
+  <link rel="stylesheet" href="styles/admin.css">
 </head>
 <body class="admin-body">
 <div class="admin-layout">
+
   <main class="admin-content">
-    <div class="admin-topbar"><div class="topbar-left"><div class="topbar-user"><img src="https://i.pravatar.cc/80?img=12"><div><div class="name">أحمد محمود</div><div class="role">مشرف النظام</div></div></div></div><div class="topbar-right"><a class="admin-btn light" href="inquiries.html"><i class="fas fa-arrow-right"></i> عودة للقائمة</a></div></div>
-    <div class="content-shell">
-      <div class="cards-row" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:10px;">
-        <div class="card"><div class="card-header"><div class="card-icon" style="background:#eff6ff;color:#1d4ed8;"><i class="fas fa-user"></i></div><span class="card-label">بيانات المسافر</span></div><div class="cs-row"><span>محمد أحمد السيد</span><span>الاسم</span></div><div class="cs-row"><span>مصري</span><span>الجنسية</span></div><div class="cs-row"><span dir="ltr">P1234567</span><span>رقم الجواز</span></div><div class="cs-row"><span>2029-10-12</span><span>انتهاء الجواز</span></div></div>
-        <div class="card"><div class="card-header"><div class="card-icon" style="background:#fff7ed;color:#d97706;"><i class="fas fa-plane"></i></div><span class="card-label">بيانات الرحلة والدفع</span></div><div class="cs-row"><span>السودان</span><span>بلد المغادرة</span></div><div class="cs-row"><span>مطار القاهرة</span><span>مطار الوصول</span></div><div class="cs-row"><span dir="ltr">WAL-2026-9102</span><span>مرجع الدفع</span></div><div class="cs-row"><span dir="ltr">50.00 USD</span><span>قيمة الرسوم</span></div></div>
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <div class="topbar-user">
+          <img src="https://i.pravatar.cc/80?img=12" alt="admin">
+          <div><div class="name">أحمد محمود</div><div class="role">مشرف النظام</div></div>
+        </div>
       </div>
-
-      <div class="admin-table-wrap" style="margin-bottom:10px;">
-        <div class="admin-table-head"><div class="title">الخط الزمني للمعالجة</div></div>
-        <table class="admin-table"><thead><tr><th>المرحلة</th><th>بدأت</th><th>انتهت</th><th>المدة</th><th>الحالة</th></tr></thead><tbody>
-          <tr><td>Submitted</td><td dir="ltr">09:10</td><td dir="ltr">09:11</td><td>1 دقيقة</td><td><span class="status done"><span class="dot"></span>مكتملة</span></td></tr>
-          <tr><td>Payment Verified</td><td dir="ltr">09:11</td><td dir="ltr">09:12</td><td>1 دقيقة</td><td><span class="status done"><span class="dot"></span>مكتملة</span></td></tr>
-          <tr><td>Under Processing</td><td dir="ltr">09:12</td><td dir="ltr">09:22</td><td>10 دقائق</td><td><span class="status done"><span class="dot"></span>مكتملة</span></td></tr>
-          <tr><td>Final Decision</td><td dir="ltr">09:22</td><td dir="ltr">09:22</td><td>-</td><td><span class="status done"><span class="dot"></span>Approved</span></td></tr>
-        </tbody></table>
-      </div>
-
-      <div style="display:flex;gap:8px;justify-content:flex-start;">
-        <button class="admin-btn primary"><i class="fas fa-file-pdf"></i> Preview Document</button>
+      <div class="topbar-right">
+        <a class="admin-btn light" href="inquiries.html"><i class="fas fa-arrow-right"></i> عودة لقائمة الطلبات</a>
+        <i class="fas fa-bars" onclick="toggleSidebar()"></i>
       </div>
     </div>
+
+    <div class="content-shell">
+      <!-- Traveler + Trip Info -->
+      <div class="cards-row" style="grid-template-columns:repeat(2,1fr);">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#dbeafe;color:#005FCC;"><i class="fas fa-user"></i></div>
+            <span class="card-label">بيانات المسافر</span>
+          </div>
+          <div class="cs-row"><span>عمر محمد أحمد</span><span>الاسم</span></div>
+          <div class="cs-row"><span dir="ltr">P-123456</span><span>رقم الجواز</span></div>
+          <div class="cs-row"><span>سوريا</span><span>الجنسية</span></div>
+          <div class="cs-row"><span>15/03/1985</span><span>تاريخ الميلاد</span></div>
+          <div class="cs-row"><span>ذكر</span><span>الجنس</span></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#fef3c7;color:#d97706;"><i class="fas fa-plane-departure"></i></div>
+            <span class="card-label">بيانات السفر والدفع</span>
+          </div>
+          <div class="cs-row"><span>القاهرة الدولي</span><span>المطار</span></div>
+          <div class="cs-row"><span>15/06/2026</span><span>تاريخ الوصول</span></div>
+          <div class="cs-row"><span>سياحة</span><span>الغرض</span></div>
+          <div class="cs-row"><span dir="ltr">$50.00</span><span>الرسوم</span></div>
+          <div class="cs-row"><span><span class="status done"><span class="dot"></span>مكتمل</span></span><span>حالة الدفع</span></div>
+          <div class="cs-row"><span dir="ltr">ESC-2026-48812</span><span>مرجع الدفع</span></div>
+        </div>
+      </div>
+
+      <!-- Processing Timeline -->
+      <section class="admin-table-wrap">
+        <div class="admin-table-head"><div class="title"><i class="fas fa-timeline" style="margin-left:8px;color:#005FCC;"></i> مسار المعالجة</div></div>
+        <table class="admin-table">
+          <thead><tr><th>الحالة</th><th>التاريخ</th><th>ملاحظات</th></tr></thead>
+          <tbody>
+            <tr><td><span class="status done"><span class="dot"></span>تم التقديم</span></td><td>15/06/2026 – 09:12</td><td>تم تقديم الطلب عبر البوابة الفردية</td></tr>
+            <tr><td><span class="status done"><span class="dot"></span>الدفع مكتمل</span></td><td>15/06/2026 – 09:13</td><td>مرجع ESC-2026-48812</td></tr>
+            <tr><td><span class="status processing"><span class="dot"></span>قيد المعالجة</span></td><td>15/06/2026 – 09:14</td><td>أُرسل الطلب للجهة المختصة</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <a class="admin-btn primary" href="#"><i class="fas fa-file-pdf"></i> معاينة المستند</a>
+    </div>
   </main>
-  <aside class="admin-sidebar"><div class="sidebar-top"><div class="sidebar-brand"><svg width="52" height="52" viewBox="0 0 26 26" fill="none"><path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="#0b56b2" stroke-width="1.7" stroke-linejoin="round"/><rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#37a34a" stroke-width="1.5"/><path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#37a34a" stroke-width="1.5" stroke-linecap="round"/></svg><div class="brand-text"><h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1><p data-i18n="common.brand.subtitle">Security Approval System</p></div></div><nav class="sidebar-nav"><a class="sidebar-link" href="admin-index.html"><span data-i18n="admin.sidebar.dashboard">لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a><a class="sidebar-link active" href="inquiries.html"><span data-i18n="admin.sidebar.inquiries">إدارة الطلبات</span><i class="fas fa-file-lines"></i></a><a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a><a class="sidebar-link" href="agencies.html"><span data-i18n="admin.sidebar.agencies">إدارة الوكلاء</span><i class="fas fa-building"></i></a><a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a><a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a><a class="sidebar-link" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a><a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a><a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a></nav></div><div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span data-i18n="admin.sidebar.logout">تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div></aside>
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-brand">
+        <img src="../img/logo.png" alt="Logo" onerror="this.outerHTML='<svg width=52 height=52 viewBox=&quot;0 0 26 26&quot; fill=&quot;none&quot;><path d=&quot;M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z&quot; stroke=&quot;#005FCC&quot; stroke-width=&quot;1.7&quot; stroke-linejoin=&quot;round&quot;/><rect x=&quot;9&quot; y=&quot;14&quot; width=&quot;8&quot; height=&quot;7&quot; rx=&quot;1.5&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot;/><path d=&quot;M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot;/></svg>'">
+        <div class="brand-text"><h1>نظام الموافقات الأمنية</h1><p>Security Approval System</p></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link" href="admin-index.html"><span>لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a>
+        <a class="sidebar-link active" href="inquiries.html"><span>إدارة الطلبات</span><i class="fas fa-file-lines"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a>
+        <a class="sidebar-link" href="agencies.html"><span>إدارة الوكلاء</span><i class="fas fa-building"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a>
+        <a class="sidebar-link" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span>تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div>
+  </aside>
+
 </div>
-<script src="../i18n/i18n.js"></script>
-<script>
-  i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });
-</script>
+<script>function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}</script>
 </body>
 </html>

@@ -1,115 +1,264 @@
 ﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>إدارة الأسعار — لوحة الإدارة</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="styles/admin.css">
+  <link rel="stylesheet" href="styles/admin.css">
 </head>
 <body class="admin-body">
-  <div class="admin-layout">
-    <main class="admin-content">
-      <div class="admin-topbar">
-        <div class="topbar-left"><div class="topbar-user"><img src="https://i.pravatar.cc/80?img=12"><div><div class="name">طلعت جادو</div><div class="role">مدير تنفيذي</div></div></div><div class="topbar-actions"><i class="fas fa-bell"></i><span data-i18n="common.lang.toggle">EN</span><i class="fas fa-globe"></i></div></div>
-        <div class="topbar-right"><div class="search-wrap"><i class="fas fa-search"></i><input type="text" data-i18n-placeholder="admin.topbar.searchPlaceholder" placeholder="إبحث هنا ..."></div><i class="fas fa-bars" style="color:#3b82f6;font-size:18px;"></i></div>
-      </div>
-      <div class="content-shell">
-        <section class="admin-stats-row">
-          <article class="admin-stat stat-blue"><div class="meta"><div class="num">18</div><div class="lbl">إجمالي قواعد التسعير</div></div><div class="icon"><i class="fas fa-file-invoice-dollar"></i></div></article>
-          <article class="admin-stat stat-green"><div class="meta"><div class="num">15</div><div class="lbl">قواعد نشطة</div></div><div class="icon"><i class="fas fa-badge-check"></i></div></article>
-          <article class="admin-stat stat-red"><div class="meta"><div class="num">03</div><div class="lbl">قواعد غير نشطة</div></div><div class="icon"><i class="fas fa-ban"></i></div></article>
-          <article class="admin-stat stat-amber"><div class="meta"><div class="num">05</div><div class="lbl">تعديلات هذا الشهر</div></div><div class="icon"><i class="fas fa-pen-to-square"></i></div></article>
-        </section>
+<div class="admin-layout">
 
-        <section class="admin-toolbar">
-          <div class="toolbar-group"><button class="admin-btn light"><i class="fas fa-download"></i> تصدير</button><button class="admin-btn success" onclick="openRuleModal()"><i class="fas fa-plus"></i> إضافة قاعدة جديدة</button></div>
-          <div class="toolbar-group"><h3 style="margin:0;font-size:18px;color:#0b56b2">تسعير الأفراد</h3><a href="nationalities.html" class="table-link" style="font-size:12px;">إعدادات الجنسيات</a></div>
-        </section>
-
-        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
-          <i class="fas fa-circle-info" style="color:#0b56b2;font-size:16px;"></i>
-          <span style="font-size:13px;color:#1e293b;">هذه الأسعار تُطبَّق على طلبات <strong>الأفراد</strong> فقط. لتعيين تسعير خاص لأي وكالة، انتقل إلى <a href="agencies.html" style="color:#0b56b2;text-decoration:underline;">إدارة الوكلاء</a> ثم افتح صفحة الوكالة المطلوبة.</span>
+  <main class="admin-content">
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <div class="topbar-user">
+          <img src="https://i.pravatar.cc/80?img=12" alt="admin">
+          <div><div class="name">طلعت جادو</div><div class="role">مدير تنفيذي</div></div>
         </div>
-
-        <section class="admin-table-wrap">
-          <table class="admin-table">
-            <thead><tr><th>رقم الحوية</th><th>نوع الإستعلام</th><th>قيمة الرسوم</th><th>العملة</th><th>ساري من تاريخ</th><th>الحالة</th><th>الإجراء</th></tr></thead>
-            <tbody>
-              <tr><td>سوريا</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td><td>18 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>سوريا</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td><td>17 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>العراق</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td><td>16 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>العراق</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td><td>15 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>اليمن</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td><td>14 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>اليمن</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td><td>13 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>فلسطين</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td><td>12 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>فلسطين</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td><td>11 ديسمبر 2025</td><td><span class="status done"><span class="dot"></span>نشط</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-              <tr><td>الصومال</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td><td>10 ديسمبر 2025</td><td><span class="status processing"><span class="dot"></span>موقوف</span></td><td><i class="fas fa-ellipsis-vertical action-dot"></i></td></tr>
-            </tbody>
-          </table>
-          <div class="admin-pagination"><div class="pg-pages"><a href="#"><i class="fas fa-chevron-right"></i></a><a href="#">8</a><a href="#">7</a><a href="#">6</a><a href="#">5</a><a href="#">4</a><a href="#">3</a><a href="#">2</a><a href="#">1</a><a href="#"><i class="fas fa-chevron-left"></i></a></div><div class="pg-right">عرض <select class="admin-select" style="min-width:62px;height:26px;"><option>11</option></select> سطر</div></div>
-        </section>
+        <div class="topbar-actions">
+          <i class="fas fa-bell"></i>
+          <span>EN</span>
+          <i class="fas fa-globe"></i>
+        </div>
       </div>
-    </main>
-
-    <aside class="admin-sidebar">
-      <div class="sidebar-top">
-        <div class="sidebar-brand"><svg width="52" height="52" viewBox="0 0 26 26" fill="none"><path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="#0b56b2" stroke-width="1.7" stroke-linejoin="round"/><rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#37a34a" stroke-width="1.5"/><path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#37a34a" stroke-width="1.5" stroke-linecap="round"/></svg><div class="brand-text"><h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1><p data-i18n="common.brand.subtitle">Security Approval System</p></div></div>
-        <nav class="sidebar-nav">
-          <a class="sidebar-link" href="admin-index.html"><span data-i18n="admin.sidebar.dashboard">لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a>
-          <a class="sidebar-link" href="inquiries.html"><span data-i18n="admin.sidebar.inquiries">إدارة الطلبات</span><i class="fas fa-file-lines"></i></a>
-          <a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a>
-          <a class="sidebar-link" href="agencies.html"><span data-i18n="admin.sidebar.agencies">إدارة الوكلاء</span><i class="fas fa-building"></i></a>
-          <a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a>
-          <a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a>
-          <a class="sidebar-link active" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
-          <a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a>
-          <a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a>
-        </nav>
+      <div class="topbar-right">
+        <div class="search-wrap"><i class="fas fa-search"></i><input type="text" placeholder="إبحث هنا ..."></div>
+        <i class="fas fa-bars" onclick="toggleSidebar()"></i>
       </div>
-      <div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span data-i18n="admin.sidebar.logout">تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div>
-    </aside>
-  </div>
+    </div>
 
-  <div id="ruleModal" style="position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:9999;">
-    <div style="background:#fff;width:92%;max-width:460px;border-radius:12px;border:1px solid #bfdbfe;padding:14px;">
-      <h3 style="margin:0 0 10px;color:#0b56b2;">إضافة/تعديل قاعدة تسعير</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div><label style="font-size:12px;">الجنسية</label><select id="mNat" class="admin-select" style="width:100%;min-width:0;"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option></select></div>
-        <div><label style="font-size:12px;">نوع الاستعلام</label><select id="mType" class="admin-select" style="width:100%;min-width:0;"><option value="">اختر</option><option>فردي</option><option>دفعة</option></select></div>
-        <div><label style="font-size:12px;">قيمة الرسوم</label><input id="mFee" type="number" step="0.01" min="0" class="admin-input" style="width:100%;height:36px;"></div>
-        <div><label style="font-size:12px;">العملة</label><select id="mCurrency" class="admin-select" style="width:100%;min-width:0;"><option value="">اختر</option><option>USD</option><option>EGP</option></select></div>
+    <div class="content-shell">
+      <!-- Stats -->
+      <section class="admin-stats-row">
+        <article class="admin-stat stat-blue">
+          <div class="meta"><div class="num">18</div><div class="lbl">إجمالي قواعد التسعير</div></div>
+          <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        </article>
+        <article class="admin-stat stat-green">
+          <div class="meta"><div class="num">15</div><div class="lbl">قواعد نشطة</div></div>
+          <div class="icon"><i class="fas fa-circle-check"></i></div>
+        </article>
+        <article class="admin-stat stat-red">
+          <div class="meta"><div class="num">03</div><div class="lbl">قواعد غير نشطة</div></div>
+          <div class="icon"><i class="fas fa-ban"></i></div>
+        </article>
+        <article class="admin-stat stat-amber">
+          <div class="meta"><div class="num">05</div><div class="lbl">تعديلات هذا الشهر</div></div>
+          <div class="icon"><i class="fas fa-pen-to-square"></i></div>
+        </article>
+      </section>
+
+      <!-- Toolbar -->
+      <section class="admin-toolbar">
+        <div class="toolbar-group">
+          <button class="admin-btn light"><i class="fas fa-download"></i> تصدير</button>
+          <button class="admin-btn success" onclick="openRuleModal()"><i class="fas fa-plus"></i> إضافة قاعدة جديدة</button>
+        </div>
+        <div class="toolbar-group">
+          <h3 style="margin:0;font-size:18px;font-weight:800;color:#004799;">قواعد التسعير</h3>
+        </div>
+      </section>
+
+      <!-- Info Banner -->
+      <div class="info-banner">
+        <i class="fas fa-circle-info"></i>
+        <span>هذه الأسعار تُطبَّق على طلبات <strong>الأفراد</strong> فقط. لتعيين تسعير خاص لأي وكالة، انتقل إلى <a href="agencies.html" style="color:#005FCC;text-decoration:underline;">إدارة الوكلاء</a> ثم افتح صفحة الوكالة المطلوبة.</span>
       </div>
-      <div style="margin-top:8px;"><label style="font-size:12px;">ساري من تاريخ</label><input id="mDate" type="date" class="admin-input" style="width:100%;height:36px;"></div>
-      <div id="mRuleErr" style="display:none;color:#dc2626;font-size:12px;margin-top:8px;">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
-      <div style="display:flex;gap:8px;justify-content:flex-start;margin-top:10px;"><button class="admin-btn primary" onclick="saveRule()">حفظ</button><button class="admin-btn light" onclick="closeRuleModal()">إلغاء</button></div>
+
+      <!-- Table -->
+      <section class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>رقم الحوية</th>
+              <th>نوع الإستعلام</th>
+              <th>قيمة الرسوم</th>
+              <th>العملة</th>
+              <th>ساري من تاريخ</th>
+              <th>الحالة</th>
+              <th>الإجراء</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>سوريا</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td>
+              <td>18 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>سوريا</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td>
+              <td>17 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>العراق</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td>
+              <td>16 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>العراق</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td>
+              <td>15 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>اليمن</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td>
+              <td>14 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>اليمن</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td>
+              <td>13 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>فلسطين</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td>
+              <td>12 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>فلسطين</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td>
+              <td>11 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>الصومال</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td>
+              <td>10 ديسمبر 2025</td>
+              <td><span class="status processing"><span class="dot"></span>موقوف</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>الصومال</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td>
+              <td>09 ديسمبر 2025</td>
+              <td><span class="status processing"><span class="dot"></span>موقوف</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>لبنان</td><td>فردي</td><td dir="ltr">50.00</td><td>دولار أمريكي</td>
+              <td>08 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+            <tr>
+              <td>لبنان</td><td>دفعة</td><td dir="ltr">45.00</td><td>دولار أمريكي</td>
+              <td>07 ديسمبر 2025</td>
+              <td><span class="status done"><span class="dot"></span>نشط</span></td>
+              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="admin-pagination">
+          <div class="pg-pages">
+            <a href="#"><i class="fas fa-chevron-left"></i></a>
+            <a href="#">...</a>
+            <a href="#">8</a>
+            <a href="#">7</a>
+            <a href="#">6</a>
+            <a href="#">5</a>
+            <a href="#">4</a>
+            <a href="#">3</a>
+            <a href="#">2</a>
+            <a href="#" class="active">1</a>
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
+          </div>
+          <div class="pg-right">
+            عرض
+            <select><option>11</option><option>25</option><option>50</option></select>
+            سطر
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-brand">
+        <img src="../img/logo.png" alt="Logo" onerror="this.outerHTML='<svg width=52 height=52 viewBox=&quot;0 0 26 26&quot; fill=&quot;none&quot;><path d=&quot;M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z&quot; stroke=&quot;#005FCC&quot; stroke-width=&quot;1.7&quot; stroke-linejoin=&quot;round&quot;/><rect x=&quot;9&quot; y=&quot;14&quot; width=&quot;8&quot; height=&quot;7&quot; rx=&quot;1.5&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot;/><path d=&quot;M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot;/></svg>'">
+        <div class="brand-text"><h1>نظام الموافقات الأمنية</h1><p>Security Approval System</p></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link" href="admin-index.html"><span>لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a>
+        <a class="sidebar-link" href="inquiries.html"><span>إدارة الطلبات</span><i class="fas fa-file-lines"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a>
+        <a class="sidebar-link" href="agencies.html"><span>إدارة الوكلاء</span><i class="fas fa-building"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a>
+        <a class="sidebar-link active" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span>تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div>
+  </aside>
+
+</div>
+
+<!-- Add/Edit Rule Modal -->
+<div id="ruleModal" class="admin-modal-overlay">
+  <div class="admin-modal">
+    <h3>إضافة/تعديل قاعدة تسعير</h3>
+    <div class="form-grid">
+      <div>
+        <label>الجنسية</label>
+        <select id="mNat"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option><option>فلسطين</option><option>الصومال</option><option>لبنان</option></select>
+      </div>
+      <div>
+        <label>نوع الاستعلام</label>
+        <select id="mType"><option value="">اختر</option><option>فردي</option><option>دفعة</option></select>
+      </div>
+      <div>
+        <label>قيمة الرسوم</label>
+        <input id="mFee" type="number" step="0.01" min="0">
+      </div>
+      <div>
+        <label>العملة</label>
+        <select id="mCurrency"><option value="">اختر</option><option>USD</option><option>EGP</option></select>
+      </div>
+    </div>
+    <div class="form-field" style="margin-top:12px;">
+      <label>ساري من تاريخ</label>
+      <input id="mDate" type="date">
+    </div>
+    <div id="mRuleErr" class="error-msg">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
+    <div class="modal-actions">
+      <button class="admin-btn primary" onclick="saveRule()">حفظ</button>
+      <button class="admin-btn light" onclick="closeRuleModal()">إلغاء</button>
     </div>
   </div>
+</div>
 
-  <script>
-    function openRuleModal() { document.getElementById('ruleModal').style.display = 'flex'; }
-    function closeRuleModal() { document.getElementById('ruleModal').style.display = 'none'; document.getElementById('mRuleErr').style.display = 'none'; }
-    function saveRule() {
-      const nat = document.getElementById('mNat').value;
-      const type = document.getElementById('mType').value;
-      const fee = parseFloat(document.getElementById('mFee').value);
-      const currency = document.getElementById('mCurrency').value;
-      const date = document.getElementById('mDate').value;
-      const today = new Date();
-      const selDate = date ? new Date(date + 'T00:00:00') : null;
-      const validDate = !!selDate && selDate >= new Date(today.getFullYear(), today.getMonth(), today.getDate());
-      if (!nat || !type || !currency || !fee || fee <= 0 || !validDate) {
-        document.getElementById('mRuleErr').style.display = 'block';
-        return;
-      }
-      closeRuleModal();
-      alert('تم حفظ قاعدة التسعير بنجاح');
-    }
-  </script>
-<script src="../i18n/i18n.js"></script>
 <script>
-  i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });
+function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}
+
+function openRuleModal(){document.getElementById('ruleModal').style.display='flex';}
+function closeRuleModal(){document.getElementById('ruleModal').style.display='none';document.getElementById('mRuleErr').style.display='none';}
+function saveRule(){
+  const nat=document.getElementById('mNat').value;
+  const type=document.getElementById('mType').value;
+  const fee=parseFloat(document.getElementById('mFee').value);
+  const currency=document.getElementById('mCurrency').value;
+  const date=document.getElementById('mDate').value;
+  const today=new Date();
+  const selDate=date?new Date(date+'T00:00:00'):null;
+  const validDate=!!selDate&&selDate>=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+  if(!nat||!type||!currency||!fee||fee<=0||!validDate){document.getElementById('mRuleErr').style.display='block';return;}
+  closeRuleModal();
+  alert('تم حفظ قاعدة التسعير بنجاح');
+}
 </script>
 </body>
 </html>

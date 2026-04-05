@@ -1,38 +1,90 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>لوحة التحكم — الإدارة</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="styles/admin.css">
+  <link rel="stylesheet" href="styles/admin.css">
 </head>
 <body class="admin-body">
 <div class="admin-layout">
+
   <main class="admin-content">
     <div class="admin-topbar">
-      <div class="topbar-left"><div class="topbar-user"><img src="https://i.pravatar.cc/80?img=12"><div><div class="name">أحمد محمود</div><div class="role">مشرف النظام</div></div></div><div class="topbar-actions"><i class="fas fa-bell"></i><span data-i18n="common.lang.toggle">EN</span><i class="fas fa-globe"></i></div></div>
-      <div class="topbar-right"><div class="search-wrap"><i class="fas fa-search"></i><input type="text" data-i18n-placeholder="admin.topbar.searchPlaceholder" placeholder="إبحث هنا ..."></div></div>
+      <div class="topbar-left">
+        <div class="topbar-user">
+          <img src="https://i.pravatar.cc/80?img=12" alt="admin">
+          <div><div class="name">أحمد محمود</div><div class="role">مشرف النظام</div></div>
+        </div>
+        <div class="topbar-actions">
+          <i class="fas fa-bell"></i>
+          <span>EN</span>
+          <i class="fas fa-globe"></i>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-wrap"><i class="fas fa-search"></i><input type="text" placeholder="إبحث هنا ..."></div>
+        <i class="fas fa-bars" onclick="toggleSidebar()"></i>
+      </div>
     </div>
+
     <div class="content-shell">
+      <!-- Stats -->
       <section class="admin-stats-row">
-        <article class="admin-stat stat-blue"><div class="meta"><div class="num">4,218</div><div class="lbl">إجمالي الطلبات</div></div><div class="icon"><i class="fas fa-file-lines"></i></div></article>
-        <article class="admin-stat stat-green"><div class="meta"><div class="num">298</div><div class="lbl">وكالات نشطة</div></div><div class="icon"><i class="fas fa-building"></i></div></article>
-        <article class="admin-stat stat-amber"><div class="meta"><div class="num">17</div><div class="lbl">وكالات قيد المراجعة</div></div><div class="icon"><i class="fas fa-user-clock"></i></div></article>
-        <article class="admin-stat stat-blue"><div class="meta"><div class="num" dir="ltr">$124,500</div><div class="lbl">إجمالي أرصدة المحافظ</div></div><div class="icon"><i class="fas fa-wallet"></i></div></article>
+        <article class="admin-stat stat-blue">
+          <div class="meta"><div class="num">4,218</div><div class="lbl">إجمالي الطلبات</div></div>
+          <div class="icon"><i class="fas fa-file-lines"></i></div>
+        </article>
+        <article class="admin-stat stat-green">
+          <div class="meta"><div class="num">298</div><div class="lbl">وكالات نشطة</div></div>
+          <div class="icon"><i class="fas fa-building"></i></div>
+        </article>
+        <article class="admin-stat stat-amber">
+          <div class="meta"><div class="num">17</div><div class="lbl">وكالات قيد المراجعة</div></div>
+          <div class="icon"><i class="fas fa-user-clock"></i></div>
+        </article>
+        <article class="admin-stat stat-blue">
+          <div class="meta"><div class="num" dir="ltr">$124,500</div><div class="lbl">إجمالي أرصدة المحافظ</div></div>
+          <div class="icon"><i class="fas fa-wallet"></i></div>
+        </article>
       </section>
 
-      <section class="cards-row" style="margin-bottom:10px;grid-template-columns:repeat(3,minmax(0,1fr));">
-        <a class="card" href="inquiries.html" style="text-decoration:none;"><div class="card-header"><div class="card-icon" style="background:#eff6ff;color:#1d4ed8;"><i class="fas fa-file-lines"></i></div><span class="card-label">متابعة الطلبات</span></div><div class="card-sub">عرض ومتابعة جميع الطلبات حسب الحالة ومصدر الطلب.</div></a>
-        <a class="card" href="agencies.html" style="text-decoration:none;"><div class="card-header"><div class="card-icon" style="background:#f0fdf4;color:#16a34a;"><i class="fas fa-building"></i></div><span class="card-label">إدارة الوكلاء</span></div><div class="card-sub">مراجعة طلبات التسجيل، الاعتماد، وإدارة المحافظ.</div></a>
-        <a class="card" href="pricing.html" style="text-decoration:none;"><div class="card-header"><div class="card-icon" style="background:#fff7ed;color:#d97706;"><i class="fas fa-file-invoice-dollar"></i></div><span class="card-label">إدارة الأسعار</span></div><div class="card-sub">تحديث رسوم الاستعلام حسب الجنسية ونوع الطلب.</div></a>
-      </section>
+      <!-- Quick Action Cards -->
+      <div class="cards-row" style="grid-template-columns:repeat(3,1fr);">
+        <a class="card" href="inquiries.html" style="text-decoration:none;color:inherit;">
+          <div class="card-header">
+            <div class="card-icon" style="background:#dbeafe;color:#005FCC;"><i class="fas fa-file-lines"></i></div>
+            <span class="card-label">متابعة الطلبات</span>
+          </div>
+          <div class="card-sub">عرض ومتابعة جميع الطلبات حسب الحالة ومصدر الطلب.</div>
+        </a>
+        <a class="card" href="agencies.html" style="text-decoration:none;color:inherit;">
+          <div class="card-header">
+            <div class="card-icon" style="background:#dcfce7;color:#16a34a;"><i class="fas fa-building"></i></div>
+            <span class="card-label">إدارة الوكلاء</span>
+          </div>
+          <div class="card-sub">مراجعة طلبات التسجيل، الاعتماد، وإدارة المحافظ.</div>
+        </a>
+        <a class="card" href="pricing.html" style="text-decoration:none;color:inherit;">
+          <div class="card-header">
+            <div class="card-icon" style="background:#fef3c7;color:#d97706;"><i class="fas fa-file-invoice-dollar"></i></div>
+            <span class="card-label">إدارة الأسعار</span>
+          </div>
+          <div class="card-sub">تحديث رسوم الاستعلام حسب الجنسية ونوع الطلب.</div>
+        </a>
+      </div>
 
+      <!-- Activity Table -->
       <section class="admin-table-wrap">
         <div class="admin-table-head"><div class="title">آخر الأنشطة</div></div>
         <table class="admin-table">
-          <thead><tr><th>الوقت</th><th>الحدث</th><th>المستخدم</th><th>المرجع</th></tr></thead>
+          <thead>
+            <tr><th>الوقت</th><th>الحدث</th><th>المستخدم</th><th>المرجع</th></tr>
+          </thead>
           <tbody>
             <tr><td>منذ 5 دقائق</td><td>اعتماد وكالة جديدة</td><td>أحمد محمود</td><td dir="ltr">AGN-2024-119</td></tr>
             <tr><td>منذ 18 دقيقة</td><td>إضافة رصيد محفظة</td><td>أحمد محمود</td><td dir="ltr">CRD-2026-2231</td></tr>
@@ -43,11 +95,29 @@
     </div>
   </main>
 
-  <aside class="admin-sidebar"><div class="sidebar-top"><div class="sidebar-brand"><svg width="52" height="52" viewBox="0 0 26 26" fill="none"><path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="#0b56b2" stroke-width="1.7" stroke-linejoin="round"/><rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#37a34a" stroke-width="1.5"/><path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#37a34a" stroke-width="1.5" stroke-linecap="round"/></svg><div class="brand-text"><h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1><p data-i18n="common.brand.subtitle">Security Approval System</p></div></div><nav class="sidebar-nav"><a class="sidebar-link active" href="admin-index.html"><span data-i18n="admin.sidebar.dashboard">لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a><a class="sidebar-link" href="inquiries.html"><span data-i18n="admin.sidebar.inquiries">إدارة الطلبات</span><i class="fas fa-file-lines"></i></a><a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a><a class="sidebar-link" href="agencies.html"><span data-i18n="admin.sidebar.agencies">إدارة الوكلاء</span><i class="fas fa-building"></i></a><a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a><a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a><a class="sidebar-link" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a><a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a><a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a></nav></div><div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span data-i18n="admin.sidebar.logout">تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div></aside>
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-brand">
+        <img src="../img/logo.png" alt="Logo" onerror="this.outerHTML='<svg width=52 height=52 viewBox=&quot;0 0 26 26&quot; fill=&quot;none&quot;><path d=&quot;M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z&quot; stroke=&quot;#005FCC&quot; stroke-width=&quot;1.7&quot; stroke-linejoin=&quot;round&quot;/><rect x=&quot;9&quot; y=&quot;14&quot; width=&quot;8&quot; height=&quot;7&quot; rx=&quot;1.5&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot;/><path d=&quot;M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot;/></svg>'">
+        <div class="brand-text"><h1>نظام الموافقات الأمنية</h1><p>Security Approval System</p></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link active" href="admin-index.html"><span>لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a>
+        <a class="sidebar-link" href="inquiries.html"><span>إدارة الطلبات</span><i class="fas fa-file-lines"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a>
+        <a class="sidebar-link" href="agencies.html"><span>إدارة الوكلاء</span><i class="fas fa-building"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a>
+        <a class="sidebar-link" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a>
+        <a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span>تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div>
+  </aside>
+
 </div>
-<script src="../i18n/i18n.js"></script>
-<script>
-  i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });
-</script>
+<script>function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}</script>
 </body>
 </html>
