@@ -1225,7 +1225,7 @@ function buildReviewStep() {
     const successCardHtml = `
         <div class="cs-row"><span class="cs-label">رقم مرجعي للحزمة</span><span class="cs-value" dir="ltr">${batchRef}</span></div>
         <div class="cs-row"><span class="cs-label">عدد المسافرين</span><span class="cs-value">${totalTravelers} مسافراً</span></div>
-        <div class="cs-row"><span class="cs-label">إجمالي المبلغ المخصوم</span><span class="cs-value" style="font-weight:800;color:#005FCC;">${fmt(totalFee)} دولار أمريكي</span></div>`;
+        <div class="cs-row"><span class="cs-label">إجمالي المبلغ المخصوم</span><span class="cs-value" style="font-weight:800;color:#005FCC;">$${fmt(totalFee)}</span></div>`;
     document.getElementById('success-summary-card').innerHTML = successCardHtml;
 }
 

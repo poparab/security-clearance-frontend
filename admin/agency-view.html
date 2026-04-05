@@ -81,10 +81,10 @@
           <span>الأسعار المحددة هنا تُطبَّق على هذه الوكالة فقط وتحل محل التسعير العام للأفراد. إذا لم يُحدَّد سعر لجنسية معينة، يُطبَّق السعر العام.</span>
         </div>
         <table class="admin-table" id="agencyPricingTable">
-          <thead><tr><th>الجنسية</th><th>قيمة الرسوم</th><th>العملة</th><th>ساري من تاريخ</th><th>الحالة</th><th>الإجراء</th></tr></thead>
+          <thead><tr><th>الجنسية</th><th>قيمة الرسوم (USD)</th><th>ساري من تاريخ</th><th>الحالة</th><th>الإجراء</th></tr></thead>
           <tbody>
             <tr>
-              <td>سوريا</td><td dir="ltr">42.00</td><td>دولار أمريكي</td><td>01 يناير 2026</td>
+              <td>سوريا</td><td dir="ltr">42.00</td><td>01 يناير 2026</td>
               <td><span class="status done"><span class="dot"></span>نشط</span></td>
               <td>
                 <button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button>
@@ -92,7 +92,7 @@
               </td>
             </tr>
             <tr>
-              <td>العراق</td><td dir="ltr">40.00</td><td>دولار أمريكي</td><td>01 يناير 2026</td>
+              <td>العراق</td><td dir="ltr">40.00</td><td>01 يناير 2026</td>
               <td><span class="status done"><span class="dot"></span>نشط</span></td>
               <td>
                 <button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button>
@@ -100,7 +100,7 @@
               </td>
             </tr>
             <tr>
-              <td>اليمن</td><td dir="ltr">42.00</td><td>دولار أمريكي</td><td>15 فبراير 2026</td>
+              <td>اليمن</td><td dir="ltr">42.00</td><td>15 فبراير 2026</td>
               <td><span class="status done"><span class="dot"></span>نشط</span></td>
               <td>
                 <button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button>
@@ -169,8 +169,7 @@
     <h3 id="apModalTitle">إضافة سعر خاص للوكالة</h3>
     <div class="form-grid">
       <div><label>الجنسية</label><select id="apNat"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option><option>فلسطين</option><option>الصومال</option></select></div>
-      <div><label>قيمة الرسوم</label><input id="apFee" type="number" step="0.01" min="0"></div>
-      <div><label>العملة</label><select id="apCurrency"><option value="">اختر</option><option>USD</option><option>EGP</option></select></div>
+      <div><label>قيمة الرسوم (USD)</label><input id="apFee" type="number" step="0.01" min="0"></div>
       <div><label>ساري من تاريخ</label><input id="apDate" type="date"></div>
     </div>
     <div id="apErr" class="error-msg">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
@@ -211,13 +210,13 @@ function openAgencyPricingModal(editRow){
   document.getElementById('agencyPricingModal').style.display='flex';
   document.getElementById('apErr').style.display='none';
   if(editRow){document.getElementById('apModalTitle').textContent='تعديل سعر الوكالة';}
-  else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';document.getElementById('apCurrency').value='';document.getElementById('apDate').value='';}
+  else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';document.getElementById('apDate').value='';}}
 }
 function closeAgencyPricingModal(){document.getElementById('agencyPricingModal').style.display='none';document.getElementById('apErr').style.display='none';}
 function saveAgencyPrice(){
-  const nat=document.getElementById('apNat').value;const fee=parseFloat(document.getElementById('apFee').value);const currency=document.getElementById('apCurrency').value;const date=document.getElementById('apDate').value;
+  const nat=document.getElementById('apNat').value;const fee=parseFloat(document.getElementById('apFee').value);const date=document.getElementById('apDate').value;
   const today=new Date();const selDate=date?new Date(date+'T00:00:00'):null;const validDate=!!selDate&&selDate>=new Date(today.getFullYear(),today.getMonth(),today.getDate());
-  if(!nat||!currency||!fee||fee<=0||!validDate){document.getElementById('apErr').style.display='block';return;}
+  if(!nat||!fee||fee<=0||!validDate){document.getElementById('apErr').style.display='block';return;}
   closeAgencyPricingModal();alert('تم حفظ السعر الخاص بالوكالة بنجاح');
 }
 function editAgencyPrice(btn){openAgencyPricingModal(btn.closest('tr'));}
