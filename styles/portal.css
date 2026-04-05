@@ -918,6 +918,146 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
 .txn-debit  { background: #fee2e2; color: #b91c1c; }
 .txn-credit { background: #d4f0d1; color: #2e7d32; }
 
+/* ── AGENCY INFO BAR (Dashboard) ─────────────────────────── */
+.agency-bar {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    border: 1px solid #e8edf3;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,36,77,0.04);
+}
+.agency-bar .agency-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #005FCC, #4FB848);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+.agency-bar .agency-name {
+    font-family: Tajawal-Bold, sans-serif;
+    font-size: calc(1rem + 0.12vw);
+    color: #004799;
+    white-space: nowrap;
+}
+.agency-bar .agency-details {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-right: auto;
+}
+.agency-bar .agency-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    min-width: 120px;
+}
+.agency-bar .agency-detail .ad-label {
+    font-size: calc(0.6875rem + 0.02vw);
+    color: #64748b;
+    margin-bottom: 0.125rem;
+}
+.agency-bar .agency-detail .ad-value {
+    font-family: Tajawal-Bold, sans-serif;
+    font-size: calc(0.8125rem + 0.02vw);
+    color: #1e293b;
+}
+
+/* ── DASHBOARD ACTION CARDS ─────────────────────────────── */
+.dash-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+.dash-action-card {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.dash-action-card:hover {
+    box-shadow: 0 4px 16px rgba(0,36,77,0.08);
+}
+.dash-action-card .dac-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+.dash-action-card .dac-title {
+    font-family: Tajawal-Bold, sans-serif;
+    font-size: calc(0.9375rem + 0.015vw);
+    color: #1e293b;
+}
+.dash-action-card .dac-desc {
+    font-size: calc(0.8125rem + 0.02vw);
+    color: #64748b;
+    line-height: 1.6;
+}
+.dash-action-card .dac-btn {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    font-family: Tajawal-Medium, sans-serif;
+    font-size: calc(0.875rem + 0.02vw);
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+.dash-action-card .dac-btn:hover { filter: brightness(0.92); color: #ffffff; }
+/* Color variants */
+.dash-action-card.dac-teal  { border-color: #00AAFF; }
+.dash-action-card.dac-teal  .dac-icon { background: #00AAFF; }
+.dash-action-card.dac-teal  .dac-btn  { background: #00AAFF; }
+.dash-action-card.dac-green { border-color: #4FB848; }
+.dash-action-card.dac-green .dac-icon { background: #4FB848; }
+.dash-action-card.dac-green .dac-btn  { background: #4FB848; }
+.dash-action-card.dac-blue  { border-color: #005FCC; }
+.dash-action-card.dac-blue  .dac-icon { background: #005FCC; }
+.dash-action-card.dac-blue  .dac-btn  { background: #005FCC; }
+/* Wallet balance card */
+.dash-action-card.dac-wallet { border-color: #4FB848; }
+.dash-action-card.dac-wallet .dac-icon { background: linear-gradient(135deg, #4FB848, #3a9e32); }
+.dash-action-card .dac-balance {
+    font-family: Tajawal-ExtraBold, sans-serif;
+    font-size: calc(1.125rem + 0.65vw);
+    color: #004799;
+    line-height: 1;
+    direction: ltr;
+}
+.dash-action-card .dac-balance-label {
+    font-size: calc(0.875rem + 0.02vw);
+    color: #64748b;
+}
+
 /* ── PORTAL FOOTER OVERRIDES ────────────────────────────── */
 body.portal-page footer.footer {
     padding: 3.5rem 0 0;
@@ -925,20 +1065,24 @@ body.portal-page footer.footer {
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 991px) {
-    .stat-cards { grid-template-columns: repeat(2, 1fr); }
+    .stat-cards { grid-template-columns: repeat(2, 1fr) !important; }
     .quick-stats { grid-template-columns: repeat(2, 1fr); }
     .wallet-stats { grid-template-columns: repeat(2, 1fr); }
     .filter-bar { flex-direction: column; }
     .detail-grid { grid-template-columns: 1fr; }
     .batch-meta-grid { grid-template-columns: 1fr 1fr; }
     .status-cards-row { grid-template-columns: repeat(2, 1fr); }
+    .dash-actions { grid-template-columns: repeat(2, 1fr); }
+    .agency-bar { flex-wrap: wrap; }
+    .agency-bar .agency-details { width: 100%; margin-right: 0; }
     body.portal-page header a.navbar-brand { margin-left: auto; }
 }
 @media (max-width: 575px) {
-    .stat-cards { grid-template-columns: 1fr; }
+    .stat-cards { grid-template-columns: 1fr !important; }
     .quick-stats { grid-template-columns: 1fr 1fr; }
     .wallet-stats { grid-template-columns: 1fr; }
     .batch-meta-grid { grid-template-columns: 1fr; }
     .table-pagination { flex-direction: column; gap: 0.75rem; }
     .status-cards-row { grid-template-columns: 1fr 1fr; }
+    .dash-actions { grid-template-columns: 1fr; }
 }

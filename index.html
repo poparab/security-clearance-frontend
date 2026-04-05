@@ -1,491 +1,385 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم الوكالة — نظام الموافقات الأمنية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.rtl.min.css">`n    <link rel="stylesheet" href="styles/main.css">
+    <title>لوحة تحكم الوكلاء — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.rtl.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/portal.css">
+    <link rel="shortcut icon" href="img/favicon.png">
 </head>
-<body>
+<body class="portal-page">
 
-<!-- ══════════════════════════════════════
-     TOP HEADER BAR
-═══════════════════════════════════════ -->
-<header class="top-header">
-    <div class="top-header-inner">
-
-        <!-- Logo -->
-        <div class="logo-wrap">
-            <div class="logo-icon">
-                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                    <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                    <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                    <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                    <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-                </svg>
+<!-- ════════════════ HEADER ════════════════ -->
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="home.html"></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inquiry-list.html">قائمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="batch-list.html">حزمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">التقارير</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wallet.html">الإعدادات</a></li>
+                </ul>
             </div>
-            <div class="logo-text">
-                <h1 data-i18n="common.brand.name">نظام الموافقات الأمنية</h1>
-                <p data-i18n="common.brand.subtitle">Security Approval System</p>
-            </div>
-        </div>
-
-        <!-- Nav links -->
-        <nav class="top-nav">
-            <a class="nav-link active" href="#">
-                <i class="fas fa-gauge-high"></i> <span data-i18n="portal.nav.dashboard">لوحة التحكم</span>
-            </a>
-            <a class="nav-link" href="inquiry-list.html">
-                <i class="fas fa-file-lines"></i> <span data-i18n="portal.nav.inquiries">الاستعلامات</span>
-                <span class="nav-badge">3</span>
-            </a>
-            <a class="nav-link" href="batch-list.html">
-                <i class="fas fa-layer-group"></i> <span data-i18n="portal.nav.batch">حزمة طلبات</span>
-            </a>
-            <a class="nav-link" href="wallet.html">
-                <i class="fas fa-wallet"></i> <span data-i18n="portal.nav.wallet">المحفظة</span>
-            </a>
-            <a class="nav-link" href="#">
-                <i class="fas fa-building"></i> <span data-i18n="portal.nav.agency">الوكالة</span>
-            </a>
-            <a class="nav-link" href="#">
-                <i class="fas fa-circle-question"></i> <span data-i18n="portal.nav.help">المساعدة</span>
-            </a>
+            <a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><img class="icon" src="icons/language.svg" alt="">EN</a>
         </nav>
-
-        <!-- Right utilities -->
-        <div class="top-right">
-            <!-- Notifications -->
-            <div class="notif-btn" id="bellBtn" onclick="toggleNotif()">
-                <i class="fas fa-bell"></i>
-                <span class="notif-dot" id="notifDot"></span>
-            </div>
-
-            <!-- Lang toggle -->
-            <div class="lang-toggle">
-                <button class="active" data-lang="ar" onclick="setLang(this)">ع</button>
-                <button data-lang="en" onclick="setLang(this)">EN</button>
-            </div>
-
-            <!-- User chip -->
-            <div class="user-chip" id="userChip" onclick="toggleUser()">
-                <div class="user-avatar"><i class="fas fa-user"></i></div>
-                <div class="user-info">
-                    <div class="uname">وكالة النيل للسياحة</div>
-                    <div class="urole">وكالة معتمدة</div>
-                </div>
-                <i class="fas fa-chevron-down chevron"></i>
-            </div>
-        </div>
-
     </div>
 </header>
 
-<!-- Notification drawer -->
-<div class="notif-drawer" id="notifDrawer">
-    <div class="nd-header">
-        <h4><span data-i18n="portal.notifications.title">الإشعارات</span> <span style="background:#ef4444;color:#fff;font-size:10px;padding:1px 7px;border-radius:10px;margin-right:5px;">3</span></h4>
-        <span class="nd-mark" data-i18n="portal.notifications.markAllRead" onclick="markAllRead()">تعليم الكل كمقروء</span>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#4FB848;"></div>
-        <div class="nd-text">
-            <strong>طلب BTH-2024-0234 — موافقة</strong>
-            <span>تمت الموافقة على حزمة الطلبات لـ 15 مسافر</span>
-            <div class="nd-time">منذ 12 دقيقة</div>
-        </div>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#f59e0b;"></div>
-        <div class="nd-text">
-            <strong>INQ-2024-0891 — قيد المعالجة</strong>
-            <span>الطلب قيد الفحص الأمني وسيتم تحديث الحالة تلقائياً</span>
-            <div class="nd-time">منذ 2 ساعة</div>
-        </div>
-    </div>
-    <div class="nd-item">
-        <div class="nd-dot" style="background:#3392FF;"></div>
-        <div class="nd-text">
-            <strong>رصيد المحفظة منخفض</strong>
-            <span>رصيدك الحالي $450 — يُنصح بالشحن قريباً</span>
-            <div class="nd-time">أمس، 6:30 م</div>
-        </div>
-    </div>
-</div>
-
-<!-- User dropdown -->
-<div class="user-dropdown" id="userDropdown">
-    <div class="ud-top">
-        <div class="udname" data-i18n="portal.user.name">وكالة النيل للسياحة</div>
-        <div class="udrole" data-i18n="portal.user.role">وكالة معتمدة</div>
-        <div class="udid" dir="ltr">AG-2024-0156</div>
-    </div>
-    <a class="ud-item" href="#"><i class="fas fa-building"></i> <span data-i18n="portal.user.profile">بيانات الوكالة</span></a>
-    <a class="ud-item logout" href="login.html"><i class="fas fa-right-from-bracket"></i> <span data-i18n="portal.user.logout">تسجيل الخروج</span></a>
-</div>
-
-
-<!-- ══════════════════════════════════════
-     BREADCRUMB BAR
-═══════════════════════════════════════ -->
-<div class="breadcrumb-bar">
-    <div class="breadcrumb-inner">
-        <a href="#"><i class="fas fa-home" style="font-size:11px;"></i></a>
-        <i class="fas fa-chevron-left sep"></i>
-        <span class="cur" data-i18n="portal.agencyDashboard.breadcrumb.current">لوحة التحكم</span>
-    </div>
-</div>
-
-
-<!-- ══════════════════════════════════════
-     PAGE HERO BANNER
-═══════════════════════════════════════ -->
-<section class="page-hero">
-    <div class="hero-inner">
-        <div class="hero-text">
-            <h2 data-i18n="portal.agencyDashboard.hero.title">لوحة تحكم الوكالة</h2>
-            <p data-i18n="portal.agencyDashboard.hero.subtitle">إدارة ومتابعة طلبات الموافقات الأمنية · ديسمبر 2024</p>
-        </div>
-        <div class="hero-agency">
-            <div class="hero-agency-icon"><i class="fas fa-building"></i></div>
-            <div class="hero-agency-text">
-                <div class="aname">وكالة النيل للسياحة</div>
-                <div class="amid" dir="ltr">AG-2024-0156</div>
-                <span class="hero-badge"><i class="fas fa-circle-check"></i> حساب نشط</span>
-            </div>
-        </div>
+<!-- ════════════════ HERO ════════════════ -->
+<section class="portal-hero">
+    <div class="container">
+        <h1>لوحة تحكم الوكلاء</h1>
+        <p>إدارة ومتابعة طلبات الموافقات الأمنية</p>
     </div>
 </section>
 
+<!-- ════════════════ BREADCRUMB ════════════════ -->
+<div class="portal-breadcrumb">
+    <div class="container">
+        <nav>
+            <a href="home.html"><i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-chevron-left separator"></i>
+            <span class="current">لوحة التحكم</span>
+        </nav>
+    </div>
+</div>
 
-<!-- ══════════════════════════════════════
-     PAGE BODY
-═══════════════════════════════════════ -->
-<div class="page-body">
+<!-- ════════════════ PAGE BODY ════════════════ -->
+<div class="container portal-body">
 
-    <!-- ── Overview Cards  (AC1 + AC2) ── -->
-    <p class="section-title"><i class="fas fa-building"></i> نظرة عامة على الوكالة</p>
-    <div class="cards-row">
+    <!-- Agency Info Bar -->
+    <div class="section-header">
+        <h2><span class="title-icon"><i class="fa-solid fa-building"></i></span> وكالة النيل للسياحة</h2>
+    </div>
 
-        <!-- Agency info  (AC1) -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon ci-icon"><i class="fas fa-id-badge"></i></div>
-                <span class="card-label">بيانات الوكالة</span>
+    <div class="agency-bar">
+        <div class="agency-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="agency-name">وكالة النيل للسياحة</div>
+        <div class="agency-details">
+            <div class="agency-detail">
+                <span class="ad-label">رقم الترخيص:</span>
+                <span class="ad-value" dir="ltr">AG-2024-0158</span>
             </div>
-            <div class="card-value" style="font-size:15px;margin-bottom:2px;">وكالة النيل للسياحة</div>
-            <div class="card-sub" style="margin-bottom:6px;" dir="ltr">AG-2024-0156</div>
-            <div class="status-row">
-                <div class="status-dot" style="background:#4FB848;"></div>
-                <span style="font-size:11px;font-weight:600;color:#4FB848;">نشط</span>
-                <span style="font-size:11px;color:#94a3b8;margin-right:auto;">منذ 15 يناير 2024</span>
+            <div class="agency-detail">
+                <span class="ad-label">تاريخ التسجيل:</span>
+                <span class="ad-value">15 يناير 2024</span>
             </div>
-            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #f1f5f9;">
-                <div class="card-sub">آخر دخول: اليوم 09:14 ص</div>
+            <div class="agency-detail">
+                <span class="ad-label">آخر نشاط:</span>
+                <span class="ad-value">يوم 2:30 م</span>
             </div>
-        </div>
-
-        <!-- Wallet  (AC2) -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon cw-icon"><i class="fas fa-wallet"></i></div>
-                <span class="card-label">المحفظة</span>
+            <div class="agency-detail">
+                <span class="ad-label">الحالة:</span>
+                <span class="ad-value"><span class="status-pill sp-green"><i class="fa-solid fa-circle-check"></i> نشط</span></span>
             </div>
-            <div class="card-value cw-value" dir="ltr">2,450.00</div>
-            <div class="card-sub">USD · الرصيد الحالي</div>
-            <a class="card-action cw-action" href="wallet.html" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">
-                <i class="fas fa-wallet"></i> عرض المحفظة
-            </a>
-        </div>
-
-        <!-- Total inquiries -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon ct-icon"><i class="fas fa-file-lines"></i></div>
-                <span class="card-label">إجمالي الاستعلامات</span>
-            </div>
-            <div class="card-value">1,247</div>
-            <div class="card-sub">منذ تسجيل الوكالة</div>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
-                <span style="font-size:11px;background:#edf9ec;color:#4FB848;padding:2px 8px;border-radius:6px;font-weight:600;">1,173 موافق</span>
-                <span style="font-size:11px;background:#fff5f5;color:#dc2626;padding:2px 8px;border-radius:6px;font-weight:600;">74 مرفوض</span>
-            </div>
-        </div>
-
-        <!-- Approval rate -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon cr-icon"><i class="fas fa-chart-line"></i></div>
-                <span class="card-label">معدل الموافقة</span>
-            </div>
-            <div class="card-value" style="color:#4FB848;">94.2%</div>
-            <div class="card-sub">خلال الشهر الماضي</div>
-            <div style="margin-top:10px;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;">
-                <div style="height:100%;width:94.2%;background:linear-gradient(90deg,#4FB848,#4FB848);border-radius:3px;"></div>
-            </div>
-        </div>
-
-    </div><!-- /cards-row -->
-
-
-    <!-- ── KPI Stats  (AC3) ── -->
-    <p class="section-title"><i class="fas fa-chart-bar"></i> إحصائيات هذا الشهر</p>
-    <div class="stats-row">
-        <div class="stat stat-blue">
-            <div class="stat-icon-wrap"><i class="fas fa-paper-plane"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">تم الإرسال</div>
-                <div class="stat-num">156</div>
-                <div class="stat-period">ديسمبر 2024</div>
-            </div>
-        </div>
-        <div class="stat stat-amber">
-            <div class="stat-icon-wrap"><i class="fas fa-clock"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">قيد المعالجة</div>
-                <div class="stat-num">23</div>
-                <div class="stat-period">في الانتظار</div>
-            </div>
-        </div>
-        <div class="stat stat-green">
-            <div class="stat-icon-wrap"><i class="fas fa-circle-check"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">تمت الموافقة</div>
-                <div class="stat-num">124</div>
-                <div class="stat-period">ديسمبر 2024</div>
-            </div>
-        </div>
-        <div class="stat stat-red">
-            <div class="stat-icon-wrap"><i class="fas fa-circle-xmark"></i></div>
-            <div class="stat-body">
-                <div class="stat-label">تم الرفض</div>
-                <div class="stat-num">9</div>
-                <div class="stat-period">ديسمبر 2024</div>
-            </div>
-        </div>
-    </div><!-- /stats-row -->
-
-
-    <!-- ── Primary Actions  (AC6) ── -->
-    <p class="section-title"><i class="fas fa-bolt"></i> الإجراءات السريعة</p>
-    <div class="actions-row">
-        <div class="action-card ac-new">
-            <div class="action-icon"><i class="fas fa-user-plus"></i></div>
-            <h4>استعلام جديد</h4>
-            <p>إرسال استعلام أمني لمسافر واحد مع تفاصيل الجواز والرحلة</p>
-            <button class="action-btn"><i class="fas fa-plus"></i> إنشاء استعلام</button>
-        </div>
-        <div class="action-card ac-batch">
-            <div class="action-icon"><i class="fas fa-layer-group"></i></div>
-            <h4>رفع حزمة طلبات</h4>
-            <p>رفع ملف Excel لإرسال استعلامات متعددة في طلب واحد</p>
-            <button class="action-btn"><i class="fas fa-cloud-arrow-up"></i> رفع ملف</button>
-        </div>
-        <div class="action-card ac-wallet">
-            <div class="action-icon"><i class="fas fa-wallet"></i></div>
-            <h4>إدارة المحفظة</h4>
-            <p>عرض الرصيد وتاريخ المعاملات وشحن رصيد الوكالة</p>
-            <button class="action-btn"><i class="fas fa-arrow-left"></i> إدارة الرصيد</button>
-        </div>
-    </div><!-- /actions-row -->
-
-
-    <!-- ── Recent Activity  (AC5) ── -->
-    <p class="section-title"><i class="fas fa-clock-rotate-left"></i> آخر النشاطات</p>
-    <div class="table-card">
-        <div class="table-header">
-            <h3>الاستعلامات الأخيرة</h3>
-            <a href="#">عرض جميع الاستعلامات <i class="fas fa-arrow-left" style="font-size:11px;"></i></a>
-        </div>
-        <div style="overflow-x:auto;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>رقم المرجع</th>
-                        <th>تاريخ الإرسال</th>
-                        <th>النوع</th>
-                        <th>عدد المسافرين</th>
-                        <th>الحالة</th>
-                        <th>الإجراءات</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="ref-cell" dir="ltr">BTH-2024-0234</span></td>
-                        <td>18 ديسمبر 2024</td>
-                        <td><span class="type-badge type-batch"><i class="fas fa-layer-group" style="font-size:10px;"></i> حزمة</span></td>
-                        <td>15 مسافر</td>
-                        <td><span class="pill pill-green"><i class="fas fa-circle-check"></i> موافق عليه</span></td>
-                        <td><a class="tbl-link" href="batch-view.html?batch=BTH-2024-0234">عرض التفاصيل</a></td>
-                    </tr>
-                    <tr>
-                        <td><span class="ref-cell" dir="ltr">INQ-2024-0891</span></td>
-                        <td>17 ديسمبر 2024</td>
-                        <td><span class="type-badge type-single"><i class="fas fa-user" style="font-size:10px;"></i> فردي</span></td>
-                        <td>1 مسافر</td>
-                        <td><span class="pill pill-blue"><i class="fas fa-spinner"></i> قيد المعالجة</span></td>
-                        <td>
-                            <a class="tbl-link" href="inquiry-view.html?ref=INQ-2024-0891&source=list">عرض التفاصيل</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="ref-cell" dir="ltr">BTH-2024-0233</span></td>
-                        <td>16 ديسمبر 2024</td>
-                        <td><span class="type-badge type-batch"><i class="fas fa-layer-group" style="font-size:10px;"></i> حزمة</span></td>
-                        <td>8 مسافرين</td>
-                        <td><span class="pill pill-blue"><i class="fas fa-spinner"></i> قيد المعالجة</span></td>
-                        <td><a class="tbl-link" href="batch-view.html?batch=BTH-2024-0233">عرض التفاصيل</a></td>
-                    </tr>
-                    <tr>
-                        <td><span class="ref-cell" dir="ltr">BTH-2024-0232</span></td>
-                        <td>15 ديسمبر 2024</td>
-                        <td><span class="type-badge type-batch"><i class="fas fa-layer-group" style="font-size:10px;"></i> حزمة</span></td>
-                        <td>22 مسافر</td>
-                        <td><span class="pill pill-green"><i class="fas fa-circle-check"></i> موافق عليه</span></td>
-                        <td><a class="tbl-link" href="batch-view.html?batch=BTH-2024-0232">عرض التفاصيل</a></td>
-                    </tr>
-                    <tr>
-                        <td><span class="ref-cell" dir="ltr">INQ-2024-0887</span></td>
-                        <td>14 ديسمبر 2024</td>
-                        <td><span class="type-badge type-single"><i class="fas fa-user" style="font-size:10px;"></i> فردي</span></td>
-                        <td>1 مسافر</td>
-                        <td><span class="pill pill-red"><i class="fas fa-circle-xmark"></i> مرفوض</span></td>
-                        <td><a class="tbl-link" href="inquiry-view.html?ref=INQ-2024-0887&source=list">عرض التفاصيل</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div><!-- /table-card -->
-
-</div><!-- /page-body -->
-
-
-<!-- ══════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════ -->
-<!-- ══════════════════════════════════════
-     RICH FOOTER
-═══════════════════════════════════════ -->
-<footer class="footer-rich">
-    <div class="footer-rich-inner">
-        <div class="fr-brand">
-            <div class="logo-wrap">
-                <div class="logo-icon">
-                    <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                        <path d="M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
-                        <rect x="9" y="14" width="8" height="7" rx="1.5" stroke="#7dd3fc" stroke-width="1.5"/>
-                        <path d="M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="13" cy="17" r="1.3" fill="#7dd3fc"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <h1>نظام الموافقات الأمنية</h1>
-                    <p>Security Approval System</p>
-                </div>
-            </div>
-            <p class="fr-desc">منصة متكاملة لإدارة وتتبع الموافقات الأمنية والتنسيق مع الجهات الأمنية المختصة · إدارة الطلبات بكل سهولة ويسر من خلال نظام متكامل</p>
-            <div class="fr-social">
-                <a href="#" title="Google+"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <div class="fr-hotline"><i class="fas fa-phone-volume"></i>&nbsp; الخط الساخن: 16999</div>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.quickLinks">روابط سريعة</h5>
-            <ul>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> عن النظام</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> حقوق الوصول</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> الاستعلام</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> المساعدة</a></li>
-            </ul>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.services">خدمات</h5>
-            <ul>
-                <li><a href="batch-inquiry.html"><i class="fas fa-chevron-left"></i> طلب جديد</a></li>
-                <li><a href="batch-list.html"><i class="fas fa-chevron-left"></i> متابعة الطلب</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> خدمة الدفع</a></li>
-                <li><a href="#"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
-            </ul>
-        </div>
-        <div class="fr-col">
-            <h5 data-i18n="portal.footer.contact">اتصل بنا</h5>
-            <div class="fr-contact-item"><i class="fas fa-phone"></i><span dir="ltr">+20 10 9070 2229</span></div>
-            <div class="fr-contact-item"><i class="fas fa-envelope"></i><span dir="ltr">info@esecurity.gov.eg</span></div>
-            <div class="fr-contact-item"><i class="fas fa-location-dot"></i><span>شارع جزيرة العرب، المهندسين، الجيزة، مصر</span></div>
-            <div class="fr-contact-item" style="margin-top:6px;"><i class="fas fa-headset"></i><span style="font-size:18px;font-weight:800;color:#e2e8f0;">الخط الساخن: 16999 📞</span></div>
         </div>
     </div>
-    <div class="footer-bottom-bar">
-        <span data-i18n="portal.footer.copyright">جميع الحقوق محفوظة © 2024 نظام الموافقات الأمنية</span>
+
+    <!-- الإجراءات الرئيسية -->
+    <div class="section-header">
+        <h2><span class="title-icon"><i class="fa-solid fa-bolt"></i></span> الإجراءات الرئيسية</h2>
+    </div>
+
+    <div class="dash-actions">
+        <!-- سجل الطلبات -->
+        <div class="dash-action-card dac-teal">
+            <div class="dac-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+            <div class="dac-title">سجل الطلبات</div>
+            <div class="dac-desc">عرض جميع الطلبات المرسلة والمعالجة</div>
+            <a href="inquiry-list.html" class="dac-btn"><i class="fa-solid fa-eye"></i> عرض السجل</a>
+        </div>
+        <!-- طلب جديد -->
+        <div class="dash-action-card dac-green">
+            <div class="dac-icon"><i class="fa-solid fa-file-circle-plus"></i></div>
+            <div class="dac-title">طلب جديد</div>
+            <div class="dac-desc">إرسال طلب موافقة أمنية جديد للمسافرين</div>
+            <a href="batch-inquiry.html" class="dac-btn"><i class="fa-solid fa-plus"></i> إنشاء طلب</a>
+        </div>
+        <!-- إدارة المحفظة -->
+        <div class="dash-action-card dac-blue">
+            <div class="dac-icon"><i class="fa-solid fa-wallet"></i></div>
+            <div class="dac-title">إدارة المحفظة</div>
+            <div class="dac-desc">عرض الرصيد وتاريخ المعاملات المالية</div>
+            <a href="wallet.html" class="dac-btn"><i class="fa-solid fa-plus"></i> إدارة الرصيد</a>
+        </div>
+        <!-- Wallet Balance -->
+        <div class="dash-action-card dac-wallet">
+            <div class="dac-icon"><i class="fa-solid fa-coins"></i></div>
+            <div class="dac-balance">ج 2,450.00</div>
+            <div class="dac-balance-label">الرصيد المتاح</div>
+            <a href="wallet.html" class="dac-btn" style="background:#4FB848;"><i class="fa-solid fa-plus"></i> شحن المحفظة</a>
+        </div>
+    </div>
+
+    <!-- إحصائيات سريعة -->
+    <div class="section-header">
+        <h2><span class="title-icon"><i class="fa-solid fa-chart-simple"></i></span> إحصائيات سريعة</h2>
+    </div>
+
+    <div class="stat-cards" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-card sc-blue">
+            <div class="stat-badge"><i class="fa-solid fa-paper-plane"></i></div>
+            <div class="stat-number">156</div>
+            <div class="stat-label">الطلبات المرسلة</div>
+            <div class="stat-sub">هذا الشهر</div>
+        </div>
+        <div class="stat-card sc-blue">
+            <div class="stat-badge"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="stat-number">1,247</div>
+            <div class="stat-label">إجمالي الطلبات</div>
+            <div class="stat-sub">منذ بداية النظام</div>
+        </div>
+        <div class="stat-card sc-green">
+            <div class="stat-badge"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="stat-number">94.2%</div>
+            <div class="stat-label">معدل الموافقة</div>
+            <div class="stat-sub">خلال الشهر الماضي</div>
+        </div>
+    </div>
+
+    <div class="stat-cards" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-card sc-red">
+            <div class="stat-badge"><i class="fa-solid fa-circle-xmark"></i></div>
+            <div class="stat-number">17</div>
+            <div class="stat-label">الطلبات المرفوضة</div>
+            <div class="stat-sub">هذا الشهر</div>
+        </div>
+        <div class="stat-card sc-green">
+            <div class="stat-badge"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="stat-number">198</div>
+            <div class="stat-label">طلبات تمت الموافقة</div>
+            <div class="stat-sub">هذا الشهر</div>
+        </div>
+        <div class="stat-card sc-orange">
+            <div class="stat-badge"><i class="fa-solid fa-gear"></i></div>
+            <div class="stat-number">107</div>
+            <div class="stat-label">طلبات قيد المعالجة</div>
+        </div>
+    </div>
+
+    <!-- النشاط الأخير -->
+    <div class="section-header" style="margin-top: 0.5rem;">
+        <h2><span class="title-icon"><i class="fa-solid fa-clock-rotate-left"></i></span> النشاط الأخير</h2>
+    </div>
+
+    <div class="data-table-card">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>رقم الحزمة</th>
+                    <th>عنوان الحزمة</th>
+                    <th>عدد المسافرين</th>
+                    <th>تاريخ الإرسال</th>
+                    <th>الحالة</th>
+                    <th>الإجراء</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0789</td>
+                    <td>الخرطوم / القاهرة</td>
+                    <td>98</td>
+                    <td>18 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-orange"><i class="fa-solid fa-gear"></i> قيد المعالجة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0788</td>
+                    <td>تشاد / القاهرة</td>
+                    <td>64</td>
+                    <td>17 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-orange"><i class="fa-solid fa-gear"></i> قيد المعالجة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0787</td>
+                    <td>بيروت / شرم الشيخ</td>
+                    <td>56</td>
+                    <td>16 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-green"><i class="fa-solid fa-circle-check"></i> تمت الموافقة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0786</td>
+                    <td>دبي / الغردقة</td>
+                    <td>109</td>
+                    <td>15 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-orange"><i class="fa-solid fa-gear"></i> قيد المعالجة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0785</td>
+                    <td>فلسطين / طابا</td>
+                    <td>87</td>
+                    <td>14 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-green"><i class="fa-solid fa-circle-check"></i> تمت الموافقة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0784</td>
+                    <td>دمشق / القاهرة</td>
+                    <td>206</td>
+                    <td>13 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-orange"><i class="fa-solid fa-gear"></i> قيد المعالجة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0783</td>
+                    <td>الرياض / مرسى علم</td>
+                    <td>48</td>
+                    <td>12 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-green"><i class="fa-solid fa-circle-check"></i> تمت الموافقة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell" dir="ltr">INQ-2024-0782</td>
+                    <td>صنعاء / القاهرة</td>
+                    <td>166</td>
+                    <td>11 ديسمبر 2025</td>
+                    <td><span class="status-pill sp-green"><i class="fa-solid fa-circle-check"></i> تمت الموافقة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="batch-view.html" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="table-pagination">
+            <div class="pagination-pages">
+                <a class="page-btn"><i class="fa-solid fa-chevron-right"></i></a>
+                <a class="page-btn active">1</a>
+                <a class="page-btn">2</a>
+                <a class="page-btn">3</a>
+                <a class="page-btn">4</a>
+                <a class="page-btn">5</a>
+                <a class="page-btn">6</a>
+                <a class="page-btn">7</a>
+                <a class="page-btn">8</a>
+                <a class="page-btn">...</a>
+                <a class="page-btn"><i class="fa-solid fa-chevron-left"></i></a>
+            </div>
+            <div class="pagination-info">
+                <span>عرض</span>
+                <select>
+                    <option>8</option>
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                </select>
+                <span>سطر</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-12 col-lg-4">
+                <img class="logo" src="img/logo-light.png" alt="نظام الموافقات الأمنية">
+                <p class="mb">منصة إلكترونية موحّدة لإصدار ومتابعة الموافقات الأمنية. لإدارة الطلبات بسهولة وأمان من خلال نظام رقمي متكامل.</p>
+                <div class="social-media-container">
+                    <a href="javascript:;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="javascript:;"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <h4>روابط سريعة</h4>
+                <a class="light-link" href="login.html">الاستعلام الفردي</a>
+                <a class="light-link" href="login.html">دخول الوكلاء</a>
+                <a class="light-link" href="home.html#about">عن النظام</a>
+                <a class="light-link" href="home.html#help">المساعدة</a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <h4>خدمات</h4>
+                <a class="light-link" href="login.html">طلب موافقة جديد</a>
+                <a class="light-link" href="login.html">متابعة الطلب</a>
+                <a class="light-link" href="login.html">طباعة الموافقة</a>
+                <a class="light-link" href="home.html#help">الدعم الفني</a>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <h4>اتصل بنا</h4>
+                <ul>
+                    <li><img class="icon" src="icons/cell-phone.svg"><p class="contacts direction-ltr">+20 10 5070 2229</p></li>
+                    <li><img class="icon" src="icons/mail.svg"><p class="contacts">info@security.gov.eg</p></li>
+                    <li><img class="icon" src="icons/location.svg"><p class="contacts">شارع جزيرة العرب، المهندسين، الجيزة، مصر</p></li>
+                    <li class="hot-line">
+                        <h4>الخط الساخن</h4>
+                        <img class="icon" src="icons/hot-line.svg">
+                        <p class="contacts">16999</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <p class="copy-rights">جميع الحقوق محفوظة &copy; 2024 نظام الموافقات الأمنية</p>
+        </div>
     </div>
 </footer>
 
-
-<script>
-/* Notification drawer */
-function toggleNotif() {
-    const d = document.getElementById('notifDrawer');
-    const u = document.getElementById('userDropdown');
-    u.classList.remove('open');
-    d.classList.toggle('open');
-}
-function markAllRead() {
-    document.getElementById('notifDot').style.display = 'none';
-    document.querySelectorAll('.nd-dot').forEach(d => d.style.opacity = '.25');
-}
-
-/* User dropdown */
-function toggleUser() {
-    const d = document.getElementById('userDropdown');
-    const n = document.getElementById('notifDrawer');
-    n.classList.remove('open');
-    d.classList.toggle('open');
-    /* reposition below user chip */
-    const chip = document.getElementById('userChip');
-    const rect = chip.getBoundingClientRect();
-    d.style.top  = (rect.bottom + 8) + 'px';
-    d.style.right = (window.innerWidth - rect.right) + 'px';
-    d.style.left  = 'auto';
-}
-
-/* Close on outside click */
-document.addEventListener('click', function(e) {
-    const bell    = document.getElementById('bellBtn');
-    const notifD  = document.getElementById('notifDrawer');
-    const userC   = document.getElementById('userChip');
-    const userD   = document.getElementById('userDropdown');
-    if (!bell.contains(e.target)  && !notifD.contains(e.target)) notifD.classList.remove('open');
-    if (!userC.contains(e.target) && !userD.contains(e.target))  userD.classList.remove('open');
-});
-
-/* Language toggle */
-function setLang(btn) {
-    if (window.i18n && typeof window.i18n.setLang === 'function') {
-        window.i18n.setLang(btn);
-        return;
-    }
-    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
-
-/* Active nav */
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        if (this.getAttribute('href') === '#') {
-            e.preventDefault();
-        }
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-    });
-});
-</script>
-<script src="i18n/i18n.js"></script>
-<script>
-    i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
-</script>
+<script src="js/jquery-4.0.0.min.js"></script>
+<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
