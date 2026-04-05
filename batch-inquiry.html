@@ -222,8 +222,8 @@
 <div class="page-hero">
     <div class="hero-inner">
         <div class="hero-text">
-            <h2 data-i18n="portal.batchInquiry.hero.title">حزمة طلبات جديدة</h2>
-            <p data-i18n="portal.batchInquiry.hero.subtitle">أضف مسافريك بسرعة وسهولة — بشكل فردي أو ضمن مجموعات</p>
+            <h2 data-i18n="portal.batchInquiry.hero.title">إنشاء حزمة طلبات جديدة</h2>
+            <p data-i18n="portal.batchInquiry.hero.subtitle">اتبع الخطوات لرفع ملف المسافرين وإستكمال البيانات والارسال</p>
         </div>
         <div class="hero-agency">
             <div class="hero-agency-icon"><i class="fas fa-building"></i></div>
@@ -242,7 +242,7 @@
     <!-- Wallet + page title row -->
     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
         <h2 class="section-title" style="margin-bottom:0;">
-            <i class="fas fa-layer-group"></i> حزمة طلبات جديدة
+            <i class="fas fa-layer-group"></i> إنشاء حزمة طلبات جديدة
         </h2>
 
     </div>
@@ -262,7 +262,7 @@
             <div class="step-line" id="line-1-2"></div>
             <div class="step-node locked" id="node-2" onclick="goToStep(2)">
                 <div class="step-circle"><i class="fas fa-lock"></i></div>
-                <div class="step-label">المسافرون</div>
+                <div class="step-label">إضافة مسافرين</div>
             </div>
             <div class="step-line" id="line-2-3"></div>
             <div class="step-node locked" id="node-3" onclick="goToStep(3)">
@@ -277,8 +277,8 @@
             <!-- ══ STEP 1: Batch Name ══ -->
             <div class="step-panel active" id="panel-1">
                 <div class="step-heading">
-                    <h3><i class="fas fa-tag" style="color:#1d4ed8;margin-left:8px;"></i>تسمية الحزمة</h3>
-                    <p>أعطِ الحزمة اسماً واضحاً يساعدك على التعرف عليها لاحقاً.</p>
+                    <h3><i class="fas fa-tag" style="color:#1d4ed8;margin-left:8px;"></i>إضافة حزمة طلبات جديدة</h3>
+                    <p>أعطِ الحزمة اسماً واضحاً يساعدك على الرجوع والتعرف عليها لاحقاً.</p>
                 </div>
 
                 <div style="max-width:520px;">
@@ -310,13 +310,15 @@
             <!-- ══ STEP 2: Travelers ══ -->
             <div class="step-panel" id="panel-2">
                 <div class="step-heading">
-                    <h3><i class="fas fa-users" style="color:#1d4ed8;margin-left:8px;"></i>المسافرون</h3>
-                    <p>أضف المسافرين بسرعة — كل مسافر ببياناته وتذكرته الخاصة.</p>
+                    <h3><i class="fas fa-users" style="color:#1d4ed8;margin-left:8px;"></i>إضافة مسافرين إلى الحزمة</h3>
                 </div>
 
+                <!-- Batch info summary card -->
+                <div id="step2-batch-info" class="confirm-summary-card" style="margin-bottom:18px;"></div>
+
                 <!-- Add traveler button -->
-                <div style="margin-bottom:16px;">
-                    <button class="btn btn-primary btn-sm" onclick="startIndForm()" style="font-size:13px;">
+                <div style="margin-bottom:16px; text-align:center;">
+                    <button class="btn btn-primary" onclick="startIndForm()" style="font-size:14px; width:100%; max-width:400px; padding:12px;">
                         <i class="fas fa-user-plus"></i> إضافة مسافر
                     </button>
                 </div>
@@ -352,12 +354,27 @@
                 <!-- PRE-CONFIRM state -->
                 <div id="s3-confirm">
                     <div class="step-heading">
-                        <h3><i class="fas fa-circle-check" style="color:#1d4ed8;margin-left:8px;"></i>المراجعة والتأكيد</h3>
-                        <p>راجع بيانات جميع المسافرين. بعد التأكيد لن يمكن التراجع.</p>
+                        <h3><i class="fas fa-clipboard-check" style="color:#1d4ed8;margin-left:8px;"></i>المراجعة والتأكيد</h3>
                     </div>
 
-                    <!-- Review travelers (dynamically generated) -->
-                    <div id="review-groups-summary"></div>
+                    <!-- Batch data summary -->
+                    <div class="confirm-summary-card" id="confirm-summary-card" style="margin-bottom:20px;"></div>
+
+                    <!-- Collapsible traveler list -->
+                    <div style="margin-bottom:20px;">
+                        <div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:12px 16px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px 10px 0 0;" onclick="toggleReviewList()" id="review-list-header">
+                            <div style="display:flex;align-items:center;gap:10px;">
+                                <i class="fas fa-users" style="color:#1d4ed8;"></i>
+                                <span style="font-size:14px;font-weight:800;color:#0f172a;">قائمة المسافرون</span>
+                                <span class="sect-count" id="review-traveler-count">0</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;">
+                                <button class="gc-icon-btn danger" onclick="event.stopPropagation()" title="حذف الكل" style="display:none;"><i class="fas fa-trash"></i></button>
+                                <i class="fas fa-chevron-down" id="review-list-chevron" style="color:#64748b;transition:transform .3s;"></i>
+                            </div>
+                        </div>
+                        <div id="review-groups-summary" style="border:1.5px solid #e2e8f0;border-top:none;border-radius:0 0 10px 10px;padding:12px 16px;"></div>
+                    </div>
 
                     <!-- Insufficient balance warning (shown only when needed) -->
                     <div id="fee-wallet-insufficient" style="display:none; margin-bottom:16px;">
@@ -370,19 +387,21 @@
                         </div>
                     </div>
 
-                    <!-- Confirm summary card -->
-                    <div class="confirm-summary-card" id="confirm-summary-card" style="margin-bottom:20px;"></div>
-
-                    <div class="irreversible-warning" style="margin-bottom:20px;">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        بعد التأكيد، يُرسَل طلب كل مسافر إلى محرك الفرز تلقائياً. لا يمكن التراجع.
+                    <!-- Irreversibility warning -->
+                    <div class="irreversible-warning" style="margin-bottom:20px; background:#fffbeb; border:1.5px solid #fde68a; border-radius:10px; padding:14px 18px; font-size:13px; color:#92400e; line-height:1.8;">
+                        <i class="fas fa-triangle-exclamation" style="color:#d97706;"></i>
+                        يرجى التدقيق جيداً في بيانات الحزمة أعلاه حيث أنه بعد الضغط على زر إرسال سيتم الخصم وإرسال طلبات جميع المسافرين إلى محرك الفرز تلقائياً. ولايمكن الرجوع أو إسترداد المبلغ المخصوم.
                     </div>
 
-                    <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-                        <button class="btn btn-primary btn-lg" id="btn-confirm-deduct" onclick="simulateDeduction()">
-                            <i class="fas fa-circle-check"></i> تأكيد وإرسال الطلبات
-                        </button>
-                        <button class="btn btn-secondary btn-sm" onclick="goBack()">
+                    <div style="display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+                        <div style="display:flex;gap:10px;align-items:center;">
+                            <button class="btn btn-primary btn-lg" id="btn-confirm-deduct" onclick="simulateDeduction()">
+                                <i class="fas fa-paper-plane"></i> تأكيد وإرسال
+                            </button>
+                            <button class="gc-icon-btn danger" onclick="cancelWizard()" title="حذف"><i class="fas fa-trash"></i></button>
+                            <button class="gc-icon-btn" onclick="saveDraft(true)" title="حفظ كمسودة"><i class="fas fa-floppy-disk"></i></button>
+                        </div>
+                        <button class="btn btn-secondary" onclick="goBack()" style="font-size:14px;">
                             <i class="fas fa-arrow-right"></i> العودة للتعديل
                         </button>
                     </div>
@@ -403,19 +422,16 @@
                         <i class="fas fa-circle-check" style="font-size:40px;color:#16a34a;"></i>
                     </div>
                     <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">تم إرسال الحزمة بنجاح</h3>
-                    <p style="font-size:14px;color:#64748b;margin-bottom:24px;">جميع الطلبات قيد المعالجة الآن.</p>
+                    <p style="font-size:14px;color:#64748b;margin-bottom:24px;">تم خصم الرسوم من المحفظة وإرسال طلبات جميع المسافرين إلى محرك الفرز</p>
                     <div class="confirm-summary-card" id="success-summary-card" style="text-align:right;max-width:440px;margin:0 auto 24px;"></div>
                     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                        <a href="batch-list.html" class="btn btn-primary btn-lg">
-                            <i class="fas fa-layer-group"></i> عرض قائمة الحزم
+                        <a href="batch-view.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-eye"></i> عرض تفاصيل الحزمة
                         </a>
-                        <a href="index.html" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-gauge-high"></i> لوحة التحكم
+                        <a href="batch-list.html" class="btn btn-secondary">
+                            <i class="fas fa-layer-group"></i> قائمة الحزم
                         </a>
                     </div>
-                    <a href="batch-inquiry.html" class="success-new-link">
-                        <i class="fas fa-plus"></i> إنشاء حزمة جديدة
-                    </a>
                 </div>
 
                 <!-- FAILURE state -->
@@ -423,18 +439,19 @@
                     <div style="width:80px;height:80px;border-radius:50%;background:#fee2e2;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
                         <i class="fas fa-circle-xmark" style="font-size:40px;color:#dc2626;"></i>
                     </div>
-                    <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">فشل إرسال الحزمة</h3>
-                    <p style="font-size:14px;color:#64748b;margin-bottom:8px;">حدث خطأ أثناء المعالجة. لم يُخصم أي مبلغ من محفظتك.</p>
-                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 16px;max-width:440px;margin:0 auto 24px;text-align:right;">
-                        <div style="font-size:12px;font-weight:600;color:#991b1b;margin-bottom:4px;">رقم مرجعي للدعم الفني</div>
+                    <h3 style="font-size:20px;font-weight:800;color:#dc2626;margin-bottom:8px;">فشل إرسال الحزمة</h3>
+                    <p style="font-size:14px;color:#475569;margin-bottom:4px;">حدث خطأ أثناء معالجة الطلب.</p>
+                    <p style="font-size:14px;color:#475569;margin-bottom:20px;">لم يتم حفظ الحزمة ولم يتم خصم أي مبلغ من المحفظة</p>
+                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 16px;max-width:440px;margin:0 auto 24px;display:flex;align-items:center;justify-content:space-between;">
+                        <span style="font-size:12px;font-weight:600;color:#991b1b;">رقم مرجعي للدعم الفني</span>
                         <span style="font-size:15px;font-weight:700;color:#dc2626;" dir="ltr">ERR-2026-0312-4781</span>
                     </div>
                     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
                         <button class="btn btn-primary btn-lg" onclick="retryFromFailure()">
                             <i class="fas fa-rotate-right"></i> إعادة المحاولة
                         </button>
-                        <a href="index.html" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-gauge-high"></i> العودة للوحة التحكم
+                        <a href="index.html" class="btn btn-secondary">
+                            <i class="fas fa-gauge-high"></i> لوحة التحكم
                         </a>
                     </div>
                 </div>
@@ -569,6 +586,14 @@ let indPassportName = null;
 let indTicketFile   = null;
 let indTicketName   = null;
 let s3State         = 'confirm';
+let currentTravelerPage = 1;
+
+function changeTravelerPage(page) {
+    const totalPages = Math.ceil(individuals.length / 10);
+    if (page < 1 || page > totalPages) return;
+    currentTravelerPage = page;
+    renderBuilder();
+}
 
 function getFee(nat) { return FEES_BY_NAT[nat] || DEFAULT_FEE; }
 
@@ -722,6 +747,17 @@ function renderBuilder() {
     const totalBar     = document.getElementById('running-total-bar');
     const { totalFee, totalTravelers, totalIndividuals } = computeTotal();
 
+    // Update step 2 batch info card
+    const step2Info = document.getElementById('step2-batch-info');
+    if (step2Info) {
+        const bName = document.getElementById('batch-name')?.value?.trim() || '—';
+        const bNotes = document.getElementById('batch-notes')?.value?.trim() || '—';
+        step2Info.innerHTML = `
+            <div class="cs-row"><span class="cs-label">اسم الحزمة</span><span class="cs-value">${escHtml(bName)}</span></div>
+            <div class="cs-row"><span class="cs-label">الملاحظات</span><span class="cs-value">${escHtml(bNotes)}</span></div>
+            <div class="cs-row"><span class="cs-label">إجمالي المسافرين</span><span class="cs-value">${totalTravelers} مسافرين</span></div>`;
+    }
+
     // Running total bar
     if (totalTravelers > 0) {
         totalBar.style.display = 'flex';
@@ -736,8 +772,26 @@ function renderBuilder() {
         indHtml += renderIndividualForm();
     }
     if (individuals.length > 0) {
-        indHtml += `<div class="sect-title"><i class="fas fa-user"></i> المسافرون <span class="sect-count">${totalIndividuals}</span></div>`;
-        indHtml += `<div class="ind-list">` + individuals.map((ind, i) => renderIndividualCard(ind, i)).join('') + `</div>`;
+        indHtml += `<div class="sect-title" style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;">
+                <i class="fas fa-users"></i> قائمة المسافرون <span class="sect-count">${totalIndividuals}</span>
+            </div>
+            <button class="gc-icon-btn danger" onclick="clearAll()" title="مسح الكل" style="font-size:11px;"><i class="fas fa-trash"></i></button>
+        </div>`;
+        const pageSize = 10;
+        const totalPages = Math.ceil(individuals.length / pageSize);
+        const startIdx = (currentTravelerPage - 1) * pageSize;
+        const pageItems = individuals.slice(startIdx, startIdx + pageSize);
+        indHtml += `<div class="ind-list">` + pageItems.map((ind, i) => renderIndividualCard(ind, startIdx + i)).join('') + `</div>`;
+        if (totalPages > 1) {
+            indHtml += `<div style="display:flex;justify-content:center;gap:6px;margin-bottom:16px;">`;
+            indHtml += `<button class="gc-icon-btn" onclick="changeTravelerPage(${currentTravelerPage - 1})" ${currentTravelerPage <= 1 ? 'disabled style="opacity:.4;cursor:default;"' : ''}><i class="fas fa-chevron-right"></i></button>`;
+            for (let p = 1; p <= totalPages; p++) {
+                indHtml += `<button class="gc-icon-btn" onclick="changeTravelerPage(${p})" style="${p === currentTravelerPage ? 'background:#1d4ed8;color:#fff;border-color:#1d4ed8;' : ''}">${String(p).padStart(2,'0')}</button>`;
+            }
+            indHtml += `<button class="gc-icon-btn" onclick="changeTravelerPage(${currentTravelerPage + 1})" ${currentTravelerPage >= totalPages ? 'disabled style="opacity:.4;cursor:default;"' : ''}><i class="fas fa-chevron-left"></i></button>`;
+            indHtml += `</div>`;
+        }
     }
     // Empty state
     if (totalTravelers === 0 && !showIndForm) {
@@ -935,25 +989,27 @@ function renderIndividualCard(ind, index) {
              <input type="file" id="card-tk-${ind.id}" accept="image/*,.pdf" onchange="handleIndTicketUpload(${ind.id},event)">
            </label>`;
     return `
-    <div class="ind-card">
-        <div class="ind-row1">
-            <div class="ind-num">${index + 1}</div>
-            <span class="ind-name">${escHtml(ind.name)}</span>
-            <span class="pill pill-blue">${escHtml(ind.nationality)}</span>
-            <span class="tv-passport" dir="ltr">${escHtml(ind.passportNo)}</span>
-            <button class="gc-icon-btn" onclick="editIndividual(${ind.id})" title="تعديل"><i class="fas fa-pen"></i></button>
-            <button class="gc-icon-btn danger" onclick="deleteIndividual(${ind.id})" title="حذف"><i class="fas fa-trash"></i></button>
+    <div class="ind-card" style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="flex:1;">
+            <div class="ind-row1" style="margin-bottom:8px;">
+                <span class="ind-name" style="font-size:14px;">${escHtml(ind.name)}</span>
+                <div style="display:flex;gap:6px;margin-right:auto;">
+                    <button class="gc-icon-btn danger" onclick="deleteIndividual(${ind.id})" title="حذف"><i class="fas fa-trash"></i></button>
+                    <button class="gc-icon-btn" onclick="editIndividual(${ind.id})" title="تعديل"><i class="fas fa-pen"></i></button>
+                </div>
+            </div>
+            <div class="ind-row2" style="padding-right:0;">
+                <span class="pill pill-blue" style="font-size:11px;">${escHtml(ind.nationality)}</span>
+                <span class="fd-pill" style="font-size:11px;" dir="ltr"><i class="fas fa-passport"></i> ${escHtml(ind.passportNo)}</span>
+                <span class="fd-pill" style="font-size:11px;"><i class="fas fa-plane-arrival"></i> ${escHtml(f.airport)}</span>
+                <span class="fd-pill" style="font-size:11px;"><i class="fas fa-calendar-days"></i> ${escHtml(f.date)}</span>
+                ${f.flightNo ? `<span class="fd-pill" style="font-size:11px;"><i class="fas fa-hashtag"></i> ${escHtml(f.flightNo)}</span>` : ''}
+                <span class="fd-pill" style="font-size:11px;"><i class="fas fa-bullseye"></i> ${escHtml(f.purpose)}</span>
+                ${ppDoc}
+                ${tkDoc}
+            </div>
         </div>
-        <div class="ind-row2">
-            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-plane-departure"></i> ${escHtml(f.from)}</span>
-            <i class="fas fa-long-arrow-alt-left" style="color:#94a3b8;font-size:10px;"></i>
-            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-plane-arrival"></i> ${escHtml(f.airport)}</span>
-            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-calendar-days"></i> ${escHtml(f.date)}</span>
-            <span class="fd-pill" style="font-size:11px;"><i class="fas fa-bullseye"></i> ${escHtml(f.purpose)}</span>
-            ${f.flightNo ? `<span class="fd-pill" style="font-size:11px;"><i class="fas fa-hashtag"></i> ${escHtml(f.flightNo)}</span>` : ''}
-            ${ppDoc}
-            ${tkDoc}
-        </div>
+        <div class="ind-num" style="width:36px;height:36px;font-size:14px;border-radius:10px;flex-shrink:0;">${index + 1}</div>
     </div>`;
 }
 
@@ -1113,32 +1169,43 @@ function clearAll() {
 function buildReviewStep() {
     const { totalFee, totalTravelers } = computeTotal();
     const batchName = document.getElementById('batch-name')?.value?.trim() || '—';
+    const batchNotes = document.getElementById('batch-notes')?.value?.trim() || '—';
 
-    // Individual travelers review
+    // Batch data summary card
+    const batchRef = 'BTH-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + (Math.floor(Math.random()*9000)+1000);
+    const summaryCardHtml = `
+        <div class="sect-title" style="margin-top:0;"><i class="fas fa-gear"></i> بيانات الحزمة</div>
+        <div class="cs-row"><span class="cs-label">اسم الحزمة</span><span class="cs-value">${escHtml(batchName)}</span></div>
+        <div class="cs-row"><span class="cs-label">الملاحظات</span><span class="cs-value">${escHtml(batchNotes)}</span></div>
+        <div class="cs-row"><span class="cs-label">إجمالي المسافرين</span><span class="cs-value">${totalTravelers} مسافراً</span></div>`;
+    document.getElementById('confirm-summary-card').innerHTML = summaryCardHtml;
+
+    // Traveler count badge
+    document.getElementById('review-traveler-count').textContent = totalTravelers;
+
+    // Collapsible traveler list
     const summaryEl = document.getElementById('review-groups-summary');
     let reviewHtml = '';
 
     if (individuals.length > 0) {
-        reviewHtml += `<div class="sect-title" style="margin-top:0;"><i class="fas fa-user"></i> مسافرون أفراد <span class="sect-count">${individuals.length}</span></div>`;
-        reviewHtml += individuals.map(ind => {
+        reviewHtml += individuals.map((ind, idx) => {
             const f = ind.flight;
-            const fee = getFee(ind.nationality);
             return `
-            <div class="review-group-card" style="margin-bottom:10px;">
+            <div class="review-group-card" style="margin-bottom:8px;">
                 <div class="rgc-header">
                     <div class="rgc-header-left">
+                        <div class="ind-num">${idx + 1}</div>
                         <span class="rgc-name">${escHtml(ind.name)}</span>
                         <span class="pill pill-blue" style="font-size:10px;">${escHtml(ind.nationality)}</span>
                         <span style="font-size:11px;color:#64748b;" dir="ltr">${escHtml(ind.passportNo)}</span>
-                        <span class="fd-pill" style="font-size:10px;"><i class="fas fa-plane-departure"></i> ${escHtml(f.from)}</span>
-                        <span class="fd-pill" style="font-size:10px;"><i class="fas fa-plane-arrival"></i> ${escHtml(f.airport)}</span>
+                        <span class="fd-pill" style="font-size:10px;"><i class="fas fa-plane-departure"></i> ${escHtml(f.airport)}</span>
                         <span class="fd-pill" style="font-size:10px;"><i class="fas fa-calendar-days"></i> ${escHtml(f.date)}</span>
-                        ${ind.passportName
-                            ? '<span class="pill pill-green" style="font-size:9px;"><i class="fas fa-id-card"></i> جواز</span>'
-                            : '<span class="pill pill-amber" style="font-size:9px;"><i class="fas fa-warning"></i> جواز</span>'}
-                        ${ind.ticketName
-                            ? '<span class="pill pill-green" style="font-size:9px;"><i class="fas fa-ticket"></i> تذكرة</span>'
-                            : '<span class="pill pill-amber" style="font-size:9px;"><i class="fas fa-warning"></i> تذكرة</span>'}
+                        ${f.flightNo ? `<span class="fd-pill" style="font-size:10px;"><i class="fas fa-hashtag"></i> ${escHtml(f.flightNo)}</span>` : ''}
+                        <span class="fd-pill" style="font-size:10px;"><i class="fas fa-bullseye"></i> ${escHtml(f.purpose)}</span>
+                    </div>
+                    <div style="display:flex;gap:6px;">
+                        <button class="gc-icon-btn" onclick="goBack();editIndividual(${ind.id})" title="تعديل"><i class="fas fa-pen"></i></button>
+                        <button class="gc-icon-btn danger" onclick="deleteIndividual(${ind.id});buildReviewStep()" title="حذف"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
             </div>`;
@@ -1157,14 +1224,21 @@ function buildReviewStep() {
     }
     document.getElementById('btn-confirm-deduct').disabled = insufficient;
 
-    // Summary card
-    const batchRef = 'BTH-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + (Math.floor(Math.random()*9000)+1000);
-    const summaryCardHtml = `
-        <div class="cs-row"><span class="cs-label">اسم الحزمة</span><span class="cs-value">${escHtml(batchName)}</span></div>
-        <div class="cs-row"><span class="cs-label">الرقم المرجعي</span><span class="cs-value" dir="ltr">${batchRef}</span></div>
-        <div class="cs-row"><span class="cs-label">عدد المسافرين</span><span class="cs-value">${totalTravelers} مسافراً</span></div>`;
-    document.getElementById('confirm-summary-card').innerHTML = summaryCardHtml;
-    document.getElementById('success-summary-card').innerHTML = summaryCardHtml;
+    // Success card (includes total deducted amount)
+    const successCardHtml = `
+        <div class="cs-row"><span class="cs-label">رقم مرجعي للحزمة</span><span class="cs-value" dir="ltr">${batchRef}</span></div>
+        <div class="cs-row"><span class="cs-label">عدد المسافرين</span><span class="cs-value">${totalTravelers} مسافراً</span></div>
+        <div class="cs-row"><span class="cs-label">إجمالي المبلغ المخصوم</span><span class="cs-value" style="font-weight:800;color:#1d4ed8;">${fmt(totalFee)} دولار أمريكي</span></div>`;
+    document.getElementById('success-summary-card').innerHTML = successCardHtml;
+}
+
+let reviewListExpanded = true;
+function toggleReviewList() {
+    reviewListExpanded = !reviewListExpanded;
+    const list = document.getElementById('review-groups-summary');
+    const chevron = document.getElementById('review-list-chevron');
+    list.style.display = reviewListExpanded ? '' : 'none';
+    chevron.style.transform = reviewListExpanded ? '' : 'rotate(-90deg)';
 }
 
 // ════════════════════════════════════════════════════════════════
