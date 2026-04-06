@@ -1077,6 +1077,22 @@ body.portal-page footer.footer {
     .agency-bar { flex-wrap: wrap; }
     .agency-bar .agency-details { width: 100%; margin-right: 0; }
     body.portal-page header a.navbar-brand { margin-left: auto; }
+    .data-table-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .data-table { min-width: 640px; }
+}
+@media (max-width: 768px) {
+    .portal-hero { padding: 1.25rem 0; }
+    .portal-hero h1 { font-size: 1.25rem; }
+    .portal-hero p { font-size: 0.8rem; }
+    .agency-bar { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1rem; }
+    .agency-bar .agency-details { flex-direction: column; gap: 0.5rem; }
+    .agency-bar .agency-detail { min-width: auto; }
+    .section-header h2 { font-size: 1rem; }
+    .dash-action-card .dac-icon { width: 44px; height: 44px; font-size: 1rem; }
+    .stat-card .stat-number { font-size: 1.5rem; }
+    .filter-group { min-width: auto !important; width: 100%; }
+    .filter-group input,
+    .filter-group select { width: 100% !important; max-width: none; }
 }
 @media (max-width: 575px) {
     .stat-cards { grid-template-columns: 1fr !important; }
@@ -1086,4 +1102,10 @@ body.portal-page footer.footer {
     .table-pagination { flex-direction: column; gap: 0.75rem; }
     .status-cards-row { grid-template-columns: 1fr 1fr; }
     .dash-actions { grid-template-columns: 1fr; }
+    .data-table th,
+    .data-table td { padding: 0.5rem 0.625rem; font-size: 0.75rem; }
+    .portal-breadcrumb { font-size: 0.75rem; }
+    body.portal-page { padding-top: 60px; }
+    .action-icons { gap: 0.25rem; }
+    .action-icon { width: 1.75rem; height: 1.75rem; font-size: 0.7rem; }
 }

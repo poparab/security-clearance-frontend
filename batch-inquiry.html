@@ -95,6 +95,22 @@
         .doc-upload-btn.uploaded .doc-upload-label { color:#3a9e32; }
         .ind-form-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
         .ind-form-section-label { font-size:11.5px; font-weight:700; color:#64748b; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+
+        /* Responsive overrides for batch wizard grids */
+        @media (max-width: 768px) {
+            .ff-grid { grid-template-columns:1fr; }
+            .ind-form-grid { grid-template-columns:repeat(2, 1fr); }
+            .ind-form-grid-5 { grid-template-columns:repeat(2, 1fr); }
+            .running-total-bar { margin:20px -16px -18px; padding:10px 14px; font-size:12px; }
+            .ind-form-card { padding:14px; }
+            .doc-upload-btn { min-width:auto; flex:1 1 100%; }
+        }
+        @media (max-width: 480px) {
+            .ind-form-grid { grid-template-columns:1fr; }
+            .ind-form-grid-5 { grid-template-columns:1fr; }
+            .ind-form-actions { flex-direction:column; }
+            .ind-form-actions .btn { width:100%; }
+        }
     </style>
 </head>
 <body>

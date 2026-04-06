@@ -996,6 +996,35 @@ html[dir="rtl"] .topbar-user {
     .cards-row {
         grid-template-columns: 1fr !important;
     }
+
+    .admin-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .admin-table {
+        min-width: 560px;
+    }
+
+    .detail-cards-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .topbar-left {
+        gap: 10px;
+    }
+
+    .topbar-user .name {
+        display: none;
+    }
+
+    .topbar-user .role {
+        display: none;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1015,6 +1044,24 @@ html[dir="rtl"] .topbar-user {
     .topbar-user img {
         width: 32px;
         height: 32px;
+    }
+
+    .admin-table thead th,
+    .admin-table tbody td {
+        padding: 8px 6px;
+        font-size: 11px;
+    }
+
+    .content-shell {
+        padding: 12px;
+    }
+
+    .admin-stat .num {
+        font-size: 20px;
+    }
+
+    .admin-stat .lbl {
+        font-size: 11px;
     }
 }
 

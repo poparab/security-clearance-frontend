@@ -1391,3 +1391,18 @@ footer {
     .login-right-side .btn-login-with img.icon {
       width: auto;
       height: calc(1rem + .45vw); }
+
+/* ── LOGIN / REGISTRATION RESPONSIVE ────────────────────── */
+@media (max-width: 768px) {
+    .login-left-side { display: none !important; }
+    .login-right-side { flex: 1 1 100% !important; padding: 1.5rem !important; }
+    .login-right-side input.form-control { padding: 0.75rem 2.75rem 0.75rem 0.75rem; }
+    .login-right-side label.custom-file-label { min-height: 6rem; }
+}
+@media (max-width: 567px) {
+    .login-right-side { padding: 1rem !important; }
+    .login-right-side .login-logo { max-height: 4rem; margin-bottom: 1.5rem; }
+    .login-right-side .selector-container { padding: 0.75rem; }
+    .login-right-side .selector-container .btn { padding: 0.875rem; font-size: 0.875rem; }
+    .login-right-side .btn-submit { margin: 1rem 0; }
+}
