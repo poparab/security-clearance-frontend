@@ -78,10 +78,10 @@
         </div>
         <div class="info-banner" style="margin:0 12px 8px;border-radius:10px;">
           <i class="fas fa-circle-info"></i>
-          <span>الأسعار المحددة هنا تُطبَّق على هذه الوكالة فقط وتحل محل التسعير العام للأفراد. إذا لم يُحدَّد سعر لجنسية معينة، يُطبَّق السعر العام.</span>
+          <span>الأسعار المحددة هنا تُطبَّق على هذه الوكالة فقط وتحل محل التسعير العام للأفراد. تصبح الأسعار الخاصة نشطة فور الحفظ بدون تاريخ سريان مستقبلي. إذا لم يُحدَّد سعر لجنسية معينة، يُطبَّق السعر العام.</span>
         </div>
         <table class="admin-table" id="agencyPricingTable">
-          <thead><tr><th>الجنسية</th><th>قيمة الرسوم (USD)</th><th>ساري من تاريخ</th><th>الحالة</th><th>الإجراء</th></tr></thead>
+          <thead><tr><th>الجنسية</th><th>قيمة الرسوم (USD)</th><th>آخر تحديث</th><th>الحالة</th><th>الإجراء</th></tr></thead>
           <tbody>
             <tr>
               <td>سوريا</td><td dir="ltr">42.00</td><td>01 يناير 2026</td>
@@ -183,7 +183,6 @@
     <div class="form-grid">
       <div><label>الجنسية</label><select id="apNat"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option><option>فلسطين</option><option>الصومال</option></select></div>
       <div><label>قيمة الرسوم (USD)</label><input id="apFee" type="number" step="0.01" min="0"></div>
-      <div><label>ساري من تاريخ</label><input id="apDate" type="date"></div>
     </div>
     <div id="apErr" class="error-msg">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
     <div class="modal-actions">
@@ -231,14 +230,13 @@ function openAgencyPricingModal(editRow){
   document.getElementById('agencyPricingModal').style.display='flex';
   document.getElementById('apErr').style.display='none';
   if(editRow){document.getElementById('apModalTitle').textContent='تعديل سعر الوكالة';}
-  else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';document.getElementById('apDate').value='';}
+  else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';}
 }
 function closeAgencyPricingModal(){document.getElementById('agencyPricingModal').style.display='none';document.getElementById('apErr').style.display='none';}
 function saveAgencyPrice(){
-  const nat=document.getElementById('apNat').value;const fee=parseFloat(document.getElementById('apFee').value);const date=document.getElementById('apDate').value;
-  const today=new Date();const selDate=date?new Date(date+'T00:00:00'):null;const validDate=!!selDate&&selDate>=new Date(today.getFullYear(),today.getMonth(),today.getDate());
-  if(!nat||!fee||fee<=0||!validDate){document.getElementById('apErr').style.display='block';return;}
-  closeAgencyPricingModal();alert('تم حفظ السعر الخاص بالوكالة بنجاح');
+  const nat=document.getElementById('apNat').value;const fee=parseFloat(document.getElementById('apFee').value);
+  if(!nat||!fee||fee<=0){document.getElementById('apErr').style.display='block';return;}
+  closeAgencyPricingModal();alert('تم حفظ السعر الخاص بالوكالة بنجاح. السعر أصبح نشطاً فوراً.');
 }
 function editAgencyPrice(btn){openAgencyPricingModal(btn.closest('tr'));}
 function removeAgencyPrice(btn){if(confirm('هل أنت متأكد من حذف هذا السعر؟ سيتم تطبيق السعر العام بدلاً منه.')){btn.closest('tr').remove();}}
