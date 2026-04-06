@@ -78,6 +78,18 @@
         </a>
       </div>
 
+      <!-- Charts Row -->
+      <div class="cards-row" style="grid-template-columns:1fr 1fr;margin-bottom:24px;">
+        <div class="card" style="padding:20px;">
+          <div style="font-size:16px;font-weight:800;color:#004799;text-align:center;margin-bottom:16px;">الطلبات حسب الجنسية</div>
+          <div style="max-width:320px;margin:0 auto;"><canvas id="nationalityPieChart"></canvas></div>
+        </div>
+        <div class="card" style="padding:20px;">
+          <div style="font-size:16px;font-weight:800;color:#004799;text-align:center;margin-bottom:16px;">اتجاه الطلبات (آخر 7 أيام)</div>
+          <canvas id="trendLineChart" height="220"></canvas>
+        </div>
+      </div>
+
       <!-- Activity Table -->
       <section class="admin-table-wrap">
         <div class="admin-table-head"><div class="title">آخر الأنشطة</div></div>
@@ -119,6 +131,31 @@
 
 </div>
 <script>function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+// — Nationality Pie Chart —
+new Chart(document.getElementById('nationalityPieChart'),{
+  type:'pie',
+  data:{
+    labels:['أخرى','مصري','سوداني','يمني','سوري','ليبي'],
+    datasets:[{data:[31.4,27.7,15.2,12.5,7.86,5.37],
+      backgroundColor:['#94a3b8','#0f172a','#334155','#475569','#64748b','#cbd5e1'],
+      borderWidth:1,borderColor:'#fff'}]
+  },
+  options:{responsive:true,plugins:{legend:{position:'right',rtl:true,labels:{font:{family:'Tajawal',size:12},padding:12}}}}
+});
+// — Trend Line Chart —
+new Chart(document.getElementById('trendLineChart'),{
+  type:'line',
+  data:{
+    labels:['12/12','13/12','14/12','15/12','16/12','17/12','18/12'],
+    datasets:[{data:[18,22,19,25,21,24,23],borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.08)',
+      tension:.3,pointRadius:5,pointBackgroundColor:'#16a34a',fill:true,borderWidth:2}]
+  },
+  options:{responsive:true,plugins:{legend:{display:false}},
+    scales:{x:{grid:{display:false},ticks:{font:{family:'Tajawal'}}},y:{beginAtZero:false,ticks:{font:{family:'Tajawal'}}}}}
+});
+</script>
 <script src="../i18n/i18n.js"></script>
 <script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
 </body>
