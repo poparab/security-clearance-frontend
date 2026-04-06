@@ -1141,3 +1141,39 @@ html[dir="rtl"] .topbar-user {
     order: 1;
     text-align: left;
 }
+
+/* ══ UTILITIES — Accessibility & Shared ══════════════════════════════════ */
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+:focus-visible { outline: 2px solid #005FCC; outline-offset: 2px; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* Button loading spinner */
+.btn-loading { position: relative; pointer-events: none; opacity: 0.7; }
+.btn-loading::after { content: ''; position: absolute; width: 16px; height: 16px; border: 2px solid transparent; border-top-color: currentColor; border-radius: 50%; animation: spin .6s linear infinite; inset-inline-end: 12px; top: 50%; margin-top: -8px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Confirm dialog */
+.confirm-dialog-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.45); display: flex; align-items: center; justify-content: center; z-index: 10000; animation: fadeIn .15s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.confirm-dialog { background: #fff; border-radius: 14px; border: 1px solid #e2ecf5; padding: 28px; max-width: 400px; width: 92%; box-shadow: 0 12px 40px rgba(0,0,0,.14); text-align: center; }
+.confirm-dialog-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; background: #fef3c7; color: #d97706; font-size: 24px; }
+.confirm-dialog-icon.danger { background: #fee2e2; color: #dc2626; }
+.confirm-dialog h4 { font-size: 16px; font-weight: 800; color: #004799; margin-bottom: 8px; }
+.confirm-dialog p { font-size: 13px; color: #64748b; line-height: 1.7; margin-bottom: 20px; }
+.confirm-dialog-actions { display: flex; gap: 12px; justify-content: center; }
+
+/* Empty state (tables) */
+.empty-state-row td { padding: 48px 24px !important; text-align: center !important; }
+.empty-state-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; background: #f0f4f9; color: #94a3b8; font-size: 22px; border: 1px solid #e2ecf5; }
+.empty-state-text { font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 4px; }
+.empty-state-sub { font-size: 12px; color: #64748b; }
+
+/* Clickable row keyboard support */
+.clickable-row:focus-visible { outline: 2px solid #005FCC; outline-offset: -2px; background: #f0f6ff !important; }
+
+/* Placeholder contrast fix */
+::placeholder { color: #64748b !important; }
+
+/* Modal overlay click cursor */
+.admin-modal-overlay { cursor: default; }
+.admin-modal-overlay > .admin-modal { cursor: auto; }

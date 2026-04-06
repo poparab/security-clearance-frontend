@@ -148,11 +148,11 @@
   <div class="admin-modal">
     <h3>شحن المحفظة</h3>
     <div class="form-field">
-      <label>المبلغ</label>
+      <label for="amt">المبلغ</label>
       <input id="amt" type="number" step="0.01" min="0">
     </div>
     <div class="form-field">
-      <label>طريقة الدفع</label>
+      <label for="payMethod">طريقة الدفع</label>
       <select id="payMethod">
         <option value="">— اختر طريقة الدفع —</option>
         <option value="cheque">شيك (Cheque)</option>
@@ -161,14 +161,14 @@
       </select>
     </div>
     <div class="form-field">
-      <label>إثبات الدفع <span style="color:#6b7280;font-weight:normal;font-size:12px;">(اختياري — PDF, JPG, PNG — حد أقصى 5 MB)</span></label>
+      <label for="payProof">إثبات الدفع <span style="color:#6b7280;font-weight:normal;font-size:12px;">(اختياري — PDF, JPG, PNG — حد أقصى 5 MB)</span></label>
       <input id="payProof" type="file" accept=".pdf,.jpg,.jpeg,.png">
     </div>
     <div class="form-field">
-      <label>ملاحظات / مرجع</label>
+      <label for="note">ملاحظات / مرجع</label>
       <input id="note" type="text" maxlength="200">
     </div>
-    <div id="mErr" class="error-msg">يرجى إدخال مبلغ صحيح أكبر من صفر.</div>
+    <div id="mErr" class="error-msg" role="alert" aria-live="polite">يرجى إدخال مبلغ صحيح أكبر من صفر.</div>
     <div class="modal-actions">
       <button class="admin-btn primary" onclick="submitCredit()">تأكيد</button>
       <button class="admin-btn light" onclick="closeCredit()">إلغاء</button>
@@ -181,10 +181,10 @@
   <div class="admin-modal">
     <h3 id="apModalTitle">إضافة سعر خاص للوكالة</h3>
     <div class="form-grid">
-      <div><label>الجنسية</label><select id="apNat"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option><option>فلسطين</option><option>الصومال</option></select></div>
-      <div><label>قيمة الرسوم (USD)</label><input id="apFee" type="number" step="0.01" min="0"></div>
+      <div><label for="apNat">الجنسية</label><select id="apNat"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option><option>فلسطين</option><option>الصومال</option></select></div>
+      <div><label for="apFee">قيمة الرسوم (USD)</label><input id="apFee" type="number" step="0.01" min="0"></div>
     </div>
-    <div id="apErr" class="error-msg">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
+    <div id="apErr" class="error-msg" role="alert" aria-live="polite">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
     <div class="modal-actions">
       <button class="admin-btn primary" onclick="saveAgencyPrice()">حفظ</button>
       <button class="admin-btn light" onclick="closeAgencyPricingModal()">إلغاء</button>
@@ -195,8 +195,8 @@
 <script>
 function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}
 
-function openCredit(){document.getElementById('creditModal').style.display='flex';}
-function closeCredit(){document.getElementById('creditModal').style.display='none';document.getElementById('mErr').style.display='none';}
+function openCredit(){SCG.modal.open('creditModal');}
+function closeCredit(){SCG.modal.close('creditModal');document.getElementById('mErr').style.display='none';}
 function submitCredit(){
   const v=parseFloat(document.getElementById('amt').value);
   const method=document.getElementById('payMethod').value;
@@ -227,20 +227,21 @@ function approveAgency(){
 function rejectAgency(){alert('تم رفض الوكالة.');}
 
 function openAgencyPricingModal(editRow){
-  document.getElementById('agencyPricingModal').style.display='flex';
+  SCG.modal.open('agencyPricingModal');
   document.getElementById('apErr').style.display='none';
   if(editRow){document.getElementById('apModalTitle').textContent='تعديل سعر الوكالة';}
   else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';}
 }
-function closeAgencyPricingModal(){document.getElementById('agencyPricingModal').style.display='none';document.getElementById('apErr').style.display='none';}
+function closeAgencyPricingModal(){SCG.modal.close('agencyPricingModal');document.getElementById('apErr').style.display='none';}
 function saveAgencyPrice(){
   const nat=document.getElementById('apNat').value;const fee=parseFloat(document.getElementById('apFee').value);
   if(!nat||!fee||fee<=0){document.getElementById('apErr').style.display='block';return;}
   closeAgencyPricingModal();alert('تم حفظ السعر الخاص بالوكالة بنجاح. السعر أصبح نشطاً فوراً.');
 }
 function editAgencyPrice(btn){openAgencyPricingModal(btn.closest('tr'));}
-function removeAgencyPrice(btn){if(confirm('هل أنت متأكد من حذف هذا السعر؟ سيتم تطبيق السعر العام بدلاً منه.')){btn.closest('tr').remove();}}
+function removeAgencyPrice(btn){SCG.confirm('هل أنت متأكد من حذف هذا السعر؟ سيتم تطبيق السعر العام بدلاً منه.',function(){btn.closest('tr').remove();},{title:'حذف السعر الخاص',confirmText:'حذف',type:'danger'});}
 </script>
+<script src="../js/utils.js"></script>
 <script src="../scripts/email-notifications.js"></script>
 <script src="../i18n/i18n.js"></script>
 <script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>

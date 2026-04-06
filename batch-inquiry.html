@@ -1167,13 +1167,14 @@ function loadDemoData() {
 
 function clearAll() {
     if (individuals.length === 0) return;
-    if (!confirm('هل تريد مسح جميع المسافرين؟')) return;
-    individuals = [];
-    nextIndId = 1;
-    showIndForm = false; editingIndId = null;
-    indPassportName = null; indPassportFile = null;
-    indTicketName = null; indTicketFile = null;
-    renderBuilder();
+    SCG.confirm('هل تريد مسح جميع المسافرين؟', function(){
+        individuals = [];
+        nextIndId = 1;
+        showIndForm = false; editingIndId = null;
+        indPassportName = null; indPassportFile = null;
+        indTicketName = null; indTicketFile = null;
+        renderBuilder();
+    }, {title:'مسح الكل', confirmText:'مسح', type:'danger'});
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -1336,6 +1337,7 @@ renderStepper();
 renderBuilder();
 loadDraftOnInit();
 </script>
+<script src="js/utils.js"></script>
 <script src="i18n/i18n.js"></script>
 <script>
     i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });

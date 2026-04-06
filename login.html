@@ -330,6 +330,10 @@ function sendResetLink() {
     document.getElementById('resetEmailErr').classList.toggle('show', invalid);
     if (invalid) return;
 
+    // Debounce: disable button briefly to prevent double-submit
+    const btn = document.querySelector('#resetBox .btn-submit');
+    if (btn) SCG.btnLoading(btn, true);
+
     if (window.EmailNotifications) {
         const expiryDate = new Date(Date.now() + 30 * 60 * 1000);
         const resetToken = 'RST-' + Math.random().toString(36).slice(2, 10).toUpperCase();
@@ -344,6 +348,7 @@ function sendResetLink() {
     showAlert('resetSuccess', 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.');
     document.getElementById('resetBox').style.display = 'none';
     resetEmail.value = '';
+    if (btn) setTimeout(function(){ SCG.btnLoading(btn, false); }, 2000);
 }
 
 document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -374,8 +379,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     window.location.href = 'index.html';
 });
 </script>
-<script src="scripts/email-notifications.js"></script>
-<script src="i18n/i18n.js"></script>
+<script src="scripts/email-notifications.js"></script><script src="js/utils.js"></script><script src="i18n/i18n.js"></script>
 <script>
     i18n.init({ defaultLang: 'ar', localePath: 'i18n/locales/portal' });
 </script>

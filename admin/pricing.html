@@ -186,19 +186,19 @@
     <h3>إضافة جنسية جديدة</h3>
     <div class="form-grid">
       <div>
-        <label>اسم الجنسية <span style="color:#e53e3e">*</span></label>
+        <label for="mNat">اسم الجنسية <span style="color:#e53e3e">*</span></label>
         <input id="mNat" type="text" class="admin-input" placeholder="مثال: سوريا">
       </div>
       <div>
-        <label>كود ISO <span style="color:#e53e3e">*</span></label>
+        <label for="mISO">كود ISO <span style="color:#e53e3e">*</span></label>
         <input id="mISO" type="text" class="admin-input" maxlength="3" placeholder="مثال: SY" dir="ltr" style="text-transform:uppercase">
       </div>
       <div>
-        <label>رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
+        <label for="mFee">رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
         <input id="mFee" type="number" step="0.01" min="0.01" class="admin-input" placeholder="0.00">
       </div>
     </div>
-    <div id="mAddErr" class="error-msg"></div>
+    <div id="mAddErr" class="error-msg" role="alert" aria-live="polite"></div>
     <div class="modal-actions">
       <button class="admin-btn primary" onclick="saveNationality()">حفظ</button>
       <button class="admin-btn light" onclick="closeAddModal()">إلغاء</button>
@@ -212,19 +212,19 @@
     <h3>تعديل رسوم الاستعلام</h3>
     <div class="form-grid">
       <div>
-        <label>الجنسية</label>
+        <label for="eNat">الجنسية</label>
         <input id="eNat" type="text" class="admin-input" readonly style="background:#f0f0f0">
       </div>
       <div>
-        <label>كود ISO</label>
+        <label for="eISO">كود ISO</label>
         <input id="eISO" type="text" class="admin-input" readonly style="background:#f0f0f0" dir="ltr">
       </div>
       <div>
-        <label>رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
+        <label for="eFee">رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
         <input id="eFee" type="number" step="0.01" min="0.01" class="admin-input">
       </div>
     </div>
-    <div id="eEditErr" class="error-msg"></div>
+    <div id="eEditErr" class="error-msg" role="alert" aria-live="polite"></div>
     <div class="modal-actions">
       <button class="admin-btn primary" onclick="updateFee()">تحديث</button>
       <button class="admin-btn light" onclick="closeEditModal()">إلغاء</button>
@@ -240,9 +240,9 @@ function openAddModal(){
   document.getElementById('mISO').value='';
   document.getElementById('mFee').value='';
   document.getElementById('mAddErr').style.display='none';
-  document.getElementById('addModal').style.display='flex';
+  SCG.modal.open('addModal');
 }
-function closeAddModal(){document.getElementById('addModal').style.display='none';}
+function closeAddModal(){SCG.modal.close('addModal');}
 
 function saveNationality(){
   const nat=document.getElementById('mNat').value.trim();
@@ -263,9 +263,9 @@ function openEditModal(nat, iso, fee){
   document.getElementById('eISO').value=iso;
   document.getElementById('eFee').value=fee;
   document.getElementById('eEditErr').style.display='none';
-  document.getElementById('editModal').style.display='flex';
+  SCG.modal.open('editModal');
 }
-function closeEditModal(){document.getElementById('editModal').style.display='none';}
+function closeEditModal(){SCG.modal.close('editModal');}
 
 function updateFee(){
   const fee=parseFloat(document.getElementById('eFee').value);
@@ -277,6 +277,7 @@ function updateFee(){
   alert('تم تحديث الرسوم بنجاح. الرسوم الجديدة أصبحت نشطة فوراً.');
 }
 </script>
+<script src="../js/utils.js"></script>
 <script src="../i18n/i18n.js"></script>
 <script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
 </body>
