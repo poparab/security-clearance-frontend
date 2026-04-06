@@ -8,309 +8,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/portal.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="shortcut icon" href="img/favicon.png">
-    <style>
-        /* ═══════════════════════════════════════════════
-           BATCH WIZARD — PAGE-SPECIFIC STYLES
-        ═══════════════════════════════════════════════ */
-
-        /* ── Wizard card shell ── */
-        .wizard-card { background:#fff; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,.06); overflow:hidden; margin-bottom:32px; }
-
-        .wizard-card-header { display:flex; align-items:center; padding:24px 28px; border-bottom:1.5px solid #e2e8f0; gap:16px; }
-        .wch-icon { width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg, #005FCC 0%, #0284c7 100%); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .wch-icon i { font-size:26px; color:#fff; }
-        .wch-title { flex:1; font-size:18px; font-weight:800; color:#00244d; }
-        .wch-nav-btn { width:36px; height:36px; border-radius:50%; border:1.5px solid #e2e8f0; background:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; cursor:pointer; color:#64748b; transition:all .2s; font-family:inherit; }
-        .wch-nav-btn:hover { background:#f1f5f9; border-color:#94a3b8; color:#334155; }
-
-        .wizard-card-body { padding:28px; }
-        .wizard-card-footer { display:flex; align-items:center; justify-content:space-between; padding:20px 28px; border-top:1.5px solid #e2e8f0; background:#f8fafc; gap:12px; flex-wrap:wrap; }
-
-        /* ── Step panels ── */
-        .step-panel { display:none; }
-        .step-panel.active { display:block; }
-
-        /* ── Buttons (portal-standard) ── */
-        .wizard-card .wz-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.625rem 1.25rem; border:none; border-radius:0.5rem; font-family:'Tajawal',sans-serif; font-size:calc(0.875rem + 0.02vw); font-weight:700; cursor:pointer; transition:all .2s; white-space:nowrap; text-decoration:none; }
-        .wizard-card .wz-btn-primary { background:#005FCC; color:#fff; }
-        .wizard-card .wz-btn-primary:hover { background:#004799; color:#fff; }
-        .wizard-card .wz-btn-primary:disabled { opacity:.45; cursor:not-allowed; }
-        .wizard-card .wz-btn-secondary { background:#fff; color:#475569; border:1px solid #e2e8f0; }
-        .wizard-card .wz-btn-secondary:hover { background:#f8fafc; color:#1e293b; border-color:#005FCC; }
-        .wizard-card .wz-btn-success { background:#4FB848; color:#fff; }
-        .wizard-card .wz-btn-success:hover { background:#3a9e32; color:#fff; }
-        .wizard-card .wz-btn-lg { padding:0.75rem 1.5rem; font-size:calc(0.9375rem + 0.02vw); }
-        .wizard-card .wz-btn-full { width:100%; }
-        .wizard-card .wz-btn-danger { background:#dc2626; color:#fff; }
-        .wizard-card .wz-btn-danger:hover { background:#b91c1c; color:#fff; }
-
-        /* ── Confirm summary card ── */
-        .confirm-summary-card { background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:10px; padding:20px 24px; margin-bottom:20px; }
-        .confirm-summary-card .cs-row { display:flex; align-items:center; justify-content:space-between; padding:9px 0; border-bottom:1px solid #e2e8f0; }
-        .confirm-summary-card .cs-row:last-child { border-bottom:none; }
-        .confirm-summary-card .cs-label { font-size:13px; color:#64748b; }
-        .confirm-summary-card .cs-value { font-size:13px; font-weight:700; color:#0f172a; }
-        .confirm-summary-card .cs-value.total { font-size:15px; color:#005FCC; }
-
-        /* ── Pills ── */
-        .pill { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:20px; font-size:11.5px; font-weight:700; white-space:nowrap; }
-        .pill i { font-size:10px; }
-        .pill-blue { background:#cce4ff; color:#0052b3; }
-        .pill-green { background:#d4f0d1; color:#3a9e32; }
-
-        /* ── Alert ── */
-        .alert-custom { display:flex; align-items:flex-start; gap:12px; padding:14px 18px; border-radius:10px; font-size:13px; line-height:1.7; }
-        .alert-custom.alert-warning-custom { background:#fffbeb; border:1.5px solid #fde68a; color:#92400e; }
-        .alert-custom .alert-icon { font-size:18px; flex-shrink:0; margin-top:2px; }
-        .alert-custom .alert-body { flex:1; }
-        .alert-custom .alert-body strong { display:block; margin-bottom:4px; }
-
-        /* ── Flight data pills ── */
-        .fd-pill { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; color:#0369a1; background:#e0f2fe; padding:4px 10px; border-radius:20px; }
-        .fd-pill i { font-size:10px; }
-
-        /* ── Form fields ── */
-        .ff-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-        .ff-field { display:flex; flex-direction:column; gap:5px; }
-        .ff-field label { font-size:12px; font-weight:700; color:#475569; }
-        .ff-field input, .ff-field select, .ff-field textarea { border:1.5px solid #e2e8f0; border-radius:8px; padding:0 12px; font-family:'Tajawal',sans-serif; font-size:13px; color:#1e293b; background:#fff; outline:none; transition:border-color .2s; }
-        .ff-field input, .ff-field select { height:38px; }
-        .ff-field textarea { height:80px; padding:10px 12px; resize:vertical; }
-        .ff-field input:focus, .ff-field select:focus, .ff-field textarea:focus { border-color:#005FCC; background:#fff; }
-        .ff-req { color:#dc2626; }
-
-        /* ── Empty builder ── */
-        .builder-empty { text-align:center; padding:48px 24px; }
-        .be-icon { width:72px; height:72px; margin:0 auto 16px; background:#eaf4ff; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:30px; color:#005FCC; }
-        .be-title { font-size:16px; font-weight:800; color:#00244d; margin-bottom:6px; }
-        .be-sub { font-size:13px; color:#64748b; margin-bottom:20px; line-height:1.7; }
-
-        /* ── Running total bar ── */
-        .running-total-bar { background:#004799; color:#fff; padding:12px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; border-top:2px solid #2563eb; margin:20px -28px -28px; position:sticky; bottom:0; z-index:40; border-radius:0 0 16px 16px; }
-        .rtb-stat { display:flex; align-items:center; gap:6px; font-size:13px; }
-        .rtb-stat i { opacity:.7; font-size:12px; }
-        .rtb-val { font-weight:800; }
-
-        /* ── Review cards ── */
-        .review-group-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:10px; overflow:hidden; margin-bottom:8px; }
-        .rgc-header { padding:12px 16px; background:#f8fafc; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-        .rgc-header-left { display:flex; align-items:center; gap:10px; flex-wrap:wrap; flex:1; }
-        .rgc-name { font-size:13px; font-weight:800; color:#00244d; }
-
-        /* ── Section titles ── */
-        .sect-title { font-size:13px; font-weight:800; color:#334155; margin:20px 0 10px; display:flex; align-items:center; gap:8px; }
-        .sect-count { background:#cce4ff; color:#005FCC; font-size:10px; font-weight:800; padding:2px 8px; border-radius:12px; }
-
-        /* ── Individual cards ── */
-        .ind-list { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
-        .ind-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:10px; padding:14px 18px; transition:box-shadow .2s; }
-        .ind-card:hover { box-shadow:0 2px 12px rgba(0,0,0,.06); }
-        .ind-row1 { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
-        .ind-num { width:26px; height:26px; border-radius:50%; background:#005FCC; color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .ind-name { font-size:14px; font-weight:700; color:#00244d; }
-        .ind-row2 { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding-right:36px; }
-        .ind-doc { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; padding:3px 9px; border-radius:6px; }
-        .ind-doc.ok { background:#edf9ec; color:#3a9e32; border:1px solid #a8e6a1; }
-        .ind-doc.missing { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; cursor:pointer; transition:all .2s; }
-        .ind-doc.missing:hover { background:#fee2e2; border-color:#f87171; }
-        .ind-doc.missing input[type=file] { display:none; }
-
-        /* ── Individual form card ── */
-        .ind-form-card { background:#fff; border:2px solid #005FCC; border-radius:12px; padding:20px; box-shadow:0 0 0 4px rgba(29,78,232,.08); margin-bottom:16px; }
-        .ind-form-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
-        .ind-form-title { font-size:14px; font-weight:800; color:#003d8a; display:flex; align-items:center; gap:8px; }
-        .ind-form-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:12px; }
-        .ind-form-grid-5 { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-bottom:12px; }
-        .copy-flight-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; padding:8px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; cursor:pointer; user-select:none; }
-        .copy-flight-row input[type=checkbox] { accent-color:#d97706; width:16px; height:16px; }
-        .copy-flight-row label { font-size:12px; font-weight:600; color:#92400e; cursor:pointer; }
-        .doc-upload-row { display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
-        .doc-upload-btn { display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px dashed #cbd5e1; border-radius:10px; background:#f8fafc; cursor:pointer; transition:all .2s; flex:1; min-width:180px; }
-        .doc-upload-btn:hover { border-color:#005FCC; background:#eaf4ff; }
-        .doc-upload-btn.uploaded { border-color:#a8e6a1; background:#edf9ec; border-style:solid; }
-        .doc-upload-btn input[type=file] { display:none; }
-        .doc-upload-icon { font-size:20px; color:#94a3b8; }
-        .doc-upload-btn.uploaded .doc-upload-icon { color:#4FB848; }
-        .doc-upload-label { font-size:12px; font-weight:700; color:#334155; }
-        .doc-upload-hint { font-size:10.5px; color:#94a3b8; }
-        .doc-upload-btn.uploaded .doc-upload-label { color:#3a9e32; }
-        .ind-form-actions { display:flex; gap:0.375rem; align-items:center; flex-wrap:wrap; }
-        .ind-form-section-label { font-size:11.5px; font-weight:700; color:#64748b; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
-
-        /* ── Step section heading ── */
-        .step-section-title { font-size:14px; font-weight:800; color:#334155; margin-bottom:4px; }
-        .step-section-desc { font-size:12.5px; color:#64748b; line-height:1.7; margin-bottom:18px; }
-
-        /* ── Warning box ── */
-        .irreversible-warning { background:#fffbeb; border:1.5px solid #fde68a; border-radius:10px; padding:14px 18px; font-size:13px; color:#92400e; line-height:1.8; margin-bottom:20px; }
-        .irreversible-warning i { color:#d97706; }
-
-        /* ── Draft toast ── */
-        .draft-saved-toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); background:#00244d; color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.25); z-index:9999; opacity:0; transition:opacity .3s; pointer-events:none; }
-        .draft-saved-toast.show { opacity:1; }
-
-        /* ── Nav disabled ── */
-        .nav-link-coming { opacity:0.5; cursor:not-allowed; }
-
-        /* ── Step 1 ── */
-        .step1-form { max-width:580px; }
-        .ff-field-spaced { margin-bottom:20px; }
-        .ff-field-lg input { height:42px; font-size:14px; }
-        .ff-char-count { font-size:11px; color:#94a3b8; margin-top:3px; display:block; }
-
-        /* ── Add traveler ── */
-        .add-traveler-wrap { margin-bottom:16px; text-align:center; }
-
-        /* ── Demo controls ── */
-        .demo-controls { margin-bottom:16px; padding:10px 14px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:0.5rem; font-size:calc(0.75rem + 0.02vw); color:#64748b; display:flex; align-items:center; gap:0.625rem; flex-wrap:wrap; }
-        .demo-controls .wz-btn { padding:0.25rem 0.75rem; font-size:calc(0.75rem + 0.02vw); }
-        .demo-controls .demo-danger { color:#dc2626; border-color:#fca5a5; }
-        .demo-controls .demo-danger i { color:#dc2626; }
-        .demo-controls .fa-wand-magic-sparkles { color:#7c3aed; }
-
-        /* ── Footer actions ── */
-        .footer-actions { display:flex; gap:0.375rem; align-items:center; }
-
-        /* ── RTB icon ── */
-        .rtb-icon { opacity:.7; }
-
-        /* ── Section title variants ── */
-        .sect-title-flush { margin-top:0; }
-        .sect-title-bar { display:flex; align-items:center; justify-content:space-between; font-size:13px; font-weight:800; color:#334155; margin:20px 0 10px; }
-
-        /* ── List note ── */
-        .list-note { font-size:11.5px; color:#94a3b8; margin-bottom:10px; }
-
-        /* ── Card flex layout ── */
-        .ind-card-flex { display:flex; align-items:flex-start; gap:14px; }
-        .ind-card-content { flex:1; }
-        .ind-card-actions { display:flex; gap:0.375rem; margin-right:auto; }
-        .ind-card-flex .ind-row1 { margin-bottom:8px; }
-        .ind-card-flex .ind-row2 { padding-right:0; }
-
-        /* ── Number badge large ── */
-        .ind-num-lg { width:36px; height:36px; font-size:14px; border-radius:10px; flex-shrink:0; }
-
-        /* ── Pill sizes ── */
-        .pill-sm { font-size:11px; }
-        .fd-pill-sm { font-size:11px; }
-        .pill-xs { font-size:10px; }
-        .fd-pill-xs { font-size:10px; }
-
-        /* ── Form close (plain X) ── */
-        .ind-form-close { width:2rem; height:2rem; border:none; background:none; font-size:1.125rem; color:#64748b; cursor:pointer; display:flex; align-items:center; justify-content:center; border-radius:0.375rem; transition:all .2s; padding:0; font-family:'Tajawal',sans-serif; }
-        .ind-form-close:hover { background:#f1f5f9; color:#1e293b; }
-
-        /* ── Form title icon ── */
-        .ind-form-title i { color:#005FCC; }
-
-        /* ── Field hint ── */
-        .ff-hint { font-size:11px; color:#94a3b8; margin-top:2px; }
-
-        /* ── Copy flight icon ── */
-        .copy-icon { margin-left:4px; }
-
-        /* ── Purpose field ── */
-        .ff-purpose-wrap { margin-bottom:12px; }
-
-        /* ── Form save row ── */
-        .ind-form-save-row { display:flex; align-items:center; justify-content:space-between; gap:0.75rem; flex-wrap:wrap; }
-
-        /* ── Pagination ── */
-        .pagination-bar { display:flex; justify-content:center; gap:6px; margin-bottom:16px; }
-        .pagination-bar .action-icon.page-active { background:#005FCC; color:#fff; }
-        .action-icon-disabled { opacity:.4; cursor:default; }
-
-        /* ── Review section ── */
-        .review-section { margin-bottom:20px; }
-        .review-toggle-header { display:flex; align-items:center; justify-content:space-between; cursor:pointer; padding:12px 16px; background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:10px 10px 0 0; }
-        .review-toggle-left { display:flex; align-items:center; gap:10px; }
-        .review-toggle-left i.fa-users { color:#005FCC; }
-        .review-toggle-title { font-size:14px; font-weight:800; color:#00244d; }
-        .review-toggle-right { display:flex; align-items:center; gap:10px; }
-        .review-toggle-chevron { color:#64748b; transition:transform .3s; }
-        .review-toggle-body { border:1.5px solid #e2e8f0; border-top:none; border-radius:0 0 10px 10px; padding:12px 16px; }
-
-        /* ── Review passport ── */
-        .review-passport { font-size:11px; color:#64748b; }
-
-        /* ── Review card actions ── */
-        .rgc-actions { display:flex; gap:0.375rem; }
-
-        /* ── Confirm actions ── */
-        .confirm-actions-bar { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-        .confirm-actions-group { display:flex; gap:0.375rem; align-items:center; }
-
-        /* ── Wallet insufficient ── */
-        .wallet-insufficient-wrap { margin-bottom:16px; }
-
-        /* ── State screens ── */
-        .state-screen { text-align:center; padding:48px 24px; }
-        .state-loading-icon { font-size:48px; color:#005FCC; margin-bottom:16px; }
-        .state-loading-title { font-size:16px; font-weight:700; color:#00244d; margin-bottom:6px; }
-        .state-loading-subtitle { font-size:13px; color:#64748b; }
-        .state-icon-wrap { width:80px; height:80px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; }
-        .state-icon-success { background:#d4f0d1; }
-        .state-icon-success i { color:#4FB848; }
-        .state-icon-error { background:#fee2e2; }
-        .state-icon-error i { color:#dc2626; }
-        .state-icon-wrap i { font-size:40px; }
-        .state-title { font-size:20px; font-weight:800; margin-bottom:8px; }
-        .state-title-dark { color:#00244d; }
-        .state-title-error { color:#dc2626; }
-        .state-subtitle { font-size:14px; color:#64748b; margin-bottom:24px; }
-        .state-subtitle-muted { font-size:14px; color:#475569; margin-bottom:4px; }
-        .state-subtitle-last { font-size:14px; color:#475569; margin-bottom:20px; }
-        .state-summary { text-align:right; max-width:440px; margin:0 auto 24px; }
-        .state-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-        .fee-highlight { font-weight:800; color:#005FCC; }
-
-        /* ── Error reference box ── */
-        .error-ref-box { background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:12px 16px; max-width:440px; margin:0 auto 24px; display:flex; align-items:center; justify-content:space-between; }
-        .error-ref-label { font-size:12px; font-weight:600; color:#991b1b; }
-        .error-ref-value { font-size:15px; font-weight:700; color:#dc2626; }
-
-        /* ── Responsive ── */
-        @media (max-width: 991px) {
-            .wizard-card-header { padding:20px 22px; }
-            .wizard-card-body { padding:22px; }
-            .wizard-card-footer { padding:16px 22px; }
-            .wch-icon { width:52px; height:52px; }
-            .wch-icon i { font-size:22px; }
-            .wch-title { font-size:16px; }
-        }
-        @media (max-width: 768px) {
-            .wizard-card-header { padding:16px 18px; gap:12px; }
-            .wizard-card-body { padding:18px; }
-            .wizard-card-footer { padding:14px 18px; }
-            .wch-icon { width:44px; height:44px; }
-            .wch-icon i { font-size:18px; }
-            .wch-title { font-size:14px; }
-            .ff-grid { grid-template-columns:1fr; }
-            .ind-form-grid { grid-template-columns:repeat(2, 1fr); }
-            .ind-form-grid-5 { grid-template-columns:repeat(2, 1fr); }
-            .running-total-bar { margin:20px -18px -18px; padding:10px 14px; font-size:12px; }
-            .ind-form-card { padding:14px; }
-            .doc-upload-btn { min-width:auto; flex:1 1 100%; }
-            .wizard-card-footer .wz-btn { font-size:calc(0.75rem + 0.02vw); padding:0.375rem 0.875rem; }
-        }
-        @media (max-width: 480px) {
-            .wizard-card-header { padding:14px; gap:10px; }
-            .wizard-card-body { padding:14px; }
-            .wizard-card-footer { flex-direction:column-reverse; gap:10px; }
-            .wizard-card-footer > * { width:100%; }
-            .wizard-card-footer .footer-actions { justify-content:center; }
-            .wch-icon { width:38px; height:38px; }
-            .wch-icon i { font-size:16px; }
-            .wch-title { font-size:13px; }
-            .ind-form-grid { grid-template-columns:1fr; }
-            .ind-form-grid-5 { grid-template-columns:1fr; }
-            .ind-form-actions { flex-direction:column; }
-            .ind-form-actions .action-icon { width:100%; }
-            .ind-row2 { padding-right:0; }
-        }
-    </style>
 </head>
 <body class="portal-page">
 
@@ -354,8 +53,8 @@
             <i class="fa-solid fa-chevron-left separator"></i>
             <span class="current" id="breadcrumb-current">إنشاء حزمة طلبات جديدة</span>
             <!-- Dynamic extra crumb for steps 2-3 -->
-            <i class="fa-solid fa-chevron-left separator" id="breadcrumb-extra-sep" style="display:none;"></i>
-            <span class="current" id="breadcrumb-extra" style="display:none;"></span>
+            <i class="fa-solid fa-chevron-left separator d-none" id="breadcrumb-extra-sep"></i>
+            <span class="current d-none" id="breadcrumb-extra"></span>
         </nav>
     </div>
 </div>
@@ -440,7 +139,7 @@
                 <div id="individuals-container"></div>
 
                 <!-- Running total bar -->
-                <div class="running-total-bar" id="running-total-bar" style="display:none;">
+                <div class="running-total-bar d-none" id="running-total-bar">
                     <i class="fas fa-users rtb-icon"></i>
                     <span class="rtb-stat">
                         <i class="fas fa-user"></i>
@@ -494,7 +193,7 @@
                     </div>
 
                     <!-- Insufficient balance warning -->
-                    <div class="wallet-insufficient-wrap" id="fee-wallet-insufficient" style="display:none;">
+                    <div class="wallet-insufficient-wrap d-none" id="fee-wallet-insufficient">
                         <div class="alert-custom alert-warning-custom">
                             <div class="alert-icon"><i class="fas fa-wallet"></i></div>
                             <div class="alert-body">
@@ -526,7 +225,7 @@
             </div>
 
             <!-- LOADING state -->
-            <div id="s3-loading" style="display:none;">
+            <div id="s3-loading" class="d-none">
                 <div class="wizard-card-body state-screen">
                     <div class="state-loading-icon"><i class="fas fa-spinner fa-spin"></i></div>
                     <h4 class="state-loading-title">جارٍ معالجة الطلب…</h4>
@@ -535,7 +234,7 @@
             </div>
 
             <!-- SUCCESS state -->
-            <div id="s3-success" style="display:none;">
+            <div id="s3-success" class="d-none">
                 <div class="wizard-card-body state-screen">
                     <div class="state-icon-wrap state-icon-success">
                         <i class="fas fa-circle-check"></i>
@@ -555,7 +254,7 @@
             </div>
 
             <!-- FAILURE state -->
-            <div id="s3-failure" style="display:none;">
+            <div id="s3-failure" class="d-none">
                 <div class="wizard-card-body state-screen">
                     <div class="state-icon-wrap state-icon-error">
                         <i class="fas fa-circle-xmark"></i>
@@ -706,19 +405,19 @@ function updateBreadcrumb() {
     const extra    = document.getElementById('breadcrumb-extra');
     const current  = document.getElementById('breadcrumb-current');
     if (currentStep === 1) {
-        extraSep.style.display = 'none';
-        extra.style.display    = 'none';
+        extraSep.classList.add('d-none');
+        extra.classList.add('d-none');
         current.className      = 'current';
     } else if (currentStep === 2) {
         current.className = '';
-        extraSep.style.display = '';
-        extra.style.display    = '';
+        extraSep.classList.remove('d-none');
+        extra.classList.remove('d-none');
         extra.textContent      = 'إضافة مسافرين';
         extra.className        = 'current';
     } else if (currentStep === 3) {
         current.className = '';
-        extraSep.style.display = '';
-        extra.style.display    = '';
+        extraSep.classList.remove('d-none');
+        extra.classList.remove('d-none');
         extra.textContent      = 'المراجعة والتأكيد';
         extra.className        = 'current';
     }
@@ -858,10 +557,10 @@ function renderBuilder() {
 
     // Running total bar
     if (totalTravelers > 0) {
-        totalBar.style.display = 'flex';
+        totalBar.classList.remove('d-none');
         document.getElementById('rtb-travelers').textContent = totalTravelers;
     } else {
-        totalBar.style.display = 'none';
+        totalBar.classList.add('d-none');
     }
 
     // ── Individual travelers section ──
@@ -1321,7 +1020,7 @@ function buildReviewStep() {
     // Wallet check
     const insufficient = totalFee > WALLET_BALANCE;
     const insufEl = document.getElementById('fee-wallet-insufficient');
-    insufEl.style.display = insufficient ? '' : 'none';
+    insufEl.classList.toggle('d-none', !insufficient);
     if (insufficient) {
         document.getElementById('wallet-insufficient-msg').textContent =
             `رصيدك الحالي ${fmt(WALLET_BALANCE)} — الرسوم المطلوبة ${fmt(totalFee)}. يرجى شحن المحفظة أولاً.`;
@@ -1341,8 +1040,8 @@ function toggleReviewList() {
     reviewListExpanded = !reviewListExpanded;
     const list = document.getElementById('review-groups-summary');
     const chevron = document.getElementById('review-list-chevron');
-    list.style.display = reviewListExpanded ? '' : 'none';
-    chevron.style.transform = reviewListExpanded ? '' : 'rotate(-90deg)';
+    list.classList.toggle('d-none', !reviewListExpanded);
+    chevron.classList.toggle('collapsed', !reviewListExpanded);
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -1351,7 +1050,7 @@ function toggleReviewList() {
 function setS3State(state) {
     s3State = state;
     ['confirm','loading','success','failure'].forEach(s => {
-        document.getElementById('s3-' + s).style.display = s === state ? '' : 'none';
+        document.getElementById('s3-' + s).classList.toggle('d-none', s !== state);
     });
 }
 
