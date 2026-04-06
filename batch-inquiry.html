@@ -758,7 +758,8 @@ function renderBuilder() {
                 <i class="fas fa-users"></i> قائمة المسافرون <span class="sect-count">${totalIndividuals}</span>
             </div>
             <button class="gc-icon-btn danger" onclick="clearAll()" title="مسح الكل" style="font-size:11px;"><i class="fas fa-trash"></i></button>
-        </div>`;
+        </div>
+        <div style="font-size:11.5px;color:#94a3b8;margin-bottom:10px;">القائمة تعرض 10 مسافرون كحد أقصى</div>`;
         const pageSize = 10;
         const totalPages = Math.ceil(individuals.length / pageSize);
         const startIdx = (currentTravelerPage - 1) * pageSize;
@@ -1027,47 +1028,50 @@ function renderIndividualForm() {
             <div class="ff-field">
                 <label>الاسم الكامل <span class="ff-req">*</span></label>
                 <input type="text" id="ind-name" placeholder="كما في جواز السفر" maxlength="80" value="${ind ? escHtml(ind.name) : ''}">
+                <span style="font-size:11px;color:#94a3b8;margin-top:2px;">الرسم كما هو بجواز السفر</span>
             </div>
             <div class="ff-field">
                 <label>الجنسية <span class="ff-req">*</span></label>
-                <select id="ind-nat"><option value="">اختر</option>${natOpts}</select>
+                <select id="ind-nat"><option value="">اختر الجنسية</option>${natOpts}</select>
             </div>
             <div class="ff-field">
                 <label>رقم الجواز <span class="ff-req">*</span></label>
-                <input type="text" id="ind-passport" placeholder="AB123456" maxlength="20" dir="ltr" value="${ind ? escHtml(ind.passportNo) : ''}">
+                <input type="text" id="ind-passport" placeholder="مثال: A35559648" maxlength="20" dir="ltr" value="${ind ? escHtml(ind.passportNo) : ''}">    
             </div>
             <div class="ff-field">
-                <label>انتهاء الجواز <span class="ff-req">*</span></label>
-                <input type="date" id="ind-expiry" value="${ind ? ind.expiry : ''}">
+                <label>تاريخ إنتهاء الجواز <span class="ff-req">*</span></label>
+                <input type="date" id="ind-expiry" placeholder="mm / dd / yyyy" value="${ind ? ind.expiry : ''}">
             </div>
         </div>
 
-        <div class="ind-form-section-label"><i class="fas fa-plane"></i> بيانات الرحلة</div>
+        <div class="ind-form-section-label"><i class="fas fa-gear"></i> بيانات الرحلة</div>
         ${hasPrev ? `
         <div class="copy-flight-row" onclick="toggleCopyFlight()">
             <input type="checkbox" id="copy-flight-check">
             <label for="copy-flight-check"><i class="fas fa-copy" style="margin-left:4px;"></i>نسخ بيانات الرحلة من المسافر السابق</label>
         </div>` : ''}
-        <div class="ind-form-grid-5">
+        <div class="ind-form-grid">
             <div class="ff-field">
                 <label>رقم الرحلة</label>
-                <input type="text" id="ind-flightno" placeholder="MS-777" maxlength="10" value="${ind ? (f.flightNo || '') : ''}">
+                <input type="text" id="ind-flightno" placeholder="مثال: MS/14" maxlength="10" value="${ind ? (f.flightNo || '') : ''}">
             </div>
             <div class="ff-field">
                 <label>دولة المغادرة <span class="ff-req">*</span></label>
-                <select id="ind-from"><option value="">اختر</option>${coo}</select>
+                <select id="ind-from"><option value="">اختر الدولة</option>${coo}</select>
             </div>
             <div class="ff-field">
                 <label>مطار الوصول <span class="ff-req">*</span></label>
-                <select id="ind-airport"><option value="">اختر</option>${aoo}</select>
+                <select id="ind-airport"><option value="">اختر المطار</option>${aoo}</select>
             </div>
             <div class="ff-field">
                 <label>تاريخ السفر <span class="ff-req">*</span></label>
                 <input type="date" id="ind-date" value="${ind ? f.date || '' : ''}">
             </div>
+        </div>
+        <div style="margin-bottom:12px;">
             <div class="ff-field">
                 <label>غرض الزيارة <span class="ff-req">*</span></label>
-                <select id="ind-purpose"><option value="">اختر</option>${poo}</select>
+                <select id="ind-purpose"><option value="">اختر الغرض من الزيارة</option>${poo}</select>
             </div>
         </div>
 
@@ -1091,10 +1095,10 @@ function renderIndividualForm() {
             </label>
         </div>
 
+        ${!editing ? `<button class="btn btn-primary" onclick="saveIndividual(true)" style="width:100%;padding:12px;font-size:14px;margin-bottom:12px;"><i class="fas fa-user-plus"></i> حفظ وإضافة آخر</button>` : `<button class="btn btn-primary" onclick="saveIndividual(false)" style="width:100%;padding:12px;font-size:14px;margin-bottom:12px;"><i class="fas fa-check"></i> حفظ التعديلات</button>`}
         <div class="ind-form-actions">
-            ${!editing ? `<button class="btn btn-primary btn-sm" onclick="saveIndividual(true)"><i class="fas fa-plus"></i> حفظ وإضافة آخر</button>` : ''}
-            <button class="btn btn-${editing ? 'primary' : 'secondary'} btn-sm" onclick="saveIndividual(false)"><i class="fas fa-check"></i> ${editing ? 'حفظ التعديلات' : 'حفظ'}</button>
-            <button class="btn btn-secondary btn-sm" onclick="hideIndForm()">إلغاء</button>
+            <button class="gc-icon-btn danger" onclick="hideIndForm()" title="إلغاء"><i class="fas fa-trash"></i></button>
+            <button class="gc-icon-btn" onclick="${!editing ? 'saveIndividual(false)' : 'hideIndForm()'}" title="${!editing ? 'حفظ' : 'إغلاق'}"><i class="fas fa-${!editing ? 'floppy-disk' : 'times'}"></i></button>
         </div>
     </div>`;
 }
