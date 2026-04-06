@@ -2,8 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=pricing.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>إدارة الجنسيات — الإدارة</title>
+  <title>التحويل إلى إدارة الجنسيات والأسعار</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,125 +12,21 @@
   <link rel="stylesheet" href="styles/admin.css">
 </head>
 <body class="admin-body">
-<div class="admin-layout">
-
-  <main class="admin-content">
-    <div class="admin-topbar">
-      <div class="topbar-left">
-        <div class="topbar-user">
-          <img src="https://i.pravatar.cc/80?img=12" alt="admin">
-          <div><div class="name">أحمد محمود</div><div class="role">مشرف النظام</div></div>
-        </div>
-        <div class="topbar-actions">
-          <i class="fas fa-bell"></i>
-          <span>EN</span>
-          <i class="fas fa-globe"></i>
-        </div>
+  <main class="admin-content" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
+    <section class="card" style="max-width:520px;width:100%;text-align:center;">
+      <div class="card-header" style="justify-content:center;gap:12px;">
+        <div class="card-icon" style="background:#fef3c7;color:#d97706;"><i class="fas fa-file-invoice-dollar"></i></div>
+        <span class="card-label">إدارة الجنسيات والأسعار</span>
       </div>
-      <div class="topbar-right">
-        <div class="search-wrap"><i class="fas fa-search"></i><input type="text" placeholder="إبحث هنا ..."></div>
-        <i class="fas fa-bars" onclick="toggleSidebar()"></i>
+      <div class="card-sub" style="font-size:14px;line-height:1.8;">
+        تم دمج صفحة إدارة الجنسيات مع صفحة إدارة الأسعار في شاشة واحدة.<br>
+        إذا لم يتم التحويل تلقائيا، استخدم الرابط التالي.
       </div>
-    </div>
-
-    <div class="content-shell">
-      <!-- Stats -->
-      <section class="admin-stats-row">
-        <article class="admin-stat stat-blue">
-          <div class="meta"><div class="num">46</div><div class="lbl">إجمالي الجنسيات</div></div>
-          <div class="icon"><i class="fas fa-flag"></i></div>
-        </article>
-        <article class="admin-stat stat-amber">
-          <div class="meta"><div class="num">24</div><div class="lbl">تستلزم استعلام</div></div>
-          <div class="icon"><i class="fas fa-shield-halved"></i></div>
-        </article>
-        <article class="admin-stat stat-green">
-          <div class="meta"><div class="num">22</div><div class="lbl">لا تستلزم استعلام</div></div>
-          <div class="icon"><i class="fas fa-circle-check"></i></div>
-        </article>
-        <article class="admin-stat stat-blue">
-          <div class="meta"><div class="num">15/06</div><div class="lbl">آخر تحديث</div></div>
-          <div class="icon"><i class="fas fa-calendar-check"></i></div>
-        </article>
-      </section>
-
-      <!-- Toolbar -->
-      <section class="admin-toolbar">
-        <div class="toolbar-group">
-          <div class="search-wrap"><i class="fas fa-search"></i><input class="admin-input" placeholder="إبحث بالجنسية ..."></div>
-        </div>
-        <div class="toolbar-group">
-          <h3 style="margin:0;font-size:18px;font-weight:800;color:#004799;">إعدادات الجنسيات</h3>
-        </div>
-      </section>
-
-      <!-- Table -->
-      <section class="admin-table-wrap">
-        <table class="admin-table">
-          <thead>
-            <tr><th>الجنسية</th><th>كود ISO</th><th>تستلزم استعلام</th><th>آخر تعديل</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>سوريا</td><td dir="ltr">SY</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('SY',this)"><span class="slider"></span></label></td><td>15 يونيو 2026</td></tr>
-            <tr><td>العراق</td><td dir="ltr">IQ</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('IQ',this)"><span class="slider"></span></label></td><td>15 يونيو 2026</td></tr>
-            <tr><td>اليمن</td><td dir="ltr">YE</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('YE',this)"><span class="slider"></span></label></td><td>15 يونيو 2026</td></tr>
-            <tr><td>فلسطين</td><td dir="ltr">PS</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('PS',this)"><span class="slider"></span></label></td><td>14 يونيو 2026</td></tr>
-            <tr><td>الصومال</td><td dir="ltr">SO</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('SO',this)"><span class="slider"></span></label></td><td>10 يونيو 2026</td></tr>
-            <tr><td>لبنان</td><td dir="ltr">LB</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('LB',this)"><span class="slider"></span></label></td><td>08 يونيو 2026</td></tr>
-            <tr><td>تركيا</td><td dir="ltr">TR</td><td><label class="toggle"><input type="checkbox" onchange="toggleNationality('TR',this)"><span class="slider"></span></label></td><td>01 يونيو 2026</td></tr>
-            <tr><td>إيران</td><td dir="ltr">IR</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('IR',this)"><span class="slider"></span></label></td><td>01 يونيو 2026</td></tr>
-            <tr><td>أفغانستان</td><td dir="ltr">AF</td><td><label class="toggle"><input type="checkbox" checked onchange="toggleNationality('AF',this)"><span class="slider"></span></label></td><td>28 مايو 2026</td></tr>
-            <tr><td>باكستان</td><td dir="ltr">PK</td><td><label class="toggle"><input type="checkbox" onchange="toggleNationality('PK',this)"><span class="slider"></span></label></td><td>20 مايو 2026</td></tr>
-          </tbody>
-        </table>
-        <div class="admin-pagination">
-          <div class="pg-pages">
-            <a href="#"><i class="fas fa-chevron-left"></i></a>
-            <a href="#">5</a>
-            <a href="#">4</a>
-            <a href="#">3</a>
-            <a href="#">2</a>
-            <a href="#" class="active">1</a>
-            <a href="#"><i class="fas fa-chevron-right"></i></a>
-          </div>
-          <div class="pg-right">عرض <select><option>10</option><option>25</option><option>50</option></select> سطر</div>
-        </div>
-      </section>
-    </div>
+      <div style="margin-top:18px;">
+        <a class="admin-btn primary" href="pricing.html" style="text-decoration:none;display:inline-flex;">فتح الصفحة المدمجة</a>
+      </div>
+    </section>
   </main>
-
-  <!-- ══ SIDEBAR ══ -->
-  <aside class="admin-sidebar" id="adminSidebar">
-    <div class="sidebar-top">
-      <div class="sidebar-brand">
-        <img src="../img/logo.png" alt="Logo" onerror="this.outerHTML='<svg width=52 height=52 viewBox=&quot;0 0 26 26&quot; fill=&quot;none&quot;><path d=&quot;M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z&quot; stroke=&quot;#005FCC&quot; stroke-width=&quot;1.7&quot; stroke-linejoin=&quot;round&quot;/><rect x=&quot;9&quot; y=&quot;14&quot; width=&quot;8&quot; height=&quot;7&quot; rx=&quot;1.5&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot;/><path d=&quot;M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot;/></svg>'">
-        <div class="brand-text"><h1>نظام الموافقات الأمنية</h1><p>Security Approval System</p></div>
-      </div>
-      <nav class="sidebar-nav">
-        <a class="sidebar-link" href="admin-index.html"><span>لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a>
-        <a class="sidebar-link" href="inquiries.html"><span>إدارة الطلبات</span><i class="fas fa-file-lines"></i></a>
-        <a class="sidebar-link placeholder" href="#"><span>إدارة الأفراد</span><i class="fas fa-user"></i></a>
-        <a class="sidebar-link" href="agencies.html"><span>إدارة الوكلاء</span><i class="fas fa-building"></i></a>
-        <a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a>
-        <a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a>
-        <a class="sidebar-link" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
-        <a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a>
-        <a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a>
-      </nav>
-    </div>
-    <div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span>تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div>
-  </aside>
-
-</div>
-<script>
-function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}
-function toggleNationality(code,el){
-  const status=el.checked?'تفعيل':'تعطيل';
-  if(!confirm('هل أنت متأكد من '+status+' جنسية '+code+'؟')){el.checked=!el.checked;return;}
-  alert('تم '+status+' جنسية '+code+' بنجاح');
-}
-</script>
-<script src="../i18n/i18n.js"></script>
-<script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
+  <script>window.location.replace('pricing.html');</script>
 </body>
 </html>

@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>إدارة الأسعار — لوحة الإدارة</title>
+  <title>إدارة الجنسيات والأسعار — لوحة الإدارة</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/admin.css">
+  <style>.clickable-row{cursor:pointer;transition:background .15s}.clickable-row:hover{background:#f0f6ff !important}</style>
 </head>
 <body class="admin-body">
 <div class="admin-layout">
@@ -36,20 +37,20 @@
       <!-- Stats -->
       <section class="admin-stats-row">
         <article class="admin-stat stat-blue">
-          <div class="meta"><div class="num">6</div><div class="lbl">إجمالي قواعد التسعير</div></div>
-          <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="meta"><div class="num">6</div><div class="lbl">إجمالي الجنسيات</div></div>
+          <div class="icon"><i class="fas fa-flag"></i></div>
         </article>
         <article class="admin-stat stat-green">
-          <div class="meta"><div class="num">5</div><div class="lbl">قواعد نشطة</div></div>
-          <div class="icon"><i class="fas fa-circle-check"></i></div>
-        </article>
-        <article class="admin-stat stat-red">
-          <div class="meta"><div class="num">01</div><div class="lbl">قواعد غير نشطة</div></div>
-          <div class="icon"><i class="fas fa-ban"></i></div>
+          <div class="meta"><div class="num">6</div><div class="lbl">رسوم نشطة</div></div>
+          <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
         </article>
         <article class="admin-stat stat-amber">
-          <div class="meta"><div class="num">05</div><div class="lbl">تعديلات هذا الشهر</div></div>
-          <div class="icon"><i class="fas fa-pen-to-square"></i></div>
+          <div class="meta"><div class="num">3</div><div class="lbl">تغييرات الرسوم هذا الشهر</div></div>
+          <div class="icon"><i class="fas fa-arrows-rotate"></i></div>
+        </article>
+        <article class="admin-stat stat-blue">
+          <div class="meta"><div class="num">15/06</div><div class="lbl">آخر تحديث</div></div>
+          <div class="icon"><i class="fas fa-calendar-check"></i></div>
         </article>
       </section>
 
@@ -57,17 +58,18 @@
       <section class="admin-toolbar">
         <div class="toolbar-group">
           <button class="admin-btn light"><i class="fas fa-download"></i> تصدير</button>
-          <button class="admin-btn success" onclick="openRuleModal()"><i class="fas fa-plus"></i> إضافة قاعدة جديدة</button>
+          <button class="admin-btn success" onclick="openAddModal()"><i class="fas fa-plus"></i> إضافة جنسية</button>
         </div>
         <div class="toolbar-group">
-          <h3 style="margin:0;font-size:18px;font-weight:800;color:#004799;">قواعد التسعير</h3>
+          <div class="search-wrap"><i class="fas fa-search"></i><input class="admin-input" placeholder="إبحث بالجنسية ..."></div>
+          <h3 style="margin:0;font-size:18px;font-weight:800;color:#004799;">إدارة الجنسيات والأسعار</h3>
         </div>
       </section>
 
       <!-- Info Banner -->
       <div class="info-banner">
         <i class="fas fa-circle-info"></i>
-        <span>هذه الأسعار الافتراضية تُطبَّق على جميع الطلبات ما لم يتم تعيين تسعير خاص للوكالة من صفحة <a href="agencies.html" style="color:#005FCC;text-decoration:underline;">إدارة الوكلاء</a>. جميع الرسوم بالدولار الأمريكي (USD).</span>
+        <span>تتيح هذه الصفحة إضافة الجنسيات وتعيين رسوم الاستعلام الفردي. اضغط على أي صف لعرض التفاصيل وسجل تغييرات الرسوم. التسعير الخاص بالوكالة يُدار من صفحة <a href="agencies.html" style="color:#005FCC;text-decoration:underline;">إدارة الوكلاء</a>. جميع الرسوم بالدولار الأمريكي (USD).</span>
       </div>
 
       <!-- Table -->
@@ -76,58 +78,67 @@
           <thead>
             <tr>
               <th>الجنسية</th>
-              <th>قيمة الرسوم (USD)</th>
+              <th>كود ISO</th>
+              <th>رسوم استعلام الأفراد (USD)</th>
               <th>ساري من تاريخ</th>
-              <th>الحالة</th>
+              <th>تاريخ الإضافة</th>
               <th>الإجراء</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>سوريا</td><td dir="ltr">50.00</td>
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=SY'">
+              <td>سوريا</td>
+              <td dir="ltr">SY</td>
+              <td dir="ltr">50.00</td>
               <td>18 ديسمبر 2025</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+              <td>01 ديسمبر 2025</td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('سوريا','SY','50.00','2025-12-18'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr>
-              <td>العراق</td><td dir="ltr">50.00</td>
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=IQ'">
+              <td>العراق</td>
+              <td dir="ltr">IQ</td>
+              <td dir="ltr">50.00</td>
               <td>16 ديسمبر 2025</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+              <td>01 ديسمبر 2025</td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('العراق','IQ','50.00','2025-12-16'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr>
-              <td>اليمن</td><td dir="ltr">50.00</td>
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=YE'">
+              <td>اليمن</td>
+              <td dir="ltr">YE</td>
+              <td dir="ltr">50.00</td>
               <td>14 ديسمبر 2025</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+              <td>05 ديسمبر 2025</td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('اليمن','YE','50.00','2025-12-14'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr>
-              <td>فلسطين</td><td dir="ltr">50.00</td>
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=PS'">
+              <td>فلسطين</td>
+              <td dir="ltr">PS</td>
+              <td dir="ltr">50.00</td>
               <td>12 ديسمبر 2025</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
-            </tr>
-            <tr>
-              <td>الصومال</td><td dir="ltr">50.00</td>
-              <td>10 ديسمبر 2025</td>
-              <td><span class="status processing"><span class="dot"></span>موقوف</span></td>
-              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
-            </tr>
-            <tr>
-              <td>لبنان</td><td dir="ltr">50.00</td>
               <td>08 ديسمبر 2025</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td><i class="fas fa-ellipsis-vertical action-dot"></i></td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('فلسطين','PS','50.00','2025-12-12'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+            </tr>
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=SO'">
+              <td>الصومال</td>
+              <td dir="ltr">SO</td>
+              <td dir="ltr">45.00</td>
+              <td>10 ديسمبر 2025</td>
+              <td>10 ديسمبر 2025</td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('الصومال','SO','45.00','2025-12-10'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+            </tr>
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=LB'">
+              <td>لبنان</td>
+              <td dir="ltr">LB</td>
+              <td dir="ltr">50.00</td>
+              <td>08 ديسمبر 2025</td>
+              <td>01 ديسمبر 2025</td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('لبنان','LB','50.00','2025-12-08'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
           </tbody>
         </table>
         <div class="admin-pagination">
           <div class="pg-pages">
             <a href="#"><i class="fas fa-chevron-left"></i></a>
-            <a href="#">...</a>
-            <a href="#">8</a>
-            <a href="#">7</a>
-            <a href="#">6</a>
             <a href="#">5</a>
             <a href="#">4</a>
             <a href="#">3</a>
@@ -137,7 +148,7 @@
           </div>
           <div class="pg-right">
             عرض
-            <select><option>11</option><option>25</option><option>50</option></select>
+            <select><option>10</option><option>25</option><option>50</option></select>
             سطر
           </div>
         </div>
@@ -159,7 +170,7 @@
         <a class="sidebar-link" href="agencies.html"><span>إدارة الوكلاء</span><i class="fas fa-building"></i></a>
         <a class="sidebar-link placeholder" href="#"><span>إدارة المستخدمين</span><i class="fas fa-users"></i></a>
         <a class="sidebar-link placeholder" href="#"><span>التقارير</span><i class="fas fa-rectangle-list"></i></a>
-        <a class="sidebar-link active" href="pricing.html"><span>إدارة الأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
+        <a class="sidebar-link active" href="pricing.html"><span>إدارة الجنسيات والأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
         <a class="sidebar-link placeholder" href="#"><span>اللوحة المالية</span><i class="fas fa-chart-column"></i></a>
         <a class="sidebar-link placeholder" href="#"><span>المساعدة</span><i class="fas fa-circle-question"></i></a>
       </nav>
@@ -169,28 +180,62 @@
 
 </div>
 
-<!-- Add/Edit Rule Modal -->
-<div id="ruleModal" class="admin-modal-overlay">
+<!-- Add Nationality Modal -->
+<div id="addModal" class="admin-modal-overlay">
   <div class="admin-modal">
-    <h3>إضافة/تعديل قاعدة تسعير</h3>
+    <h3>إضافة جنسية جديدة</h3>
+    <div class="form-grid">
+      <div>
+        <label>اسم الجنسية <span style="color:#e53e3e">*</span></label>
+        <input id="mNat" type="text" class="admin-input" placeholder="مثال: سوريا">
+      </div>
+      <div>
+        <label>كود ISO <span style="color:#e53e3e">*</span></label>
+        <input id="mISO" type="text" class="admin-input" maxlength="3" placeholder="مثال: SY" dir="ltr" style="text-transform:uppercase">
+      </div>
+      <div>
+        <label>رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
+        <input id="mFee" type="number" step="0.01" min="0.01" class="admin-input" placeholder="0.00">
+      </div>
+      <div>
+        <label>ساري من تاريخ <span style="color:#e53e3e">*</span></label>
+        <input id="mDate" type="date" class="admin-input">
+      </div>
+    </div>
+    <div id="mAddErr" class="error-msg"></div>
+    <div class="modal-actions">
+      <button class="admin-btn primary" onclick="saveNationality()">حفظ</button>
+      <button class="admin-btn light" onclick="closeAddModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Fee Modal -->
+<div id="editModal" class="admin-modal-overlay">
+  <div class="admin-modal">
+    <h3>تعديل رسوم الاستعلام</h3>
     <div class="form-grid">
       <div>
         <label>الجنسية</label>
-        <select id="mNat"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option><option>فلسطين</option><option>الصومال</option><option>لبنان</option></select>
+        <input id="eNat" type="text" class="admin-input" readonly style="background:#f0f0f0">
       </div>
       <div>
-        <label>قيمة الرسوم (USD)</label>
-        <input id="mFee" type="number" step="0.01" min="0">
+        <label>كود ISO</label>
+        <input id="eISO" type="text" class="admin-input" readonly style="background:#f0f0f0" dir="ltr">
       </div>
       <div>
-        <label>ساري من تاريخ</label>
-        <input id="mDate" type="date">
+        <label>رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
+        <input id="eFee" type="number" step="0.01" min="0.01" class="admin-input">
+      </div>
+      <div>
+        <label>ساري من تاريخ <span style="color:#e53e3e">*</span></label>
+        <input id="eDate" type="date" class="admin-input">
       </div>
     </div>
-    <div id="mRuleErr" class="error-msg">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
+    <div id="eEditErr" class="error-msg"></div>
     <div class="modal-actions">
-      <button class="admin-btn primary" onclick="saveRule()">حفظ</button>
-      <button class="admin-btn light" onclick="closeRuleModal()">إلغاء</button>
+      <button class="admin-btn primary" onclick="updateFee()">تحديث</button>
+      <button class="admin-btn light" onclick="closeEditModal()">إلغاء</button>
     </div>
   </div>
 </div>
@@ -198,18 +243,56 @@
 <script>
 function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}
 
-function openRuleModal(){document.getElementById('ruleModal').style.display='flex';}
-function closeRuleModal(){document.getElementById('ruleModal').style.display='none';document.getElementById('mRuleErr').style.display='none';}
-function saveRule(){
-  const nat=document.getElementById('mNat').value;
+function openAddModal(){
+  document.getElementById('mNat').value='';
+  document.getElementById('mISO').value='';
+  document.getElementById('mFee').value='';
+  document.getElementById('mDate').value='';
+  document.getElementById('mAddErr').style.display='none';
+  document.getElementById('addModal').style.display='flex';
+}
+function closeAddModal(){document.getElementById('addModal').style.display='none';}
+
+function saveNationality(){
+  const nat=document.getElementById('mNat').value.trim();
+  const iso=document.getElementById('mISO').value.trim().toUpperCase();
   const fee=parseFloat(document.getElementById('mFee').value);
   const date=document.getElementById('mDate').value;
-  const today=new Date();
+  const errEl=document.getElementById('mAddErr');
+  const today=new Date(); today.setHours(0,0,0,0);
   const selDate=date?new Date(date+'T00:00:00'):null;
-  const validDate=!!selDate&&selDate>=new Date(today.getFullYear(),today.getMonth(),today.getDate());
-  if(!nat||!fee||fee<=0||!validDate){document.getElementById('mRuleErr').style.display='block';return;}
-  closeRuleModal();
-  alert('تم حفظ قاعدة التسعير بنجاح');
+
+  if(!nat){errEl.textContent='يرجى إدخال اسم الجنسية. (Please enter the nationality name.)';errEl.style.display='block';return;}
+  if(!iso||iso.length<2){errEl.textContent='يرجى إدخال كود ISO صحيح. (Please enter a valid ISO code.)';errEl.style.display='block';return;}
+  if(!fee||fee<=0){errEl.textContent='يجب إدخال رسوم الاستعلام عند إضافة جنسية. (Inquiry fee is required when adding a nationality.)';errEl.style.display='block';return;}
+  if(!selDate||selDate<today){errEl.textContent='يجب أن يكون تاريخ السريان اليوم أو تاريخا مستقبليا. (Effective date must be today or a future date.)';errEl.style.display='block';return;}
+
+  closeAddModal();
+  alert('تم إضافة الجنسية «'+nat+'» برسوم '+fee+' USD بنجاح.');
+}
+
+function openEditModal(nat, iso, fee, date){
+  document.getElementById('eNat').value=nat;
+  document.getElementById('eISO').value=iso;
+  document.getElementById('eFee').value=fee;
+  document.getElementById('eDate').value=date;
+  document.getElementById('eEditErr').style.display='none';
+  document.getElementById('editModal').style.display='flex';
+}
+function closeEditModal(){document.getElementById('editModal').style.display='none';}
+
+function updateFee(){
+  const fee=parseFloat(document.getElementById('eFee').value);
+  const date=document.getElementById('eDate').value;
+  const errEl=document.getElementById('eEditErr');
+  const today=new Date(); today.setHours(0,0,0,0);
+  const selDate=date?new Date(date+'T00:00:00'):null;
+
+  if(!fee||fee<=0){errEl.textContent='يرجى إدخال قيمة رسوم صحيحة أكبر من صفر. (Please enter a valid fee amount greater than zero.)';errEl.style.display='block';return;}
+  if(!selDate||selDate<today){errEl.textContent='يجب أن يكون تاريخ السريان اليوم أو تاريخا مستقبليا. (Effective date must be today or a future date.)';errEl.style.display='block';return;}
+
+  closeEditModal();
+  alert('تم تحديث الرسوم بنجاح.');
 }
 </script>
 <script src="../i18n/i18n.js"></script>
