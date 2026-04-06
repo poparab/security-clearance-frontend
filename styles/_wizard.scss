@@ -116,7 +116,7 @@
 .columns-table th {
     background: $color-bg-alt; padding: 9px 14px;
     font-size: $font-size-sm; font-weight: 700; color: $color-text-muted;
-    text-align: right; border-bottom: 1px solid $color-border;
+    text-align: start; border-bottom: 1px solid $color-border;
     text-transform: uppercase; letter-spacing: .4px;
 }
 .columns-table td {
@@ -180,7 +180,7 @@
 }
 .fee-table { width: 100%; border-collapse: collapse; }
 .fee-table th {
-    background: $color-bg-alt; padding: 11px 16px; text-align: right;
+    background: $color-bg-alt; padding: 11px 16px; text-align: start;
     font-size: $font-size-sm; font-weight: 700; color: $color-text-muted;
     border-bottom: 1px solid $color-border; text-transform: uppercase; letter-spacing: .4px;
 }
@@ -233,7 +233,7 @@
 .success-screen h3 { font-size: $font-size-3xl; font-weight: 800; color: $color-text-primary; margin-bottom: 8px; }
 .success-screen p  { font-size: $font-size-lg; color: $color-text-muted; margin-bottom: $space-6; }
 .success-detail-card {
-    display: inline-block; text-align: right; min-width: 340px;
+    display: inline-block; text-align: start; min-width: 340px;
     background: $color-bg-alt; border: 1.5px solid $color-border;
     border-radius: $radius-lg; padding: $space-5; margin-bottom: $space-6;
 }
