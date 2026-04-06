@@ -2804,7 +2804,7 @@ tbody tr:hover {
   color: #64748b;
   transition: transform 0.3s;
 }
-.review-toggle-chevron.collapsed {
+.review-toggle-chevron.rotated {
   transform: rotate(-90deg);
 }
 

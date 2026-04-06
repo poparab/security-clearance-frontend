@@ -768,7 +768,7 @@
     color: $color-text-muted;
     transition: transform .3s;
 
-    &.collapsed { transform: rotate(-90deg); }
+    &.rotated { transform: rotate(-90deg); }
 }
 
 .review-toggle-body {
