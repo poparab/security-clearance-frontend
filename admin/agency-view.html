@@ -231,7 +231,7 @@ function openAgencyPricingModal(editRow){
   document.getElementById('agencyPricingModal').style.display='flex';
   document.getElementById('apErr').style.display='none';
   if(editRow){document.getElementById('apModalTitle').textContent='تعديل سعر الوكالة';}
-  else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';document.getElementById('apDate').value='';}}
+  else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';document.getElementById('apDate').value='';}
 }
 function closeAgencyPricingModal(){document.getElementById('agencyPricingModal').style.display='none';document.getElementById('apErr').style.display='none';}
 function saveAgencyPrice(){
