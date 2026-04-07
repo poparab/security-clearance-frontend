@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/admin.css">
-  <style>.clickable-row{cursor:pointer;transition:background .15s}.clickable-row:hover{background:#f0f6ff !important}</style>
+  <style>.clickable-row{cursor:pointer;transition:background .15s}.clickable-row:hover{background:#f0f6ff !important}
+.searchable-select{position:relative}.ss-dropdown{position:absolute;top:100%;right:0;left:0;background:#fff;border:1px solid #d1d5db;border-radius:8px;max-height:200px;overflow-y:auto;z-index:100;display:none;box-shadow:0 4px 12px rgba(0,0,0,.1)}.ss-dropdown.open{display:block}.ss-option{padding:8px 14px;cursor:pointer;font-size:14px;font-family:Tajawal,sans-serif}.ss-option:hover{background:#f0f6ff}.ss-option.hidden{display:none}</style>
 </head>
 <body class="admin-body">
 <div class="admin-layout">
@@ -78,61 +79,47 @@
           <thead>
             <tr>
               <th>الجنسية</th>
-              <th>كود ISO</th>
               <th>رسوم استعلام الأفراد (USD)</th>
               <th>آخر تحديث للرسوم</th>
-              <th>تاريخ الإضافة</th>
               <th>الإجراء</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=SY'">
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?nat=سوريا'">
               <td>سوريا</td>
-              <td dir="ltr">SY</td>
               <td dir="ltr">50.00</td>
               <td>18 ديسمبر 2025</td>
-              <td>01 ديسمبر 2025</td>
-              <td><a href="#" class="action-dot" onclick="openEditModal('سوريا','SY','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('سوريا','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=IQ'">
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?nat=العراق'">
               <td>العراق</td>
-              <td dir="ltr">IQ</td>
               <td dir="ltr">50.00</td>
               <td>16 ديسمبر 2025</td>
-              <td>01 ديسمبر 2025</td>
-              <td><a href="#" class="action-dot" onclick="openEditModal('العراق','IQ','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('العراق','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=YE'">
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?nat=اليمن'">
               <td>اليمن</td>
-              <td dir="ltr">YE</td>
               <td dir="ltr">50.00</td>
               <td>14 ديسمبر 2025</td>
-              <td>05 ديسمبر 2025</td>
-              <td><a href="#" class="action-dot" onclick="openEditModal('اليمن','YE','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('اليمن','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=PS'">
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?nat=فلسطين'">
               <td>فلسطين</td>
-              <td dir="ltr">PS</td>
               <td dir="ltr">50.00</td>
               <td>12 ديسمبر 2025</td>
-              <td>08 ديسمبر 2025</td>
-              <td><a href="#" class="action-dot" onclick="openEditModal('فلسطين','PS','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('فلسطين','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=SO'">
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?nat=الصومال'">
               <td>الصومال</td>
-              <td dir="ltr">SO</td>
               <td dir="ltr">45.00</td>
               <td>10 ديسمبر 2025</td>
-              <td>10 ديسمبر 2025</td>
-              <td><a href="#" class="action-dot" onclick="openEditModal('الصومال','SO','45.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('الصومال','45.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
-            <tr class="clickable-row" onclick="window.location='nationality-view.html?code=LB'">
+            <tr class="clickable-row" onclick="window.location='nationality-view.html?nat=لبنان'">
               <td>لبنان</td>
-              <td dir="ltr">LB</td>
               <td dir="ltr">50.00</td>
               <td>08 ديسمبر 2025</td>
-              <td>01 ديسمبر 2025</td>
-              <td><a href="#" class="action-dot" onclick="openEditModal('لبنان','LB','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
+              <td><a href="#" class="action-dot" onclick="openEditModal('لبنان','50.00'); event.stopPropagation(); return false;"><i class="fas fa-pen-to-square"></i></a></td>
             </tr>
           </tbody>
         </table>
@@ -187,11 +174,31 @@
     <div class="form-grid">
       <div>
         <label for="mNat">اسم الجنسية <span style="color:#e53e3e">*</span></label>
-        <input id="mNat" type="text" class="admin-input" placeholder="مثال: سوريا">
-      </div>
-      <div>
-        <label for="mISO">كود ISO <span style="color:#e53e3e">*</span></label>
-        <input id="mISO" type="text" class="admin-input" maxlength="3" placeholder="مثال: SY" dir="ltr" style="text-transform:uppercase">
+        <div class="searchable-select" id="natSelectWrap">
+          <input id="mNat" type="text" class="admin-input" placeholder="ابحث عن الجنسية ..." autocomplete="off" onfocus="openNatDropdown()" oninput="filterNatList()">
+          <div class="ss-dropdown" id="natDropdown">
+            <div class="ss-option" data-value="سوريا">سوريا</div>
+            <div class="ss-option" data-value="العراق">العراق</div>
+            <div class="ss-option" data-value="اليمن">اليمن</div>
+            <div class="ss-option" data-value="فلسطين">فلسطين</div>
+            <div class="ss-option" data-value="الصومال">الصومال</div>
+            <div class="ss-option" data-value="لبنان">لبنان</div>
+            <div class="ss-option" data-value="ليبيا">ليبيا</div>
+            <div class="ss-option" data-value="السودان">السودان</div>
+            <div class="ss-option" data-value="إيران">إيران</div>
+            <div class="ss-option" data-value="أفغانستان">أفغانستان</div>
+            <div class="ss-option" data-value="باكستان">باكستان</div>
+            <div class="ss-option" data-value="بنغلاديش">بنغلاديش</div>
+            <div class="ss-option" data-value="إريتريا">إريتريا</div>
+            <div class="ss-option" data-value="تشاد">تشاد</div>
+            <div class="ss-option" data-value="نيجيريا">نيجيريا</div>
+            <div class="ss-option" data-value="مالي">مالي</div>
+            <div class="ss-option" data-value="النيجر">النيجر</div>
+            <div class="ss-option" data-value="جيبوتي">جيبوتي</div>
+            <div class="ss-option" data-value="موريتانيا">موريتانيا</div>
+            <div class="ss-option" data-value="القمر">القمر</div>
+          </div>
+        </div>
       </div>
       <div>
         <label for="mFee">رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
@@ -216,10 +223,6 @@
         <input id="eNat" type="text" class="admin-input" readonly style="background:#f0f0f0">
       </div>
       <div>
-        <label for="eISO">كود ISO</label>
-        <input id="eISO" type="text" class="admin-input" readonly style="background:#f0f0f0" dir="ltr">
-      </div>
-      <div>
         <label for="eFee">رسوم استعلام الأفراد (USD) <span style="color:#e53e3e">*</span></label>
         <input id="eFee" type="number" step="0.01" min="0.01" class="admin-input">
       </div>
@@ -235,9 +238,27 @@
 <script>
 function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}
 
+/* Searchable nationality dropdown */
+function openNatDropdown(){document.getElementById('natDropdown').classList.add('open');}
+function filterNatList(){
+  var q=document.getElementById('mNat').value.trim();
+  document.querySelectorAll('#natDropdown .ss-option').forEach(function(o){
+    o.classList.toggle('hidden',q.length>0&&o.textContent.indexOf(q)===-1);
+  });
+  document.getElementById('natDropdown').classList.add('open');
+}
+document.addEventListener('click',function(e){
+  if(e.target.classList.contains('ss-option')){
+    document.getElementById('mNat').value=e.target.getAttribute('data-value');
+    document.getElementById('natDropdown').classList.remove('open');
+  }
+  if(!e.target.closest('.searchable-select')){
+    var dd=document.getElementById('natDropdown');if(dd)dd.classList.remove('open');
+  }
+});
+
 function openAddModal(){
   document.getElementById('mNat').value='';
-  document.getElementById('mISO').value='';
   document.getElementById('mFee').value='';
   document.getElementById('mAddErr').style.display='none';
   SCG.modal.open('addModal');
@@ -245,22 +266,19 @@ function openAddModal(){
 function closeAddModal(){SCG.modal.close('addModal');}
 
 function saveNationality(){
-  const nat=document.getElementById('mNat').value.trim();
-  const iso=document.getElementById('mISO').value.trim().toUpperCase();
-  const fee=parseFloat(document.getElementById('mFee').value);
-  const errEl=document.getElementById('mAddErr');
+  var nat=document.getElementById('mNat').value.trim();
+  var fee=parseFloat(document.getElementById('mFee').value);
+  var errEl=document.getElementById('mAddErr');
 
-  if(!nat){errEl.textContent='يرجى إدخال اسم الجنسية. (Please enter the nationality name.)';errEl.style.display='block';return;}
-  if(!iso||iso.length<2){errEl.textContent='يرجى إدخال كود ISO صحيح. (Please enter a valid ISO code.)';errEl.style.display='block';return;}
+  if(!nat){errEl.textContent='يرجى اختيار الجنسية. (Please select a nationality.)';errEl.style.display='block';return;}
   if(!fee||fee<=0){errEl.textContent='يجب إدخال رسوم الاستعلام عند إضافة جنسية. (Inquiry fee is required when adding a nationality.)';errEl.style.display='block';return;}
 
   closeAddModal();
   alert('تم إضافة الجنسية «'+nat+'» برسوم '+fee+' USD. الرسوم أصبحت نشطة فوراً.');
 }
 
-function openEditModal(nat, iso, fee){
+function openEditModal(nat, fee){
   document.getElementById('eNat').value=nat;
-  document.getElementById('eISO').value=iso;
   document.getElementById('eFee').value=fee;
   document.getElementById('eEditErr').style.display='none';
   SCG.modal.open('editModal');
@@ -268,8 +286,8 @@ function openEditModal(nat, iso, fee){
 function closeEditModal(){SCG.modal.close('editModal');}
 
 function updateFee(){
-  const fee=parseFloat(document.getElementById('eFee').value);
-  const errEl=document.getElementById('eEditErr');
+  var fee=parseFloat(document.getElementById('eFee').value);
+  var errEl=document.getElementById('eEditErr');
 
   if(!fee||fee<=0){errEl.textContent='يرجى إدخال قيمة رسوم صحيحة أكبر من صفر. (Please enter a valid fee amount greater than zero.)';errEl.style.display='block';return;}
 

@@ -74,38 +74,43 @@
       <section class="admin-table-wrap">
         <div class="admin-table-head">
           <div class="title"><i class="fas fa-file-invoice-dollar" style="margin-left:8px;color:#005FCC;"></i> تسعير خاص بالوكالة</div>
-          <button class="admin-btn success" onclick="openAgencyPricingModal()" style="font-size:12px;padding:6px 14px;"><i class="fas fa-plus"></i> إضافة سعر</button>
         </div>
         <div class="info-banner" style="margin:0 12px 8px;border-radius:10px;">
           <i class="fas fa-circle-info"></i>
-          <span>الأسعار المحددة هنا تُطبَّق على هذه الوكالة فقط وتحل محل التسعير العام للأفراد. تصبح الأسعار الخاصة نشطة فور الحفظ بدون تاريخ سريان مستقبلي. إذا لم يُحدَّد سعر لجنسية معينة، يُطبَّق السعر العام.</span>
+          <span>تعرض هذه القائمة جميع الجنسيات المُعدَّة في النظام بأسعارها العامة. يمكنك تعديل السعر لتخصيصه لهذه الوكالة — السعر الخاص يحل محل العام فوراً عند الحفظ. إذا لم يُحدَّد سعر خاص، يُطبَّق السعر العام تلقائياً.</span>
         </div>
         <table class="admin-table" id="agencyPricingTable">
-          <thead><tr><th>الجنسية</th><th>قيمة الرسوم (USD)</th><th>آخر تحديث</th><th>الحالة</th><th>الإجراء</th></tr></thead>
+          <thead><tr><th>الجنسية</th><th>السعر العام (USD)</th><th>سعر الوكالة (USD)</th><th>آخر تحديث</th><th>النوع</th><th>الإجراء</th></tr></thead>
           <tbody>
             <tr>
-              <td>سوريا</td><td dir="ltr">42.00</td><td>01 يناير 2026</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td>
-                <button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button>
-                <button class="admin-btn danger" style="font-size:11px;padding:4px 10px;height:30px;" onclick="removeAgencyPrice(this)"><i class="fas fa-trash"></i></button>
-              </td>
+              <td>سوريا</td><td dir="ltr">50.00</td><td dir="ltr">42.00</td><td>01 يناير 2026</td>
+              <td><span class="status processing"><span class="dot"></span>خاص</span></td>
+              <td><button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button></td>
             </tr>
             <tr>
-              <td>العراق</td><td dir="ltr">40.00</td><td>01 يناير 2026</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td>
-                <button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button>
-                <button class="admin-btn danger" style="font-size:11px;padding:4px 10px;height:30px;" onclick="removeAgencyPrice(this)"><i class="fas fa-trash"></i></button>
-              </td>
+              <td>العراق</td><td dir="ltr">50.00</td><td dir="ltr">40.00</td><td>01 يناير 2026</td>
+              <td><span class="status processing"><span class="dot"></span>خاص</span></td>
+              <td><button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button></td>
             </tr>
             <tr>
-              <td>اليمن</td><td dir="ltr">42.00</td><td>15 فبراير 2026</td>
-              <td><span class="status done"><span class="dot"></span>نشط</span></td>
-              <td>
-                <button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button>
-                <button class="admin-btn danger" style="font-size:11px;padding:4px 10px;height:30px;" onclick="removeAgencyPrice(this)"><i class="fas fa-trash"></i></button>
-              </td>
+              <td>اليمن</td><td dir="ltr">50.00</td><td dir="ltr">42.00</td><td>15 فبراير 2026</td>
+              <td><span class="status processing"><span class="dot"></span>خاص</span></td>
+              <td><button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button></td>
+            </tr>
+            <tr>
+              <td>فلسطين</td><td dir="ltr">50.00</td><td dir="ltr">—</td><td>—</td>
+              <td><span class="status done"><span class="dot"></span>عام</span></td>
+              <td><button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button></td>
+            </tr>
+            <tr>
+              <td>الصومال</td><td dir="ltr">45.00</td><td dir="ltr">—</td><td>—</td>
+              <td><span class="status done"><span class="dot"></span>عام</span></td>
+              <td><button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button></td>
+            </tr>
+            <tr>
+              <td>لبنان</td><td dir="ltr">50.00</td><td dir="ltr">—</td><td>—</td>
+              <td><span class="status done"><span class="dot"></span>عام</span></td>
+              <td><button class="admin-btn light" style="font-size:11px;padding:4px 10px;height:30px;" onclick="editAgencyPrice(this)"><i class="fas fa-pen"></i></button></td>
             </tr>
           </tbody>
         </table>
@@ -179,10 +184,11 @@
 <!-- Agency Pricing Modal -->
 <div id="agencyPricingModal" class="admin-modal-overlay">
   <div class="admin-modal">
-    <h3 id="apModalTitle">إضافة سعر خاص للوكالة</h3>
+    <h3 id="apModalTitle">تعديل سعر الوكالة</h3>
     <div class="form-grid">
-      <div><label for="apNat">الجنسية</label><select id="apNat"><option value="">اختر</option><option>العراق</option><option>سوريا</option><option>اليمن</option><option>فلسطين</option><option>الصومال</option></select></div>
-      <div><label for="apFee">قيمة الرسوم (USD)</label><input id="apFee" type="number" step="0.01" min="0"></div>
+      <div><label for="apNat">الجنسية</label><input id="apNat" type="text" class="admin-input" readonly style="background:#f0f0f0"></div>
+      <div><label for="apDefault">السعر العام (USD)</label><input id="apDefault" type="text" class="admin-input" readonly style="background:#f0f0f0" dir="ltr"></div>
+      <div><label for="apFee">سعر الوكالة (USD)</label><input id="apFee" type="number" step="0.01" min="0" placeholder="اتركه فارغاً لتطبيق السعر العام"></div>
     </div>
     <div id="apErr" class="error-msg" role="alert" aria-live="polite">يرجى إدخال بيانات صحيحة. قيمة الرسوم يجب أن تكون أكبر من صفر.</div>
     <div class="modal-actions">
@@ -229,17 +235,21 @@ function rejectAgency(){alert('تم رفض الوكالة.');}
 function openAgencyPricingModal(editRow){
   SCG.modal.open('agencyPricingModal');
   document.getElementById('apErr').style.display='none';
-  if(editRow){document.getElementById('apModalTitle').textContent='تعديل سعر الوكالة';}
-  else{document.getElementById('apModalTitle').textContent='إضافة سعر خاص للوكالة';document.getElementById('apNat').value='';document.getElementById('apFee').value='';}
+  if(editRow){
+    var cells=editRow.querySelectorAll('td');
+    document.getElementById('apNat').value=cells[0].textContent;
+    document.getElementById('apDefault').value=cells[1].textContent;
+    var customFee=cells[2].textContent.trim();
+    document.getElementById('apFee').value=(customFee==='—')?'':customFee;
+  }
 }
 function closeAgencyPricingModal(){SCG.modal.close('agencyPricingModal');document.getElementById('apErr').style.display='none';}
 function saveAgencyPrice(){
-  const nat=document.getElementById('apNat').value;const fee=parseFloat(document.getElementById('apFee').value);
-  if(!nat||!fee||fee<=0){document.getElementById('apErr').style.display='block';return;}
+  var fee=parseFloat(document.getElementById('apFee').value);
+  if(document.getElementById('apFee').value.trim()!==''&&(!fee||fee<=0)){document.getElementById('apErr').style.display='block';return;}
   closeAgencyPricingModal();alert('تم حفظ السعر الخاص بالوكالة بنجاح. السعر أصبح نشطاً فوراً.');
 }
 function editAgencyPrice(btn){openAgencyPricingModal(btn.closest('tr'));}
-function removeAgencyPrice(btn){SCG.confirm('هل أنت متأكد من حذف هذا السعر؟ سيتم تطبيق السعر العام بدلاً منه.',function(){btn.closest('tr').remove();},{title:'حذف السعر الخاص',confirmText:'حذف',type:'danger'});}
 </script>
 <script src="../js/utils.js"></script>
 <script src="../scripts/email-notifications.js"></script>
