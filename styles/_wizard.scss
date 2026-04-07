@@ -372,6 +372,159 @@
 .wz-btn-lg        { padding: .75rem 1.5rem; font-size: $font-size-xl; }
 .wz-btn-full      { width: 100%; }
 
+/* ══ BATCH WIZARD — Step 2 Custom Buttons ══════════════════════════════ */
+.step2-add-btn,
+.step2-tool-btn,
+.step2-nav-btn,
+.step2-primary-action,
+.step2-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    font-family: $font-family;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+}
+
+.step2-add-btn {
+    width: 100%;
+    min-height: $space-8 + $space-4;
+    padding: 0 $space-5;
+    border: none;
+    border-radius: $radius-md;
+    background: $color-success;
+    color: $color-bg-card;
+    font-size: $font-size-xl;
+
+    i { font-size: $font-size-xl; }
+
+    &:hover { background: $color-success-dark; }
+}
+
+.step2-tools-label {
+    font-size: $font-size-base;
+    font-weight: 700;
+    color: $color-text-secondary;
+}
+
+.step2-tool-btn {
+    min-height: $space-7 + $space-2;
+    padding: 0 $space-4;
+    border: 1px solid $color-border-card;
+    border-radius: $radius-lg;
+    background: $color-bg-card;
+    color: $color-text-secondary;
+    font-size: $font-size-base;
+
+    i { font-size: $font-size-lg; }
+
+    &:hover {
+        background: $color-bg-alt;
+        border-color: $color-border-strong;
+        color: $color-text-primary;
+    }
+}
+
+.step2-tool-btn-magic i { color: $color-purple; }
+
+.step2-tool-btn-danger {
+    border-color: $color-danger-border;
+    color: $color-danger;
+
+    i { color: $color-danger; }
+
+    &:hover {
+        background: $color-danger-bg;
+        border-color: $color-danger-border;
+        color: $color-danger-dark;
+    }
+}
+
+.step2-nav-btn,
+.step2-primary-action {
+    min-height: $space-8 + $space-3;
+    padding: 0 $space-5;
+    border-radius: $radius-lg;
+    font-size: $font-size-lg;
+    white-space: nowrap;
+
+    i { font-size: $font-size-lg; }
+
+    &:disabled {
+        opacity: .55;
+        cursor: not-allowed;
+    }
+}
+
+.step2-nav-btn-secondary {
+    border: 1px solid $color-border;
+    background: $color-bg-card;
+    color: $color-text-secondary;
+
+    &:hover {
+        background: $color-bg-alt;
+        border-color: $color-border-strong;
+        color: $color-text-primary;
+    }
+}
+
+.step2-nav-btn-primary,
+.step2-primary-action-primary {
+    border: 1px solid $color-primary;
+    background: $color-primary;
+    color: $color-bg-card;
+
+    &:hover { background: $color-primary-mid; border-color: $color-primary-mid; }
+
+    &:disabled {
+        background: $color-primary-subtle;
+        border-color: $color-primary-subtle;
+        color: $color-primary-dark;
+    }
+}
+
+.step2-primary-action-success {
+    border: 1px solid $color-success;
+    background: $color-success;
+    color: $color-bg-card;
+
+    &:hover { background: $color-success-dark; border-color: $color-success-dark; }
+}
+
+.step2-icon-btn {
+    width: $space-8 + $space-4;
+    height: $space-8 + $space-4;
+    padding: 0;
+    border: none;
+    border-radius: $radius-2xl;
+    flex-shrink: 0;
+
+    i { font-size: $font-size-3xl; }
+}
+
+.step2-icon-btn-edit,
+.step2-icon-btn-delete {
+    background: $color-primary-light;
+    color: $color-primary;
+
+    &:hover {
+        background: $color-primary;
+        color: #fff;
+    }
+}
+
+.step2-footer-icon,
+.step2-form-icon {
+    width: $space-8 + $space-2;
+    height: $space-8 + $space-2;
+    border-radius: $radius-xl;
+
+    i { font-size: $font-size-xl; }
+}
+
 /* ══ BATCH WIZARD — Pills & Flight Chips ════════════════════════════════ */
 .fd-pill {
     display: inline-flex;
@@ -549,7 +702,7 @@
 
 .ind-card-flex    { display: flex; align-items: flex-start; gap: 14px; }
 .ind-card-content { flex: 1; }
-.ind-card-actions { display: flex; gap: .375rem; margin-inline-end: auto; }
+.ind-card-actions { display: flex; gap: $space-2; margin-inline-end: auto; }
 
 .ind-row1 {
     display: flex;
@@ -588,9 +741,9 @@
 }
 
 .ind-num-lg {
-    width: 36px;
-    height: 36px;
-    font-size: $font-size-lg;
+    width: 44px;
+    height: 44px;
+    font-size: $font-size-xl;
     border-radius: $radius-lg;
     flex-shrink: 0;
 }
@@ -652,7 +805,7 @@
 }
 
 .ind-form-grid   { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; }
-.ind-form-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 12px; }
+.ind-form-grid-5 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; }
 
 .ind-form-section-label {
     font-size: 11.5px;
@@ -664,7 +817,7 @@
     gap: 6px;
 }
 
-.ind-form-actions  { display: flex; gap: .375rem; align-items: center; flex-wrap: wrap; }
+.ind-form-actions  { display: flex; gap: $space-2; align-items: center; flex-wrap: wrap; }
 
 .ind-form-save-row {
     display: flex;
@@ -824,7 +977,7 @@
 .wallet-insufficient-wrap { margin-bottom: $space-4; }
 
 /* ══ BATCH WIZARD — Footer Actions ══════════════════════════════════════ */
-.footer-actions { display: flex; gap: .375rem; align-items: center; }
+.footer-actions { display: flex; gap: $space-2; align-items: center; }
 
 /* ══ BATCH WIZARD — Step 1 ═══════════════════════════════════════════════ */
 .step1-form { max-width: 580px; }
@@ -833,22 +986,16 @@
 /* ══ BATCH WIZARD — Demo Controls (dev-only) ════════════════════════════ */
 .demo-controls {
     margin-bottom: $space-4;
-    padding: 10px 14px;
-    background: $color-bg-alt;
-    border: 1px dashed $color-text-subtle;
-    border-radius: $radius-md;
+    padding: $space-3 $space-4;
+    background: $color-bg-card;
+    border: 1px dashed $color-border-strong;
+    border-radius: $radius-lg;
     font-size: $font-size-base;
-    color: $color-text-muted;
+    color: $color-text-secondary;
     display: flex;
     align-items: center;
-    gap: .625rem;
+    gap: $space-2;
     flex-wrap: wrap;
-
-    .wz-btn { padding: .25rem .75rem; font-size: $font-size-base; }
-
-    .demo-danger { color: $color-danger; border-color: #fca5a5; i { color: $color-danger; } }
-
-    .fa-wand-magic-sparkles { color: $color-purple; }
 }
 
 /* ══ BATCH WIZARD — Pagination Bar ══════════════════════════════════════ */
@@ -975,7 +1122,8 @@
     .running-total-bar { margin: $space-5 (-18px) (-18px); padding: 10px 14px; font-size: $font-size-base; }
     .ind-form-card    { padding: 14px; }
     .doc-upload-btn   { min-width: auto; flex: 1 1 100%; }
-    .wizard-card-footer .wz-btn { font-size: $font-size-base; padding: .375rem .875rem; }
+    .wizard-card-footer .wz-btn,
+    .wizard-card-footer .step2-nav-btn { font-size: $font-size-base; padding: 0 $space-4; }
 }
 
 @include respond-below($bp-sm) {
@@ -989,6 +1137,10 @@
     .ind-form-grid    { grid-template-columns: 1fr; }
     .ind-form-grid-5  { grid-template-columns: 1fr; }
     .ind-form-actions { flex-direction: column; }
-    .ind-form-actions .action-icon { width: 100%; }
+    .ind-form-actions .step2-icon-btn { width: 100%; }
+    .demo-controls { align-items: stretch; }
+    .step2-tool-btn,
+    .step2-primary-action,
+    .step2-nav-btn { width: 100%; }
     .ind-row2 { padding-inline-end: 0; }
 }

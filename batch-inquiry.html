@@ -119,19 +119,19 @@
 
                 <!-- Add traveler button -->
                 <div class="add-traveler-wrap">
-                    <button class="wz-btn wz-btn-success wz-btn-full wz-btn-lg" onclick="startIndForm()">
-                        <i class="fas fa-user-plus"></i> إضافة مسافر
+                    <button class="step2-add-btn" onclick="startIndForm()">
+                        إضافة مسافر <i class="fas fa-user-plus"></i>
                     </button>
                 </div>
 
                 <!-- Demo controls -->
                 <div class="demo-controls">
-                    <strong>أدوات العرض التجريبي:</strong>
-                    <button class="wz-btn wz-btn-secondary" onclick="loadDemoData()">
-                        <i class="fas fa-wand-magic-sparkles"></i> تحميل بيانات تجريبية
+                    <strong class="step2-tools-label">أدوات العرض التجريبي</strong>
+                    <button class="step2-tool-btn step2-tool-btn-magic" onclick="loadDemoData()">
+                        تحميل بيانات تجريبية <i class="fas fa-wand-magic-sparkles"></i>
                     </button>
-                    <button class="wz-btn wz-btn-secondary demo-danger" onclick="clearAll()">
-                        <i class="fas fa-trash"></i> مسح الكل
+                    <button class="step2-tool-btn step2-tool-btn-danger" onclick="clearAll()">
+                        مسح الكل <i class="fas fa-trash"></i>
                     </button>
                 </div>
 
@@ -149,16 +149,16 @@
                 </div>
             </div>
             <div class="wizard-card-footer">
+                <button class="step2-nav-btn step2-nav-btn-secondary" onclick="goBack()">
+                    السابق <i class="fas fa-chevron-right"></i>
+                </button>
                 <div class="footer-actions">
-                    <button class="wz-btn wz-btn-primary" id="btn-next-2" onclick="goNext()" disabled>
+                    <button class="step2-nav-btn step2-nav-btn-primary" id="btn-next-2" onclick="goNext()" disabled>
                         التالي <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="action-icon ai-delete" onclick="cancelWizard()" title="حذف"><i class="fas fa-trash"></i></button>
-                    <button class="action-icon ai-edit" onclick="saveDraft(true)" title="حفظ كمسودة"><i class="fas fa-floppy-disk"></i></button>
+                    <button class="step2-icon-btn step2-icon-btn-delete step2-footer-icon" onclick="cancelWizard()" title="حذف"><i class="fas fa-trash"></i></button>
+                    <button class="step2-icon-btn step2-icon-btn-edit step2-footer-icon" onclick="saveDraft(true)" title="حفظ كمسودة"><i class="fas fa-floppy-disk"></i></button>
                 </div>
-                <button class="wz-btn wz-btn-secondary" onclick="goBack()">
-                    السابق <i class="fas fa-arrow-right"></i>
-                </button>
             </div>
         </div>
 
@@ -573,7 +573,7 @@ function renderBuilder() {
             <div class="sect-title sect-title-flush">
                 <i class="fas fa-users"></i> قائمة المسافرون <span class="sect-count">${totalIndividuals}</span>
             </div>
-            <button class="action-icon ai-delete" onclick="clearAll()" title="مسح الكل"><i class="fas fa-trash"></i></button>
+            <button class="step2-icon-btn step2-icon-btn-delete step2-section-clear" onclick="clearAll()" title="مسح الكل"><i class="fas fa-trash"></i></button>
         </div>
         <div class="list-note">القائمة تعرض 10 مسافرون كحد أقصى</div>`;
         const pageSize = 10;
@@ -773,37 +773,24 @@ function handleIndTicketUpload(id, event) {
 function renderIndividualCard(ind, index) {
     const fee = getFee(ind.nationality);
     const f = ind.flight;
-    const ppDoc = ind.passportName
-        ? `<span class="ind-doc ok"><i class="fas fa-id-card"></i> جواز</span>`
-        : `<label class="ind-doc missing" for="card-pp-${ind.id}" title="انقر لرفع صورة الجواز">
-             <i class="fas fa-upload"></i> رفع جواز
-             <input type="file" id="card-pp-${ind.id}" accept="image/*,.pdf" onchange="handleIndPassportUpload(${ind.id},event)">
-           </label>`;
-    const tkDoc = ind.ticketName
-        ? `<span class="ind-doc ok"><i class="fas fa-ticket"></i> تذكرة</span>`
-        : `<label class="ind-doc missing" for="card-tk-${ind.id}" title="انقر لرفع صورة التذكرة">
-             <i class="fas fa-upload"></i> رفع تذكرة
-             <input type="file" id="card-tk-${ind.id}" accept="image/*,.pdf" onchange="handleIndTicketUpload(${ind.id},event)">
-           </label>`;
     return `
     <div class="ind-card ind-card-flex">
         <div class="ind-card-content">
             <div class="ind-row1">
                 <span class="ind-name">${escHtml(ind.name)}</span>
                 <div class="ind-card-actions">
-                    <button class="action-icon ai-delete" onclick="deleteIndividual(${ind.id})" title="حذف"><i class="fas fa-trash"></i></button>
-                    <button class="action-icon ai-edit" onclick="editIndividual(${ind.id})" title="تعديل"><i class="fas fa-pen"></i></button>
+                    <button class="step2-icon-btn step2-icon-btn-delete step2-card-action" onclick="deleteIndividual(${ind.id})" title="حذف"><i class="fas fa-trash"></i></button>
+                    <button class="step2-icon-btn step2-icon-btn-edit step2-card-action" onclick="editIndividual(${ind.id})" title="تعديل"><i class="fas fa-pen"></i></button>
                 </div>
             </div>
             <div class="ind-row2">
-                <span class="pill pill-blue pill-sm">${escHtml(ind.nationality)}</span>
+                <span class="pill pill-blue pill-sm"><i class="fas fa-flag"></i> ${escHtml(ind.nationality)}</span>
                 <span class="fd-pill fd-pill-sm" dir="ltr"><i class="fas fa-passport"></i> ${escHtml(ind.passportNo)}</span>
                 <span class="fd-pill fd-pill-sm"><i class="fas fa-plane-arrival"></i> ${escHtml(f.airport)}</span>
                 <span class="fd-pill fd-pill-sm"><i class="fas fa-calendar-days"></i> ${escHtml(f.date)}</span>
                 ${f.flightNo ? `<span class="fd-pill fd-pill-sm"><i class="fas fa-hashtag"></i> ${escHtml(f.flightNo)}</span>` : ''}
-                <span class="fd-pill fd-pill-sm"><i class="fas fa-bullseye"></i> ${escHtml(f.purpose)}</span>
-                ${ppDoc}
-                ${tkDoc}
+                <span class="fd-pill fd-pill-sm"><i class="fas fa-dollar-sign"></i> ${fmt(fee)}</span>
+                <span class="pill pill-blue pill-sm"><i class="fas fa-bullseye"></i> ${escHtml(f.purpose)}</span>
             </div>
         </div>
         <div class="ind-num ind-num-lg">${index + 1}</div>
@@ -866,7 +853,7 @@ function renderIndividualForm() {
             <input type="checkbox" id="copy-flight-check">
             <label for="copy-flight-check"><i class="fas fa-copy copy-icon"></i>نسخ بيانات الرحلة من المسافر السابق</label>
         </div>` : ''}
-        <div class="ind-form-grid">
+        <div class="ind-form-grid-5">
             <div class="ff-field">
                 <label>رقم الرحلة</label>
                 <input type="text" id="ind-flightno" placeholder="مثال: MS/14" maxlength="10" value="${ind ? (f.flightNo || '') : ''}">
@@ -913,10 +900,10 @@ function renderIndividualForm() {
 
         <div class="ind-form-save-row">
             <div class="ind-form-actions">
-                <button class="action-icon ai-delete" onclick="hideIndForm()" title="إلغاء"><i class="fas fa-trash"></i></button>
-                <button class="action-icon ai-edit" onclick="${!editing ? 'saveIndividual(false)' : 'hideIndForm()'}" title="${!editing ? 'حفظ' : 'إغلاق'}"><i class="fas fa-${!editing ? 'floppy-disk' : 'times'}"></i></button>
+                <button class="step2-icon-btn step2-icon-btn-delete step2-form-icon" onclick="hideIndForm()" title="إلغاء"><i class="fas fa-trash"></i></button>
+                <button class="step2-icon-btn step2-icon-btn-edit step2-form-icon" onclick="${!editing ? 'saveIndividual(false)' : 'hideIndForm()'}" title="${!editing ? 'حفظ' : 'إغلاق'}"><i class="fas fa-${!editing ? 'floppy-disk' : 'times'}"></i></button>
             </div>
-            ${!editing ? `<button class="wz-btn wz-btn-success" onclick="saveIndividual(true)"><i class="fas fa-user-plus"></i> حفظ وإضافة آخر</button>` : `<button class="wz-btn wz-btn-primary" onclick="saveIndividual(false)"><i class="fas fa-check"></i> حفظ التعديلات</button>`}
+            ${!editing ? `<button class="step2-primary-action step2-primary-action-success" onclick="saveIndividual(true)">حفظ وإضافة آخر <i class="fas fa-user-plus"></i></button>` : `<button class="step2-primary-action step2-primary-action-primary" onclick="saveIndividual(false)">حفظ التعديلات <i class="fas fa-check"></i></button>`}
         </div>
     </div>`;
 }
@@ -925,30 +912,44 @@ function renderIndividualForm() {
 //  DEMO HELPERS
 // ════════════════════════════════════════════════════════════════
 function loadDemoData() {
-    individuals = [
-        {
-            id: nextIndId++, name: 'عمر حسن المنصوري', nationality: 'يمني',
-            passportNo: 'YE887766', expiry: '2028-06-20',
-            flight: { from: 'اليمن', airport: 'مطار القاهرة الدولي', date: '2026-04-20', purpose: 'علاج', flightNo: 'YU-302' },
-            passportFile: null, passportName: 'pp_omar.jpg',
-            ticketFile: null, ticketName: 'ticket_omar.jpg'
-        },
-        {
-            id: nextIndId++, name: 'Raj Patel', nationality: 'هندي',
-            passportNo: 'IN998877', expiry: '2027-11-05',
-            flight: { from: 'الهند', airport: 'مطار شرم الشيخ الدولي', date: '2026-04-22', purpose: 'سياحة', flightNo: 'AI-445' },
-            passportFile: null, passportName: 'pp_raj.jpg',
-            ticketFile: null, ticketName: null
-        },
-        {
-            id: nextIndId++, name: 'سارة خالد الأحمدي', nationality: 'سوري',
-            passportNo: 'SY556677', expiry: '2029-01-15',
-            flight: { from: 'سوريا', airport: 'مطار القاهرة الدولي', date: '2026-04-20', purpose: 'عائلة', flightNo: 'YU-302' },
-            passportFile: null, passportName: null,
-            ticketFile: null, ticketName: 'ticket_sara.pdf'
-        }
+    const demoNames = [
+        'عمر حسن المنصوري','Danish Karditlan Vantun','سارة خالد الأحمدي','خير الله جاد الله فياض',
+        'صدام حسيب عبد الملك','خالد بن محمد آل سعود','عبد الله بن أحمد آل ثاني','فهد بن راشد آل مكتوم',
+        'سالم بن ناصر آل صباح','يوسف بن علي آل خليفة','أحمد حسن البحيري','محمد عبد الرحمن النور',
+        'إبراهيم يوسف الزعبي','فاطمة أحمد الشمري','نورة محمد القحطاني','عائشة سعيد الدوسري',
+        'ريم فيصل العتيبي','مريم خالد الحربي','هند عبدالله المطيري','سلمان ناصر الشهراني',
+        'تركي بندر الرشيدي','ماجد سلطان العنزي','بدر حمد السبيعي','جاسم عبد الوهاب الجابري',
+        'طارق منصور الغامدي','وليد صالح الزهراني','حمزة عادل البلوي','سعد فهد الديحاني',
+        'عبد الرحمن ماجد المري','نايف حسين العجمي','راشد بدر الكواري','حمد عبدالعزيز الهاجري',
+        'منصور خالد الشريف','زياد أحمد المالكي','أنس محمد الحارثي','يزيد طلال الثبيتي'
     ];
-    document.getElementById('batch-name').value = 'رحلات أبريل 2026';
+    const demoNats = ['يمني','هندي','سوري','فلسطيني','عراقي','سوداني','قطري','إماراتي','كويتي','بحريني','ليبي','إثيوبي'];
+    const demoAirports = ['مطار القاهرة الدولي','مطار شرم الشيخ الدولي','مطار الأقصر الدولي','مطار أسوان الدولي','مطار مرسى مطروح'];
+    const demoPurposes = ['سياحة','عمل','علاج','عائلة','منفى','سياحة','عمل','سياحة'];
+    const demoCountries = ['اليمن','الهند','سوريا','فلسطين','العراق','السودان','قطر','الإمارات','الكويت','البحرين','ليبيا','إثيوبيا'];
+    individuals = [];
+    nextIndId = 1;
+    for (let i = 0; i < demoNames.length; i++) {
+        const natIdx = i % demoNats.length;
+        individuals.push({
+            id: nextIndId++,
+            name: demoNames[i],
+            nationality: demoNats[natIdx],
+            passportNo: 'YE887766',
+            expiry: '2028-06-20',
+            flight: {
+                from: demoCountries[natIdx],
+                airport: demoAirports[i % demoAirports.length],
+                date: `2026-04-${String(30 - (i % 18)).padStart(2,'0')}`,
+                purpose: demoPurposes[i % demoPurposes.length],
+                flightNo: 'M5743'
+            },
+            passportFile: null, passportName: i % 3 === 0 ? null : 'pp_' + i + '.jpg',
+            ticketFile: null, ticketName: i % 4 === 0 ? null : 'tk_' + i + '.jpg'
+        });
+    }
+    document.getElementById('batch-name').value = 'الوجبة السياحية 2325 — إبريل 2026';
+    document.getElementById('batch-notes').value = 'حزمة المسافرين القادمين من القطب الشمالي';
     document.getElementById('batch-name-count').textContent = document.getElementById('batch-name').value.length + ' / 80';
     renderBuilder();
     updateNextButton();

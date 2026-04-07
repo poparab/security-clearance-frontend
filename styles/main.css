@@ -2207,6 +2207,172 @@ tbody tr:hover {
   width: 100%;
 }
 
+/* ══ BATCH WIZARD — Step 2 Custom Buttons ══════════════════════════════ */
+.step2-add-btn,
+.step2-tool-btn,
+.step2-nav-btn,
+.step2-primary-action,
+.step2-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.step2-add-btn {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 8px;
+  background: #4FB848;
+  color: #ffffff;
+  font-size: 15px;
+}
+.step2-add-btn i {
+  font-size: 15px;
+}
+.step2-add-btn:hover {
+  background: #3a9e32;
+}
+
+.step2-tools-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.step2-tool-btn {
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid #dde3ee;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 12.5px;
+}
+.step2-tool-btn i {
+  font-size: 14px;
+}
+.step2-tool-btn:hover {
+  background: #f8fafc;
+  border-color: #c8d5e8;
+  color: #00244d;
+}
+
+.step2-tool-btn-magic i {
+  color: #7c3aed;
+}
+
+.step2-tool-btn-danger {
+  border-color: #fecaca;
+  color: #dc2626;
+}
+.step2-tool-btn-danger i {
+  color: #dc2626;
+}
+.step2-tool-btn-danger:hover {
+  background: #fff5f5;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.step2-nav-btn,
+.step2-primary-action {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.step2-nav-btn i,
+.step2-primary-action i {
+  font-size: 14px;
+}
+.step2-nav-btn:disabled,
+.step2-primary-action:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.step2-nav-btn-secondary {
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+}
+.step2-nav-btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #c8d5e8;
+  color: #00244d;
+}
+
+.step2-nav-btn-primary,
+.step2-primary-action-primary {
+  border: 1px solid #005FCC;
+  background: #005FCC;
+  color: #ffffff;
+}
+.step2-nav-btn-primary:hover,
+.step2-primary-action-primary:hover {
+  background: #004799;
+  border-color: #004799;
+}
+.step2-nav-btn-primary:disabled,
+.step2-primary-action-primary:disabled {
+  background: #cce4ff;
+  border-color: #cce4ff;
+  color: #003d8a;
+}
+
+.step2-primary-action-success {
+  border: 1px solid #4FB848;
+  background: #4FB848;
+  color: #ffffff;
+}
+.step2-primary-action-success:hover {
+  background: #3a9e32;
+  border-color: #3a9e32;
+}
+
+.step2-icon-btn {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+.step2-icon-btn i {
+  font-size: 22px;
+}
+
+.step2-icon-btn-edit,
+.step2-icon-btn-delete {
+  background: #eaf4ff;
+  color: #005FCC;
+}
+.step2-icon-btn-edit:hover,
+.step2-icon-btn-delete:hover {
+  background: #005FCC;
+  color: #ffffff;
+}
+
+.step2-footer-icon,
+.step2-form-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+.step2-footer-icon i,
+.step2-form-icon i {
+  font-size: 15px;
+}
+
 /* ══ BATCH WIZARD — Pills & Flight Chips ════════════════════════════════ */
 .fd-pill {
   display: inline-flex;
@@ -2504,7 +2670,7 @@ tbody tr:hover {
 
 .ind-card-actions {
   display: flex;
-  gap: 0.375rem;
+  gap: 8px;
   margin-inline-end: auto;
 }
 
@@ -2553,9 +2719,9 @@ tbody tr:hover {
 }
 
 .ind-num-lg {
-  width: 36px;
-  height: 36px;
-  font-size: 14px;
+  width: 44px;
+  height: 44px;
+  font-size: 16px;
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -2627,7 +2793,7 @@ tbody tr:hover {
 
 .ind-form-grid-5 {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 12px;
 }
@@ -2644,7 +2810,7 @@ tbody tr:hover {
 
 .ind-form-actions {
   display: flex;
-  gap: 0.375rem;
+  gap: 8px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -2881,7 +3047,7 @@ tbody tr:hover {
 /* ══ BATCH WIZARD — Footer Actions ══════════════════════════════════════ */
 .footer-actions {
   display: flex;
-  gap: 0.375rem;
+  gap: 8px;
   align-items: center;
 }
 
@@ -2898,30 +3064,16 @@ tbody tr:hover {
 /* ══ BATCH WIZARD — Demo Controls (dev-only) ════════════════════════════ */
 .demo-controls {
   margin-bottom: 16px;
-  padding: 10px 14px;
-  background: #f8fafc;
-  border: 1px dashed #cbd5e1;
-  border-radius: 8px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px dashed #c8d5e8;
+  border-radius: 10px;
   font-size: 12.5px;
-  color: #64748b;
+  color: #475569;
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 8px;
   flex-wrap: wrap;
-}
-.demo-controls .wz-btn {
-  padding: 0.25rem 0.75rem;
-  font-size: 12.5px;
-}
-.demo-controls .demo-danger {
-  color: #dc2626;
-  border-color: #fca5a5;
-}
-.demo-controls .demo-danger i {
-  color: #dc2626;
-}
-.demo-controls .fa-wand-magic-sparkles {
-  color: #7c3aed;
 }
 
 /* ══ BATCH WIZARD — Pagination Bar ══════════════════════════════════════ */
@@ -3176,9 +3328,10 @@ tbody tr:hover {
     min-width: auto;
     flex: 1 1 100%;
   }
-  .wizard-card-footer .wz-btn {
+  .wizard-card-footer .wz-btn,
+  .wizard-card-footer .step2-nav-btn {
     font-size: 12.5px;
-    padding: 0.375rem 0.875rem;
+    padding: 0 16px;
   }
 }
 @media (max-width: 576px) {
@@ -3218,7 +3371,15 @@ tbody tr:hover {
   .ind-form-actions {
     flex-direction: column;
   }
-  .ind-form-actions .action-icon {
+  .ind-form-actions .step2-icon-btn {
+    width: 100%;
+  }
+  .demo-controls {
+    align-items: stretch;
+  }
+  .step2-tool-btn,
+  .step2-primary-action,
+  .step2-nav-btn {
     width: 100%;
   }
   .ind-row2 {

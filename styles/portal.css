@@ -444,12 +444,12 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
     transition: all 0.2s;
     text-decoration: none;
 }
-.action-icon.ai-view  { background: #e6f1ff; color: #005FCC; }
-.action-icon.ai-view:hover  { background: #005FCC; color: #ffffff; }
-.action-icon.ai-edit  { background: #e6f1ff; color: #005FCC; }
-.action-icon.ai-edit:hover  { background: #005FCC; color: #ffffff; }
-.action-icon.ai-delete { background: #fee2e2; color: #dc2626; }
-.action-icon.ai-delete:hover { background: #dc2626; color: #ffffff; }
+.action-icon.ai-view,
+.action-icon.ai-edit,
+.action-icon.ai-delete { background: #eaf4ff; color: #005FCC; }
+.action-icon.ai-view:hover,
+.action-icon.ai-edit:hover,
+.action-icon.ai-delete:hover { background: #005FCC; color: #ffffff; }
 
 /* ── PAGINATION ─────────────────────────────────────────── */
 .table-pagination {

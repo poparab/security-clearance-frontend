@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل التصميم — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.rtl.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/portal.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <style>
+        /* ── Design System Page Styles ─────────────────────────────── */
+        .ds-body { max-width: 1280px; margin: 0 auto; padding: 28px 28px 60px; }
+
+        .ds-section { margin-bottom: 48px; }
+        .ds-section-title {
+            font-size: 18px; font-weight: 800; color: #00244d;
+            padding-bottom: 10px; margin-bottom: 24px;
+            border-bottom: 2px solid #005FCC;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .ds-section-title i { color: #005FCC; font-size: 16px; }
+
+        .ds-subsection { margin-bottom: 32px; }
+        .ds-subsection-title {
+            font-size: 14px; font-weight: 700; color: #004799;
+            margin-bottom: 14px;
+        }
+        .ds-label {
+            font-size: 11px; font-weight: 600; color: #64748b;
+            text-transform: uppercase; letter-spacing: .5px;
+            margin-bottom: 6px; display: block;
+        }
+        .ds-code {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            background: #f1f5f9; color: #004799; font-size: 11.5px;
+            font-family: 'Courier New', monospace; direction: ltr;
+        }
+
+        /* ── Color Swatches ─────────────────── */
+        .ds-colors { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+        .ds-swatch {
+            border-radius: 10px; overflow: hidden;
+            border: 1.5px solid #e2e8f0;
+        }
+        .ds-swatch-color { height: 56px; }
+        .ds-swatch-info { padding: 8px 10px; background: #fff; }
+        .ds-swatch-name { font-size: 11.5px; font-weight: 700; color: #00244d; display: block; margin-bottom: 2px; }
+        .ds-swatch-hex { font-size: 10.5px; color: #64748b; font-family: 'Courier New', monospace; direction: ltr; display: block; }
+        .ds-swatch-token { font-size: 10px; color: #94a3b8; font-family: 'Courier New', monospace; direction: ltr; display: block; }
+
+        /* ── Showcase Rows ──────────────────── */
+        .ds-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+        .ds-row-v { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+        .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-bottom: 16px; }
+        .ds-showcase {
+            padding: 24px; background: #f8fafc; border: 1px dashed #c8d5e8;
+            border-radius: 12px; margin-bottom: 16px;
+        }
+        .ds-showcase-dark {
+            padding: 24px; background: #001a3d; border-radius: 12px; margin-bottom: 16px;
+        }
+
+        /* ── Spacing/Radius Visual ──────────── */
+        .ds-spacing-row { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+        .ds-spacing-block {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+        }
+        .ds-spacing-visual {
+            background: #005FCC; border-radius: 4px; min-width: 12px;
+        }
+        .ds-radius-demo {
+            width: 64px; height: 64px; background: #eaf4ff; border: 2px solid #005FCC;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700; color: #005FCC;
+        }
+
+        /* ── Table for specs ──────────────── */
+        .ds-spec-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+        .ds-spec-table th {
+            text-align: start; padding: 8px 12px; font-size: 11px; font-weight: 700;
+            color: #64748b; background: #f8fafc; border-bottom: 1.5px solid #e2e8f0;
+            text-transform: uppercase; letter-spacing: .4px;
+        }
+        .ds-spec-table td {
+            padding: 10px 12px; font-size: 12.5px; color: #374151;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .ds-spec-table tr:last-child td { border-bottom: none; }
+
+        /* ── Copy Helper ──────────────────── */
+        .ds-copy-wrap { position: relative; display: inline-flex; align-items: center; gap: 6px; }
+        .ds-copy-btn {
+            width: 24px; height: 24px; border: none; background: #eaf4ff;
+            color: #005FCC; border-radius: 5px; cursor: pointer;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 11px; transition: all .15s;
+        }
+        .ds-copy-btn:hover { background: #005FCC; color: #fff; }
+
+        /* ── Inline demo separator ─────────── */
+        .ds-sep { width: 1px; height: 32px; background: #e2e8f0; flex-shrink: 0; }
+    </style>
+</head>
+<body class="portal-page">
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="home.html"></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inquiry-list.html">قائمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="batch-list.html">حزمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" href="javascript:void(0)" style="opacity:0.5;cursor:not-allowed">التقارير</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wallet.html">الإعدادات</a></li>
+                </ul>
+            </div>
+            <a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><img class="icon" src="icons/language.svg" alt="">EN</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ════════════════ HERO ════════════════ -->
+<section class="portal-hero">
+    <div class="container">
+        <h1><i class="fas fa-palette" style="margin-left:10px"></i>دليل نظام التصميم — Design System</h1>
+        <p>المرجع الموحد لجميع مكونات واجهة المستخدم — Unified reference for all UI components</p>
+    </div>
+</section>
+
+<!-- ════════════════ BODY ════════════════ -->
+<div class="ds-body">
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  1. COLORS                                                          ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-droplet"></i>الألوان — Colors</h2>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Brand</div>
+        <div class="ds-colors">
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#005FCC"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Primary</span><span class="ds-swatch-hex">#005FCC</span><span class="ds-swatch-token">$color-primary</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#004799"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Primary Mid</span><span class="ds-swatch-hex">#004799</span><span class="ds-swatch-token">$color-primary-mid</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#003d8a"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Primary Dark</span><span class="ds-swatch-hex">#003d8a</span><span class="ds-swatch-token">$color-primary-dark</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#eaf4ff"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Primary Light</span><span class="ds-swatch-hex">#eaf4ff</span><span class="ds-swatch-token">$color-primary-light</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#cce4ff"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Primary Subtle</span><span class="ds-swatch-hex">#cce4ff</span><span class="ds-swatch-token">$color-primary-subtle</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#99ccff"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Primary Muted</span><span class="ds-swatch-hex">#99ccff</span><span class="ds-swatch-token">$color-primary-muted</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#00AAFF"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Tertiary</span><span class="ds-swatch-hex">#00AAFF</span><span class="ds-swatch-token">$color-tertiary</span></div></div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Semantic</div>
+        <div class="ds-colors">
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#4FB848"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Success</span><span class="ds-swatch-hex">#4FB848</span><span class="ds-swatch-token">$color-success</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#3a9e32"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Success Dark</span><span class="ds-swatch-hex">#3a9e32</span><span class="ds-swatch-token">$color-success-dark</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#d4f0d1"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Success Light</span><span class="ds-swatch-hex">#d4f0d1</span><span class="ds-swatch-token">$color-success-light</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#edf9ec"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Success BG</span><span class="ds-swatch-hex">#edf9ec</span><span class="ds-swatch-token">$color-success-bg</span></div></div>
+
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#d97706"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Warning</span><span class="ds-swatch-hex">#d97706</span><span class="ds-swatch-token">$color-warning</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#b45309"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Warning Dark</span><span class="ds-swatch-hex">#b45309</span><span class="ds-swatch-token">$color-warning-dark</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#fef3c7"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Warning Light</span><span class="ds-swatch-hex">#fef3c7</span><span class="ds-swatch-token">$color-warning-light</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#fffbeb"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Warning BG</span><span class="ds-swatch-hex">#fffbeb</span><span class="ds-swatch-token">$color-warning-bg</span></div></div>
+
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#dc2626"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Danger</span><span class="ds-swatch-hex">#dc2626</span><span class="ds-swatch-token">$color-danger</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#b91c1c"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Danger Dark</span><span class="ds-swatch-hex">#b91c1c</span><span class="ds-swatch-token">$color-danger-dark</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#fee2e2"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Danger Light</span><span class="ds-swatch-hex">#fee2e2</span><span class="ds-swatch-token">$color-danger-light</span></div></div>
+
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#7c3aed"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Purple</span><span class="ds-swatch-hex">#7c3aed</span><span class="ds-swatch-token">$color-purple</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f5f3ff"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Purple Light</span><span class="ds-swatch-hex">#f5f3ff</span><span class="ds-swatch-token">$color-purple-light</span></div></div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Neutrals &amp; Text</div>
+        <div class="ds-colors">
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#00244d"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Text Primary</span><span class="ds-swatch-hex">#00244d</span><span class="ds-swatch-token">$color-text-primary</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#002e5c"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Text Body</span><span class="ds-swatch-hex">#002e5c</span><span class="ds-swatch-token">$color-text-body</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#475569"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Text Secondary</span><span class="ds-swatch-hex">#475569</span><span class="ds-swatch-token">$color-text-secondary</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#64748b"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Text Muted</span><span class="ds-swatch-hex">#64748b</span><span class="ds-swatch-token">$color-text-muted</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#94a3b8"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Text Placeholder</span><span class="ds-swatch-hex">#94a3b8</span><span class="ds-swatch-token">$color-text-placeholder</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#cbd5e1"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Text Subtle</span><span class="ds-swatch-hex">#cbd5e1</span><span class="ds-swatch-token">$color-text-subtle</span></div></div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Backgrounds &amp; Borders</div>
+        <div class="ds-colors">
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f1f5f9"></div><div class="ds-swatch-info"><span class="ds-swatch-name">BG Page</span><span class="ds-swatch-hex">#f1f5f9</span><span class="ds-swatch-token">$color-bg-page</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f8fafc"></div><div class="ds-swatch-info"><span class="ds-swatch-name">BG Alt</span><span class="ds-swatch-hex">#f8fafc</span><span class="ds-swatch-token">$color-bg-alt</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#ffffff; border: 1px solid #e2e8f0"></div><div class="ds-swatch-info"><span class="ds-swatch-name">BG Card</span><span class="ds-swatch-hex">#ffffff</span><span class="ds-swatch-token">$color-bg-card</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#e2e8f0"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Border</span><span class="ds-swatch-hex">#e2e8f0</span><span class="ds-swatch-token">$color-border</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#dde3ee"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Border Card</span><span class="ds-swatch-hex">#dde3ee</span><span class="ds-swatch-token">$color-border-card</span></div></div>
+            <div class="ds-swatch"><div class="ds-swatch-color" style="background:#c8d5e8"></div><div class="ds-swatch-info"><span class="ds-swatch-name">Border Strong</span><span class="ds-swatch-hex">#c8d5e8</span><span class="ds-swatch-token">$color-border-strong</span></div></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  2. TYPOGRAPHY                                                      ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-font"></i>الخطوط — Typography</h2>
+
+    <div class="ds-showcase">
+        <p style="font-size:22px; font-weight:800; color:#00244d; margin-bottom:8px">عنوان رئيسي — 22px / 800 <span class="ds-code">$font-size-3xl</span></p>
+        <p style="font-size:16px; font-weight:800; color:#00244d; margin-bottom:8px">عنوان ثانوي — 16px / 800 <span class="ds-code">$font-size-2xl</span></p>
+        <p style="font-size:15px; font-weight:700; color:#00244d; margin-bottom:8px">عنوان فرعي — 15px / 700 <span class="ds-code">$font-size-xl</span></p>
+        <p style="font-size:14px; font-weight:600; color:#475569; margin-bottom:8px">نص بارز — 14px / 600 <span class="ds-code">$font-size-lg</span></p>
+        <p style="font-size:13px; font-weight:500; color:#374151; margin-bottom:8px">نص أساسي — 13px / 500 <span class="ds-code">$font-size-md</span></p>
+        <p style="font-size:12.5px; font-weight:500; color:#374151; margin-bottom:8px">نص عادي — 12.5px / 500 <span class="ds-code">$font-size-base</span></p>
+        <p style="font-size:11px; font-weight:500; color:#64748b; margin-bottom:8px">نص صغير — 11px / 500 <span class="ds-code">$font-size-sm</span></p>
+        <p style="font-size:10px; font-weight:500; color:#94a3b8; margin-bottom:0">نص دقيق — 10px / 500 <span class="ds-code">$font-size-xs</span></p>
+    </div>
+
+    <table class="ds-spec-table">
+        <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+            <tr><td><span class="ds-code">$font-family</span></td><td>'Tajawal', sans-serif</td><td>كل عناصر النظام</td></tr>
+            <tr><td><span class="ds-code">$font-size-3xl</span></td><td>22px</td><td>Page titles, hero headings</td></tr>
+            <tr><td><span class="ds-code">$font-size-2xl</span></td><td>16px</td><td>Section headings, card titles</td></tr>
+            <tr><td><span class="ds-code">$font-size-xl</span></td><td>15px</td><td>Sub-headings, table headers</td></tr>
+            <tr><td><span class="ds-code">$font-size-lg</span></td><td>14px</td><td>Prominent text, nav links</td></tr>
+            <tr><td><span class="ds-code">$font-size-md</span></td><td>13px</td><td>Body text, form inputs</td></tr>
+            <tr><td><span class="ds-code">$font-size-base</span></td><td>12.5px</td><td>Default text, table cells</td></tr>
+            <tr><td><span class="ds-code">$font-size-sm</span></td><td>11px</td><td>Labels, captions, pills</td></tr>
+            <tr><td><span class="ds-code">$font-size-xs</span></td><td>10px</td><td>Timestamps, micro text</td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  3. SPACING & RADIUS                                                ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-ruler-combined"></i>المسافات والحواف — Spacing &amp; Radius</h2>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Spacing Scale</div>
+        <div class="ds-showcase">
+            <div class="ds-spacing-row">
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:4px; height:4px"></div><span class="ds-code">$space-1</span><br><span style="font-size:10px; color:#64748b">4px</span></div>
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:8px; height:8px"></div><span class="ds-code">$space-2</span><br><span style="font-size:10px; color:#64748b">8px</span></div>
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:12px; height:12px"></div><span class="ds-code">$space-3</span><br><span style="font-size:10px; color:#64748b">12px</span></div>
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:16px; height:16px"></div><span class="ds-code">$space-4</span><br><span style="font-size:10px; color:#64748b">16px</span></div>
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:20px; height:20px"></div><span class="ds-code">$space-5</span><br><span style="font-size:10px; color:#64748b">20px</span></div>
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:24px; height:24px"></div><span class="ds-code">$space-6</span><br><span style="font-size:10px; color:#64748b">24px</span></div>
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:28px; height:28px"></div><span class="ds-code">$space-7</span><br><span style="font-size:10px; color:#64748b">28px</span></div>
+                <div class="ds-spacing-block"><div class="ds-spacing-visual" style="width:32px; height:32px"></div><span class="ds-code">$space-8</span><br><span style="font-size:10px; color:#64748b">32px</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Border Radius</div>
+        <div class="ds-showcase">
+            <div class="ds-row">
+                <div style="text-align:center"><div class="ds-radius-demo" style="border-radius:6px">6px</div><span class="ds-code" style="margin-top:6px; display:block">$radius-sm</span></div>
+                <div style="text-align:center"><div class="ds-radius-demo" style="border-radius:8px">8px</div><span class="ds-code" style="margin-top:6px; display:block">$radius-md</span></div>
+                <div style="text-align:center"><div class="ds-radius-demo" style="border-radius:10px">10px</div><span class="ds-code" style="margin-top:6px; display:block">$radius-lg</span></div>
+                <div style="text-align:center"><div class="ds-radius-demo" style="border-radius:12px">12px</div><span class="ds-code" style="margin-top:6px; display:block">$radius-xl</span></div>
+                <div style="text-align:center"><div class="ds-radius-demo" style="border-radius:14px">14px</div><span class="ds-code" style="margin-top:6px; display:block">$radius-2xl</span></div>
+                <div style="text-align:center"><div class="ds-radius-demo" style="border-radius:50%">50%</div><span class="ds-code" style="margin-top:6px; display:block">circle</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Shadows</div>
+        <div class="ds-showcase">
+            <div class="ds-row">
+                <div style="width:150px; height:60px; background:#fff; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05); display:flex; align-items:center; justify-content:center"><span class="ds-code">$shadow-card</span></div>
+                <div style="width:150px; height:60px; background:#fff; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.07); display:flex; align-items:center; justify-content:center"><span class="ds-code">$shadow-hover</span></div>
+                <div style="width:150px; height:60px; background:#fff; border-radius:10px; box-shadow:0 12px 40px rgba(0,0,0,.14); display:flex; align-items:center; justify-content:center"><span class="ds-code">$shadow-lg</span></div>
+                <div style="width:150px; height:60px; background:#fff; border-radius:10px; box-shadow:0 3px 10px rgba(26,58,143,.25); display:flex; align-items:center; justify-content:center"><span class="ds-code">$shadow-blue</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  4. ICON BUTTONS (System Standard)                                 ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-hand-pointer"></i>أزرار الأيقونات — Icon Buttons (System Standard)</h2>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Standard Icon Buttons — All Blue</div>
+        <p style="font-size:12.5px; color:#64748b; margin-bottom:16px">جميع أزرار الأيقونات في النظام تستخدم نفس اللون الأزرق — جميعها بدون استثناء. الحذف والتعديل والحفظ والعرض كلها باللون الأزرق.<br>All icon buttons use the same blue-on-blue color. Delete, edit, save, view — all blue. No exceptions.</p>
+
+        <div class="ds-showcase" style="display: flex; flex-direction: column; gap: 24px;">
+
+            <!-- Large 48px -->
+            <div>
+                <span class="ds-label">Large — 48×48px / radius 14px</span>
+                <div class="ds-row" style="margin-top:8px">
+                    <button class="action-icon ai-delete" style="width:48px; height:48px; border-radius:14px; font-size:18px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#eaf4ff; color:#005FCC; transition:all .2s" title="حذف"><i class="fas fa-trash"></i></button>
+                    <button class="action-icon ai-edit" style="width:48px; height:48px; border-radius:14px; font-size:18px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#eaf4ff; color:#005FCC; transition:all .2s" title="حفظ"><i class="fas fa-floppy-disk"></i></button>
+                    <button class="action-icon ai-edit" style="width:48px; height:48px; border-radius:14px; font-size:18px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#eaf4ff; color:#005FCC; transition:all .2s" title="تعديل"><i class="fas fa-pen"></i></button>
+                    <button class="action-icon ai-view" style="width:48px; height:48px; border-radius:14px; font-size:18px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#eaf4ff; color:#005FCC; transition:all .2s" title="عرض"><i class="fas fa-eye"></i></button>
+                </div>
+                <div style="margin-top:6px">
+                    <span class="ds-code">width: 48px; height: 48px; border-radius: 14px; background: #eaf4ff; color: #005FCC;</span>
+                </div>
+            </div>
+
+            <!-- Small 32px (Table Actions) -->
+            <div>
+                <span class="ds-label">Small — 32×32px / radius 6px (Table Actions)</span>
+                <div class="ds-row" style="margin-top:8px">
+                    <div class="action-icons">
+                        <button class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></button>
+                        <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                        <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+                <div style="margin-top:6px">
+                    <span class="ds-code">.action-icon .ai-view | .ai-edit | .ai-delete</span>
+                </div>
+            </div>
+
+            <!-- Hover State Demo -->
+            <div>
+                <span class="ds-label">Hover State — bg: #005FCC, color: #fff</span>
+                <div class="ds-row" style="margin-top:8px">
+                    <button style="width:48px; height:48px; border-radius:14px; font-size:18px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#005FCC; color:#ffffff; transition:all .2s" title="Hover State"><i class="fas fa-trash"></i></button>
+                    <button style="width:48px; height:48px; border-radius:14px; font-size:18px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#005FCC; color:#ffffff; transition:all .2s" title="Hover State"><i class="fas fa-floppy-disk"></i></button>
+                    <div class="ds-sep"></div>
+                    <button style="width:32px; height:32px; border-radius:6px; font-size:12px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#005FCC; color:#ffffff; transition:all .2s" title="Hover State"><i class="fas fa-eye"></i></button>
+                    <button style="width:32px; height:32px; border-radius:6px; font-size:12px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#005FCC; color:#ffffff; transition:all .2s" title="Hover State"><i class="fas fa-pen"></i></button>
+                    <button style="width:32px; height:32px; border-radius:6px; font-size:12px; border:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; background:#005FCC; color:#ffffff; transition:all .2s" title="Hover State"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <table class="ds-spec-table" style="margin-top:16px">
+            <thead><tr><th>Size</th><th>Dimensions</th><th>Radius</th><th>Icon Size</th><th>Usage</th></tr></thead>
+            <tbody>
+                <tr><td>Large</td><td>48 × 48px</td><td>14px</td><td>18px</td><td>Wizard footers, card actions, form actions</td></tr>
+                <tr><td>Small</td><td>32 × 32px</td><td>6px</td><td>12px</td><td>Table row actions, inline actions</td></tr>
+            </tbody>
+        </table>
+
+        <div style="background:#fffbeb; border:1.5px solid #fde68a; border-radius:10px; padding:14px 18px; margin-top:12px">
+            <strong style="color:#92400e; font-size:13px"><i class="fas fa-exclamation-triangle" style="margin-left:6px"></i>قاعدة مهمة — Critical Rule</strong>
+            <p style="color:#b45309; font-size:12.5px; margin:4px 0 0">جميع أزرار الأيقونات (حذف، تعديل، حفظ، عرض) تستخدم نفس اللون: خلفية <span class="ds-code">#eaf4ff</span> وأيقونة <span class="ds-code">#005FCC</span>. لا توجد أزرار حمراء للحذف في هذا النظام.<br>ALL icon buttons (delete, edit, save, view) use the same color: bg <span class="ds-code">#eaf4ff</span> + icon <span class="ds-code">#005FCC</span>. There are NO red delete buttons in this system.</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  5. PRIMARY BUTTONS                                                 ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-square"></i>الأزرار الأساسية — Primary Buttons</h2>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Standard Buttons <span class="ds-code">.btn</span></div>
+        <div class="ds-showcase">
+            <div class="ds-row">
+                <button class="btn btn-primary"><i class="fas fa-plus"></i>أساسي Primary</button>
+                <button class="btn btn-success"><i class="fas fa-check"></i>نجاح Success</button>
+                <button class="btn btn-secondary"><i class="fas fa-arrow-right"></i>ثانوي Secondary</button>
+                <button class="btn btn-danger"><i class="fas fa-times"></i>خطر Danger</button>
+            </div>
+            <div class="ds-row" style="margin-top:8px">
+                <button class="btn btn-primary btn-sm">صغير btn-sm</button>
+                <button class="btn btn-primary">عادي btn</button>
+                <button class="btn btn-primary btn-lg">كبير btn-lg</button>
+            </div>
+            <div class="ds-row" style="margin-top:8px">
+                <button class="btn btn-primary" disabled>معطل Disabled</button>
+                <button class="btn btn-primary btn-full" style="max-width:300px">كامل العرض btn-full</button>
+            </div>
+        </div>
+
+        <table class="ds-spec-table">
+            <thead><tr><th>Variant</th><th>Class</th><th>Background</th><th>Color</th><th>Height</th></tr></thead>
+            <tbody>
+                <tr><td>Primary</td><td><span class="ds-code">.btn-primary</span></td><td>#004799</td><td>#ffffff</td><td>42px</td></tr>
+                <tr><td>Success</td><td><span class="ds-code">.btn-success</span></td><td>#4FB848</td><td>#ffffff</td><td>42px</td></tr>
+                <tr><td>Secondary</td><td><span class="ds-code">.btn-secondary</span></td><td>#f8fafc</td><td>#475569</td><td>42px</td></tr>
+                <tr><td>Danger</td><td><span class="ds-code">.btn-danger</span></td><td>#dc2626</td><td>#ffffff</td><td>42px</td></tr>
+                <tr><td>Small</td><td><span class="ds-code">.btn-sm</span></td><td>—</td><td>—</td><td>36px</td></tr>
+                <tr><td>Large</td><td><span class="ds-code">.btn-lg</span></td><td>—</td><td>—</td><td>50px</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">CTA Button (Portal Header)</div>
+        <div class="ds-showcase">
+            <a class="header-cta" href="#" style="text-decoration:none"><i class="fas fa-plus-circle"></i>طلب استعلام جديد</a>
+        </div>
+        <span class="ds-code">.header-cta</span> — bg: #4FB848, border-radius: 32px, height: auto (padding-based)
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  6. PILLS & BADGES                                                 ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-tags"></i>الشارات والعلامات — Pills &amp; Badges</h2>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Status Pills <span class="ds-code">.pill</span></div>
+        <div class="ds-showcase">
+            <div class="ds-row">
+                <span class="pill pill-green"><i class="fas fa-check-circle"></i>مقبول</span>
+                <span class="pill pill-amber"><i class="fas fa-clock"></i>قيد المعالجة</span>
+                <span class="pill pill-blue"><i class="fas fa-paper-plane"></i>مقدم</span>
+                <span class="pill pill-red"><i class="fas fa-times-circle"></i>مرفوض</span>
+            </div>
+        </div>
+        <table class="ds-spec-table">
+            <thead><tr><th>Variant</th><th>Class</th><th>Background</th><th>Text Color</th></tr></thead>
+            <tbody>
+                <tr><td>Green (Approved)</td><td><span class="ds-code">.pill-green</span></td><td>#d4f0d1</td><td>#3a9e32</td></tr>
+                <tr><td>Amber (Processing)</td><td><span class="ds-code">.pill-amber</span></td><td>#fef3c7</td><td>#b45309</td></tr>
+                <tr><td>Blue (Submitted)</td><td><span class="ds-code">.pill-blue</span></td><td>#cce4ff</td><td>#1e40af</td></tr>
+                <tr><td>Red (Rejected)</td><td><span class="ds-code">.pill-red</span></td><td>#fee2e2</td><td>#b91c1c</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Type Badges <span class="ds-code">.type-badge</span></div>
+        <div class="ds-showcase">
+            <div class="ds-row">
+                <span class="type-badge type-single"><i class="fas fa-user"></i>فردي</span>
+                <span class="type-badge type-batch"><i class="fas fa-users"></i>حزمة</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Summary Chips <span class="ds-code">.summary-chip</span></div>
+        <div class="ds-showcase">
+            <div class="summary-chips">
+                <span class="summary-chip chip-total"><i class="fas fa-list"></i>الإجمالي: 150</span>
+                <span class="summary-chip chip-ok"><i class="fas fa-check"></i>ناجح: 142</span>
+                <span class="summary-chip chip-error"><i class="fas fa-times"></i>أخطاء: 8</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Wallet Chip <span class="ds-code">.wallet-chip</span></div>
+        <div class="ds-showcase">
+            <div class="wallet-chip">
+                <i class="fas fa-wallet"></i>
+                <span class="wc-label">الرصيد:</span>
+                <span class="wc-amount">45,000 ج.م</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  7. ALERTS                                                          ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-bell"></i>التنبيهات — Alerts</h2>
+
+    <div class="ds-showcase" style="padding:14px">
+        <div class="alert alert-success">
+            <span class="alert-icon"><i class="fas fa-check-circle"></i></span>
+            <div class="alert-body">
+                <strong>تمت العملية بنجاح</strong>
+                <span>تم حفظ البيانات بنجاح وسيتم معالجة الطلب خلال 24 ساعة.</span>
+            </div>
+        </div>
+        <div class="alert alert-warning">
+            <span class="alert-icon"><i class="fas fa-exclamation-triangle"></i></span>
+            <div class="alert-body">
+                <strong>تنبيه</strong>
+                <span>رصيد المحفظة منخفض. يرجى شحن المحفظة لإتمام العمليات.</span>
+            </div>
+        </div>
+        <div class="alert alert-danger">
+            <span class="alert-icon"><i class="fas fa-times-circle"></i></span>
+            <div class="alert-body">
+                <strong>حدث خطأ</strong>
+                <span>فشل في حفظ البيانات. يرجى المحاولة مرة أخرى.</span>
+            </div>
+        </div>
+        <div class="alert alert-info" style="margin-bottom:0">
+            <span class="alert-icon"><i class="fas fa-info-circle"></i></span>
+            <div class="alert-body">
+                <strong>معلومة</strong>
+                <span>يمكنك تحميل ملفات بصيغة CSV أو Excel فقط.</span>
+            </div>
+        </div>
+    </div>
+
+    <table class="ds-spec-table" style="margin-top:16px">
+        <thead><tr><th>Variant</th><th>Class</th><th>Background</th><th>Border</th></tr></thead>
+        <tbody>
+            <tr><td>Success</td><td><span class="ds-code">.alert-success</span></td><td>#edf9ec</td><td>#a8e6a1</td></tr>
+            <tr><td>Warning</td><td><span class="ds-code">.alert-warning</span></td><td>#fffbeb</td><td>#fde68a</td></tr>
+            <tr><td>Danger</td><td><span class="ds-code">.alert-danger</span></td><td>#fff5f5</td><td>#fecaca</td></tr>
+            <tr><td>Info</td><td><span class="ds-code">.alert-info</span></td><td>#e0f2fe</td><td>#99ccff</td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  8. STAT CARDS                                                      ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-chart-bar"></i>بطاقات الإحصائيات — Stat Cards</h2>
+
+    <div class="stats-row" style="margin-bottom:20px">
+        <div class="stat stat-blue">
+            <div class="stat-icon-wrap"><i class="fas fa-file-alt"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">إجمالي الطلبات</div>
+                <div class="stat-num">1,247</div>
+                <div class="stat-period">هذا الشهر</div>
+            </div>
+        </div>
+        <div class="stat stat-amber">
+            <div class="stat-icon-wrap"><i class="fas fa-clock"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">قيد المعالجة</div>
+                <div class="stat-num">38</div>
+                <div class="stat-period">حالياً</div>
+            </div>
+        </div>
+        <div class="stat stat-green">
+            <div class="stat-icon-wrap"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">مقبول</div>
+                <div class="stat-num">1,180</div>
+                <div class="stat-period">هذا الشهر</div>
+            </div>
+        </div>
+        <div class="stat stat-red">
+            <div class="stat-icon-wrap"><i class="fas fa-times-circle"></i></div>
+            <div class="stat-body">
+                <div class="stat-label">مرفوض</div>
+                <div class="stat-num">29</div>
+                <div class="stat-period">هذا الشهر</div>
+            </div>
+        </div>
+    </div>
+
+    <span class="ds-label">Classes</span>
+    <span class="ds-code">.stat .stat-blue | .stat-amber | .stat-green | .stat-red</span>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  9. CARDS                                                           ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-square"></i>البطاقات — Cards</h2>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Overview Card <span class="ds-code">.card</span></div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width:700px">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-label">إجمالي الطلبات</span>
+                    <div class="card-icon ci-icon"><i class="fas fa-file-alt"></i></div>
+                </div>
+                <div class="card-value">1,247</div>
+                <div class="card-sub">+12% عن الشهر الماضي</div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-label">رصيد المحفظة</span>
+                    <div class="card-icon cw-icon"><i class="fas fa-wallet"></i></div>
+                </div>
+                <div class="card-value cw-value">45,000</div>
+                <div class="card-sub">جنيه مصري</div>
+                <button class="card-action cw-action"><i class="fas fa-plus-circle"></i>شحن المحفظة</button>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-label">الطلبات اليوم</span>
+                    <div class="card-icon ct-icon"><i class="fas fa-calendar-day"></i></div>
+                </div>
+                <div class="card-value">18</div>
+                <div class="card-sub">5 قيد المعالجة</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Action Card <span class="ds-code">.action-card</span></div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width:700px">
+            <div class="action-card ac-new">
+                <div class="action-icon"><i class="fas fa-plus"></i></div>
+                <h4>طلب جديد</h4>
+                <p>إنشاء طلب استعلام فردي</p>
+                <button class="action-btn"><i class="fas fa-arrow-left"></i>ابدأ الآن</button>
+            </div>
+            <div class="action-card ac-batch">
+                <div class="action-icon"><i class="fas fa-layer-group"></i></div>
+                <h4>حزمة طلبات</h4>
+                <p>رفع مجموعة طلبات دفعة واحدة</p>
+                <button class="action-btn"><i class="fas fa-arrow-left"></i>إنشاء حزمة</button>
+            </div>
+            <div class="action-card ac-wallet">
+                <div class="action-icon"><i class="fas fa-wallet"></i></div>
+                <h4>المحفظة</h4>
+                <p>شحن الرصيد وعرض المعاملات</p>
+                <button class="action-btn"><i class="fas fa-arrow-left"></i>إدارة المحفظة</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  10. TABLE ACTIONS                                                  ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-table"></i>الجداول — Tables</h2>
+
+    <div class="table-card">
+        <div class="table-header">
+            <h3>آخر الطلبات</h3>
+            <a href="#">عرض الكل <i class="fas fa-arrow-left"></i></a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>الرقم المرجعي</th>
+                    <th>اسم المسافر</th>
+                    <th>الجنسية</th>
+                    <th>الحالة</th>
+                    <th>النوع</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ref-cell">INQ-2026-001</td>
+                    <td>أحمد محمد علي</td>
+                    <td>سوري</td>
+                    <td><span class="pill pill-green"><i class="fas fa-check-circle"></i>مقبول</span></td>
+                    <td><span class="type-badge type-single"><i class="fas fa-user"></i>فردي</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="#" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell">INQ-2026-002</td>
+                    <td>فاطمة حسن</td>
+                    <td>عراقي</td>
+                    <td><span class="pill pill-amber"><i class="fas fa-clock"></i>قيد المعالجة</span></td>
+                    <td><span class="type-badge type-batch"><i class="fas fa-users"></i>حزمة</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="#" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ref-cell">INQ-2026-003</td>
+                    <td>عمر سعيد</td>
+                    <td>يمني</td>
+                    <td><span class="pill pill-red"><i class="fas fa-times-circle"></i>مرفوض</span></td>
+                    <td><span class="type-badge type-single"><i class="fas fa-user"></i>فردي</span></td>
+                    <td>
+                        <div class="action-icons">
+                            <a href="#" class="action-icon ai-view" title="عرض"><i class="fa-solid fa-eye"></i></a>
+                            <button class="action-icon ai-edit" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-icon ai-delete" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  11. FORM ELEMENTS                                                  ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-pen-to-square"></i>حقول النموذج — Form Elements</h2>
+
+    <div class="ds-showcase">
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; max-width:800px">
+            <div>
+                <label style="font-size:12px; font-weight:700; color:#00244d; margin-bottom:6px; display:block">حقل نصي <span style="color:#dc2626">*</span></label>
+                <input type="text" placeholder="أدخل النص هنا..." style="width:100%; height:42px; padding:0 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-family:'Tajawal',sans-serif; font-size:13px; color:#00244d; background:#fff; transition: border-color .2s">
+            </div>
+            <div>
+                <label style="font-size:12px; font-weight:700; color:#00244d; margin-bottom:6px; display:block">قائمة منسدلة</label>
+                <select style="width:100%; height:42px; padding:0 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-family:'Tajawal',sans-serif; font-size:13px; color:#00244d; background:#fff; appearance:auto">
+                    <option>اختر...</option>
+                    <option>خيار أول</option>
+                    <option>خيار ثاني</option>
+                </select>
+            </div>
+            <div>
+                <label style="font-size:12px; font-weight:700; color:#00244d; margin-bottom:6px; display:block">تاريخ</label>
+                <input type="date" style="width:100%; height:42px; padding:0 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-family:'Tajawal',sans-serif; font-size:13px; color:#00244d; background:#fff">
+            </div>
+        </div>
+        <div style="margin-top:16px; max-width:800px">
+            <label style="font-size:12px; font-weight:700; color:#00244d; margin-bottom:6px; display:block">ملاحظات</label>
+            <textarea rows="3" placeholder="أدخل الملاحظات هنا..." style="width:100%; padding:10px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-family:'Tajawal',sans-serif; font-size:13px; color:#00244d; background:#fff; resize:vertical"></textarea>
+        </div>
+    </div>
+
+    <table class="ds-spec-table" style="margin-top:16px">
+        <thead><tr><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+            <tr><td>Height</td><td>42px (inputs, selects)</td></tr>
+            <tr><td>Border</td><td>1.5px solid #e2e8f0</td></tr>
+            <tr><td>Border Radius</td><td>8px ($radius-md)</td></tr>
+            <tr><td>Padding</td><td>0 12px</td></tr>
+            <tr><td>Font</td><td>13px Tajawal ($font-size-md)</td></tr>
+            <tr><td>Focus Border</td><td>#005FCC ($color-primary)</td></tr>
+            <tr><td>Label</td><td>12px / 700 weight</td></tr>
+            <tr><td>Required Mark</td><td>* in #dc2626 ($color-danger)</td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  12. WIZARD STEPPER                                                 ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-list-ol"></i>مؤشر الخطوات — Wizard Stepper</h2>
+
+    <div style="background:#fff; border:1.5px solid #dde3ee; border-radius:12px; overflow:hidden; margin-bottom:16px">
+        <div style="display:flex; align-items:center; padding:24px 28px; background:#f8fafc; border-bottom:1px solid #e2e8f0; gap:0">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:7px; flex-shrink:0">
+                <div style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; background:#d4f0d1; border:2px solid #4FB848; color:#4FB848"><i class="fas fa-check" style="font-size:14px"></i></div>
+                <span style="font-size:11px; font-weight:600; color:#3a9e32">تفاصيل</span>
+            </div>
+            <div style="flex:1; height:2px; background:#4FB848; margin-bottom:28px"></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:7px; flex-shrink:0">
+                <div style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; background:#004799; border:2px solid #004799; color:#ffffff; box-shadow:0 3px 10px rgba(26,58,143,.25)">2</div>
+                <span style="font-size:11px; font-weight:600; color:#004799">المسافرين</span>
+            </div>
+            <div style="flex:1; height:2px; background:#99ccff; margin-bottom:28px"></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:7px; flex-shrink:0">
+                <div style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; background:#f8fafc; border:2px solid #e2e8f0; color:#cbd5e1">3</div>
+                <span style="font-size:11px; font-weight:600; color:#cbd5e1">مراجعة</span>
+            </div>
+        </div>
+    </div>
+
+    <table class="ds-spec-table">
+        <thead><tr><th>State</th><th>Circle BG</th><th>Border</th><th>Color</th><th>Line Color</th></tr></thead>
+        <tbody>
+            <tr><td>Completed</td><td>#d4f0d1</td><td>#4FB848</td><td>#4FB848 (✓ icon)</td><td>#4FB848</td></tr>
+            <tr><td>Active</td><td>#004799</td><td>#004799</td><td>#ffffff</td><td>#99ccff</td></tr>
+            <tr><td>Locked</td><td>#f8fafc</td><td>#e2e8f0</td><td>#cbd5e1</td><td>#e2e8f0</td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  13. PAYMENT PENDING ALERT                                          ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-credit-card"></i>تنبيه الدفع — Payment Pending Alert</h2>
+
+    <div class="pending-alert">
+        <div class="pending-alert-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="pending-alert-text">
+            <strong>دفع معلق</strong>
+            <span>يوجد مبلغ 2,500 ج.م معلق. يرجى إتمام الدفع لمتابعة الطلب.</span>
+        </div>
+        <div class="pending-alert-actions">
+            <button class="pending-cta"><i class="fas fa-credit-card"></i>ادفع الآن</button>
+            <button class="dismiss-btn"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+    <span class="ds-code">.pending-alert</span> — Warning gradient background, amber color scheme
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  14. HERO & NAVIGATION                                             ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-bars"></i>البانر والتنقل — Hero &amp; Navigation</h2>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Hero Gradient</div>
+        <div class="ds-showcase-dark" style="padding:32px; text-align:center">
+            <h2 style="font-size:22px; font-weight:800; color:#fff; margin-bottom:6px">عنوان الصفحة الرئيسي</h2>
+            <p style="font-size:13px; color:rgba(148,180,255,.7)">وصف مختصر للصفحة يظهر أسفل العنوان</p>
+        </div>
+        <span class="ds-code">background: linear-gradient(160deg, #001a3d 0%, #002555 35%, #003580 65%, #002555 100%);</span>
+    </div>
+
+    <div class="ds-subsection">
+        <div class="ds-subsection-title">Filter Bar <span class="ds-code">.filter-bar</span></div>
+        <div class="filter-bar" style="max-width:700px">
+            <div class="filter-group">
+                <label style="font-size:11px;font-weight:600;color:#64748b;margin-bottom:4px;display:block">الحالة</label>
+                <select class="form-select form-select-sm" style="height:36px;border-radius:8px;border:1.5px solid #e2e8f0;font-size:12.5px;font-family:'Tajawal',sans-serif">
+                    <option>الكل</option>
+                    <option>مقبول</option>
+                    <option>مرفوض</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label style="font-size:11px;font-weight:600;color:#64748b;margin-bottom:4px;display:block">الجنسية</label>
+                <select class="form-select form-select-sm" style="height:36px;border-radius:8px;border:1.5px solid #e2e8f0;font-size:12.5px;font-family:'Tajawal',sans-serif">
+                    <option>الكل</option>
+                    <option>سوري</option>
+                    <option>عراقي</option>
+                </select>
+            </div>
+            <div class="filter-actions">
+                <button class="btn btn-primary btn-sm"><i class="fas fa-search"></i>بحث</button>
+                <button class="btn btn-secondary btn-sm"><i class="fas fa-redo"></i>إعادة</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  15. QUICK REFERENCE                                                ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<div class="ds-section">
+    <h2 class="ds-section-title"><i class="fas fa-book"></i>المرجع السريع — Quick Reference</h2>
+
+    <table class="ds-spec-table">
+        <thead>
+            <tr><th>Component</th><th>File</th><th>Key Classes</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Icon Buttons (System)</td><td>portal.css</td><td><span class="ds-code">.action-icon .ai-view .ai-edit .ai-delete</span></td></tr>
+            <tr><td>Wizard Icon Buttons</td><td>_wizard.scss</td><td><span class="ds-code">.step2-icon-btn .step2-icon-btn-edit .step2-icon-btn-delete</span></td></tr>
+            <tr><td>Primary Buttons</td><td>_components.scss</td><td><span class="ds-code">.btn .btn-primary .btn-success .btn-secondary .btn-danger</span></td></tr>
+            <tr><td>Wizard Buttons</td><td>_wizard.scss</td><td><span class="ds-code">.wz-btn .wz-btn-primary .wz-btn-success .wz-btn-secondary</span></td></tr>
+            <tr><td>Status Pills</td><td>_components.scss</td><td><span class="ds-code">.pill .pill-green .pill-amber .pill-blue .pill-red</span></td></tr>
+            <tr><td>Type Badges</td><td>_components.scss</td><td><span class="ds-code">.type-badge .type-single .type-batch</span></td></tr>
+            <tr><td>Summary Chips</td><td>_components.scss</td><td><span class="ds-code">.summary-chip .chip-total .chip-ok .chip-error</span></td></tr>
+            <tr><td>Alerts</td><td>_components.scss</td><td><span class="ds-code">.alert .alert-success .alert-warning .alert-danger .alert-info</span></td></tr>
+            <tr><td>Stat Cards</td><td>_components.scss</td><td><span class="ds-code">.stat .stat-blue .stat-amber .stat-green .stat-red</span></td></tr>
+            <tr><td>Overview Cards</td><td>_components.scss</td><td><span class="ds-code">.card .card-header .card-value .card-action</span></td></tr>
+            <tr><td>Action Cards</td><td>_components.scss</td><td><span class="ds-code">.action-card .ac-new .ac-batch .ac-wallet</span></td></tr>
+            <tr><td>Table</td><td>_components.scss</td><td><span class="ds-code">.table-card .table-header table th td</span></td></tr>
+            <tr><td>Wallet Chip</td><td>_components.scss</td><td><span class="ds-code">.wallet-chip .wc-label .wc-amount</span></td></tr>
+            <tr><td>Pending Alert</td><td>_components.scss</td><td><span class="ds-code">.pending-alert .pending-cta</span></td></tr>
+            <tr><td>Wizard Card</td><td>_wizard.scss</td><td><span class="ds-code">.wizard-card .wizard-card-header .wizard-card-body .wizard-card-footer</span></td></tr>
+            <tr><td>Stepper</td><td>_wizard.scss</td><td><span class="ds-code">.stepper .step-node .step-circle .step-line</span></td></tr>
+            <tr><td>Filter Bar</td><td>portal.css</td><td><span class="ds-code">.filter-bar .filter-group .filter-actions</span></td></tr>
+            <tr><td>Notifications</td><td>_components.scss</td><td><span class="ds-code">.notif-drawer .nd-header .nd-item</span></td></tr>
+            <tr><td>User Dropdown</td><td>_components.scss</td><td><span class="ds-code">.user-dropdown .ud-item</span></td></tr>
+            <tr><td>Dropzone</td><td>_wizard.scss</td><td><span class="ds-code">.dropzone .dropzone-icon</span></td></tr>
+            <tr><td>Success Screen</td><td>_wizard.scss</td><td><span class="ds-code">.success-screen .success-icon-wrap</span></td></tr>
+            <tr><td>Error Screen</td><td>_wizard.scss</td><td><span class="ds-code">.error-screen .error-icon-wrap</span></td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+</div><!-- /ds-body -->
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer style="background:#00244d; color:rgba(148,180,255,.5); padding:14px 28px; display:flex; align-items:center; justify-content:space-between; font-size:12px; margin-top:40px">
+    <span>نظام الموافقات الأمنية — دليل التصميم</span>
+    <span>آخر تحديث: أبريل 2026</span>
+</footer>
+
+<script src="css/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>
