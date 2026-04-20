@@ -1,0 +1,111 @@
+// ══════════════════════════════════════════════════════════════════════════
+// PORTAL STATS — Stat cards, wallet stat cards, quick stats
+// ══════════════════════════════════════════════════════════════════════════
+
+/* ── Stat cards grid ──────────────────────────────────────────────────── */
+.stat-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $space-4; margin-bottom: $space-6;
+}
+.stat-card {
+  background: $color-bg-card; border-radius: $radius-card;
+  border: 1px solid $color-border-alt; border-top: 3px solid $color-border-alt;
+  padding: $space-6; position: relative; text-align: center;
+  transition: box-shadow .2s, transform .15s;
+}
+.stat-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.06); transform: translateY(-2px); }
+.stat-card .stat-badge {
+  position: absolute; top: $space-4; left: $space-4;
+  width: 2.5rem; height: 2.5rem; border-radius: $radius-lg;
+  display: flex; align-items: center; justify-content: center;
+  font-size: $space-4; color: $color-bg-card;
+}
+.stat-card .stat-number {
+  font-weight: 800; font-size: calc(1rem + 1.05vw);
+  line-height: 1; margin-bottom: $space-1; margin-top: $space-2;
+}
+.stat-card .stat-label { font-weight: 500; font-size: $font-size-md; color: $color-text-secondary; }
+.stat-card .stat-sub   { font-size: $font-size-sm; color: $color-text-placeholder; margin-top: $space-1; }
+
+/* Stat card color variants */
+.stat-card.sc-green  { border-top-color: $color-success; }
+.stat-card.sc-green  .stat-badge  { background: $color-success; }
+.stat-card.sc-green  .stat-number { color: $color-success-dark; }
+.stat-card.sc-orange { border-top-color: $color-warning-badge; }
+.stat-card.sc-orange .stat-badge  { background: $color-warning-badge; }
+.stat-card.sc-orange .stat-number { color: $color-warning; }
+.stat-card.sc-blue   { border-top-color: $color-primary; }
+.stat-card.sc-blue   .stat-badge  { background: $color-primary; }
+.stat-card.sc-blue   .stat-number { color: $color-primary-mid; }
+.stat-card.sc-red    { border-top-color: $color-danger; }
+.stat-card.sc-red    .stat-badge  { background: $color-danger; }
+.stat-card.sc-red    .stat-number { color: $color-danger; }
+.stat-card.sc-teal   { border-top-color: $color-tertiary; }
+.stat-card.sc-teal   .stat-badge  { background: $color-tertiary; }
+.stat-card.sc-teal   .stat-number { color: $color-tertiary-dark; }
+
+/* ── Wallet stat cards (large) ────────────────────────────────────────── */
+.wallet-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: $space-4; margin-bottom: $space-6;
+}
+.wallet-stat-card {
+  background: $color-bg-card; border-radius: $radius-card;
+  border: 1px solid $color-border-alt; border-top: 3px solid $color-border-alt;
+  padding: $space-6; position: relative; text-align: center;
+  transition: box-shadow .2s;
+}
+.wallet-stat-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+.wallet-stat-card .ws-badge {
+  position: absolute; top: $space-4; left: $space-4;
+  width: 2.75rem; height: 2.75rem; border-radius: $radius-lg;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.125rem; color: $color-bg-card;
+}
+.wallet-stat-card .ws-amount {
+  font-weight: 800; font-size: calc(1rem + 0.75vw);
+  line-height: 1; margin-bottom: 0.375rem; margin-top: $space-3; direction: ltr;
+}
+.wallet-stat-card .ws-label { font-weight: 500; font-size: $font-size-md; color: $color-text-secondary; }
+.wallet-stat-card .ws-sub   { font-size: $font-size-sm; color: $color-text-placeholder; margin-top: $space-1; }
+.wallet-stat-card.wsc-green  { border-top-color: $color-success; }
+.wallet-stat-card.wsc-green  .ws-badge  { background: $color-success; }
+.wallet-stat-card.wsc-green  .ws-amount { color: $color-success-text; }
+.wallet-stat-card.wsc-blue   { border-top-color: $color-primary; }
+.wallet-stat-card.wsc-blue   .ws-badge  { background: $color-primary; }
+.wallet-stat-card.wsc-blue   .ws-amount { color: $color-primary-mid; }
+.wallet-stat-card.wsc-red    { border-top-color: $color-danger; }
+.wallet-stat-card.wsc-red    .ws-badge  { background: $color-danger; }
+.wallet-stat-card.wsc-red    .ws-amount { color: $color-danger; }
+
+/* ── Quick stats (small info cards) ──────────────────────────────────── */
+.quick-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: $space-4; margin-bottom: $space-6;
+}
+.quick-stat {
+  background: $color-bg-card; border: 1px solid $color-border-alt;
+  border-radius: $radius-card; border-inline-end: 3px solid $color-border-alt;
+  padding: $space-4 $space-5; position: relative;
+}
+.quick-stat .qs-badge {
+  position: absolute; top: $space-3; left: $space-3;
+  width: $space-8; height: $space-8; border-radius: $radius-md;
+  display: flex; align-items: center; justify-content: center;
+  font-size: $font-size-sm; color: $color-bg-card;
+}
+.quick-stat .qs-number { font-weight: 800; font-size: calc(1rem + 0.55vw); line-height: 1; margin-bottom: 0.125rem; }
+.quick-stat .qs-label  { font-weight: 500; font-size: $font-size-base; color: $color-text-secondary; }
+.quick-stat .qs-date   { font-size: $font-size-sm; color: $color-text-placeholder; margin-top: $space-1; }
+.quick-stat.qs-blue  { border-inline-end-color: $color-primary; }
+.quick-stat.qs-blue  .qs-badge  { background: $color-primary; }
+.quick-stat.qs-blue  .qs-number { color: $color-primary-mid; }
+.quick-stat.qs-green { border-inline-end-color: $color-success; }
+.quick-stat.qs-green .qs-badge  { background: $color-success; }
+.quick-stat.qs-green .qs-number { color: $color-success-dark; }
+.quick-stat.qs-teal  { border-inline-end-color: $color-tertiary; }
+.quick-stat.qs-teal  .qs-badge  { background: $color-tertiary; }
+.quick-stat.qs-teal  .qs-number { color: $color-tertiary-dark; }
+.quick-stat.qs-red   { border-inline-end-color: $color-danger; }
+.quick-stat.qs-red   .qs-badge  { background: $color-danger; }
+.quick-stat.qs-red   .qs-number { color: $color-danger; }

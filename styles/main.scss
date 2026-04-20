@@ -1,6 +1,7 @@
 // Security Clearance & Inquiry System — Portal Design System
 // Compiled to main.css for browser use
 
+@use 'fonts';
 @use 'tokens';
 @use 'mixins';
 @use 'reset';
@@ -8,3 +9,16 @@
 @use 'components';
 @use 'wizard';
 @use 'utilities';
+// ── Portal page components ────────────────────────────────────────────────
+@use 'portal-nav';
+@use 'portal-hero';
+@use 'portal-stats';
+@use 'portal-filters';
+@use 'portal-tables';
+@use 'portal-detail';
+@use 'portal-buttons';
+@use 'portal-dashboard';
+@use 'portal-responsive';
+// ── Auth pages ────────────────────────────────────────────────────────────
+@use 'login';
+@use 'registration';

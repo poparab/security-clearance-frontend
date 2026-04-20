@@ -1,0 +1,65 @@
+// ══════════════════════════════════════════════════════════════════════════
+// PORTAL HERO — Hero banner, breadcrumb, and page body wrapper
+// ══════════════════════════════════════════════════════════════════════════
+
+/* ── Hero banner ──────────────────────────────────────────────────────── */
+.portal-hero {
+  background: $hero-gradient;
+  position: relative; overflow: hidden;
+  padding: $space-14 0 $space-10; text-align: center;
+}
+body.portal-page .portal-hero { padding-top: $space-14; padding-bottom: $space-10; }
+.portal-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(50,120,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(50,120,255,.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.portal-hero::after {
+  content: ''; position: absolute;
+  bottom: -80px; left: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(0,100,255,.15) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.portal-hero h1 {
+  position: relative; z-index: 1;
+  color: $color-bg-card; font-weight: 700;
+  font-size: calc(1rem + 0.65vw); margin-bottom: $space-2;
+}
+.portal-hero p {
+  position: relative; z-index: 1;
+  color: rgba(180,210,255,.7); font-size: $font-size-md;
+  max-width: 600px; margin: 0 auto;
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────────────────── */
+.portal-breadcrumb {
+  background: $color-bg-card; border-bottom: 1px solid $color-border-alt;
+  padding: 0.625rem 0; font-size: $font-size-base;
+}
+.portal-breadcrumb nav { display: flex; align-items: center; gap: $space-2; }
+.portal-breadcrumb a { color: $color-primary; text-decoration: none; }
+.portal-breadcrumb a:hover { text-decoration: underline; color: $color-primary-mid; }
+.portal-breadcrumb .separator { color: $color-text-subtle; font-size: $font-size-xs; }
+.portal-breadcrumb .current { color: $color-text-muted; font-weight: 500; }
+
+/* ── Page body container ──────────────────────────────────────────────── */
+.portal-body { padding: $space-7 0 $space-12; }
+
+/* ── Section header ───────────────────────────────────────────────────── */
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: $space-5;
+}
+.section-header h2 {
+  font-weight: 700; font-size: $font-size-2xl; color: $color-primary-mid;
+  margin: 0; display: flex; align-items: center; gap: $space-2;
+}
+.section-header h2 .title-icon {
+  width: 2.25rem; height: 2.25rem; border-radius: $radius-md;
+  background: $color-primary-light; color: $color-primary;
+  display: flex; align-items: center; justify-content: center;
+  font-size: $font-size-lg;
+}

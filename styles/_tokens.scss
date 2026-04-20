@@ -6,32 +6,36 @@ $color-primary-light:   #eaf4ff;
 $color-primary-muted:   #99ccff;
 $color-primary-subtle:  #cce4ff;
 $color-tertiary:        #00AAFF;
-
+$color-tertiary-dark:   #0088cc;
 // ── Semantic ────────────────────────────────────────────────────────────
 $color-success:         #4FB848;
 $color-success-dark:    #3a9e32;
+$color-success-text:    #2e7d32;
 $color-success-light:   #d4f0d1;
 $color-success-bg:      #edf9ec;
 $color-success-border:  #a8e6a1;
 
 $color-warning:         #d97706;
+$color-warning-badge:   #f59e0b;
 $color-warning-dark:    #b45309;
 $color-warning-deep:    #92400e;
 $color-warning-light:   #fef3c7;
 $color-warning-bg:      #fffbeb;
 $color-warning-border:  #fde68a;
 
-$color-danger:          #dc2626;
-$color-danger-dark:     #b91c1c;
-$color-danger-light:    #fee2e2;
+$color-danger:          #E50000;
+$color-danger-dark:     #b30000;
+$color-danger-light:    #ffe0e0;
 $color-danger-bg:       #fff5f5;
-$color-danger-border:   #fecaca;
+$color-danger-border:   #ffb3b3;
 
 $color-info-light:      #e0f2fe;
 
 // ── Neutrals ────────────────────────────────────────────────────────────
 $color-text-primary:    #00244d;
 $color-text-body:       #002e5c;
+$color-text-strong:     #1e293b;
+$color-text-table:      #374151;
 $color-text-secondary:  #475569;
 $color-text-muted:      #64748b;
 $color-text-placeholder:#94a3b8;
@@ -44,6 +48,8 @@ $color-bg-card:         #ffffff;
 $color-border:          #e2e8f0;
 $color-border-card:     #dde3ee;
 $color-border-alt:      #e8edf3;
+$color-border-subtle:   #f1f5f9;
+$color-border-input:    #d1d5db;
 $color-border-strong:   #c8d5e8;
 
 // ── Purple (batch accent) ────────────────────────────────────────────────
@@ -56,31 +62,38 @@ $hero-gradient:         linear-gradient(160deg, #001a3d 0%, #002555 35%, #003580
 
 // ── Typography ───────────────────────────────────────────────────────────
 $font-family:           'Tajawal', sans-serif;
-$font-size-xs:          10px;
-$font-size-sm:          11px;
-$font-size-base:        12.5px;
-$font-size-md:          13px;
-$font-size-lg:          14px;
-$font-size-xl:          15px;
-$font-size-2xl:         16px;
-$font-size-3xl:         22px;
+$font-size-xs:          calc(0.625rem + 0.02vw);
+$font-size-sm:          calc(0.6875rem + 0.02vw);
+$font-size-base:        calc(0.8125rem + 0.02vw);
+$font-size-md:          calc(0.875rem + 0.02vw);
+$font-size-lg:          calc(0.9375rem + 0.015vw);
+$font-size-xl:          calc(1rem + 0.04vw);
+$font-size-2xl:         calc(1rem + 0.21vw);
+$font-size-3xl:         calc(1rem + 0.35vw);
 
 // ── Spacing ──────────────────────────────────────────────────────────────
-$space-1:   4px;
-$space-2:   8px;
-$space-3:   12px;
-$space-4:   16px;
-$space-5:   20px;
-$space-6:   24px;
-$space-7:   28px;
-$space-8:   32px;
+$space-1:    0.25rem;
+$space-2:    0.5rem;
+$space-3:    0.75rem;
+$space-4:    1rem;
+$space-5:    1.25rem;
+$space-6:    1.5rem;
+$space-7:    1.75rem;
+$space-8:    2rem;
+$space-10:   2.5rem;
+$space-12:   3rem;
+$space-14:   3.5rem;
 
 // ── Radius ───────────────────────────────────────────────────────────────
-$radius-sm:   6px;
-$radius-md:   8px;
-$radius-lg:   10px;
-$radius-xl:   12px;
-$radius-2xl:  14px;
+$radius-sm:          0.375rem;
+$radius-md:          0.5rem;
+$radius-lg:          0.625rem;
+$radius-xl:          0.75rem;
+$radius-2xl:         0.875rem;
+$radius-btn:         1rem;
+$radius-btn-rounded: 2rem;
+$radius-card:        0.75rem;
+$radius-pill:        1.25rem;
 
 // ── Shadow ───────────────────────────────────────────────────────────────
 $shadow-card:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
@@ -90,4 +103,4 @@ $shadow-blue:   0 3px 10px rgba(26,58,143,.25);
 
 // ── Layout ───────────────────────────────────────────────────────────────
 $max-width:     1280px;
-$header-height: 64px;
+$header-height: 4rem;

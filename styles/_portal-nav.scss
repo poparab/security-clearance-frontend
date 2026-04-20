@@ -1,0 +1,60 @@
+// ══════════════════════════════════════════════════════════════════════════
+// PORTAL NAV — Body override + header/navbar overrides for portal pages
+// Loads over home.css. Uses !important where needed to override SCG styles.
+// ══════════════════════════════════════════════════════════════════════════
+
+/* ── Portal body ──────────────────────────────────────────────────────── */
+body.portal-page { background: $color-bg-page; padding-top: 76px; overflow-x: hidden; }
+body.portal-page * { box-sizing: border-box; }
+
+/* ── Header: always white sticky on portal pages ──────────────────────── */
+body.portal-page header {
+  position: fixed; top: 0; width: 100%; z-index: 1020;
+  background: $color-bg-card !important;
+  box-shadow: 0 2px 12px rgba(0,36,77,.08) !important;
+  transition: none;
+}
+body.portal-page header nav { padding: $space-3 0 !important; }
+body.portal-page header a.navbar-brand {
+  background-image: url('../img/logo.png') !important;
+  max-width: 200px; height: $space-14; margin-inline-start: $space-8;
+}
+body.portal-page header a.nav-link {
+  color: $color-primary-mid !important;
+  font-size: $font-size-lg; padding: $space-3 0.875rem !important;
+}
+body.portal-page header a.nav-link:hover,
+body.portal-page header a.nav-link:active,
+body.portal-page header a.nav-link:focus,
+body.portal-page header a.nav-link.active { color: $color-success !important; }
+body.portal-page header a.nav-link::before { background: $color-success !important; }
+body.portal-page header .language { color: $color-primary-mid !important; }
+body.portal-page header .language img.icon {
+  filter: drop-shadow(0 10000px 0 $color-primary-mid);
+  transform: translateY(-10000px);
+}
+body.portal-page header .language:hover,
+body.portal-page header .language:focus { color: $color-success !important; }
+body.portal-page header .language:hover img.icon,
+body.portal-page header .language:focus img.icon {
+  filter: drop-shadow(0 10000px 0 $color-success);
+  transform: translateY(-10000px);
+}
+@media (max-width: 991px) {
+  body.portal-page header a.navbar-brand { margin-inline-start: auto; }
+}
+
+/* ── Header CTA button (e.g. "طلب جديد") ─────────────────────────────── */
+.header-cta {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: $space-2 $space-5;
+  background: $color-success; color: $color-bg-card !important;
+  border-radius: $radius-btn-rounded; font-size: $font-size-md; font-weight: 500;
+  text-decoration: none !important; transition: background .27s ease;
+  white-space: nowrap; margin-inline-end: $space-4;
+}
+.header-cta:hover { background: $color-success-dark; color: $color-bg-card !important; }
+.header-cta i { font-size: $font-size-xs; }
+
+/* ── Portal footer override ───────────────────────────────────────────── */
+body.portal-page footer.footer { padding: $space-14 0 0; }

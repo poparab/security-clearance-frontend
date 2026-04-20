@@ -1,0 +1,104 @@
+// ══════════════════════════════════════════════════════════════════════════
+// PORTAL DETAIL — Detail card, status tracker, status cards row, batch meta
+// ══════════════════════════════════════════════════════════════════════════
+
+/* ── Detail card ──────────────────────────────────────────────────────── */
+.detail-card {
+  background: $color-bg-card; border: 1px solid $color-border-alt;
+  border-radius: $radius-card; overflow: hidden; margin-bottom: $space-6;
+}
+.detail-card .detail-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: $space-4 $space-5; border-bottom: 1px solid $color-border-subtle;
+}
+.detail-card .detail-header h3 { font-weight: 700; font-size: $font-size-lg; color: $color-primary-mid; margin: 0; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.detail-row {
+  display: flex; align-items: center; padding: 0.875rem $space-5;
+  border-bottom: 1px solid $color-border-subtle;
+}
+.detail-row:nth-child(odd) { background: #fafbfc; }
+.detail-row .detail-label {
+  font-weight: 500; font-size: $font-size-base; color: $color-text-muted;
+  min-width: 140px; flex-shrink: 0;
+}
+.detail-row .detail-value { font-weight: 500; font-size: $font-size-md; color: $color-text-strong; flex: 1; }
+
+/* ── Status tracker ───────────────────────────────────────────────────── */
+.status-tracker {
+  background: $color-bg-card; border: 1px solid $color-border-alt;
+  border-radius: $radius-card; padding: $space-6; margin-bottom: $space-6;
+}
+.status-tracker h3 {
+  font-weight: 700; font-size: $font-size-xl; color: $color-primary-mid;
+  margin-bottom: $space-6; display: flex; align-items: center; gap: $space-2;
+}
+.tracker-steps {
+  display: flex; align-items: flex-start; margin-bottom: $space-6; position: relative;
+}
+.tracker-step { flex: 1; text-align: center; position: relative; z-index: 1; }
+.tracker-step .step-icon {
+  width: $space-14; height: $space-14; border-radius: 50%;
+  margin: 0 auto $space-3; display: flex; align-items: center; justify-content: center;
+  font-size: $space-5; position: relative; z-index: 2;
+}
+.tracker-step .step-title { font-weight: 500; font-size: $font-size-base; color: $color-text-secondary; }
+.tracker-step .step-date  { font-size: $font-size-sm; color: $color-text-placeholder; margin-top: $space-1; }
+.tracker-line {
+  position: absolute; top: $space-7; left: 0; right: 0;
+  height: 3px; background: $color-border; z-index: 0; margin: 0 4rem;
+}
+.tracker-line .line-fill { height: 100%; background: $color-success; transition: width .4s ease; }
+
+/* Tracker step states */
+.tracker-step.ts-completed .step-icon {
+  background: $color-success-light; color: $color-success-text; border: 2px solid $color-success;
+}
+.tracker-step.ts-active .step-icon {
+  background: $color-primary; color: $color-bg-card; border: 2px solid $color-primary;
+  box-shadow: 0 0 0 4px rgba(0,95,204,.15);
+}
+.tracker-step.ts-pending .step-icon {
+  background: $color-bg-page; color: $color-text-placeholder; border: 2px solid $color-border;
+}
+.tracker-step.ts-rejected .step-icon {
+  background: $color-danger-light; color: $color-danger; border: 2px solid $color-danger;
+}
+
+/* ── Status cards row ─────────────────────────────────────────────────── */
+.status-cards-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: $space-3; margin-bottom: $space-6;
+}
+.status-phase-card {
+  background: $color-bg-alt; border: 1px solid $color-border-alt;
+  border-radius: $radius-lg; padding: $space-4; text-align: center;
+}
+.status-phase-card .spc-icon {
+  width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  margin: 0 auto $space-2; display: flex; align-items: center; justify-content: center;
+  font-size: $space-4;
+}
+.status-phase-card .spc-title { font-weight: 500; font-size: $font-size-base; color: $color-text-secondary; margin-bottom: $space-1; }
+.status-phase-card .spc-status { font-weight: 700; font-size: $font-size-sm; }
+.status-phase-card.spc-done     { border-color: $color-success-border; }
+.status-phase-card.spc-done     .spc-icon   { background: $color-success-light; color: $color-success-text; }
+.status-phase-card.spc-done     .spc-status { color: $color-success-text; }
+.status-phase-card.spc-active   { border-color: $color-primary-muted; }
+.status-phase-card.spc-active   .spc-icon   { background: $color-primary-subtle; color: $color-primary; }
+.status-phase-card.spc-active   .spc-status { color: $color-primary; }
+.status-phase-card.spc-pending  .spc-icon   { background: $color-bg-page; color: $color-text-placeholder; }
+.status-phase-card.spc-pending  .spc-status { color: $color-text-placeholder; }
+.status-phase-card.spc-rejected { border-color: $color-danger-border; }
+.status-phase-card.spc-rejected .spc-icon   { background: $color-danger-light; color: $color-danger; }
+.status-phase-card.spc-rejected .spc-status { color: $color-danger; }
+
+/* ── Batch metadata ───────────────────────────────────────────────────── */
+.batch-meta {
+  background: $color-bg-card; border: 1px solid $color-border-alt;
+  border-radius: $radius-card; padding: $space-5; margin-bottom: $space-6;
+}
+.batch-meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: $space-4 $space-8; }
+.batch-meta-item { display: flex; flex-direction: column; }
+.batch-meta-item .bm-label { font-size: $font-size-base; color: $color-text-muted; margin-bottom: $space-1; }
+.batch-meta-item .bm-value { font-weight: 700; font-size: $font-size-lg; color: $color-text-strong; }

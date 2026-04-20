@@ -1,0 +1,40 @@
+// ══════════════════════════════════════════════════════════════════════════
+// PORTAL BUTTONS — Action buttons and transaction badges
+// ══════════════════════════════════════════════════════════════════════════
+
+/* ── Back button ──────────────────────────────────────────────────────── */
+.btn-back {
+  display: inline-flex; align-items: center; gap: $space-2;
+  padding: $space-2 $space-4; background: $color-bg-card;
+  border: 1px solid $color-border; border-radius: $radius-md;
+  color: $color-text-secondary; font-weight: 500; font-size: $font-size-md;
+  cursor: pointer; transition: all .2s; text-decoration: none; margin-bottom: $space-4;
+}
+.btn-back:hover { background: $color-bg-alt; color: $color-text-strong; border-color: $color-primary; }
+
+/* ── Download button ──────────────────────────────────────────────────── */
+.btn-download {
+  display: inline-flex; align-items: center; gap: $space-2;
+  padding: 0.625rem $space-5; background: $color-primary; color: $color-bg-card;
+  border: none; border-radius: $radius-md; font-weight: 500; font-size: $font-size-md;
+  cursor: pointer; transition: background .2s; text-decoration: none;
+}
+.btn-download:hover { background: $color-primary-mid; color: $color-bg-card; }
+
+/* ── Add-new button ───────────────────────────────────────────────────── */
+.btn-add-new {
+  display: inline-flex; align-items: center; gap: $space-2;
+  padding: 0.625rem $space-5; background: $color-success; color: $color-bg-card;
+  border: none; border-radius: $radius-md; font-weight: 500; font-size: $font-size-md;
+  cursor: pointer; transition: background .2s; text-decoration: none;
+}
+.btn-add-new:hover { background: $color-success-dark; color: $color-bg-card; }
+
+/* ── Transaction type badges ──────────────────────────────────────────── */
+.txn-badge {
+  display: inline-flex; align-items: center; gap: $space-1;
+  padding: 0.125rem $space-2; border-radius: $space-1;
+  font-weight: 500; font-size: $font-size-sm;
+}
+.txn-debit  { background: $color-danger-light;  color: $color-danger-dark; }
+.txn-credit { background: $color-success-light; color: $color-success-text; }

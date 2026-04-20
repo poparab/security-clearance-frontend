@@ -1,0 +1,71 @@
+// ══════════════════════════════════════════════════════════════════════════
+// PORTAL DASHBOARD — Agency info bar and dashboard action cards
+// ══════════════════════════════════════════════════════════════════════════
+
+/* ── Agency info bar ──────────────────────────────────────────────────── */
+.agency-bar {
+  background: $color-bg-card; border-radius: $radius-card;
+  border: 1px solid $color-border-alt; padding: $space-5 $space-6;
+  display: flex; align-items: center; gap: $space-4; margin-bottom: $space-8;
+  box-shadow: 0 2px 8px rgba(0,36,77,.04);
+}
+.agency-bar .agency-icon {
+  width: 3.5rem; height: 3.5rem; flex-shrink: 0;
+  background: linear-gradient(135deg, $color-primary, $color-success);
+  border-radius: $radius-xl; display: flex; align-items: center; justify-content: center;
+  color: $color-bg-card; font-size: $space-6;
+}
+.agency-bar .agency-name { font-weight: 700; font-size: $font-size-2xl; color: $color-primary-mid; white-space: nowrap; }
+.agency-bar .agency-details { display: flex; gap: $space-3; flex-wrap: wrap; margin-inline-end: auto; }
+.agency-bar .agency-detail {
+  display: flex; flex-direction: column; align-items: center;
+  background: $color-bg-page; padding: $space-2 $space-4;
+  border-radius: $radius-md; min-width: 7.5rem;
+}
+.agency-bar .agency-detail .ad-label { font-size: $font-size-sm; color: $color-text-muted; margin-bottom: 0.125rem; }
+.agency-bar .agency-detail .ad-value { font-weight: 700; font-size: $font-size-base; color: $color-text-strong; }
+
+/* ── Dashboard action cards ───────────────────────────────────────────── */
+.dash-actions {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: $space-5; margin-bottom: $space-8;
+}
+.dash-action-card {
+  background: $color-bg-card; border: 2px solid $color-border;
+  border-radius: $radius-card; padding: $space-6; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0.625rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.dash-action-card:hover { box-shadow: 0 4px 16px rgba(0,36,77,.08); }
+.dash-action-card .dac-icon {
+  width: 3.25rem; height: 3.25rem; border-radius: $radius-xl;
+  display: flex; align-items: center; justify-content: center;
+  font-size: $space-5; color: $color-bg-card;
+}
+.dash-action-card .dac-title { font-weight: 700; font-size: $font-size-lg; color: $color-text-strong; }
+.dash-action-card .dac-desc  { font-size: $font-size-base; color: $color-text-muted; line-height: 1.6; }
+.dash-action-card .dac-btn {
+  margin-top: auto; display: inline-flex; align-items: center; gap: 0.375rem;
+  padding: $space-2 $space-5; border-radius: $radius-md; font-weight: 700;
+  font-size: $font-size-md; text-decoration: none; color: $color-bg-card;
+  border: none; cursor: pointer; transition: filter .2s;
+}
+.dash-action-card .dac-btn:hover { filter: brightness(.92); color: $color-bg-card; }
+/* Color variants */
+.dash-action-card.dac-teal  { border-color: $color-tertiary; }
+.dash-action-card.dac-teal  .dac-icon { background: $color-tertiary; }
+.dash-action-card.dac-teal  .dac-btn  { background: $color-tertiary; }
+.dash-action-card.dac-green { border-color: $color-success; }
+.dash-action-card.dac-green .dac-icon { background: $color-success; }
+.dash-action-card.dac-green .dac-btn  { background: $color-success; }
+.dash-action-card.dac-blue  { border-color: $color-primary; }
+.dash-action-card.dac-blue  .dac-icon { background: $color-primary; }
+.dash-action-card.dac-blue  .dac-btn  { background: $color-primary; }
+/* Wallet balance card */
+.dash-action-card.dac-wallet { border-color: $color-success; }
+.dash-action-card.dac-wallet .dac-icon { background: linear-gradient(135deg, $color-success, $color-success-dark); }
+.dash-action-card .dac-balance {
+  font-weight: 800; font-size: calc(1.125rem + 0.65vw); color: $color-primary-mid;
+  line-height: 1; direction: ltr;
+}
+.dash-action-card .dac-balance-label { font-size: $font-size-md; color: $color-text-muted; }

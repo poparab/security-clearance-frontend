@@ -1,0 +1,224 @@
+// ══════════════════════════════════════════════════════════════════════════
+// REGISTRATION — Styles for registration.html (split-screen multi-step form)
+// ══════════════════════════════════════════════════════════════════════════
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { display: flex; min-height: 100vh; overflow: hidden; }
+
+/* ── Left hero panel ──────────────────────────────────────────────────── */
+.hero {
+  flex: 0 0 57%; background: $hero-gradient;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(50,120,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(50,120,255,.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -100px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,100,255,.18) 0%, transparent 65%);
+  border-radius: 50%;
+}
+
+/* ── Right form panel ─────────────────────────────────────────────────── */
+.panel { flex: 0 0 43%; background: $color-bg-card; display: flex; flex-direction: column; overflow-y: auto; max-height: 100vh; }
+.panel-inner { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: $space-8 2.75rem; min-height: 100%; }
+.panel::-webkit-scrollbar { width: 3px; }
+.panel::-webkit-scrollbar-thumb { background: $color-text-subtle; border-radius: $space-1; }
+
+/* ── Logo row ─────────────────────────────────────────────────────────── */
+.logo-row { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-bottom: $space-6; }
+.logo-text h1 { font-size: $font-size-lg; font-weight: 700; color: $color-text-strong; line-height: 1.3; text-align: right; }
+.logo-text p  { font-size: $font-size-sm; color: $color-text-placeholder; text-align: right; }
+.logo-icon {
+  width: 3rem; height: 3rem; flex-shrink: 0;
+  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  border-radius: $radius-xl; display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Step pips ────────────────────────────────────────────────────────── */
+.pips { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 5px; }
+.pip { width: 8px; height: 8px; border-radius: 50%; background: $color-border; transition: all .3s; }
+.pip.cur  { width: 24px; border-radius: $space-1; background: $color-primary-mid; }
+.pip.done { background: $color-success; }
+.pip-lbl  { text-align: center; font-size: $font-size-sm; color: $color-text-placeholder; margin-bottom: 18px; }
+
+/* ── Step heading ─────────────────────────────────────────────────────── */
+.heading { text-align: right; margin-bottom: 20px; }
+.heading h2 { font-size: calc(1rem + 0.35vw); font-weight: 800; color: $color-text-primary; margin-bottom: 3px; }
+.heading p  { font-size: $font-size-base; color: $color-text-placeholder; line-height: 1.6; }
+
+/* ── Tabs ─────────────────────────────────────────────────────────────── */
+.tabs { display: flex; background: $color-bg-page; border-radius: $radius-xl; padding: $space-1; gap: $space-1; margin-bottom: 20px; }
+.tab {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 10px $space-2; border-radius: 9px; border: none; cursor: pointer;
+  font-size: calc(0.875rem + 0.01vw); font-weight: 600;
+  transition: all .2s; background: transparent; color: $color-text-muted;
+}
+.tab.active { background: $color-primary-mid; color: $color-bg-card; box-shadow: 0 3px 10px rgba(0,95,204,.35); }
+.tab i { font-size: $font-size-base; }
+
+/* ── Form fields ──────────────────────────────────────────────────────── */
+.field { margin-bottom: 13px; }
+.field-row { display: flex; gap: 10px; margin-bottom: 13px; }
+.field-row .field { flex: 1; margin-bottom: 0; }
+.wrap { position: relative; display: flex; align-items: center; }
+.inp {
+  width: 100%; height: 48px;
+  background: $color-bg-alt; border: 1.5px solid $color-border-card;
+  border-radius: $radius-btn;
+  padding: 0 44px 0 14px;
+  font-size: calc(0.875rem + 0.01vw); color: $color-text-strong; direction: rtl; outline: none;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.inp::placeholder { color: #b0bec5; font-size: $font-size-base; }
+.inp:focus { border-color: $color-primary; background: $color-bg-card; box-shadow: 0 0 0 3px rgba(0,140,255,.1); }
+.inp.err { border-color: #f87171; background: $color-danger-bg; }
+.inp.ok  { border-color: #7fd68a; }
+/* icon right (semantic) */
+.ir { position: absolute; right: 14px; color: $color-text-placeholder; font-size: $font-size-lg; pointer-events: none; }
+/* icon / button left (eye toggle) */
+.il { position: absolute; left: 13px; color: $color-text-placeholder; font-size: $font-size-md; background: none; border: none; padding: 0; cursor: pointer; line-height: 1; }
+.il:hover { color: $color-text-secondary; }
+.has-eye { padding-left: 38px; }
+
+/* error text */
+.em { font-size: $font-size-sm; color: #ef4444; margin-top: $space-1; padding-inline-end: $space-1; display: none; }
+.em.show { display: block; }
+
+/* ── Country code + mobile ────────────────────────────────────────────── */
+.cc-row { display: flex; gap: $space-2; }
+.cc {
+  height: 48px; min-width: 86px; flex-shrink: 0;
+  background: $color-bg-alt; border: 1.5px solid $color-border-card;
+  border-radius: $radius-btn; padding: 0 $space-2; font-size: $font-size-base;
+  color: $color-text-strong; outline: none; cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%2394a3b8' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: left 6px center;
+}
+.cc:focus { border-color: $color-primary; box-shadow: 0 0 0 3px rgba(0,140,255,.1); }
+
+/* ── File upload zone ─────────────────────────────────────────────────── */
+.upload-zone {
+  width: 100%; min-height: 80px;
+  background: $color-bg-alt; border: 1.5px dashed $color-border-strong;
+  border-radius: $radius-btn; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px; cursor: pointer; transition: all .2s; padding: 14px;
+}
+.upload-zone:hover, .upload-zone.drag { background: $color-primary-light; border-color: $color-primary; }
+.upload-zone.has-file { background: $color-success-bg; border-color: #7fd68a; border-style: solid; }
+.upload-zone.err-zone { border-color: #f87171; background: $color-danger-bg; }
+.upload-zone i { font-size: 22px; color: $color-text-placeholder; }
+.upload-zone.has-file i { color: $color-success; }
+.upload-zone p { font-size: $font-size-base; color: $color-text-muted; text-align: center; }
+.upload-zone .sub  { font-size: $font-size-sm; color: $color-text-placeholder; }
+.upload-zone .fname { font-size: $font-size-base; color: #2d7a26; font-weight: 600; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Password strength ────────────────────────────────────────────────── */
+.str-row { display: flex; gap: $space-1; margin-top: 6px; }
+.str-bar  { flex: 1; height: 3px; border-radius: $space-1; background: $color-border; transition: background .3s; }
+.str-hint { font-size: $font-size-sm; color: $color-text-placeholder; margin-top: $space-1; }
+
+/* ── Pending info box ─────────────────────────────────────────────────── */
+.info-box {
+  background: $color-warning-bg; border: 1.5px solid $color-warning-border;
+  border-radius: $radius-btn; padding: 12px 14px;
+  display: flex; align-items: flex-start; gap: 10px; margin-bottom: 18px;
+}
+.info-box i { color: $color-warning; font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+.info-box p { font-size: $font-size-base; color: $color-warning-deep; line-height: 1.7; text-align: right; }
+
+/* ── Main button ──────────────────────────────────────────────────────── */
+.btn {
+  width: 100%; height: 50px; background: $color-primary-mid; color: $color-bg-card;
+  border: none; border-radius: $radius-btn; font-size: $font-size-lg; font-weight: 700;
+  cursor: pointer; transition: background .2s, box-shadow .2s, transform .15s;
+  box-shadow: 0 4px 16px rgba(0,95,204,.3); margin-bottom: 16px;
+}
+.btn:hover { background: #003066; box-shadow: 0 6px 20px rgba(0,95,204,.4); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+/* ── OR divider + social ──────────────────────────────────────────────── */
+.or { display: flex; align-items: center; gap: 12px; font-size: $font-size-base; color: $color-text-placeholder; margin-bottom: 13px; }
+.or::before, .or::after { content: ''; flex: 1; height: 1px; background: $color-border-alt; }
+.soc { display: flex; gap: 10px; margin-bottom: 16px; }
+.sbtn {
+  flex: 1; height: 46px; display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: $color-bg-card; border: 1.5px solid $color-border-card;
+  border-radius: $radius-btn; font-size: $font-size-base; font-weight: 500; color: $color-text-table;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sbtn:hover { background: $color-bg-alt; border-color: #c0cad8; }
+
+/* ── Bottom link ──────────────────────────────────────────────────────── */
+.bl { text-align: center; font-size: $font-size-base; color: $color-text-muted; }
+.bl a { color: $color-primary; font-weight: 600; text-decoration: none; }
+.bl a:hover { text-decoration: underline; }
+
+/* ── OTP boxes ────────────────────────────────────────────────────────── */
+.otp-row { display: flex; justify-content: center; gap: $space-2; direction: ltr; margin-bottom: 6px; }
+.otp {
+  width: 48px; height: 54px; text-align: center; font-size: 22px; font-weight: 700;
+  border: 1.5px solid $color-border-card; border-radius: $radius-btn;
+  background: $color-bg-alt; color: $color-text-strong; outline: none; transition: all .2s;
+}
+.otp:focus  { border-color: $color-primary; background: $color-bg-card; box-shadow: 0 0 0 3px rgba(0,140,255,.1); }
+.otp.filled { border-color: $color-primary; background: $color-primary-light; }
+.otp.shake  { animation: shake .4s; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-5px)} 40%,80%{transform:translateX(5px)} }
+
+/* ── Success card ─────────────────────────────────────────────────────── */
+.scard {
+  background: $color-success-bg; border: 1.5px solid $color-success-border;
+  border-radius: $radius-btn; padding: 11px 14px;
+  display: flex; align-items: flex-start; gap: 10px; margin-bottom: 18px;
+}
+.scard i      { color: $color-success; font-size: 18px; margin-top: 1px; }
+.scard strong { font-size: $font-size-base; color: #2d7a26; display: block; }
+.scard span   { font-size: $font-size-sm; color: $color-success-dark; }
+
+/* ── End screens (success / pending) ─────────────────────────────────── */
+.end-screen { text-align: center; padding: 10px 0; }
+.end-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 36px; }
+.end-screen h2 { font-size: calc(1rem + 0.35vw); font-weight: 800; color: $color-text-primary; margin-bottom: $space-2; }
+.end-screen p  { font-size: $font-size-base; color: $color-text-muted; line-height: 1.8; margin-bottom: $space-6; }
+.end-detail {
+  background: $color-bg-alt; border: 1px solid $color-border;
+  border-radius: $radius-btn; padding: 14px 16px; margin-bottom: 20px; text-align: right;
+}
+.end-detail .row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid $color-border-subtle; }
+.end-detail .row:last-child { border-bottom: none; }
+.end-detail .lbl { font-size: $font-size-base; color: $color-text-placeholder; }
+.end-detail .val { font-size: $font-size-base; font-weight: 600; color: $color-text-table; }
+
+/* ── Terms row ────────────────────────────────────────────────────────── */
+.terms-row { display: flex; align-items: flex-start; gap: $space-2; margin-bottom: 16px; }
+.terms-row p { font-size: $font-size-base; color: $color-text-muted; flex: 1; line-height: 1.7; text-align: right; }
+.terms-row input { margin-top: 3px; width: 15px; height: 15px; accent-color: $color-primary; cursor: pointer; flex-shrink: 0; }
+
+.hidden { display: none !important; }
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  body { flex-direction: column; overflow: auto; }
+  .hero { display: none; }
+  .panel { flex: 1 1 100%; max-height: none; }
+  .panel-inner { padding: $space-6 $space-5; }
+  .field-row { flex-wrap: wrap; }
+  .field-row .field { flex: 1 1 100%; }
+}
+@media (max-width: 480px) {
+  .panel-inner { padding: $space-4 14px; }
+  .heading h2 { font-size: calc(1rem + 0.15vw); }
+  .soc { flex-direction: column; }
+  .otp-row input { width: 38px; height: 42px; font-size: 18px; }
+}

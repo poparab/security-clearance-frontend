@@ -1,0 +1,51 @@
+// ══════════════════════════════════════════════════════════════════════════
+// PORTAL RESPONSIVE — Breakpoint overrides for all portal components
+// Breakpoints match SCG/portal spec: 991px, 767px, 575px
+// ══════════════════════════════════════════════════════════════════════════
+
+@media (max-width: 991px) {
+  .stat-cards        { grid-template-columns: repeat(2, 1fr) !important; }
+  .quick-stats       { grid-template-columns: repeat(2, 1fr); }
+  .wallet-stats      { grid-template-columns: repeat(2, 1fr); }
+  .filter-bar        { flex-direction: column; }
+  .detail-grid       { grid-template-columns: 1fr; }
+  .batch-meta-grid   { grid-template-columns: 1fr 1fr; }
+  .status-cards-row  { grid-template-columns: repeat(2, 1fr); }
+  .dash-actions      { grid-template-columns: repeat(2, 1fr); }
+  .agency-bar        { flex-wrap: wrap; }
+  .agency-bar .agency-details { width: 100%; margin-inline-end: 0; }
+  body.portal-page header a.navbar-brand { margin-inline-start: auto; }
+  .data-table-card   { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .data-table        { min-width: 640px; }
+}
+
+@media (max-width: 767px) {
+  .portal-hero { padding: $space-5 0; }
+  .portal-hero h1 { font-size: $space-5; }
+  .portal-hero p  { font-size: 0.8rem; }
+  .agency-bar { flex-direction: column; align-items: flex-start; gap: $space-3; padding: $space-4; }
+  .agency-bar .agency-details { flex-direction: column; gap: $space-2; }
+  .agency-bar .agency-detail  { min-width: auto; }
+  .section-header h2 { font-size: $space-4; }
+  .dash-action-card .dac-icon { width: 2.75rem; height: 2.75rem; font-size: $space-4; }
+  .stat-card .stat-number { font-size: $space-6; }
+  .filter-group { min-width: auto !important; width: 100%; }
+  .filter-group input,
+  .filter-group select { width: 100% !important; max-width: none; }
+}
+
+@media (max-width: 575px) {
+  .stat-cards        { grid-template-columns: 1fr !important; }
+  .quick-stats       { grid-template-columns: 1fr 1fr; }
+  .wallet-stats      { grid-template-columns: 1fr; }
+  .batch-meta-grid   { grid-template-columns: 1fr; }
+  .table-pagination  { flex-direction: column; gap: $space-3; }
+  .status-cards-row  { grid-template-columns: 1fr 1fr; }
+  .dash-actions      { grid-template-columns: 1fr; }
+  .data-table th,
+  .data-table td     { padding: $space-2 0.625rem; font-size: $font-size-sm; }
+  .portal-breadcrumb { font-size: $font-size-sm; }
+  body.portal-page   { padding-top: 60px; }
+  .action-icons      { gap: $space-1; }
+  .action-icon       { width: 1.75rem; height: 1.75rem; font-size: 0.7rem; }
+}
