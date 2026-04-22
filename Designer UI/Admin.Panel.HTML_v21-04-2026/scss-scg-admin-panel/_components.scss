@@ -1,0 +1,214 @@
+//// **- Message Signs **- ////
+.status-sign {display: flex; justify-content: center; align-items: center; width: $size-64; height: $size-64; margin: $size-24 auto; padding: $size-8; border-radius: $radius-50;
+	i {font-size: $size-28;}
+	img {display: table; width: auto; height: 100%; max-height: $size-24; margin: auto; padding: 0;}
+}
+.status-sign.success {background: $secondaryColor-100; box-shadow: 0 0 0 $size-10 $secondaryColor-50; color: $secondaryColor;}
+.status-sign.warning {background: $warningColor-100; box-shadow: 0 0 0 $size-10 $warningColor-25; color: $warningColor;}
+.status-sign.danger {background: $dangerColor-50; box-shadow: 0 0 0 $size-10 $dangerColor-25; color: $dangerColor;}
+
+
+//// **- Widjets Styles -** ////
+.widjets {display: block;
+	.neutral-widjet, .info-widjet, .warning-widjet, .success-widjet, .danger-widjet {display: block; padding: $size-14 $size-14 $size-24; height: 100%; border: $size-1 solid; border-radius: $radius-16 $size-40 $radius-16 $radius-16; font-size: $font-size-16; font-family: Tajawal-Medium;
+		.widjet-header {display: block; margin-bottom: $size-12;
+//			@media (max-width: 1199px) {margin-bottom: $size-12;}
+			.icon {display: flex; justify-content: center; align-items: center; width: $size-56; height: $size-56; border-radius: $size-16 $size-32 0 $size-16;
+				img {@include white-icon; width: auto; height: 100%; max-height: $size-32;}
+				i {font-size: $font-size-32; color: $whiteColor;}
+			}
+		}
+		.widjet-body {line-height: $size-22; text-align: center;
+			.number {direction: ltr; font-size: $size-40; font-family: Tajawal-Bold; margin-bottom: $size-16;}
+			.text {font-size: $font-size-18;}
+			span {font-family: Tajawal-Regular; font-size: $font-size-12;}
+		}
+		.widjet-footer {display: flex; justify-content: center; align-items: center;
+			.btn {display: inline-block;}
+		}
+	}
+	
+	.info-widjet {background: $tertiaryColor-50; border-color: $tertiaryColor-300; color: $primaryColor-600;
+		.icon {background: $tertiaryColor;}
+	}
+	.warning-widjet {background: $warningAlertColor; border-color: $warningAlertBorderColor; color: $warningAlertTextColor;
+		.icon {background: $warningColor;}
+	}
+	.success-widjet {background: $successAlertColor; border-color: $successAlertBorderColor; color: $successAlertTextColor;
+		.icon {background: $successColor;}
+	}
+	.danger-widjet {background: $dangerAlertColor; border-color: $dangerAlertBorderColor; color: $dangerColor;
+		.icon {background: $dangerColor;}
+	}
+	
+	.neutral-widjet {background: $whiteColor; border-color: $primaryColor-100; color: $primaryColor;}
+	.neutral-widjet.blue {color: $primaryColor-600;	.icon {background: $tertiaryColor;}	.number {color: $tertiaryColor;} }
+	.neutral-widjet.success {color: $primaryColor-600;	.icon {background: $successColor;}	.number {color: $successAlertTextColor;} }
+	.neutral-widjet.warning {color: $primaryColor-600;	.icon {background: $warningColor;}	.number {color: $warningAlertTextColor;} }
+	.neutral-widjet.danger {color: $primaryColor-600;	.icon {background: $dangerColor;}	.number {color: $dangerColor;} }
+}
+
+/* Widjets Theme 02 Styles */
+.widjets-theme-2 {position: relative; display: block;
+	.neutral-widjet, .info-widjet, .warning-widjet, .success-widjet, .danger-widjet {display: flex; column-gap: $size-6; padding: $size-14; height: 100%; border: $size-1 solid; border-radius: $radius-16; font-size: $font-size-14; font-family: Tajawal-Bold;
+		.widjet-header {display: block; margin-bottom: $size-12;}
+		.widjet-body {display: flex; flex-wrap: wrap; gap: $size-10;  justify-content: flex-start; align-items: flex-start; line-height: $size-22;
+			.icon {display: flex; justify-content: center; align-items: center; width: $size-56; height: $size-56; border-radius: $radius-16;
+				img {@include white-icon; width: auto; height: 100%; max-height: $size-32;}
+				i {font-size: $font-size-32; color: $whiteColor;}
+			}
+			.content {position: relative; display: grid; text-align: start;
+				.number {direction: ltr; text-align-last: right; font-size: $size-32; font-family: Tajawal-Bold; margin-bottom: $size-8;}
+				span {font-family: Tajawal-Regular; font-size: $font-size-12;}
+			}
+			.widjet-footer {display: flex; justify-content: center; align-items: center;	.btn {display: inline-block;} 	}
+		}
+	}
+	
+	.info-widjet {background: $tertiaryColor-50; border-color: $tertiaryColor-300; color: $primaryColor-600;
+		.icon {background: $tertiaryColor;}
+	}
+	.warning-widjet {background: $warningAlertColor; border-color: $warningAlertBorderColor; color: $warningAlertTextColor;
+		.icon {background: $warningColor;}
+	}
+	.success-widjet {background: $successAlertColor; border-color: $successAlertBorderColor; color: $successAlertTextColor;
+		.icon {background: $successColor;}
+	}
+	.danger-widjet {background: $dangerAlertColor; border-color: $dangerAlertBorderColor; color: $dangerColor;
+		.icon {background: $dangerColor;}
+	}
+	
+	.neutral-widjet {background: $whiteColor; border-color: $primaryColor-100; color: $primaryColor;}
+	.neutral-widjet.blue {color: $tertiaryColor;		.icon {background: $tertiaryColor;} 	.number {color: $tertiaryColor;}  }
+	.neutral-widjet.success {color: $successAlertTextColor;		.icon {background: $successColor;}		.number {color: $successAlertTextColor;}  }
+	.neutral-widjet.warning {color: $warningAlertTextColor;		.icon {background: $warningColor;}		.number {color: $warningAlertTextColor;}  }
+	.neutral-widjet.danger {color: $dangerColor;	.icon {background: $dangerColor;} 	.number {color: $dangerColor;}  }
+}
+		
+
+//// **- Status Styles -** ////
+.status-created, .status-pending, .status-approved, .status-rejected {display: inline-flex; width: auto; align-items: center; column-gap: $size-5; height: $size-26; padding: $size-2 $size-2 $size-2 $size-12; border: $size-1 solid; border-radius: $radius-16; font: normal normal normal $font-size-11 Tajawal-Bold; line-height: $size-24;
+	.icon {display: inline-flex; justify-content: center; align-items: center; width: $size-18; height: $size-18; padding: $size-3; border-radius: $radius-50;
+		i {color: $whiteColor; font-size: $size-10;}
+		img {@include white-icon; width: auto; height: 100%; max-height: $size-18;}
+	}
+}
+.status-created {background: $tertiaryColor-50; border-color: $tertiaryColor-300; color: $primaryColor-600;		.icon {background: $primaryColor} }
+.status-pending {background: $warningAlertColor; border-color: $warningAlertBorderColor; color: $warningAlertTextColor; 	.icon {background: $warningColor} }
+.status-approved {background: $successAlertColor; border-color: $successAlertBorderColor; color: $successAlertTextColor;	.icon {background: $successColor} }
+.status-rejected {background: $dangerAlertColor; border-color: $dangerAlertBorderColor; color: $dangerColor;	.icon {background: $dangerColor;} }
+
+// Status Lamp Styles //
+.status-blue-lamp, .status-active-lamp, .status-warning-lamp, .status-danger-lamp {display: flex; align-items: center; gap: $size-8; width: auto; height: $size-26; padding: 0; font: normal normal normal $font-size-11 Tajawal-Bold; line-height: $size-24;
+	.lamp {display: inline-flex; width: $size-12; height: $size-12; border-radius: $radius-50;}
+}
+.status-blue-lamp {color: $tertiaryColor;	.lamp {background: $tertiaryColor; box-shadow: 0 0 0 $size-3 $tertiaryColor-200;}	}
+.status-active-lamp {color: $successColor;	.lamp {background: $successColor; box-shadow: 0 0 0 $size-3 $secondaryColor-200;}	}
+.status-warning-lamp {color: $warningColor;	.lamp {background: $warningColor; box-shadow: 0 0 0 $size-3 $warningColor-200;} }
+.status-danger-lamp {color: $dangerColor;	.lamp {background: $dangerColor; box-shadow: 0 0 0 $size-3 $dangerColor-200;} }
+
+// Status Solid Styles //
+.status-blue-solid, .status-active-solid, .status-warning-solid, .status-danger-solid, .status-disabled-solid {display: inline-flex; align-items: baseline; gap: $size-8; width: auto; height: $size-20; padding: $size-1 $size-12; font: normal normal normal $font-size-11 Tajawal-Bold; color: $whiteColor; line-height: $size-16; border-radius: $radius-16;}
+.status-blue-solid {background: $tertiaryColor;}
+.status-active-solid {background: $successColor;}
+.status-warning-solid {background: $warningColor;}
+.status-danger-solid {background: $dangerColor;}
+.status-disabled-solid {background: $primaryColor-100; color: $primaryColor-400;}
+
+
+//// **- Grid Styles -** ////
+table.custom-grid {white-space: nowrap; margin: 0; font-size: $font-size-14;
+	thead, tbody, tfoot {border-radius: $standard-radius !important;}
+	thead {background: $primaryColor-100 !important;
+		th {background-color: transparent; color: $primaryColor-700; font-family: Tajawal-Regular; padding: $size-8 $size-12;}
+	}
+//	th {color: $primaryColor-700; font-family: Tajawal-Regular; padding: $size-8;
+//		&:nth-of-type(2n+2) {background: color(blueColor-light_5);}
+//	}
+	td {padding: $size-6 $size-12; color: $primaryColor-600;}
+	.grid-options-btn {display: inline-block; font-size: 1.25em; opacity: .7; margin-left: .1em;
+		&:hover {opacity: 1;}
+	}
+	p {font-size: $font-size-14 !important; margin: 0; clear: both;}
+	.edit-icon, .delete-icon, .view-icon {font-size: $font-size-15; opacity: .55;
+		&:hover, &:focus {opacity: 1;}
+	}
+	.edit-icon {color: $secondaryColor;}
+	.delete-icon {color: $dangerColor;}
+	.view-icon {color: $tertiaryColor;}
+
+	
+	> :not(caption) > * > * {background: none; box-shadow: none; border-bottom: $size-1 solid $primaryColor-100;}
+	> tbody > tr:nth-of-type(2n+1) > * {background: $whiteColor;}
+	> tbody > tr:nth-of-type(2n) > * {background: $primaryColor-50;}
+	
+	> tbody > tr:nth-of-type(2n) {background: $primaryColor-25 !important;}
+	
+	tr.highlighted {background: color(tbHighlighted);
+		td {color: color(blueColor-dark) !important; font-size: .92em; font-weight: bold;}
+	}
+	tfoot {background: $primaryColor-100 !important;
+		tr {border: hidden !important;}
+		td {color: color(whiteColor) !important; padding: $size-6 $size-12;}
+		.br-left {border-left: $size-1 solid $primaryColor-100;}
+		
+		label.rows-number-title {margin-bottom: 0;}
+		select.rows-number {min-width: 115% !important; background-size: $font-size-11; background-position: left $size-6 center; padding: $size-6 $size-12 !important; font-size: $font-size-15 !important; border-radius: $standard-radius !important;}
+		
+		.pagination {padding: 0; margin: 0;
+			.active > .page-link {background: $primaryColor-400; color: $whiteColor;}
+			.disabled > .page-link {background: transparent; opacity: .75;}
+			.page-link {width: $size-36; background: $primaryColor-25; padding: 0 $size-4; margin: $size-3; border-color: $primaryColor-200; border-radius: $standard-radius; color: $primaryColor-300; text-align: center;
+				&:hover, &:focus, &:active, &.active {background: $primaryColor-400; color: $whiteColor; box-shadow: none;}
+				i {font-size: $font-size-12;}
+			}
+			
+		}
+	}
+}
+
+// Grid List Styles //
+table.custom-grid-list {white-space: nowrap; margin: 0; font: normal normal normal $font-size-13 Tajawal-Regular; border-collapse: separate; border-spacing: 0 $size-6;
+	thead, tfoot {background: none !important; background-color: transparent !important;}
+	th, td {background: $whiteColor !important; border-color: $primaryColor-100 !important; border-top: $size-1 solid; color: $primaryColor-600; line-height: $size-16; vertical-align: middle;
+		&:first-child {border-right: $size-1 solid; border-top-right-radius: $standard-radius; border-bottom-right-radius: $standard-radius;}
+		&:last-child {border-left: $size-1 solid; border-top-left-radius: $standard-radius; border-bottom-left-radius: $standard-radius;}
+	}
+	
+	th {font-family: Tajawal-medium; padding: $size-16 $size-12;}
+	td {padding: $size-10 $size-12;}
+	
+	p {font-size: $font-size-13 !important; margin: 0; clear: both;}
+	.text-bold {font-family: Tajawal-Bold, serif; font-weight: normal;}
+	
+	.grid-options-btn {display: inline-block; font-size: 1.25em; opacity: .7; margin-left: .1em;
+		&:hover {opacity: 1;}
+	}
+	.edit-icon, .delete-icon, .view-icon {font-size: $font-size-15; opacity: .55;
+		&:hover, &:focus {opacity: 1;}
+	}
+	.edit-icon {color: $secondaryColor;}
+	.delete-icon {color: $dangerColor;}
+	.view-icon {color: $tertiaryColor;}
+
+	tr.highlighted td {background: $tertiaryColor-50 !important; color: $tertiaryColor !important;}
+	
+	tfoot {background: none !important;
+		td {background: none !important; border: none !important; padding: $size-8 $size-12;}
+		.br-left {border-left: $size-1 solid $primaryColor-100;}
+		
+		label.rows-number-title {margin-bottom: 0;}
+		select.rows-number {min-width: 115% !important; background-size: $font-size-11; background-position: left $size-6 center; padding: $size-4 $size-12 !important; font-size: $font-size-15 !important; border-radius: $standard-radius !important;}
+		
+		.pagination {padding: 0; margin: 0;
+			.active > .page-link {background: $primaryColor-400; color: $whiteColor;}
+			.disabled > .page-link {background: transparent; opacity: .75;}
+			.page-link {width: $size-36; background: $whiteColor; padding: $size-6 $size-4; margin: $size-3; border-color: $primaryColor-200; border-radius: $standard-radius; color: $primaryColor-300; text-align: center;
+				&:hover, &:focus, &:active, &.active {background: $primaryColor-400; color: $whiteColor; box-shadow: none;}
+				i {font-size: $font-size-12;}
+			}
+			
+		}
+	}
+}
+

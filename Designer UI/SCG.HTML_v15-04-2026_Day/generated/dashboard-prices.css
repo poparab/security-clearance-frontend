@@ -1,0 +1,186 @@
+/* [ADDED] Page-only layout for Dashboard – Prices (sidebar + main); does not alter global tokens */
+
+.page-dashboard-prices {
+	min-height: 100vh;
+	background: #f4f6f9;
+}
+
+.page-dashboard-prices .dashboard-shell {
+	min-height: 100vh;
+}
+
+/* Sidebar — in-flow “push” layout (width animates; main column flexes) */
+.page-dashboard-prices .dashboard-sidebar {
+	/* [ADDED] flex-basis ties to width so flex sibling main shrinks when sidebar opens */
+	flex: 0 0 17.5rem;
+	width: 17.5rem;
+	max-width: 17.5rem;
+	background: #fff;
+	border-left: 1px solid #e8ecf1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	transition: flex-basis 0.2s ease, width 0.2s ease, max-width 0.2s ease, border-color 0.2s ease;
+}
+
+.page-dashboard-prices .dashboard-sidebar-brand {
+	padding: 1.25rem 1rem;
+	border-bottom: 1px solid #e8ecf1;
+}
+
+.page-dashboard-prices .dashboard-sidebar-brand img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.page-dashboard-prices .dashboard-sidebar-nav {
+	flex: 1 1 auto;
+	padding: 0.75rem 0.75rem 1rem;
+	overflow-y: auto;
+}
+
+.page-dashboard-prices .dashboard-sidebar-nav .nav-link {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	padding: 0.65rem 0.85rem;
+	border-radius: 0.65rem;
+	color: #1a2b4a;
+	font-size: 0.95rem;
+	margin-bottom: 0.25rem;
+}
+
+.page-dashboard-prices .dashboard-sidebar-nav .nav-link i {
+	width: 1.25rem;
+	text-align: center;
+	opacity: 0.85;
+}
+
+.page-dashboard-prices .dashboard-sidebar-nav .nav-link:hover {
+	background: #f0f4fa;
+	color: #005fcc;
+}
+
+.page-dashboard-prices .dashboard-sidebar-nav .nav-link.active {
+	background: #004799;
+	color: #fff !important;
+}
+
+.page-dashboard-prices .dashboard-sidebar-nav .nav-link.active i {
+	opacity: 1;
+}
+
+.page-dashboard-prices .dashboard-sidebar-footer {
+	padding: 0.75rem 1rem 1rem;
+	border-top: 1px solid #e8ecf1;
+}
+
+/* Main column */
+.page-dashboard-prices .dashboard-main {
+	min-width: 0;
+	background: #f4f6f9;
+}
+
+.page-dashboard-prices .dashboard-topbar {
+	background: #fff;
+	border-bottom: 1px solid #e8ecf1;
+	/* [ADDED] Sticky bar stays in document flow so content is not covered; z-index above page cards */
+	position: sticky;
+	top: 0;
+	z-index: 1020;
+	flex-shrink: 0;
+}
+
+/* [ADDED] Consistent tap target for header menu control after removing search */
+.page-dashboard-prices .dashboard-menu-btn {
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0;
+	border: 1px solid #e8ecf1;
+}
+
+.page-dashboard-prices .dashboard-avatar {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	object-fit: cover;
+	background: #e8ecf1;
+}
+
+.page-dashboard-prices .notif-badge .badge {
+	font-size: 0.65rem;
+	padding: 0.2em 0.45em;
+}
+
+/* [ADDED] Keep header utility cluster aligned (language / notifications / profile) */
+.page-dashboard-prices .dashboard-topbar-actions .language .icon {
+	vertical-align: middle;
+}
+
+/* [ADDED] Narrow screens: keep profile text in header without breaking the row */
+.page-dashboard-prices .dashboard-user-meta {
+	max-width: 10rem;
+}
+
+@media (max-width: 991.98px) {
+	/* [ADDED] Mobile default: sidebar width 0 until .sidebar-open (push, no overlay) */
+	.page-dashboard-prices .dashboard-shell:not(.sidebar-open) .dashboard-sidebar {
+		flex-basis: 0;
+		width: 0;
+		max-width: 0;
+		border-left-color: transparent;
+		border-left-width: 0;
+	}
+}
+
+@media (min-width: 992px) {
+	/* [ADDED] Desktop: sidebar open by default; .sidebar-collapsed pushes main content back */
+	.page-dashboard-prices .dashboard-shell.sidebar-collapsed .dashboard-sidebar {
+		flex-basis: 0;
+		width: 0;
+		max-width: 0;
+		border-left-color: transparent;
+		border-left-width: 0;
+	}
+}
+
+/* Status pill with dot (matches design: نشط / موقوف) */
+.page-dashboard-prices .price-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-family: Tajawal-Bold, sans-serif;
+	font-size: 0.75rem;
+}
+
+.page-dashboard-prices .price-status .dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.page-dashboard-prices .price-status.is-active .dot {
+	background: #4fb848;
+}
+
+.page-dashboard-prices .price-status.is-suspended .dot {
+	background: #f5a623;
+}
+
+.page-dashboard-prices .price-status.is-active {
+	color: #1a5c1a;
+}
+
+.page-dashboard-prices .price-status.is-suspended {
+	color: #8a5a00;
+}
+
+/* Table card wrapper */
+.page-dashboard-prices .dashboard-table-card {
+	background: #fff;
+	border-radius: 1rem;
+	border: 1px solid #e8ecf1;
+	padding: 1rem 1rem 0;
+}

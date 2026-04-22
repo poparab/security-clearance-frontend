@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>لوحة التحكم — نظام الموافقات الأمنية</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.rtl.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+	<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	<link href="dashboard-prices.css" rel="stylesheet" type="text/css">
+	<link href="dashboard-agencies-main.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+</head>
+<body class="page-dashboard-prices page-dashboard-agencies-main">
+
+<div class="dashboard-shell d-flex flex-row align-items-stretch min-vh-100">
+
+	<aside class="dashboard-sidebar" id="dashboardAgenciesMainSidebar" aria-label="القائمة الرئيسية">
+		<div class="dashboard-sidebar-brand">
+			<a class="d-inline-block" href="javascript:;">
+				<img src="../img/logo.png" width="200" height="48" alt="نظام الموافقات الأمنية — الشعار">
+			</a>
+		</div>
+		<nav class="dashboard-sidebar-nav">
+			<ul class="nav flex-column">
+				<li class="nav-item"><a class="nav-link active" href="javascript:;" aria-current="page"><i class="fa-solid fa-table-cells-large" aria-hidden="true"></i> لوحة التحكم</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> إدارة الطلبات</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-user" aria-hidden="true"></i> إدارة الأفراد</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-building-user" aria-hidden="true"></i> إدارة الوكلاء</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-users-gear" aria-hidden="true"></i> إدارة المستخدمين</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> التقارير</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-tags" aria-hidden="true"></i> إدارة الأسعار</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-coins" aria-hidden="true"></i> اللوحة المالية</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> المساعدة</a></li>
+			</ul>
+		</nav>
+		<div class="dashboard-sidebar-footer">
+			<a class="btn btn-light w-100 d-flex align-items-center justify-content-center gap-2" href="javascript:;">
+				<i class="fa-solid fa-power-off" aria-hidden="true"></i> تسجيل الخروج
+			</a>
+		</div>
+	</aside>
+
+	<div class="dashboard-main flex-grow-1 d-flex flex-column min-w-0">
+		<header class="dashboard-topbar py-3 px-3 px-lg-4">
+			<div class="d-flex flex-wrap align-items-center gap-3 justify-content-between">
+				<div class="d-flex align-items-center flex-shrink-0">
+					<button class="btn btn-light rounded-circle dashboard-menu-btn d-inline-flex align-items-center justify-content-center" type="button" id="dashboardMenuToggle" aria-expanded="true" aria-controls="dashboardAgenciesMainSidebar" aria-label="فتح وإغلاق القائمة">
+						<i class="fa-solid fa-bars" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div class="dashboard-search-box flex-grow-1">
+					<div class="input-group">
+						<span class="input-group-text bg-transparent border-start-0"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
+						<input type="search" class="form-control border-end-0" placeholder="ابحث هنا..." aria-label="ابحث هنا">
+					</div>
+				</div>
+
+				<div class="d-flex align-items-center flex-shrink-0 gap-2 gap-sm-3 dashboard-topbar-actions">
+					<a class="language text-decoration-none d-inline-flex align-items-center gap-1 primary-color lh-1 py-1" href="javascript:;" title="English">
+						<img class="icon" src="../icons/language.svg" alt=""><span class="small fw-medium">EN</span>
+					</a>
+					<div class="position-relative notif-badge d-inline-flex align-items-center">
+						<button type="button" class="btn btn-link p-1 text-primary lh-1" aria-label="الإشعارات">
+							<i class="fa-regular fa-bell fa-lg" aria-hidden="true"></i>
+						</button>
+						<span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger" aria-hidden="true">3</span>
+					</div>
+					<div class="d-flex align-items-center gap-2 flex-shrink-0">
+						<img class="dashboard-avatar flex-shrink-0" width="40" height="40"
+							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23cfd8e3' width='40' height='40'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23556' font-size='10' font-family='sans-serif'%3E%5B%D9%85%5D%3C/text%3E%3C/svg%3E"
+							alt="[PLACEHOLDER] صورة المستخدم — استبدل بأصل التصميم">
+						<div class="text-end lh-sm dashboard-user-meta">
+							<div class="fw-bold small mb-0 text-truncate">طلعت جادوا</div>
+							<div class="text-muted small text-truncate">مدير تنفيذي</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main class="flex-grow-1 px-3 px-lg-4 pb-4">
+			<section class="md-padding light-bg dash-overview-kpis">
+				<div class="container-fluid px-0">
+					<div class="widjets">
+						<div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-4 align-items-stretch">
+							<div class="col d-flex">
+								<div class="info-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">15,847</p>
+										<p class="text">إجمالي الطلبات</p>
+										<span>كل الطلبات المسجلة</span>
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="success-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-file-circle-check" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">14,134</p>
+										<p class="text">طلبات موافق عليها</p>
+										<span>بعد المراجعة</span>
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="warning-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-gear" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">794</p>
+										<p class="text">طلبات قيد المعالجة</p>
+										<span>قيد المتابعة</span>
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="danger-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-xmark" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">919</p>
+										<p class="text">طلبات مرفوضة</p>
+										<span>غير مكتملة</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="pt-4 pb-3">
+				<div class="container-fluid px-0">
+					<div class="row g-3">
+						<div class="col-lg-9">
+							<div class="standard-card standard-crad h-100 p-3 p-md-4">
+								<div class="card-header-underline">
+									<div class="card-title">
+										<img class="icon" src="../icons/reports.svg" alt="">
+										<h2 class="h5 mb-0">إتجاه حجم الطلبات (آخر 12 شهر)</h2>
+									</div>
+								</div>
+								<div class="dash-chart-placeholder" role="img" aria-label="[PLACEHOLDER] مخطط خطي — استبدل بمكتبة الرسوم البيانية">
+									<span>[PLACEHOLDER] مخطط إتجاه الحجم — يناير … ديسمبر</span>
+								</div>
+								<p class="text-muted small mt-2 mb-0 text-center">يناير · فبراير · مارس · أبريل · مايو · يونيو · يوليو · أغسطس · سبتمبر · أكتوبر · نوفمبر · ديسمبر</p>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="standard-card standard-crad h-100 p-3 p-md-4">
+								<div class="card-header-underline">
+									<div class="card-title">
+										<img class="icon" src="../icons/dashboard.svg" alt="">
+										<h2 class="h5 mb-0">توزيع حالات الطلبات</h2>
+									</div>
+								</div>
+								<div class="dash-donut-placeholder">
+									<div class="dash-donut-ring" aria-hidden="true">100%</div>
+									<div class="dash-donut-legend text-muted">
+										<div><span class="lg-ok" aria-hidden="true"></span>موافق عليها 78.8%</div>
+										<div><span class="lg-warn" aria-hidden="true"></span>قيد المعالجة 13.2%</div>
+										<div><span class="lg-bad" aria-hidden="true"></span>مرفوضة 7.9%</div>
+									</div>
+									<p class="small text-muted mb-0">[PLACEHOLDER] مخطط دائري — استبدل بمكتبة الرسوم البيانية</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="pt-2 pb-4">
+				<div class="container-fluid px-0">
+					<div class="row g-3">
+						<div class="col-lg-3">
+							<div class="standard-card standard-crad h-100 p-3 p-md-4">
+								<div class="card-header-underline">
+									<div class="card-title">
+										<img class="icon" src="../icons/calendar.svg" alt="">
+										<h2 class="h5 mb-0">متوسط وقت المعالجة</h2>
+									</div>
+								</div>
+								<div class="dash-stopwatch">
+									<div>
+										<div class="fs-5">2.3</div>
+										<div class="small text-muted">يوم عمل</div>
+									</div>
+								</div>
+								<div class="row g-2">
+									<div class="col-4">
+										<div class="dash-stat-mini bg-warning bg-opacity-25 text-dark">
+											<span class="lbl">الحد الأقصى</span>
+											<strong>3.1</strong>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="dash-stat-mini bg-success bg-opacity-25 text-dark">
+											<span class="lbl">المتوسط</span>
+											<strong>2.3</strong>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="dash-stat-mini bg-primary bg-opacity-10 text-dark">
+											<span class="lbl">الحد الأدنى</span>
+											<strong>1.8</strong>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-9">
+							<div class="standard-card standard-crad h-100 p-3 p-md-4">
+								<div class="card-header-underline">
+									<div class="card-title">
+										<img class="icon" src="../icons/flag.svg" alt="">
+										<h2 class="h5 mb-0">الطلبات حسب الجنسية (أعلى 10 دول)</h2>
+									</div>
+								</div>
+								<div class="dash-bars-placeholder" role="img" aria-label="[PLACEHOLDER] مخطط أعمدة — السعودية، الإمارات، الكويت، الأردن، لبنان، السودان، العراق، سوريا، اليمن، ليبيا">
+									<span class="align-self-center">[PLACEHOLDER] مخطط أعمدة للدول</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="pb-4">
+				<div class="container-fluid px-0">
+					<div class="row g-3">
+						<div class="col-md-4">
+							<div class="dash-insight is-warn">
+								<h4>أداء معالجة جيد</h4>
+								<p class="text-muted">متوسط وقت المعالجة 2.3 يوم عمل فقط</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="dash-insight is-ok">
+								<h4>معدل موافقة مرتفع</h4>
+								<p class="text-muted">89.2% من الطلبات تم الموافقة عليها بنجاح</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="dash-insight is-info">
+								<h4>زيادة في حجم الطلبات</h4>
+								<p class="text-muted">ارتفاع بنسبة 12.5% في إجمالي الطلبات مقارنة بالفترة السابقة</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</div>
+
+<script src="../js/jquery-4.0.0.min.js"></script>
+<script src="../js/bootstrap/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+	var shell = document.querySelector('.page-dashboard-agencies-main .dashboard-shell');
+	var toggle = document.getElementById('dashboardMenuToggle');
+	if (!shell || !toggle) return;
+
+	var mqDesktop = window.matchMedia('(min-width: 992px)');
+
+	function applyDefaultSidebarState() {
+		if (mqDesktop.matches) {
+			shell.classList.remove('sidebar-open');
+			shell.classList.remove('sidebar-collapsed');
+		} else {
+			shell.classList.remove('sidebar-collapsed');
+			shell.classList.remove('sidebar-open');
+		}
+		toggle.setAttribute('aria-expanded', mqDesktop.matches ? 'true' : 'false');
+	}
+
+	function onToggleClick() {
+		if (mqDesktop.matches) {
+			shell.classList.toggle('sidebar-collapsed');
+			toggle.setAttribute('aria-expanded', shell.classList.contains('sidebar-collapsed') ? 'false' : 'true');
+		} else {
+			shell.classList.toggle('sidebar-open');
+			toggle.setAttribute('aria-expanded', shell.classList.contains('sidebar-open') ? 'true' : 'false');
+		}
+	}
+
+	applyDefaultSidebarState();
+	mqDesktop.addEventListener('change', applyDefaultSidebarState);
+	toggle.addEventListener('click', onToggleClick);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+---
+alwaysApply: true
+---
+
+---
+description: Frontend slicing rule for converting approved designs into HTML using Bootstrap while preserving the current design system and SCSS architecture.
+alwaysApply: true
+---
+
+You are working on a front-end project where a reference HTML page, Bootstrap usage pattern, and SCSS/style structure already exist.
+
+You MUST strictly follow the existing design system, HTML structure, Bootstrap conventions, SCSS architecture, and project folder structure.
+
+========================
+1. DESIGN SYSTEM CONSISTENCY (STRICT)
+========================
+- The existing project design system is the single source of truth.
+- Do NOT redesign any UI element.
+- Do NOT introduce a new visual language.
+- Match the current system in:
+  - typography
+  - spacing
+  - colors
+  - alignment
+  - border radius
+  - shadows
+  - form styling
+  - button styling
+  - cards and tables
+- Any generated page must look like it belongs to the SAME product and SAME design system.
+
+========================
+2. BOOTSTRAP USAGE (MANDATORY)
+========================
+- Use Bootstrap best practices in structure and layout.
+- Prefer Bootstrap grid, utilities, spacing helpers, and responsive containers where appropriate.
+- Reuse Bootstrap components in a clean and standard way.
+- Do NOT misuse Bootstrap classes for purposes they were not intended for.
+- Do NOT overload HTML with unnecessary utility classes when existing project classes already solve the problem.
+- Keep Bootstrap usage maintainable, readable, and consistent with the current project style.
+
+Rules:
+- Prefer Bootstrap layout primitives first:
+  - container / container-fluid
+  - row / col-*
+  - g-* spacing where suitable
+  - d-flex / justify-content-* / align-items-* where suitable
+- Use custom classes only when Bootstrap alone is insufficient or when matching the current project pattern.
+- Do NOT replace existing project patterns with raw Bootstrap if the project already has a standardized wrapper/component structure.
+
+========================
+3. HTML STRUCTURE
+========================
+- Reuse the same layout structure already used in the project:
+  - page wrappers
+  - containers
+  - sections
+  - cards
+  - forms
+  - tables
+  - modal structure
+  - headers / footers / nav areas
+- Keep DOM clean, semantic, and consistent.
+- Do NOT introduce unnecessary wrappers or deeply nested div structures.
+- Use semantic HTML whenever possible.
+- Keep naming consistent with the current project conventions.
+
+========================
+4. EXISTING STYLES AND SCSS (CRITICAL)
+========================
+- Follow the existing SCSS structure strictly.
+- Reuse existing:
+  - variables
+  - mixins
+  - placeholders
+  - utility classes
+  - component classes
+  - layout classes
+- The current SCSS/style system must remain the foundation.
+- Do NOT duplicate styles that already exist.
+- Do NOT create a parallel styling system.
+- Do NOT change the current design system behavior unless explicitly requested.
+
+========================
+5. PAGE-LEVEL STYLING RULE (MANDATORY)
+========================
+- If a generated page needs additional styling not already covered by the current shared styles:
+  - you MAY create a page-specific SCSS file
+  - and/or a page-specific CSS file
+- These page-level files must be placed beside the generated HTML file in its folder.
+- Only add the MINIMAL required page-level styles.
+- Page-level styles must be small, targeted, and limited to the specific page.
+- Do NOT move shared design rules into page-level files.
+- Do NOT duplicate global styles into page-level files.
+- Do NOT create page-level files unless they are actually needed.
+
+Preferred approach:
+1. Reuse existing shared styles first
+2. Reuse Bootstrap utilities/components second
+3. Add minimal page-specific SCSS/CSS only if necessary
+
+========================
+6. SCSS MODIFICATION RULE (MANDATORY)
+========================
+- You ARE allowed to:
+  - add new styles
+  - extend existing styles
+  - make minimal updates to existing SCSS only when absolutely necessary
+
+- BUT:
+  - every addition MUST have a comment above it
+  - every modification MUST have a comment above it
+  - comments must clearly explain why the change was needed
+
+Examples:
+```scss
+// [ADDED] Page-specific spacing for security inquiry summary section
+.inquiry-summary {
+  margin-top: 1.5rem;
+}
+
+// [UPDATED] Align card header spacing with approved design reference
+.card-header {
+  padding: $spacing-md $spacing-lg;
+}

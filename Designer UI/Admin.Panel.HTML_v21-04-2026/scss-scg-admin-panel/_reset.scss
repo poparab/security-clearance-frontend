@@ -1,0 +1,223 @@
+html, body {padding: 0; margin: 0; overflow-x: hidden; cursor: default;}
+body {font-family: Tajawal-Regular, sans-serif; font-size: $font-size-16/*calc(1rem + .2vw)*/; line-height: $size-32; text-align: justify; color: $primaryColor-800;}
+//body {font: normal normal normal $size-20 Tajawal-Regular, sans-serif; line-height: $size-32; text-align: justify; color: $primaryColor-800;}
+
+//// **-- CONTAINER SIZES --** ////
+.container-sm-width {@media (max-width: 991px) {max-width: 540px; margin-right: auto; margin-left: auto;}}
+.container-md-width {@media (max-width: 1199px) {max-width: 720px; margin-right: auto; margin-left: auto;}}
+.container-lg-width {@media (max-width: 1399px) {max-width: 960px; margin-right: auto; margin-left: auto;}}
+/*- Container Stays Always In Fixed Size -*/
+.container-xs-stays, .container-sm-stays, .container-md-stays, .container-lg-stays {width: 100%; margin-right: auto; margin-left: auto;}
+.container-xs-stays {max-width: 368px;}
+.container-sm-stays {max-width: 568px;}
+.container-md-stays {max-width: 768px;}
+.container-lg-stays {max-width: 992px;}
+
+/// -- TEXT DIRECTION STYLES -- ///
+.text-dir-ltr {direction: ltr; text-align-last: right;}
+.text-dir-rtl {direction: rtl; text-align-last: left;}
+
+/// -- TEXT COLOR STYLES -- ///
+.primary-color {color: $primaryColor-600 !important;}
+.secondary-color {color: $secondaryColor !important;}
+.tertiary-color {color: $tertiaryColor !important;}
+.success-color {color: $secondaryColor !important;}
+.warning-color {color: $warningColor !important;}
+.danger-color {color: $dangerColor !important;}
+.gray-color {color: $neutralColor-400 !important;}
+.white-color {color: $neutralColor !important;}
+.dark-color {color: $neutralColor-700 !important;}
+.black-color {color: $neutralColor-1000 !important;}
+
+/// -- BACKGROUND COLOR STYLES -- ///
+.primary-bg {background: $primaryColor-600;}
+.secondary-bg {background: $secondaryColor;}
+.tertiary-bg {background: $tertiaryColor;}
+.light-bg {background: $primaryColor-25;}
+.light-medium-bg {background: $primaryColor-50;}
+.danger-alert-bg {background: $dangerAlertColor;}
+.gray-bg {background: $neutralColor-400;}
+.white-bg {background: $neutralColor;}
+.dark-bg {background: $neutralColor-700;}
+.black-bg {background: $neutralColor-1000;}
+
+/// -- BORDER COLOR STYLES -- ///
+.success-alert-br {border-color: $successAlertBorderColor !important;}
+.danger-alert-br {border-color: $dangerAlertBorderColor !important;}
+
+
+section, footer {width: 100%; padding: $size-40 0;
+	@media (max-width:1199px) {padding: $size-48 0;}
+}
+section.md-padding {padding: $size-24 0;
+	@media (max-width:991px) {padding: $size-16 0;}
+}
+section.sm-padding {padding: $size-16 0;
+	@media (max-width:991px) {padding: $size-8 0;}
+}
+
+
+/// -- TITLES STYLES -- ///
+h1, h2, h3, h4, h5, h6 {position: relative; font-family: Tajawal-Medium, sans-serif; color: $primaryColor-600;}
+h1.underline-title, h2.underline-title, h3.underline-title, h4.underline-title, h5.underline-title, h6.underline-title {margin-bottom: $size-16; padding-bottom: $size-16;
+	&::after {@include before-after; right: 0; bottom: 0; height: $size-4; width: $size-48; background: $secondaryColor;}
+}
+
+h1 {font-size: $font-size-40;}
+h2 {font-size: $font-size-32;}
+h3 {font-size: $font-size-22;}
+h4 {font-size: $font-size-18;}
+h5 {font-size: $font-size-16;}
+h6 {font-size: $font-size-14;}
+
+
+/// -- LINKS STYLES -- ///
+a {@include easeAnimation; text-decoration: none;}
+a.primary-link, a.secondary-link, a.tertiary-link, a.neutral-link {text-decoration: underline; font-size: $font-size-16;}
+a.primary-link {color: $primaryColor; &:hover {color: $primaryColor-300} }
+a.secondary-link {color: $secondaryColor; &:hover {color: $secondaryColor-300} }
+a.tertiary-link {color: $tertiaryColor; &:hover {color: $tertiaryColor-300} }
+a.neutral-link {color: $neutralColor; &:hover {color: $neutralColor-300} }
+a.dark-link {color: $neutralColor-800; &:hover {color: $neutralColor-600} }
+a.light-link {color: $neutralColor-25; &:hover {color: $whiteColor} }
+
+a.export-file {display: inline-flex; align-items: center; column-gap: $size-4; padding: 0; text-decoration: underline; font-size: inherit; color: $primaryColor;
+	img {@include dark-icon; @include easeAnimation; width: auto; height: 100%; max-height: $size-16;}
+	&:hover, &:focus {color: $secondaryColor;
+		img {@include secondary-icon;}
+	}
+}
+//a.text-link {text-decoration: underline; color: $tertiaryColor; font-size: $size-16;
+//	&:hover {color: $secondaryColor;}
+//}
+a img {border: none;}
+
+//// --** BUTTONS STYLES **-- ////
+
+// Colse Buttons Styles //
+.btn-x-xs, .btn-x-sm, .btn-x-md, .btn-x-lg .btn-x-xxl {position: relative; padding: 0; color: $primaryColor-200; font-family: Tajawal-Light; transform: rotate(45deg);
+	&:hover, &:active {color: $primaryColor-500;}
+	&::after {content: '+';}
+}
+.btn-x-xs {font-size: $size-24;} .btn-x-sm {font-size: $size-32;} .btn-x-md {font-size: $size-40;} .btn-x-lg {font-size: $size-64;} .btn-x-xxl {font-size: $size-96;}
+
+// Buttons //
+.btn-primary, .btn-secondary, .btn-tertiary {color: $whiteColor !important; 	i {color: $whiteColor !important;} 	}
+.btn-light, .btn-copy {color: $primaryColor-600;}
+
+.btn-primary, .btn-secondary, .btn-tertiary , .btn-light, .btn-white, .btn-back,
+.btn-primary-outline, .btn-secondary-outline, .btn-tertiary-outline, .btn-light-outline, .btn-white-outline, .btn-back-outline {border-radius: $standard-btn-radius;}
+
+.btn-primary, .btn-secondary, .btn-tertiary, .btn-light, .btn-white,
+.btn-primary-rounded, .btn-secondary-rounded, .btn-tertiary-rounded, .btn-light-rounded, .btn-white-rounded,
+.btn-primary-outline, .btn-secondary-outline, .btn-tertiary-outline, .btn-light-outline, .btn-white-outline, .btn-back-outline,
+.btn-primary-rounded-outline, .btn-secondary-rounded-outline, .btn-tertiary-rounded-outline, .btn-light-rounded-outline, .btn-white-rounded-outline {padding: $size-6 $size-16; font-size: $font-size-16; border: none;
+	i {font-size: $size-12;}
+	img {height: 100%; max-height: $size-24;}
+}
+
+.btn-primary-outline, .btn-secondary-outline, .btn-tertiary-outline, .btn-light-outline, .btn-white-outline,
+.btn-primary-rounded-outline, .btn-secondary-rounded-outline, .btn-tertiary-rounded-outline, .btn-light-rounded-outline, .btn-white-rounded-outline {background: transparent; box-shadow: inset 0 0 0 $size-1;}
+
+.btn-primary-rounded, .btn-secondary-rounded, .btn-tertiary-rounded, .btn-light-rounded, .btn-white-rounded,
+.btn-primary-rounded-outline, .btn-secondary-rounded-outline, .btn-tertiary-rounded-outline, .btn-white-rounded-outline, .btn-light-rounded-outline {border-radius: $rounded-btn;}
+
+.btn-primary, .btn-primary-rounded {background: $primaryColor;
+	&:hover, &:focus, &:active {background: $secondaryColor;}
+}
+.btn-primary-outline, .btn-primary-rounded-outline {box-shadow: $primaryColor; color: $primaryColor;
+	&:hover, &:focus, &:active {background: $primaryColor; color: $whiteColor;}
+}
+
+.btn-secondary, .btn-secondary-rounded {background: $secondaryColor;
+	&:hover, &:focus, &:active {background: $primaryColor-600;}
+}
+.btn-secondary-outline, .btn-secondary-rounded-outline {box-shadow: $secondaryColor; color: $secondaryColor;
+	&:hover, &:focus, &:active {background: $secondaryColor; color: $whiteColor;}
+}
+
+.btn-tertiary, .btn-tertiary-rounded {background: $tertiaryColor;
+	&:hover, &:focus, &:active {background: $tertiaryColor-400;}
+}
+.btn-tertiary-outline, .btn-tertiary-rounded-outline {box-shadow: $tertiaryColor; color: $tertiaryColor;
+	&:hover, &:focus, &:active {background: $tertiaryColor; color: $whiteColor;}
+}
+
+.btn-light, .btn-light-rounded {background: $primaryColor-50;
+	&:hover, &:focus, &:active {background: $primaryColor-100;}
+}
+.btn-light-outline, .btn-light-rounded-outline {box-shadow: 0 0 0 $size-1 $primaryColor-300; color: $primaryColor-600;
+	&:hover, &:focus, &:active {background: $primaryColor; color: $whiteColor; box-shadow: none !important;}
+}
+
+.btn-white, .btn-white-rounded {background: $whiteColor;
+	&:hover, &:focus, &:active {background: $secondaryColor-400;}
+}
+.btn-white-outline, .btn-white-rounded-outline {box-shadow: $whiteColor; color: $whiteColor;
+	&:hover, &:focus, &:active {background: $whiteColor; color: $primaryColor-700;}
+}
+
+.btn-back {display: flex; background: $primaryColor-50; max-width: $size-48; height: $size-46; color: $primaryColor; font-size: $font-size-14; justify-content: center; align-items: center;
+	&:hover, &:focus, &:active {background: $primaryColor-200; color: $whiteColor;}
+}
+.btn-back-outline {box-shadow: inset 0 0 0 $size-1 $primaryColor-200; color: $primaryColor;
+	&:hover, &:focus, &:active {background: $primaryColor-100; color: $primaryColor-600;}
+}
+
+.btn-copy {background: $primaryColor-50; padding: $size-2 $size-4; font-size: $size-14; border: $size-1 solid $primaryColor-100; border-radius: $size-8;
+	&:hover, &:focus, &:active {background: $tertiaryColor; color: $whiteColor}
+}
+
+.btn-input-search {@include easeAnimation; position: absolute; display: flex; align-items: center; width: auto; height: 100%; left: $size-8; background: transparent; border: none; color: $primaryColor-200; font-size: $font-size-16; z-index: 100;
+	&:hover, &:active {color: $primaryColor-500;}
+}
+
+
+////--** Radius Sizes **--////
+.sm-radius {border-radius: $standard-radius !important;}
+.md-radius {border-radius: $radius-16 !important;}
+
+
+p {margin-bottom: 0;}
+
+ul {margin:0; padding:0; list-style:none;}
+
+img {max-width:100%; height:auto;}
+
+
+//// Form Inputs Global Styles ////
+label {color: $primaryColor-600; font: normal normal normal $size-16 Tajawal-Medium, sans-serif; line-height: $size-32;}
+
+input[type="text"], input[type="search"], input[type="email"], input[type="date"], input[type="number"], input[type="tel"], select, textarea {
+	min-width: 100%; padding: $size-8 $size-16 !important; background-color: $primaryColor-50 !important; border: $size-1 solid $primaryColor-200 !important; border-radius: $standard-btn-radius !important; font-size: $font-size-15 !important; color: $primaryColor-600 !important; align-content: center !important;
+	&::placeholder {color: $primaryColor-200 !important;}
+	&:focus {box-shadow: 0 0 $size-12 0 $primaryColor-200 !important;}
+}
+
+input[type="date"] {padding: $size-8 $size-16 $size-8 $size-8 !important;}
+input[type="search"], input[type="password"], input.password {padding-left: $size-40 !important;}
+input[type="check"] {padding: 0 !important;}
+
+input.custom-file-input {min-height: $size-144;}
+input.custom-file-input-inline {min-height: $size-72;}
+input.custom-file-input, input.custom-file-input-inline {width: 100%; margin: 0; padding: $size-16; opacity: 0; z-index: 2;}
+label.custom-file-label, label.custom-file-label-inline {position: absolute; top: 0; width: 100%; min-height: 100%; background: $primaryColor-25; font-size: $font-size-14; color: $primaryColor-600; border: $size-2 dashed $primaryColor-200; border-radius: $standard-btn-radius !important; line-height: $size-22; cursor: pointer !important;
+		span {font-size: $font-size-12;}
+		img {@include dark-icon; display: table;}
+}
+
+//// Form Labels Global Styles ////
+label.custom-file-label {padding: $size-16; text-align: center;
+	span {display: block;}
+	img {margin: $size-12 auto; width: 100%; max-width: $size-40; height: auto;}
+}
+
+label.custom-file-label-inline {display: inline-flex; align-items: center;
+	span {display: inline-flex;}
+	.icon-container {display: inline-flex; height: 100%; min-height: $size-72; width: $size-64; padding: $size-12; margin-left: $size-8; background: $primaryColor-100; border-radius: 0 $size-16 $size-16 0; text-align: center;}
+	img {margin: auto; width: 100%; max-width: $size-40; height: auto;}
+	p {margin-left: $size-8;}
+}
+
+// --* Table Custom Styles *-- //
+.table-responsive {margin-bottom: $size-24; border-radius: $standard-radius;}

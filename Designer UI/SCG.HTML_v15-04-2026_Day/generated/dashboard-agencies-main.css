@@ -1,0 +1,172 @@
+/* [ADDED] Page-only styles for Dashboard - Agencies (main overview) */
+
+.page-dashboard-agencies-main .dash-overview-kpis .widjet-body .number {
+	font-size: 2.125rem;
+	line-height: 1.2;
+}
+
+.page-dashboard-agencies-main .dash-overview-kpis .widjet-body .text {
+	font-size: 1.05rem;
+}
+
+.page-dashboard-agencies-main .dashboard-search-box {
+	max-width: 24rem;
+}
+
+.page-dashboard-agencies-main .dashboard-search-box .form-control {
+	border-radius: 0.8rem;
+	background: #f4f6f9;
+	border-color: #dde5ef;
+}
+
+.page-dashboard-agencies-main .dashboard-search-box .form-control::placeholder {
+	color: #8ca2bd;
+}
+
+/* [ADDED] Reuse existing standard-card pattern for analytics cards without extra bottom margin */
+.page-dashboard-agencies-main .standard-crad {
+	margin-bottom: 0;
+}
+
+/* [ADDED] Chart placeholders — replace with chart library output in integration */
+.page-dashboard-agencies-main .dash-chart-placeholder {
+	min-height: 220px;
+	border: 2px dashed #c5d4e6;
+	border-radius: 0.75rem;
+	background: linear-gradient(180deg, #f8fafc 0%, #eef3f9 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 1rem;
+	color: #5a6d85;
+	font-size: 0.875rem;
+}
+
+.page-dashboard-agencies-main .dash-donut-placeholder {
+	min-height: 240px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.page-dashboard-agencies-main .dash-donut-ring {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	border: 16px solid #4fb848;
+	border-right-color: #f5a623;
+	border-bottom-color: #dc3545;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: Tajawal-Bold, sans-serif;
+	font-size: 1.25rem;
+	background: #fff;
+}
+
+.page-dashboard-agencies-main .dash-donut-legend {
+	font-size: 0.8rem;
+	line-height: 1.6;
+}
+
+.page-dashboard-agencies-main .dash-donut-legend span {
+	display: inline-block;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	margin-left: 0.35rem;
+	vertical-align: middle;
+}
+
+.page-dashboard-agencies-main .dash-donut-legend .lg-ok {
+	background: #4fb848;
+}
+
+.page-dashboard-agencies-main .dash-donut-legend .lg-warn {
+	background: #f5a623;
+}
+
+.page-dashboard-agencies-main .dash-donut-legend .lg-bad {
+	background: #dc3545;
+}
+
+.page-dashboard-agencies-main .dash-stopwatch {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	border: 8px solid #e8ecf1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 0 auto 1rem;
+	background: #fff;
+	font-family: Tajawal-Bold, sans-serif;
+}
+
+.page-dashboard-agencies-main .dash-stat-mini {
+	border-radius: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+.page-dashboard-agencies-main .dash-stat-mini .lbl {
+	display: block;
+	font-size: 0.7rem;
+	opacity: 0.9;
+}
+
+.page-dashboard-agencies-main .dash-bars-placeholder {
+	min-height: 200px;
+	border: 2px dashed #c5d4e6;
+	border-radius: 0.75rem;
+	background: repeating-linear-gradient(90deg, #e7f1ff, #e7f1ff 8%, transparent 8%, transparent 10%);
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 1rem;
+	font-size: 0.8rem;
+	color: #5a6d85;
+}
+
+.page-dashboard-agencies-main .dash-insight {
+	border-radius: 0.75rem;
+	padding: 1rem 1.25rem;
+	border: 1px solid #e8ecf1;
+	height: 100%;
+}
+
+.page-dashboard-agencies-main .dash-insight h4 {
+	font-size: 1rem;
+	margin-bottom: 0.35rem;
+}
+
+.page-dashboard-agencies-main .dash-insight p {
+	margin: 0;
+	font-size: 0.875rem;
+}
+
+.page-dashboard-agencies-main .dash-insight.is-warn {
+	background: #fffbeb;
+	border-color: #f5e0a8;
+}
+
+.page-dashboard-agencies-main .dash-insight.is-ok {
+	background: #f4fbf4;
+	border-color: #c5e6c2;
+}
+
+.page-dashboard-agencies-main .dash-insight.is-info {
+	background: #f0f6ff;
+	border-color: #c5d8f5;
+}
+
+@media (max-width: 991.98px) {
+	.page-dashboard-agencies-main .dashboard-search-box {
+		max-width: 100%;
+	}
+}

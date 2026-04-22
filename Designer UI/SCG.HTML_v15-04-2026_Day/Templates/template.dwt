@@ -1,0 +1,122 @@
+<!doctype html>
+<html dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نظام الموافقات الأمنية</title>
+<!-- Bootstrap File -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.rtl.min.css" >
+<!-- Font Awesome Style Sheet File -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<!-- Google Icons Style Sheet File -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=home_app_logo" />
+<!-- Main Style Sheet File -->
+<link href="../css/styles.css" rel="stylesheet" type="text/css">
+<!-- Browzer Tab Icon -->
+<link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="internal">
+<header class="internal">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg"> <a class="navbar-brand" href="javascript:;"></a> 
+      <!--				<a class="language col-auto d-block d-lg-none d-md-block d-sm-block float-end" href="javascript:;"><i class="fa-solid fa-globe"></i>EN</a>--> 
+      <a class="language col-auto d-block d-lg-none d-md-block d-sm-block float-end" href="javascript:;"><img class="icon" src="../icons/language.svg" alt="">EN</a>
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"> <a class="nav-link active" aria-current="page" href="javascript:;">لوحة التحكم</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="javascript:;">قائمة الطلبات</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="javascript:;">حزمة الطلبات</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="javascript:;">التقارير</a> </li>
+          <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">الإعدادات</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="javascript:;">المستخدمين</a></li>
+              <li><a class="dropdown-item" href="javascript:;">المحفظة</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      
+      <!--				<a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><i class="fa-solid fa-globe"></i>EN</a>--> 
+      <a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><img class="icon" src="../icons/language.svg" alt="">EN</a> </nav>
+  </div>
+</header>
+<!-- End Header --> 
+
+<!-- TemplateBeginEditable name="content" --> <!-- TemplateEndEditable --> 
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-md-12 col-lg-4"> <img class="logo" src="../img/logo-light.png" alt="">
+        <p class="mb">منصة إلكترونية موحّدة لإصدار ومتابعة الموافقات الأمنية. لإدارة الطلبات بسهولة وأمان من خلال نظام رقمي متكامل.</p>
+        <div class="social-media-container"> <a href="javascript:;"><i class="fa-brands fa-linkedin-in"></i></a> <a href="javascript:;"><i class="fa-brands fa-x-twitter"></i></a> <a href="javascript:;"><i class="fa-brands fa-facebook-f"></i></a> <a href="javascript:;"><i class="fa-brands fa-youtube"></i></a> <a href="javascript:;"><i class="fa-brands fa-google-plus-g"></i></a> </div>
+        <!-- End Social Media Container --> 
+      </div>
+      <!-- End Col -->
+      
+      <div class="col-sm-6 col-md-4 col-lg-2">
+        <h4>روابط سريعة</h4>
+        <a class="light-link" href="javascript:;">الاستعلام الفردي</a> <a class="light-link" href="javascript:;">دخول الوكلاء</a> <a class="light-link" href="javascript:;">عن النظام</a> <a class="light-link" href="javascript:;">المساعدة</a> </div>
+      <!-- End Col -->
+      
+      <div class="col-sm-6 col-md-4 col-lg-2">
+        <h4>خدمات</h4>
+        <a class="light-link" href="javascript:;">طلب موافقة جديد</a> <a class="light-link" href="javascript:;">متابعة الطلب</a> <a class="light-link" href="javascript:;">طباعة الموافقة</a> <a class="light-link" href="javascript:;">الدعم الفني</a> </div>
+      <!-- End Col -->
+      
+      <div class="col-sm-12 col-md-4 col-lg-4">
+        <h4>إتصل بنا</h4>
+        <ul>
+          <li> <img class="icon" src="../icons/cell-phone.svg"/>
+            <p class="contacts direction-ltr">+20 10 5070 2229</p>
+          </li>
+          <!-- End LI -->
+          <li> <img class="icon" src="../icons/mail.svg"/>
+            <p class="contacts">info@security.gov.sa</p>
+          </li>
+          <!-- End LI -->
+          <li> <img class="icon" src="../icons/location.svg"/>
+            <p class="contacts">شارع جزيرة العرب، المهندسين، الجيزة، مصر</p>
+          </li>
+          <!-- End LI -->
+          <li class="hot-line">
+            <h4>الخط الساخن</h4>
+            <img class="icon" src="../icons/hot-line.svg"/>
+            <p class="contacts">16999</p>
+          </li>
+          <!-- End LI -->
+        </ul>
+        <!-- ENd UL --> 
+      </div>
+      <!-- End Col --> 
+    </div>
+    <!-- End Row --> 
+  </div>
+  <!-- End Container -->
+  <div class="container-fluid">
+    <div class="row">
+      <p class="copy-rights">جميع الحقوق محفوظة © 2024 نظام الموافقات الأمنية</p>
+    </div>
+  </div>
+  <!-- End Container Fluid --> 
+</footer>
+<!-- End Footer Section --> 
+
+ <!-- /// Scripts ///--> 
+ <script src="../js/jquery-4.0.0.min.js"></script> 
+ <script src="../js/bootstrap/bootstrap.bundle.min.js"></script> 
+ <!-- Sticky Header Script --> 
+ <script type="text/JavaScript">
+        window.addEventListener("scroll" ,function() {
+    		let header = document.querySelector("header.internal");
+    		header.classList.toggle("internal-sticky", window.scrollY > 50);
+		});
+ </script> 
+<!-- /// End Scripts /// -->
+</body>
+<!-- End Body -->
+
+</html>

@@ -1,0 +1,523 @@
+@import 'variables';
+@import 'colors';
+@import 'fonts';
+@import 'mixins';
+@import 'reset';
+
+.text-justify-center {text-align: justify; text-align-last: center;}
+.text-bold {font-weight: bold;}
+
+.direction-ltr {direction: ltr;}
+.direction-rtl {direction: rtl;}
+
+//// NAVIGATION STYLES ////
+header, header.internal {position: fixed; top: 0; width: 100%; z-index: 1020; transition: ease all .8s;
+	nav {padding: $size-14 0 !important;
+		button.navbar-toggler {background: $primaryColor-100; padding: $size-4 $size-6; border: 0 !important; border-radius: $standard-radius;
+			&:hover, &:visited, &:focus, &:active, &.active {border: 0 !important;}
+		}
+		
+		a.navbar-brand {padding: 0; margin-left: $size-70; width: 100%; max-width: 225px; height: $size-64; background-size: contain;
+			@media (max-width: 1199px) {max-width: 180px; margin-left: $size-24; height: $size-50;}
+			@media (max-width: 991px) {margin-left: auto;}
+		}
+		
+		.nav-item {padding: 0;
+			a.nav-link {position: relative; font: normal normal normal $font-size-18 Tajawal-Medium, sans-serif; padding: $size-16 $size-14 !important;
+				&::before {@include before-after; @include easeAnimation; right: 3%; left: auto; bottom: 0; height: $size-3; width: 0; background: $secondaryColor;}
+				&:hover, &:active, &:focus, &.active {color: $secondaryColor !important;
+					&::before {width: 97%;}
+				}
+			}
+			a.nav-link.dropdown-toggle {&::after {margin-right: $size-8;}}
+			.dropdown-menu {right: $size-3; border: none; border-radius: 0; font-size: $font-size-14; box-shadow: 0 $size-8 $size-12 $size-0 $primaryColor-700;
+				a.dropdown-item {color: $primaryColor-700; border-bottom: $size-1 solid $primaryColor-50;
+					&:hover, &:active, &:focus {background: $secondaryColor-50; color: $secondaryColor;}
+				}
+			}
+		}
+		
+		.language {
+			i, img.icon {margin-left: $size-6; margin-top: $size-6;}
+			img.icon {@include easeAnimation; width: auto; height: $size-22;}
+			&:hover, &:focus {color: $secondaryColor !important;
+				img.icon {@include secondary-icon; /*transform: rotate(180deg);*/}
+			}
+			@media (max-width: 991px) {margin-left: $size-24;
+				img.icon {margin-top: 0;}
+			}
+		}
+		
+		@media (max-width: 991px) {
+			ul.navbar-nav {background: $whiteColor; border-top: $size-2 solid $primaryColor-600; margin-top: $size-16;
+				a.nav-link {background: $primaryColor-25; color: $primaryColor; border-bottom: $size-1 solid $primaryColor-100; font-size: $font-size-15;
+					&:hover, &:focus, &:active, &.active {background: $secondaryColor-100;}
+					&::before {display: none;}
+				}
+				.dropdown-menu {padding: $size-8 $size-12; margin: $size-8; background: $primaryColor-25; box-shadow: none;
+					.dropdown-item {color: $primaryColor; font-size: $font-size-13;}
+				}
+			}
+		}
+		@media (min-width: 992px) and (max-width: 1199px) {
+			a.nav-link {font-size: $font-size-16 !important; padding: $size-16 $size-10 !important;}
+		}
+		@media (max-width: 1199px) {
+			.language { img.icon {height: $size-18;} }
+		}
+	}
+}
+
+header { a.navbar-brand {background: transparent top right no-repeat url("../img/logo-light.png");} }
+header { a.nav-link {color: $primaryColor-25 !important;} }
+header { .language {color: $primaryColor-25; img.icon {@include white-icon;} } }
+
+header.internal {background: $whiteColor;}
+header.internal { a.navbar-brand {background: transparent top right no-repeat url("../img/logo.png");} }
+header.internal { a.nav-link {color: $primaryColor-600 !important;} }
+header.internal { .language {color: $primaryColor-600; img.icon {@include dark-icon;} } }
+
+// Sticky Header Styles //
+header.sticky, header.internal-sticky {box-shadow: 0 0 $size-96 $size-64 $primaryColor-800;}
+header.sticky {background: $whiteColor;
+	a.navbar-brand {background-image: url("../img/logo.png");}
+	a.nav-link {color: $primaryColor-600 !important;
+		&:hover, &:active, &:focus, &.active {color: $secondaryColor-600 !important;}
+	}
+	
+	.language {color: $primaryColor-600;
+		i {margin-left: $size-6; margin-top: $size-6;}
+		img.icon {@include dark-icon;}
+		&:hover, &:focus {color: $secondaryColor !important;}
+	}
+}
+
+
+//// NAVIGATION STYLES ////
+//header, header.internal {position: fixed; top: 0; width: 100%; z-index: 1020; transition: ease all .8s;
+//	nav {padding: $size-14 0 !important;
+//		button.navbar-toggler {background: $primaryColor-100; padding: $size-4 $size-6; border: 0 !important; border-radius: $standard-radius;
+//			&:hover, &:visited, &:focus, &:active, &.active {border: 0 !important;}
+//		}
+//		
+//		a.navbar-brand {padding: 0; margin-left: $size-70; width: 100%; max-width: 225px; height: $size-64; background: transparent top right no-repeat url("../img/logo-light.png"); background-size: contain;
+//			@media (max-width: 767px) {max-width: 180px;}
+//			@media (max-width: 991px) {margin-left: auto;}
+//		}
+//
+//		.nav-item {padding: 0;
+//			a.nav-link {position: relative; font: normal normal normal $font-size-18 Tajawal-Medium, sans-serif; color: $primaryColor-25; padding: $size-16 $size-14 !important;
+//				&::before {@include before-after; @include easeAnimation; right: 3%; left: auto; bottom: 0; height: $size-3; width: 0; background: $secondaryColor;}
+//				&:hover, &:active, &:focus, &.active {color: $secondaryColor;
+//					&::before {width: 97%;}
+//				}
+//			}
+//			a.nav-link.dropdown-toggle {&::after {margin-right: $size-8;}}
+//			.dropdown-menu {right: $size-3; border: none; border-radius: 0; font-size: $font-size-14; box-shadow: 0 $size-8 $size-12 $size-0 $primaryColor-700;
+//				a.dropdown-item {color: $primaryColor-700; border-bottom: $size-1 solid $primaryColor-50;
+//					&:hover, &:active, &:focus {background: $secondaryColor-50; color: $secondaryColor;}
+//				}
+//			}
+//		}
+//	
+//		.language {color: $primaryColor-25;
+//			i, img.icon {margin-left: $size-6; margin-top: $size-6;}
+//			img.icon {width: auto; height: $size-22;}
+//			&:hover, &:focus {color: $secondaryColor !important;
+//				img.icon {@include easeAnimation; transform: rotate(180deg);}
+//			}
+//			@media (max-width: 991px) {margin-left: $size-24;
+//				img.icon {margin-top: 0;}
+//			}
+//		}
+//		
+//		@media (max-width: 991px) {
+//			ul.navbar-nav {background: $whiteColor; border-top: $size-2 solid $primaryColor-600; margin-top: $size-16;
+//				a.nav-link {background: $primaryColor-25; color: $primaryColor; border-bottom: $size-1 solid $primaryColor-100; font-size: $font-size-15;
+//					&:hover, &:focus, &:active, &.active {background: $secondaryColor-100;}
+//					&::before {display: none;}
+//				}
+//				.dropdown-menu {padding: $size-8 $size-12; margin: $size-8; background: $primaryColor-25; box-shadow: none;
+//					.dropdown-item {color: $primaryColor; font-size: $font-size-13;}
+//				}
+//			}
+//		}
+//	}
+//}
+//
+//header.internal {background: $primaryColor-800;}
+//
+//header.sticky, header.internal-sticky {background: $whiteColor; box-shadow: 0 0 $size-96 $size-64 $primaryColor-800;
+//	a.navbar-brand {background-image: url("../img/logo.png");}
+//	a.nav-link {color: $primaryColor-600 !important;
+//		&:hover, &:active, &:focus, &.active {color: $secondaryColor-600 !important;}
+//	}
+//	
+//	.language {color: $primaryColor-600;
+//		i {margin-left: $size-6; margin-top: $size-6;}
+//		img.icon {@include dark-icon;}
+//		&:hover, &:focus {color: $secondaryColor !important;
+//			img.icon {@include secondary-icon;}
+//		}
+//
+//	}
+//}
+
+section.header-img {position: relative; padding: 0; font-size: $font-size-16;
+	&:after {@include before-after; right: 0; top: 0; width: 100%; height: 100%; background: linear-gradient($primaryColor-900 20%, $primaryColor-700); z-index: 0; opacity: .7;}
+	img.header-photo {@include photoResponsive; min-height: 360px; max-height: 100vh;}
+	.caption {position: absolute; top: 43%; width: 100%; height: auto; z-index: 1; color: $whiteColor;
+		h1, h2, h3, h4, h5, h6 {margin-bottom: 2.5%;}
+		h1 {color: $whiteColor;}
+		h3, h4, h5, h6 {color: $secondaryColor-200;}
+		ul {align-content: center; margin: 2.5% 0;
+			li {display: inline-block; text-align: center; margin: $size-2 $size-16;
+				@media (max-width: 567px) {margin: $size-2 $size-8;}
+				.icon, p {display: inline-flex;}
+				.icon {@include white-icon; width: $font-size-24; height: auto; margin: 0 0 $size-6 $size-6;}
+			}
+		}
+		.buttons-container {display: block; text-align: center;
+			a {width: 100%; max-width: 200px; margin: 0 0 $size-16 $size-24; padding: $size-14 $size-24; font-size: $font-size-20; /*padding: $size-12 $size-24; padding: calc(.75rem + .02vw) calc(1rem + .05vw); */
+				@media (max-width: 567px) {max-width: 142px; padding: $size-8 $size-12;}
+			}
+		}
+		@media (max-width: 567px) {top: 38%;}
+	}
+}
+
+section.about {background: $primaryColor-25;
+	img.about {@include photoResponsive; max-width: 420px; padding-left: $size-32;
+		@media (max-width:767px) {display: table; margin: 0 auto $size-8; max-width: 220px;}
+	}
+	.card {background: $whiteColor; border: $size-1 solid $primaryColor-100; font-size: $font-size-15; line-height: $size-24; border-radius: $standard-radius;
+		.card-body {padding: $size-16;
+			.icon-container {width: $size-72; height: $size-72; margin: auto; padding: $size-16; background: $primaryColor-50; border-radius: $radius-50; text-align: center;
+//				.icon {width: auto; height: $size-42; fill: red;}
+				.icon {@include dark-icon; width: auto; height: $size-42;}
+			}
+		}
+	}
+}
+
+section.avilable-services {background: linear-gradient($whiteColor 50%, $primaryColor-50 );
+	h1 {text-align: center; margin-bottom: $size-32;}
+	a.services {@include custom-card-radius; position: relative; display: block; height: 100%; padding: $size-40 $size-32; background: $primaryColor-50; color: $primaryColor-800; font-size: $font-size-16; line-height: $size-28;
+		.icon {@include dark-icon; float: right; width: auto; height: $size-80; margin: 0 0 $size-32 $size-24;
+		}
+		h3 {font-weight: bold;}
+		&:hover {background: $primaryColor-600; color: $neutralColor-100; transform: scale(1.02);
+			.icon {@include white-icon;}
+			h3 {color: $whiteColor;}
+		}
+		@media (max-width: 567px) {
+			.icon {display: table; float: none; margin: 0 auto $size-16 auto;}
+			h3 {text-align: center; margin-bottom: $size-16;}
+			p {text-align-last: center;}
+		}
+		
+	}
+	
+}
+
+.custom-card {@include custom-card; @include easeAnimation;
+	.card-header, .card-body, .card-footer {padding: 0; background: transparent; border: none;}
+	.card-header {display: flex; width: 100%; column-gap: $size-6; align-items: center; justify-content: space-between; padding-bottom: $size-8; margin-bottom: $size-18; border-bottom: $size-1 solid $primaryColor-100;
+		.card-title {display: flex; align-items: flex-end; column-gap: $size-12;
+			.icon-container {display: flex; justify-content: center; align-items: center; width: $size-80; height: $size-80; background: $primaryColor-100; padding: $size-12; border-radius: $size-56 $size-64 0 $size-56;
+				.icon {@include dark-icon; height: $size-40; width: auto;}
+			}
+			h3 {font-family: Tajawal-Bold;}
+		}
+		
+	}
+	.no-border {margin-bottom: $size-8; border-bottom: none;}
+	.card-body {font-size: $font-size-18;
+		p.mb {margin-bottom: $size-24;}
+		p.text-center {text-align: justify !important; text-align-last: center;}
+		ul {margin-bottom: $size-24; font-size: $font-size-15;
+			.icon-container, p {display: inline-flex;}
+			.icon-container {width: $size-32; height: $size-32; background: $primaryColor-100; border-radius: $radius-50; margin: 0 0 $size-10 $size-12;
+				.icon {@include dark-icon; height: $size-18; width: auto; margin: auto;}
+			}
+		}
+		
+	}
+	.card-footer {
+		.btn {@include custom-btn-radius;}
+		.icon {font-size: $font-size-12;}
+	}
+	
+	.card-footer-bt {margin-top: $size-24; padding-top: $size-24; border-top: $size-1 solid $primaryColor-100;
+		.btn {padding: $size-14 $size-18; font-family: Tajawal-Medium; font-size: $size-16;
+			img {@inclide dark-icon; width: auto; height: $size-16; margin-left: $size-3; margin-right: $size-3;}
+			i.next, i.prev {font-size: $size-12;}
+			@media (max-width: 567px) {padding: $size-6; border-radius: $standard-radius;}
+			&:hover, &:focus, &:active { img {@include white-icon;} }
+		}
+	}
+}
+.custom-card.hover-active {
+	&:hover {background: $primaryColor; color: $primaryColor-25; transform: scale(1.05);
+		h3 {color: $whiteColor;}
+	}
+}
+
+.standard-card {@include standard-card; margin-bottom: $size-20;
+	.card-header, .card-body, .card-footer {padding: 0; border: none;}
+	.card-header-underline {border-bottom: $size-1 solid $primaryColor-100; padding-bottom: $size-6;}
+	.card-header, .card-header-underline {display: flex; column-gap: $size-6; align-items: center; justify-content: space-between; margin-bottom: $size-10;
+		.card-title {display: flex; column-gap: $size-6;
+			h1, h2, h3, h4, h5, h6 {margin: 0;}
+			//		i.icon, img.icon, h1, h2, h3, h4, h5, h6 {display: inline-flex; margin-left: $size-5;}
+			img.icon, img.icon-small {@include dark-icon; width: auto; height: 100%;}
+			img.icon {max-height: $size-24;}  img.icon-small {max-height: $size-20;}
+		}
+		.btn-close, .btn-edit {padding: 0; align-content: center; color: $primaryColor-300 !important;
+			img.icon {@include dark-icon; @include easeAnimation; width: auto; height: $size-16; margin: 0; opacity: .6;}
+			&:hover, &:focus, &:active {color: $primaryColor-600 !important;
+				img.icon {opacity: 1;}
+			}
+		}
+
+	}
+	.card-body {padding: 0; margin-bottom: $size-14; font-size: $font-size-16;}
+	.list-multi-column {@include standard-card; display: grid; font-size: $font-size-14; line-height: $size-30; color: $primaryColor-600;
+		.list-row {padding-bottom: $size-4 !important; border-bottom: $size-1 solid $primaryColor-100;
+			&:last-child {border-bottom: none;}
+//			&:nth-last-child(2n) {border-bottom: none;}
+		}
+		.list-row-rounded {border-radius: $standard-radius; padding: $size-4 !important; margin-bottom: $size-2; border: $size-1 solid $primaryColor-100;
+			&:last-child {margin-bottom: 0;}
+		}
+		.list-row-rounded.no-border {border: none;}
+		.list-item {display: flex; align-items: center;}
+	}
+	.list-multi-column.no-border {border: none;}
+	
+	.card-footer {width: 100%;
+		.btn {border-radius: $size-8;
+			img {display: inline-flex; width: auto; height: 100%; max-height: $size-20; margin-left: $size-6;}
+		}
+		.btn-save, .btn-delete {padding-right: $size-12; padding-left: $size-12;}
+	}
+}
+
+
+section.individual-agenceies {background: linear-gradient($primaryColor-25 50%, $primaryColor-50 );}
+
+section.statutics {background: $primaryColor; padding: 0;
+	h1, h2, h3, h4 {color: $whiteColor;}
+	p {color: $neutralColor-50; font-size: $font-size-20;}
+	.statustics {
+		.icon {@include white-icon; float: right; width: auto; height: $size-72; margin-left: $size-16;}
+		h2, h3, h4 {display: flex;}
+	}
+}
+
+section.need-help {background: $primaryColor-50;}
+
+footer {background: $primaryColor; font-size: $font-size-15; color: $primaryColor-100; padding-bottom: 0;
+	.logo {display: block; width: 240px; max-width: 100%; height: auto; margin-bottom: $size-18;}
+	
+	p.mb {margin-bottom: $size-24;}
+	.social-media-container {display: flex;
+		a {display: inline-flex; font-size: $font-size-32; color: $primaryColor-200; margin: 0 0 $size-16 $size-16;
+			&:hover {color: $whiteColor;}
+		}
+	}
+	
+	h1, h2, h3, h4, h5, h6 {font-family: Tajawal-Bold; color: $whiteColor; margin-bottom: $font-size-24;}
+	
+	a.light-link {display: block; font-size: $font-size-14; color: $primaryColor-100;}
+	
+	.icon, p.contacts {display: inline;}
+	.icon {width: auto; height: $size-16; margin-left: $size-10;}
+	
+	.hot-line {margin-top: $size-32;  color: $whiteColor;
+		h4 {margin-bottom: $size-8;}
+		.icon {height: $size-40; width: auto;}
+		p {font: normal normal normal $font-size-32 Tajawal-Bold;}
+	}
+	
+	.copy-rights {background: $primaryColor-500; text-align: center; padding: $size-24; margin-top: $size-24; font-size: $font-size-15 !important;}
+}
+
+
+
+//// LOGING STYLES ////
+.login-left-side {background: radial-gradient($primaryColor-400, $primaryColor-800); min-height: 100vh; align-content: center;
+	img {display: table; width: 100%; max-width: 460px; height: auto; margin: auto;
+		@media (max-width: 991px) {padding: 0 $size-32;}
+	}
+}
+.login-right-side {align-content: center; justify-content: center; padding: $size-40; font-size: $font-size-18/*calc(1rem + .1vw)*/;
+	.login-logo {display: block; width: auto; height: 100%; max-height: $size-90; margin: 0 auto $size-40 auto;}
+	.selector-container {width: 100%; padding: $size-16; margin-bottom: $size-16; background: $primaryColor-50; border-radius: $standard-btn-radius; font-size: $font-size-18 !important;
+		.btn {@include easeAnimation-5s; padding: $size-20; font-size: $font-size-18; font-weight: bold; color: $primaryColor-200; border: none; border-radius: $standard-btn-radius;
+			.icon {@include disable-icon; width: auto; height: 100%; max-height: $font-size-30; margin-left: $size-8;}
+		}
+		.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {background: $primaryColor; color: $whiteColor;
+			.icon {@include white-icon;}
+		}
+	}
+	
+	.input-group {align-content: center; margin-bottom: $size-16;}
+	input.form-control, select.country-key {border: $size-1 solid $primaryColor-200; border-radius: $standard-btn-radius !important; font-size: $font-size-16; color: $primaryColor-600; align-content: center;
+		&::placeholder {color: $primaryColor-200;}
+		&:focus {box-shadow: 0 0 $size-12 0 $primaryColor-200;}
+	}
+	input.form-control {direction: rtl; background: $primaryColor-25; padding: $size-16 $size-56 $size-16 $size-16 !important;
+		&::placeholder {color: $primaryColor-200;}
+		&:focus {box-shadow: 0 0 $size-12 0 $primaryColor-200;}
+	}
+	input.password {padding: $size-16 $size-56 $size-16 $size-42 !important;
+		&:focus {background: $primaryColor-25 !important;}
+	}
+	.input-icon {@include dark-icon; position: absolute; right: $size-16; top: $size-20; width: auto; height: 100%; max-height: $font-size-22; z-index: 99;}
+	
+	.show-hide-icon {position: absolute; left: $size-12; top: $size-16; background: transparent; border: none; color: $primaryColor-600; z-index: 100;}
+	
+	input.form-check-input {border: $size-1 solid $primaryColor-200;}
+	
+	label {font-size: $font-size-16;}
+	
+	select.country-key {direction: ltr; padding: $size-16 $size-12 $size-16 $size-34 !important;
+		option {font-size: $font-size-14;
+			img {width: auto; height: $font-size-16;}
+		}
+	}
+	
+	input.custom-file-input {width: 100%; margin: 0; min-height: $size-144; padding: $size-16; opacity: 0; z-index: 2;}
+	label.custom-file-label {position: absolute; top: 0; width: 100%; min-height: 100%; padding: $size-16; background: $primaryColor-25; text-align: center; font-size: $font-size-14; color: $primaryColor-600; border: $size-2 dashed $primaryColor-200; border-radius: $standard-btn-radius !important; line-height: $size-22; cursor: pointer !important;
+		span {display: block; font-size: $font-size-12;}
+		img {@include dark-icon; display: table; margin: $size-12 auto; width: 100%; max-width: $size-40; height: auto;}
+	}
+	
+	.btn-submit {width: 100%; padding: $size-16; margin: $size-32 0;}
+	
+	.line {width: 100%; border-top: $size-1 solid $primaryColor-100; opacity: 1;}
+	
+	.btn-login-with {width: 100%; height: 100%; padding: $size-12 $size-16; font-size: $font-size-20; color: $primaryColor-600; box-shadow: 0 0 0 $size-1 $primaryColor-300;
+		&:hover {background: $primaryColor-800; color: $whiteColor;}
+		i, img.icon {display: inline-flex; margin-right: $size-6; font-size: $font-size-28;}
+		img.icon {width: auto; height: $font-size-24;}
+	}
+}
+
+
+
+/////////////////////////////////////////
+////**** Internal Pages Styles ****\\\\\\
+/////////////////////////////////////////
+
+/// Body Styles ///
+body.internal {font-size: $size-15; margin-top: $size-92;
+	p {font-size: $size-15;}
+}
+
+/// Banner Styles ///
+.banner {position: relative; display: block; height: $size-160; padding: $size-56 $size-16 0 $size-16; background: transparent center center url("../img/header-int.jpg") no-repeat; background-size: cover; justify-content: center; text-align: center; font-size: $font-size-16;
+	&::after {@include before-after; top: 0; right: 0; width: 100%; height: 100%; background: $primaryColor-700; opacity: .75; z-index: 1;}
+	h2, h6 {color: $whiteColor; z-index: 3 !important;}
+}
+
+/// Breadcrumb Styles ///
+nav.breadcrumb {background: $whiteColor; padding: $size-4 $size-32; margin: 0; border-bottom: $size-1 solid $primaryColor-100; font-size: $font-size-14;
+	ol {margin: 0;}
+	li.breadcrumb-item {&::before {color: $primaryColor-600;} }
+	li.active {color: $secondaryColor-600;}
+	a {color: $primaryColor-600; &:hover, &:active, .active {color: $secondaryColor;} }
+}
+
+/// Section Title Styles ///
+.section-title {display: flex; column-gap: $size-6; justify-content: space-between; align-items: baseline; margin-bottom: $size-24;
+	.title, .end-side {display: flex; column-gap: $size-6; align-items: baseline;}
+	.title {
+		h1, h2, h3, h4, h5, h6 {margin: 0; font-family: Tajawal-Bold;}
+		img.icon, img.icon-small {@include dark-icon; width: auto; height: 100%;}
+		img.icon {max-height: $size-24;}  img.icon-small {max-height: $size-20;}
+	}
+	.end-side {justify-content: flex-end;}
+//	.btn-back {padding: 0; align-content: center; color: $primaryColor-300 !important;
+//		img.icon {@include dark-icon; @include easeAnimation; width: auto; height: $size-16; margin: 0; opacity: .6;}
+//		&:hover, &:focus, &:active {color: $primaryColor-600 !important;
+//			img.icon {opacity: 1;}
+//		}
+//	}
+}
+
+/// Attache File Progress Styles ///
+.attachment-item {@include easeAnimation; display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: $size-72; background: $whiteColor; padding: $size-8; margin-bottom: $size-16; border-radius: $standard-radius; box-shadow: 0 0 $size-2 $primaryColor-500;
+	&:hover {background: $primaryColor-25; box-shadow: 0 0 $size-6 0 $primaryColor-300;}
+		
+	.file-icon {width: auto; color: $primaryColor-600; font-size: $font-size-38; 
+		i {}
+	}
+		
+	.progress-title {display: grid; width: 100%; padding: 0 $size-6;
+		.details {display: flex; justify-content: space-between;  margin-bottom: $size-6;
+			span.title, span.percentage {font-size: $font-size-14;}
+			span.title {width: 100%; max-width: $size-160; padding-left: $size-3; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+			span.percentage {width: auto; text-align: left;}
+		}
+		.progress {height: $size-5;}
+		
+	}
+		
+	.close-button-container {width: auto; text-align: left;
+		.close-button {position: relative; padding: 0; color: $primaryColor-500; font-size: $font-size-18;
+			i {padding: 0 !important; margin: 0 !important;}
+			&:hover {color: $primaryColor-600;}
+		}
+			
+		i.uploaded {position: relative; top: .5em; color: color(blueColor-light); font-size: 1.2em;}
+	}
+}
+
+/// Widjets Styles ///
+.widjets {display: block;
+	.neutral-widjet, .info-widjet, .warning-widjet, .success-widjet, .danger-widjet {display: block; padding: $size-14 $size-14 $size-24; height: 100%; border: $size-1 solid; border-radius: $radius-16 $size-40 $radius-16 $radius-16; font-size: $font-size-16; font-family: Tajawal-Medium;
+		.widjet-header {display: block; margin-bottom: $size-5;
+			@media (max-width: 767px) {margin-bottom: $size-12;}
+			.icon {display: flex; justify-content: center; align-items: center; width: $size-56; height: $size-56; border-radius: $size-16 $size-32 0 $size-16;
+				img {@include white-icon; width: auto; height: 100%; max-height: $size-32;}
+				i {font-size: $font-size-32; color: $whiteColor;}
+			}
+		}
+		.widjet-body {line-height: $size-22; text-align: center;
+			.number {font-size: $size-40; font-family: Tajawal-Bold; margin-bottom: $size-16;}
+			.text {font-size: $font-size-18;}
+			span {font-family: Tajawal-Regular; font-size: $font-size-12;}
+		}
+		.widjet-footer {display: flex; justify-content: center; align-items: center;
+			.btn {display: inline-block;}
+		}
+	}
+	
+	.neutral-widjet {background: $whiteColor; border-color: $primaryColor-100; color: $primaryColor;}
+	.info-widjet {background: $tertiaryColor-50; border-color: $tertiaryColor-300; color: $primaryColor-600;
+		.icon {background: $tertiaryColor;}
+	}
+	.warning-widjet {background: $warningAlertColor; border-color: $warningAlertBorderColor; color: $warningAlertTextColor;
+		.icon {background: $warningColor;}
+	}
+	.success-widjet {background: $successAlertColor; border-color: $successAlertBorderColor; color: $successAlertTextColor;
+		.icon {background: $successColor;}
+	}
+	.danger-widjet {background: $dangerAlertColor; border-color: $dangerAlertBorderColor; color: $dangerColor;
+		.icon {background: $dangerColor;}
+	}
+}
+
+/// Status Styles ///
+.status-created, .status-pending, .status-approved, .status-rejected {display: inline-flex; width: auto; align-items: center; column-gap: $size-5; height: $size-26; padding: $size-2 $size-2 $size-2 $size-12; border: $size-1 solid; border-radius: $radius-16; font: normal normal normal $font-size-11 Tajawal-Bold; line-height: $size-24;
+	.icon {display: inline-flex; justify-content: center; align-items: center; width: $size-18; height: $size-18; padding: $size-3; border-radius: $radius-50;
+		i {color: $whiteColor; font-size: $size-10;}
+		img {@include white-icon; width: auto; height: 100%; max-height: $size-18;}
+	}
+}
+.status-created {background: $tertiaryColor-50; border-color: $tertiaryColor-300; color: $primaryColor-600; .icon {background: $primaryColor} }
+.status-pending {background: $warningAlertColor; border-color: $warningAlertBorderColor; color: $warningAlertTextColor;  .icon {background: $warningColor} }
+.status-approved {background: $successAlertColor; border-color: $successAlertBorderColor; color: $successAlertTextColor; .icon {background: $successColor} }
+.status-rejected {background: $dangerAlertColor; border-color: $dangerAlertBorderColor; color: $dangerColor; .icon {background: $dangerColor} }

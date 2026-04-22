@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>إدارة الأسعار — نظام الموافقات الأمنية</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.rtl.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+	<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	<link href="dashboard-prices.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+</head>
+<body class="page-dashboard-prices">
+
+<div class="dashboard-shell d-flex flex-row align-items-stretch min-vh-100">
+
+	<aside class="dashboard-sidebar" id="dashboardPricesSidebar" aria-label="القائمة الرئيسية">
+		<div class="dashboard-sidebar-brand">
+			<a class="d-inline-block" href="javascript:;">
+				<img src="../img/logo.png" width="200" height="48" alt="نظام الموافقات الأمنية — الشعار">
+			</a>
+		</div>
+		<nav class="dashboard-sidebar-nav">
+			<ul class="nav flex-column">
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> لوحة التحكم</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> إدارة الطلبات</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-user" aria-hidden="true"></i> إدارة الأفراد</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-building-user" aria-hidden="true"></i> إدارة الوكلاء</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-users-gear" aria-hidden="true"></i> إدارة المستخدمين</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> التقارير</a></li>
+				<li class="nav-item"><a class="nav-link active" href="javascript:;" aria-current="page"><i class="fa-solid fa-tags" aria-hidden="true"></i> إدارة الأسعار</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-coins" aria-hidden="true"></i> اللوحة المالية</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:;"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> المساعدة</a></li>
+			</ul>
+		</nav>
+		<div class="dashboard-sidebar-footer">
+			<a class="btn btn-light w-100 d-flex align-items-center justify-content-center gap-2" href="javascript:;">
+				<i class="fa-solid fa-power-off" aria-hidden="true"></i> تسجيل الخروج
+			</a>
+		</div>
+	</aside>
+
+	<div class="dashboard-main flex-grow-1 d-flex flex-column min-w-0">
+		<header class="dashboard-topbar py-3 px-3 px-lg-4">
+			<div class="d-flex flex-wrap align-items-center gap-3 justify-content-between">
+				<div class="d-flex align-items-center flex-shrink-0">
+					<button class="btn btn-light rounded-circle dashboard-menu-btn d-inline-flex align-items-center justify-content-center" type="button" id="dashboardMenuToggle" aria-expanded="true" aria-controls="dashboardPricesSidebar" aria-label="فتح وإغلاق القائمة">
+						<i class="fa-solid fa-bars" aria-hidden="true"></i>
+					</button>
+				</div>
+				<div class="d-flex align-items-center flex-shrink-0 gap-2 gap-sm-3 ms-auto dashboard-topbar-actions">
+					<a class="language text-decoration-none d-inline-flex align-items-center gap-1 primary-color lh-1 py-1" href="javascript:;" title="English">
+						<img class="icon" src="../icons/language.svg" alt=""><span class="small fw-medium">EN</span>
+					</a>
+					<div class="position-relative notif-badge d-inline-flex align-items-center">
+						<button type="button" class="btn btn-link p-1 text-primary lh-1" aria-label="الإشعارات">
+							<i class="fa-regular fa-bell fa-lg" aria-hidden="true"></i>
+						</button>
+						<span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger" aria-hidden="true">3</span>
+					</div>
+					<div class="d-flex align-items-center gap-2 flex-shrink-0">
+						<img class="dashboard-avatar flex-shrink-0" width="40" height="40"
+							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23cfd8e3' width='40' height='40'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23556' font-size='10' font-family='sans-serif'%3E%5B%D9%85%5D%3C/text%3E%3C/svg%3E"
+							alt="[PLACEHOLDER] صورة المستخدم — استبدل بأصل التصميم">
+						<div class="text-end lh-sm dashboard-user-meta">
+							<div class="fw-bold small mb-0 text-truncate">طلعت جادوا</div>
+							<div class="text-muted small text-truncate">مدير تنفيذي</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main class="flex-grow-1 px-3 px-lg-4 pb-4">
+
+			<section class="md-padding light-bg">
+				<div class="container-fluid px-0">
+					<div class="widjets">
+						<div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-4 align-items-stretch">
+							<div class="col d-flex">
+								<div class="info-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-calculator" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">18</p>
+										<p class="text">إجمالي قواعد التسعير</p>
+										<span>كل القواعد المسجلة</span>
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="success-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-file-circle-check" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">15</p>
+										<p class="text">قواعد نشطة</p>
+										<span>سارية المفعول</span>
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="warning-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-file-circle-xmark" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">03</p>
+										<p class="text">قواعد غير نشطة</p>
+										<span>موقوفة أو منتهية</span>
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="info-widjet h-100 w-100">
+									<div class="widjet-header">
+										<div class="icon"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></div>
+									</div>
+									<div class="widjet-body">
+										<p class="number">05</p>
+										<p class="text">تعديلات هذا الشهر</p>
+										<span>تحديثات على القواعد</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="py-4">
+				<div class="container-fluid px-0">
+					<div class="section-title row gy-3 flex-wrap">
+						<div class="title col-auto">
+							<h3 class="underline-title mb-0">قواعد التسعير</h3>
+						</div>
+						<div class="end-side col-auto flex-wrap gap-2">
+							<a class="btn btn-secondary sm-radius d-flex align-items-center gap-2" href="javascript:;"><i class="fa-solid fa-plus" aria-hidden="true"></i> إضافة قاعدة جديدة</a>
+							<a class="btn btn-primary sm-radius d-flex align-items-center gap-2" href="javascript:;"><i class="fa-solid fa-download" aria-hidden="true"></i> تصدير</a>
+						</div>
+					</div>
+
+					<div class="dashboard-table-card mt-3">
+						<div class="table-responsive">
+							<table class="table table-striped custom-grid mb-0">
+								<thead>
+									<tr>
+										<th>المنطقة</th>
+										<th>نوع الاستعلام</th>
+										<th>قيمة الرسوم</th>
+										<th>العملة</th>
+										<th>ساري من تاريخ</th>
+										<th>الحالة</th>
+										<th>الإجراءات</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>سوريا</td>
+										<td>فردي</td>
+										<td>50.00</td>
+										<td>دولار أمريكي</td>
+										<td>18 ديسمبر 2025</td>
+										<td><span class="price-status is-active"><span class="dot" aria-hidden="true"></span>نشط</span></td>
+										<td>
+											<button type="button" class="btn btn-link btn-sm text-primary p-0" aria-label="خيارات السطر"><i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i></button>
+										</td>
+									</tr>
+									<tr>
+										<td>العراق</td>
+										<td>دفعة</td>
+										<td>45.00</td>
+										<td>دولار أمريكي</td>
+										<td>18 ديسمبر 2025</td>
+										<td><span class="price-status is-active"><span class="dot" aria-hidden="true"></span>نشط</span></td>
+										<td>
+											<button type="button" class="btn btn-link btn-sm text-primary p-0" aria-label="خيارات السطر"><i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i></button>
+										</td>
+									</tr>
+									<tr>
+										<td>اليمن</td>
+										<td>فردي</td>
+										<td>50.00</td>
+										<td>دولار أمريكي</td>
+										<td>10 ديسمبر 2025</td>
+										<td><span class="price-status is-suspended"><span class="dot" aria-hidden="true"></span>موقوف</span></td>
+										<td>
+											<button type="button" class="btn btn-link btn-sm text-primary p-0" aria-label="خيارات السطر"><i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i></button>
+										</td>
+									</tr>
+									<tr>
+										<td>فلسطين</td>
+										<td>فردي</td>
+										<td>50.00</td>
+										<td>دولار أمريكي</td>
+										<td>18 ديسمبر 2025</td>
+										<td><span class="price-status is-active"><span class="dot" aria-hidden="true"></span>نشط</span></td>
+										<td>
+											<button type="button" class="btn btn-link btn-sm text-primary p-0" aria-label="خيارات السطر"><i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i></button>
+										</td>
+									</tr>
+									<tr>
+										<td>الصومال</td>
+										<td>دفعة</td>
+										<td>45.00</td>
+										<td>دولار أمريكي</td>
+										<td>05 ديسمبر 2025</td>
+										<td><span class="price-status is-suspended"><span class="dot" aria-hidden="true"></span>موقوف</span></td>
+										<td>
+											<button type="button" class="btn btn-link btn-sm text-primary p-0" aria-label="خيارات السطر"><i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i></button>
+										</td>
+									</tr>
+									<tr>
+										<td>لبنان</td>
+										<td>فردي</td>
+										<td>50.00</td>
+										<td>دولار أمريكي</td>
+										<td>18 ديسمبر 2025</td>
+										<td><span class="price-status is-active"><span class="dot" aria-hidden="true"></span>نشط</span></td>
+										<td>
+											<button type="button" class="btn btn-link btn-sm text-primary p-0" aria-label="خيارات السطر"><i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i></button>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="2">
+											<div class="row br-left">
+												<div class="col-auto align-content-center">
+													<label for="dashboardPricesRows" class="col-form-label rows-number-title">عدد السطــور</label>
+												</div>
+												<div class="col-auto">
+													<select id="dashboardPricesRows" class="form-select rows-number" aria-label="عدد السطور المعروضة">
+														<option>8</option>
+														<option selected>11</option>
+														<option>16</option>
+													</select>
+												</div>
+											</div>
+										</td>
+										<td colspan="5">
+											<ul class="pagination mb-0">
+												<li class="page-item disabled">
+													<a class="page-link" href="javascript:;" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+												</li>
+												<li class="page-item active" aria-current="page"><a class="page-link" href="javascript:;">1</a></li>
+												<li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+												<li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+												<li class="page-item"><a class="page-link" href="javascript:;">4</a></li>
+												<li class="page-item"><a class="page-link" href="javascript:;">5</a></li>
+												<li class="page-item"><a class="page-link" href="javascript:;">6</a></li>
+												<li class="page-item"><a class="page-link" href="javascript:;">7</a></li>
+												<li class="page-item"><a class="page-link" href="javascript:;">8</a></li>
+												<li class="page-item disabled"><span class="page-link">…</span></li>
+												<li class="page-item"><a class="page-link" href="javascript:;"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></a></li>
+											</ul>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</div>
+
+<script src="../js/jquery-4.0.0.min.js"></script>
+<script src="../js/bootstrap/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+	var shell = document.querySelector('.page-dashboard-prices .dashboard-shell');
+	var toggle = document.getElementById('dashboardMenuToggle');
+	if (!shell || !toggle) return;
+
+	var mqDesktop = window.matchMedia('(min-width: 992px)');
+
+	function applyDefaultSidebarState() {
+		if (mqDesktop.matches) {
+			shell.classList.remove('sidebar-open');
+			shell.classList.remove('sidebar-collapsed');
+		} else {
+			shell.classList.remove('sidebar-collapsed');
+			shell.classList.remove('sidebar-open');
+		}
+		toggle.setAttribute('aria-expanded', mqDesktop.matches ? 'true' : 'false');
+	}
+
+	function onToggleClick() {
+		if (mqDesktop.matches) {
+			shell.classList.toggle('sidebar-collapsed');
+			toggle.setAttribute('aria-expanded', shell.classList.contains('sidebar-collapsed') ? 'false' : 'true');
+		} else {
+			shell.classList.toggle('sidebar-open');
+			toggle.setAttribute('aria-expanded', shell.classList.contains('sidebar-open') ? 'true' : 'false');
+		}
+	}
+
+	applyDefaultSidebarState();
+	mqDesktop.addEventListener('change', applyDefaultSidebarState);
+	toggle.addEventListener('click', onToggleClick);
+})();
+</script>
+</body>
+</html>
