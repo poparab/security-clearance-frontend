@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "figma-mcp": {
+      "type": "sse",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}

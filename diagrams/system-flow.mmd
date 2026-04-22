@@ -1,0 +1,81 @@
+flowchart TD
+    classDef admin fill:#2c5f8a,color:#fff,stroke:#1a3d5c
+    classDef agency fill:#276221,color:#fff,stroke:#1a4016
+    classDef payment fill:#b84000,color:#fff,stroke:#7a2a00
+    classDef engine fill:#5e1a8a,color:#fff,stroke:#3d1060
+    classDef result fill:#e6960a,color:#000,stroke:#b87200
+
+    subgraph ADMIN_SETUP["⚙️ Admin Setup"]
+        M01["US-M2-01 · Admin logs in"]:::admin
+        M01A["US-M2-01A · Admin dashboard overview"]:::admin
+        M06["US-M2-06 · Configure nationalities<br/>(To Egypt — Enabled/Disabled)"]:::admin
+        M07["US-M2-07 · Set fees per nationality<br/>(To Egypt · batch scope)"]:::admin
+        M09["US-M2-09 · Approve agency registration"]:::admin
+        MW1["US-M2-W1 · Credit agency wallet"]:::admin
+        M01 --> M01A
+        M01A --> M06 --> M07
+        M01A --> M09
+        M01A --> MW1
+    end
+
+    subgraph ONBOARD["🏢 Agency Onboarding & Dashboard"]
+        A22["US-22 · Agency registers<br/>(submitted → pending review)"]:::agency
+        A26["US-26 · Agency logs in"]:::agency
+        A26A["US-26A · Agency dashboard<br/>(Quick actions + recent activity)"]:::agency
+        AW01["US-W-01 · Wallet balance & transactions"]:::agency
+    end
+
+    subgraph BATCH["📦 Batch Inquiry (MVP)"]
+        A34["US-34 · Download template<br/>.xlsx only · 21 columns"]:::agency
+        A35["US-35 · Upload/validate/re-upload<br/>• Per-row validation<br/>• Passport number unique in file<br/>• Max 1000 rows<br/>• Transit max 3 stops"]:::agency
+        A37["US-37 · Fee review<br/>(by nationality + wallet balance check)"]:::agency
+        A38["US-38 · Confirm wallet deduction<br/>& submit batch"]:::payment
+        A39["US-39 · Submission result screen<br/>(success/failure)<br/>• Failure = not saved, no deduction"]:::result
+        CE_B["🔧 Clearance Engine — Module 3<br/>Processes each traveler independently<br/>Returns: Approved / Rejected"]:::engine
+        A40["US-40 · Batch details + per-traveler statuses<br/>+ inquiry quick preview + PDF path"]:::agency
+        A40A["US-40A · Export batch report"]:::agency
+        ABL["US-BL-01 · Batch list"]:::agency
+        AIL["US-IL-01 · Inquiry list"]:::agency
+        AIV["US-IV-01 · Inquiry details"]:::agency
+    end
+
+    subgraph MONITOR["🔍 Admin Monitoring"]
+        M15["US-M2-15 · Monitor inquiries<br/>(filters + status monitoring)"]:::admin
+        M16["US-M2-16 · Inquiry details<br/>+ processing timeline"]:::admin
+        M15 --> M16
+    end
+
+    A22 --> M09
+    M09 -->|"✅ approved"| A26
+    A26 --> A26A
+    A26A --> AW01
+    A26A --> A34
+    A26A --> ABL
+    A26A --> AIL
+
+    M06 -.->|"eligibility rules"| A35
+    M07 -.->|"fee config"| A37
+    MW1 -.->|"wallet funding"| AW01
+    MW1 -.->|"wallet balance available"| A37
+
+    A34 --> A35
+    A35 -->|"❌ validation errors"| A35
+    A35 -->|"✅ all rows valid"| A37
+    A37 -->|"Insufficient wallet"| AW01
+    A37 -->|"Confirm deduction"| A38
+
+    A38 -->|"✅ submission success"| A39
+    A38 -->|"❌ submission error<br/>(no batch saved)"| A39
+    A39 -->|"Success: View Batch Details"| A40
+    A39 -->|"Success: Go to Batch List"| ABL
+    A39 -->|"Failure: Retry"| A37
+    A39 -->|"Failure: Return Dashboard"| A26A
+
+    ABL --> A40
+    A40 --> A40A
+    A40 --> AIL
+    AIL --> AIV
+
+    CE_B -.->|"status updates"| A40
+    CE_B -.->|"status updates"| AIL
+    CE_B -.->|"status updates"| M15

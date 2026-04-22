@@ -1,0 +1,2273 @@
+[
+  {
+    "NameEn": "Afghanistan",
+    "NameAr": "أفغانستان",
+    "Code": "AF",
+    "Airports": [
+      { "NameEn": "Hamid Karzai International Airport", "NameAr": "مطار حامد كرزاي الدولي" },
+      { "NameEn": "Kandahar International Airport", "NameAr": "مطار قندهار الدولي" },
+      { "NameEn": "Mazar-i-Sharif International Airport", "NameAr": "مطار مزار شريف الدولي" },
+      { "NameEn": "Herat International Airport", "NameAr": "مطار هرات الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Albania",
+    "NameAr": "ألبانيا",
+    "Code": "AL",
+    "Airports": [
+      { "NameEn": "Tirana International Airport Nënë Tereza", "NameAr": "مطار تيرانا الدولي" },
+      { "NameEn": "Kukës International Airport", "NameAr": "مطار كوكس الدولي" },
+      { "NameEn": "Vlora International Airport", "NameAr": "مطار فلورا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Algeria",
+    "NameAr": "الجزائر",
+    "Code": "DZ",
+    "Airports": [
+      { "NameEn": "Houari Boumediene Airport", "NameAr": "مطار هواري بومدين" },
+      { "NameEn": "Oran Ahmed Ben Bella Airport", "NameAr": "مطار وهران أحمد بن بلة" },
+      { "NameEn": "Constantine Mohamed Boudiaf Airport", "NameAr": "مطار قسنطينة محمد بوضياف" },
+      { "NameEn": "Annaba Rabah Bitat Airport", "NameAr": "مطار عنابة رابح بيطاط" },
+      { "NameEn": "Tlemcen Zenata Airport", "NameAr": "مطار تلمسان زناتة" },
+      { "NameEn": "Hassi Messaoud Oued Irara Airport", "NameAr": "مطار حاسي مسعود" },
+      { "NameEn": "Ghardaia Noumerat Airport", "NameAr": "مطار غرداية نومرات" },
+      { "NameEn": "Béjaïa Soummam Airport", "NameAr": "مطار بجاية الصومام" },
+      { "NameEn": "Sétif Ain Arnat Airport", "NameAr": "مطار سطيف عين أرنات" },
+      { "NameEn": "Tamanrasset Aguenar Airport", "NameAr": "مطار تمنراست أقنار" }
+    ]
+  },
+  {
+    "NameEn": "Andorra",
+    "NameAr": "أندورا",
+    "Code": "AD",
+    "Airports": []
+  },
+  {
+    "NameEn": "Angola",
+    "NameAr": "أنغولا",
+    "Code": "AO",
+    "Airports": [
+      { "NameEn": "Quatro de Fevereiro Airport", "NameAr": "مطار كواترو دي فيفيريرو" },
+      { "NameEn": "António Agostinho Neto International Airport", "NameAr": "مطار أنطونيو أغوستينيو نيتو الدولي" },
+      { "NameEn": "Lubango Mukanka Airport", "NameAr": "مطار لوبانغو" },
+      { "NameEn": "Catumbela Airport", "NameAr": "مطار كاتومبيلا" },
+      { "NameEn": "Cabinda Airport", "NameAr": "مطار كابيندا" }
+    ]
+  },
+  {
+    "NameEn": "Antigua and Barbuda",
+    "NameAr": "أنتيغوا وباربودا",
+    "Code": "AG",
+    "Airports": [
+      { "NameEn": "V.C. Bird International Airport", "NameAr": "مطار في سي بيرد الدولي" },
+      { "NameEn": "Codrington Airport", "NameAr": "مطار كودرينغتون" }
+    ]
+  },
+  {
+    "NameEn": "Argentina",
+    "NameAr": "الأرجنتين",
+    "Code": "AR",
+    "Airports": [
+      { "NameEn": "Ministro Pistarini International Airport (Ezeiza)", "NameAr": "مطار مينيسترو بيستاريني الدولي" },
+      { "NameEn": "Aeroparque Jorge Newbery", "NameAr": "مطار خورخي نيوبيري" },
+      { "NameEn": "Córdoba Ingeniero Ambrosio Taravella Airport", "NameAr": "مطار قرطبة الدولي" },
+      { "NameEn": "Mendoza Governor Francisco Gabrielli Airport", "NameAr": "مطار مندوزا الدولي" },
+      { "NameEn": "Rosario Islas Malvinas International Airport", "NameAr": "مطار روزاريو الدولي" },
+      { "NameEn": "Tucumán Teniente General Benjamín Matienzo Airport", "NameAr": "مطار توكومان الدولي" },
+      { "NameEn": "Salta Martín Miguel de Güemes Airport", "NameAr": "مطار سالتا الدولي" },
+      { "NameEn": "Bariloche Teniente Luis Candelaria Airport", "NameAr": "مطار باريلوتشي" },
+      { "NameEn": "Ushuaia Malvinas Argentinas Airport", "NameAr": "مطار أوشوايا" },
+      { "NameEn": "Iguazú International Airport", "NameAr": "مطار إغوازو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Armenia",
+    "NameAr": "أرمينيا",
+    "Code": "AM",
+    "Airports": [
+      { "NameEn": "Zvartnots International Airport", "NameAr": "مطار زفارتنوتس الدولي" },
+      { "NameEn": "Shirak International Airport", "NameAr": "مطار شيراك الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Australia",
+    "NameAr": "أستراليا",
+    "Code": "AU",
+    "Airports": [
+      { "NameEn": "Sydney Kingsford Smith Airport", "NameAr": "مطار سيدني كينغزفورد سميث" },
+      { "NameEn": "Melbourne Tullamarine Airport", "NameAr": "مطار ملبورن تولامارين" },
+      { "NameEn": "Brisbane Airport", "NameAr": "مطار بريزبن" },
+      { "NameEn": "Perth Airport", "NameAr": "مطار بيرث" },
+      { "NameEn": "Adelaide Airport", "NameAr": "مطار أديلايد" },
+      { "NameEn": "Gold Coast Airport", "NameAr": "مطار غولد كوست" },
+      { "NameEn": "Cairns Airport", "NameAr": "مطار كيرنز" },
+      { "NameEn": "Canberra Airport", "NameAr": "مطار كانبرا" },
+      { "NameEn": "Hobart International Airport", "NameAr": "مطار هوبارت الدولي" },
+      { "NameEn": "Darwin International Airport", "NameAr": "مطار داروين الدولي" },
+      { "NameEn": "Western Sydney International Airport", "NameAr": "مطار غرب سيدني الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Austria",
+    "NameAr": "النمسا",
+    "Code": "AT",
+    "Airports": [
+      { "NameEn": "Vienna International Airport", "NameAr": "مطار فيينا الدولي" },
+      { "NameEn": "Salzburg W.A. Mozart Airport", "NameAr": "مطار سالزبورغ" },
+      { "NameEn": "Innsbruck Airport", "NameAr": "مطار إنسبروك" },
+      { "NameEn": "Graz Airport", "NameAr": "مطار غراتس" },
+      { "NameEn": "Linz Airport", "NameAr": "مطار لينتس" },
+      { "NameEn": "Klagenfurt Airport", "NameAr": "مطار كلاغنفورت" }
+    ]
+  },
+  {
+    "NameEn": "Azerbaijan",
+    "NameAr": "أذربيجان",
+    "Code": "AZ",
+    "Airports": [
+      { "NameEn": "Heydar Aliyev International Airport", "NameAr": "مطار حيدر علييف الدولي" },
+      { "NameEn": "Ganja International Airport", "NameAr": "مطار غنجة الدولي" },
+      { "NameEn": "Nakhchivan International Airport", "NameAr": "مطار نخجوان الدولي" },
+      { "NameEn": "Gabala International Airport", "NameAr": "مطار قبالا الدولي" },
+      { "NameEn": "Lankaran International Airport", "NameAr": "مطار لنكران الدولي" },
+      { "NameEn": "Zangilan International Airport", "NameAr": "مطار زنجيلان الدولي" },
+      { "NameEn": "Fuzuli International Airport", "NameAr": "مطار فضولي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Bahamas",
+    "NameAr": "الباهاما",
+    "Code": "BS",
+    "Airports": [
+      { "NameEn": "Lynden Pindling International Airport", "NameAr": "مطار ليندن بيندلنغ الدولي" },
+      { "NameEn": "Grand Bahama International Airport", "NameAr": "مطار غراند باهاما الدولي" },
+      { "NameEn": "Exuma International Airport", "NameAr": "مطار إكسوما الدولي" },
+      { "NameEn": "Marsh Harbour Airport", "NameAr": "مطار مارش هاربور" }
+    ]
+  },
+  {
+    "NameEn": "Bahrain",
+    "NameAr": "البحرين",
+    "Code": "BH",
+    "Airports": [
+      { "NameEn": "Bahrain International Airport", "NameAr": "مطار البحرين الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Bangladesh",
+    "NameAr": "بنغلاديش",
+    "Code": "BD",
+    "Airports": [
+      { "NameEn": "Hazrat Shahjalal International Airport", "NameAr": "مطار حضرة شاه جلال الدولي" },
+      { "NameEn": "Shah Amanat International Airport", "NameAr": "مطار شاه أمانات الدولي" },
+      { "NameEn": "Osmani International Airport", "NameAr": "مطار عثماني الدولي" },
+      { "NameEn": "Cox's Bazar Airport", "NameAr": "مطار كوكس بازار" },
+      { "NameEn": "Rajshahi Shah Makhdum Airport", "NameAr": "مطار راجشاهي" },
+      { "NameEn": "Saidpur Airport", "NameAr": "مطار سيدبور" }
+    ]
+  },
+  {
+    "NameEn": "Barbados",
+    "NameAr": "باربادوس",
+    "Code": "BB",
+    "Airports": [
+      { "NameEn": "Grantley Adams International Airport", "NameAr": "مطار غرانتلي آدمز الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Belarus",
+    "NameAr": "بيلاروسيا",
+    "Code": "BY",
+    "Airports": [
+      { "NameEn": "Minsk National Airport", "NameAr": "مطار مينسك الوطني" },
+      { "NameEn": "Gomel Airport", "NameAr": "مطار غوميل" },
+      { "NameEn": "Brest Airport", "NameAr": "مطار بريست" },
+      { "NameEn": "Grodno Airport", "NameAr": "مطار غرودنو" },
+      { "NameEn": "Vitebsk Airport", "NameAr": "مطار فيتبسك" },
+      { "NameEn": "Mogilev Airport", "NameAr": "مطار موغيليف" }
+    ]
+  },
+  {
+    "NameEn": "Belgium",
+    "NameAr": "بلجيكا",
+    "Code": "BE",
+    "Airports": [
+      { "NameEn": "Brussels Airport", "NameAr": "مطار بروكسل" },
+      { "NameEn": "Brussels South Charleroi Airport", "NameAr": "مطار بروكسل جنوب شارلروا" },
+      { "NameEn": "Liège Airport", "NameAr": "مطار لييج" },
+      { "NameEn": "Antwerp International Airport", "NameAr": "مطار أنتويرب الدولي" },
+      { "NameEn": "Ostend-Bruges International Airport", "NameAr": "مطار أوستند بروج الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Belize",
+    "NameAr": "بليز",
+    "Code": "BZ",
+    "Airports": [
+      { "NameEn": "Philip S.W. Goldson International Airport", "NameAr": "مطار فيليب غولدسون الدولي" },
+      { "NameEn": "Belize City Municipal Airport", "NameAr": "مطار مدينة بليز البلدي" }
+    ]
+  },
+  {
+    "NameEn": "Benin",
+    "NameAr": "بنين",
+    "Code": "BJ",
+    "Airports": [
+      { "NameEn": "Cadjehoun Airport", "NameAr": "مطار كادجيهون" },
+      { "NameEn": "Glo-Djigbé International Airport", "NameAr": "مطار غلو جيغبي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Bhutan",
+    "NameAr": "بوتان",
+    "Code": "BT",
+    "Airports": [
+      { "NameEn": "Paro International Airport", "NameAr": "مطار بارو الدولي" },
+      { "NameEn": "Gelephu Airport", "NameAr": "مطار جيليفو" },
+      { "NameEn": "Yongphulla Airport", "NameAr": "مطار يونغفولا" }
+    ]
+  },
+  {
+    "NameEn": "Bolivia",
+    "NameAr": "بوليفيا",
+    "Code": "BO",
+    "Airports": [
+      { "NameEn": "El Alto International Airport", "NameAr": "مطار إل ألتو الدولي" },
+      { "NameEn": "Viru Viru International Airport", "NameAr": "مطار فيرو فيرو الدولي" },
+      { "NameEn": "Jorge Wilstermann International Airport", "NameAr": "مطار خورخي ويلسترمان الدولي" },
+      { "NameEn": "Capitán Oriel Lea Plaza Airport", "NameAr": "مطار تاريخا" },
+      { "NameEn": "Juana Azurduy de Padilla Airport", "NameAr": "مطار سوكري" }
+    ]
+  },
+  {
+    "NameEn": "Bosnia and Herzegovina",
+    "NameAr": "البوسنة والهرسك",
+    "Code": "BA",
+    "Airports": [
+      { "NameEn": "Sarajevo International Airport", "NameAr": "مطار سراييفو الدولي" },
+      { "NameEn": "Banja Luka International Airport", "NameAr": "مطار بانيا لوكا الدولي" },
+      { "NameEn": "Tuzla International Airport", "NameAr": "مطار توزلا الدولي" },
+      { "NameEn": "Mostar International Airport", "NameAr": "مطار موستار الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Botswana",
+    "NameAr": "بوتسوانا",
+    "Code": "BW",
+    "Airports": [
+      { "NameEn": "Sir Seretse Khama International Airport", "NameAr": "مطار سير سيريتسي خاما الدولي" },
+      { "NameEn": "Maun Airport", "NameAr": "مطار ماون" },
+      { "NameEn": "Kasane Airport", "NameAr": "مطار كاساني" },
+      { "NameEn": "Francistown Airport", "NameAr": "مطار فرانسيستاون" }
+    ]
+  },
+  {
+    "NameEn": "Brazil",
+    "NameAr": "البرازيل",
+    "Code": "BR",
+    "Airports": [
+      { "NameEn": "São Paulo–Guarulhos International Airport", "NameAr": "مطار ساو باولو غوارولوس الدولي" },
+      { "NameEn": "Rio de Janeiro–Galeão International Airport", "NameAr": "مطار ريو دي جانيرو غالياو الدولي" },
+      { "NameEn": "Brasília International Airport", "NameAr": "مطار برازيليا الدولي" },
+      { "NameEn": "Belo Horizonte–Confins International Airport", "NameAr": "مطار بيلو هوريزونتي الدولي" },
+      { "NameEn": "Salvador Deputado Luís Eduardo Magalhães Airport", "NameAr": "مطار سالفادور الدولي" },
+      { "NameEn": "Recife Guararapes International Airport", "NameAr": "مطار ريسيفي الدولي" },
+      { "NameEn": "Porto Alegre Salgado Filho International Airport", "NameAr": "مطار بورتو أليغري الدولي" },
+      { "NameEn": "Curitiba Afonso Pena International Airport", "NameAr": "مطار كوريتيبا الدولي" },
+      { "NameEn": "Fortaleza Pinto Martins International Airport", "NameAr": "مطار فورتاليزا الدولي" },
+      { "NameEn": "Manaus Eduardo Gomes International Airport", "NameAr": "مطار ماناوس الدولي" },
+      { "NameEn": "São Paulo–Congonhas Airport", "NameAr": "مطار ساو باولو كونغونياس" },
+      { "NameEn": "Rio de Janeiro–Santos Dumont Airport", "NameAr": "مطار سانتوس دومون" },
+      { "NameEn": "Campinas–Viracopos International Airport", "NameAr": "مطار كامبيناس فيراكوبوس الدولي" },
+      { "NameEn": "Florianópolis Hercílio Luz International Airport", "NameAr": "مطار فلوريانوبوليس الدولي" },
+      { "NameEn": "Natal São Gonçalo do Amarante Airport", "NameAr": "مطار ناتال الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Brunei",
+    "NameAr": "بروناي",
+    "Code": "BN",
+    "Airports": [
+      { "NameEn": "Brunei International Airport", "NameAr": "مطار بروناي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Bulgaria",
+    "NameAr": "بلغاريا",
+    "Code": "BG",
+    "Airports": [
+      { "NameEn": "Sofia Airport", "NameAr": "مطار صوفيا" },
+      { "NameEn": "Burgas Airport", "NameAr": "مطار بورغاس" },
+      { "NameEn": "Varna Airport", "NameAr": "مطار فارنا" },
+      { "NameEn": "Plovdiv Airport", "NameAr": "مطار بلوفديف" }
+    ]
+  },
+  {
+    "NameEn": "Burkina Faso",
+    "NameAr": "بوركينا فاسو",
+    "Code": "BF",
+    "Airports": [
+      { "NameEn": "Thomas Sankara International Airport", "NameAr": "مطار توماس سانكارا الدولي" },
+      { "NameEn": "Bobo-Dioulasso Airport", "NameAr": "مطار بوبو ديولاسو" }
+    ]
+  },
+  {
+    "NameEn": "Burundi",
+    "NameAr": "بوروندي",
+    "Code": "BI",
+    "Airports": [
+      { "NameEn": "Bujumbura Melchior Ndadaye International Airport", "NameAr": "مطار بوجومبورا الدولي" },
+      { "NameEn": "Gitega Airport", "NameAr": "مطار غيتيغا" }
+    ]
+  },
+  {
+    "NameEn": "Cabo Verde",
+    "NameAr": "الرأس الأخضر",
+    "Code": "CV",
+    "Airports": [
+      { "NameEn": "Amílcar Cabral International Airport", "NameAr": "مطار أميلكار كابرال الدولي" },
+      { "NameEn": "Nelson Mandela International Airport", "NameAr": "مطار نيلسون مانديلا الدولي" },
+      { "NameEn": "Aristides Pereira International Airport", "NameAr": "مطار أريستيدس بيريرا الدولي" },
+      { "NameEn": "Cesária Évora Airport", "NameAr": "مطار سيزاريا إيفورا" }
+    ]
+  },
+  {
+    "NameEn": "Cambodia",
+    "NameAr": "كمبوديا",
+    "Code": "KH",
+    "Airports": [
+      { "NameEn": "Phnom Penh International Airport", "NameAr": "مطار بنوم بنه الدولي" },
+      { "NameEn": "Siem Reap International Airport", "NameAr": "مطار سيم ريب الدولي" },
+      { "NameEn": "Sihanoukville International Airport", "NameAr": "مطار سيهانوكفيل الدولي" },
+      { "NameEn": "Techo Takhmao International Airport", "NameAr": "مطار تيكو تاخماو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Cameroon",
+    "NameAr": "الكاميرون",
+    "Code": "CM",
+    "Airports": [
+      { "NameEn": "Douala International Airport", "NameAr": "مطار دوالا الدولي" },
+      { "NameEn": "Yaoundé Nsimalen International Airport", "NameAr": "مطار ياوندي نسيمالين الدولي" },
+      { "NameEn": "Garoua International Airport", "NameAr": "مطار غاروا الدولي" },
+      { "NameEn": "Maroua Salak Airport", "NameAr": "مطار ماروا سالاك" }
+    ]
+  },
+  {
+    "NameEn": "Canada",
+    "NameAr": "كندا",
+    "Code": "CA",
+    "Airports": [
+      { "NameEn": "Toronto Pearson International Airport", "NameAr": "مطار تورونتو بيرسون الدولي" },
+      { "NameEn": "Vancouver International Airport", "NameAr": "مطار فانكوفر الدولي" },
+      { "NameEn": "Montréal–Trudeau International Airport", "NameAr": "مطار مونتريال ترودو الدولي" },
+      { "NameEn": "Calgary International Airport", "NameAr": "مطار كالغاري الدولي" },
+      { "NameEn": "Edmonton International Airport", "NameAr": "مطار إدمونتون الدولي" },
+      { "NameEn": "Ottawa Macdonald–Cartier International Airport", "NameAr": "مطار أوتاوا الدولي" },
+      { "NameEn": "Winnipeg James Armstrong Richardson International Airport", "NameAr": "مطار وينيبيغ الدولي" },
+      { "NameEn": "Halifax Stanfield International Airport", "NameAr": "مطار هاليفاكس الدولي" },
+      { "NameEn": "Quebec City Jean Lesage International Airport", "NameAr": "مطار مدينة كيبك الدولي" },
+      { "NameEn": "Victoria International Airport", "NameAr": "مطار فيكتوريا الدولي" },
+      { "NameEn": "Kelowna International Airport", "NameAr": "مطار كيلونا الدولي" },
+      { "NameEn": "St. John's International Airport", "NameAr": "مطار سانت جونز الدولي" },
+      { "NameEn": "Saskatoon John G. Diefenbaker International Airport", "NameAr": "مطار ساسكاتون الدولي" },
+      { "NameEn": "Regina International Airport", "NameAr": "مطار ريجاينا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Central African Republic",
+    "NameAr": "جمهورية أفريقيا الوسطى",
+    "Code": "CF",
+    "Airports": [
+      { "NameEn": "Bangui M'Poko International Airport", "NameAr": "مطار بانغي مبوكو الدولي" },
+      { "NameEn": "Berberati Airport", "NameAr": "مطار بربراتي" }
+    ]
+  },
+  {
+    "NameEn": "Chad",
+    "NameAr": "تشاد",
+    "Code": "TD",
+    "Airports": [
+      { "NameEn": "N'Djamena International Airport", "NameAr": "مطار نجامينا الدولي" },
+      { "NameEn": "Abéché Airport", "NameAr": "مطار أبشي" },
+      { "NameEn": "Moundou Airport", "NameAr": "مطار موندو" }
+    ]
+  },
+  {
+    "NameEn": "Chile",
+    "NameAr": "تشيلي",
+    "Code": "CL",
+    "Airports": [
+      { "NameEn": "Santiago Arturo Merino Benítez International Airport", "NameAr": "مطار سانتياغو الدولي" },
+      { "NameEn": "Antofagasta Andrés Sabella Gálvez Airport", "NameAr": "مطار أنتوفاغاستا" },
+      { "NameEn": "Concepción Carriel Sur International Airport", "NameAr": "مطار كونسبسيون الدولي" },
+      { "NameEn": "Iquique Diego Aracena International Airport", "NameAr": "مطار إيكيكي الدولي" },
+      { "NameEn": "Puerto Montt El Tepual International Airport", "NameAr": "مطار بويرتو مونت الدولي" },
+      { "NameEn": "Punta Arenas Carlos Ibáñez del Campo Airport", "NameAr": "مطار بونتا أريناس الدولي" },
+      { "NameEn": "Calama El Loa Airport", "NameAr": "مطار كالاما" },
+      { "NameEn": "Temuco La Araucanía Airport", "NameAr": "مطار تيموكو" }
+    ]
+  },
+  {
+    "NameEn": "China",
+    "NameAr": "الصين",
+    "Code": "CN",
+    "Airports": [
+      { "NameEn": "Beijing Capital International Airport", "NameAr": "مطار بكين العاصمة الدولي" },
+      { "NameEn": "Beijing Daxing International Airport", "NameAr": "مطار بكين داشينغ الدولي" },
+      { "NameEn": "Shanghai Pudong International Airport", "NameAr": "مطار شنغهاي بودونغ الدولي" },
+      { "NameEn": "Shanghai Hongqiao International Airport", "NameAr": "مطار شنغهاي هونغتشياو الدولي" },
+      { "NameEn": "Guangzhou Baiyun International Airport", "NameAr": "مطار غوانزو بايون الدولي" },
+      { "NameEn": "Shenzhen Bao'an International Airport", "NameAr": "مطار شنجن باوآن الدولي" },
+      { "NameEn": "Chengdu Tianfu International Airport", "NameAr": "مطار تشنغدو تيانفو الدولي" },
+      { "NameEn": "Chengdu Shuangliu International Airport", "NameAr": "مطار تشنغدو شوانغليو الدولي" },
+      { "NameEn": "Kunming Changshui International Airport", "NameAr": "مطار كونمينغ تشانغشوي الدولي" },
+      { "NameEn": "Chongqing Jiangbei International Airport", "NameAr": "مطار تشونغتشينغ الدولي" },
+      { "NameEn": "Hangzhou Xiaoshan International Airport", "NameAr": "مطار هانغزو شياوشان الدولي" },
+      { "NameEn": "Xi'an Xianyang International Airport", "NameAr": "مطار شيآن شيانيانغ الدولي" },
+      { "NameEn": "Wuhan Tianhe International Airport", "NameAr": "مطار ووهان تيانخه الدولي" },
+      { "NameEn": "Nanjing Lukou International Airport", "NameAr": "مطار نانجينغ لوكو الدولي" },
+      { "NameEn": "Haikou Meilan International Airport", "NameAr": "مطار هايكو ميلان الدولي" },
+      { "NameEn": "Xiamen Gaoqi International Airport", "NameAr": "مطار شيامن قاوتشي الدولي" },
+      { "NameEn": "Qingdao Jiaodong International Airport", "NameAr": "مطار تشينغداو الدولي" },
+      { "NameEn": "Dalian Zhoushuizi International Airport", "NameAr": "مطار داليان الدولي" },
+      { "NameEn": "Tianjin Binhai International Airport", "NameAr": "مطار تيانجين بينهاي الدولي" },
+      { "NameEn": "Ürümqi Diwopu International Airport", "NameAr": "مطار أورومتشي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Colombia",
+    "NameAr": "كولومبيا",
+    "Code": "CO",
+    "Airports": [
+      { "NameEn": "Bogotá El Dorado International Airport", "NameAr": "مطار بوغوتا الدورادو الدولي" },
+      { "NameEn": "Medellín José María Córdova International Airport", "NameAr": "مطار ميديين الدولي" },
+      { "NameEn": "Cali Alfonso Bonilla Aragón International Airport", "NameAr": "مطار كالي الدولي" },
+      { "NameEn": "Cartagena Rafael Núñez International Airport", "NameAr": "مطار قرطاجنة الدولي" },
+      { "NameEn": "Barranquilla Ernesto Cortissoz International Airport", "NameAr": "مطار بارانكيا الدولي" },
+      { "NameEn": "Bucaramanga Palonegro International Airport", "NameAr": "مطار بوكارامانغا الدولي" },
+      { "NameEn": "San Andrés Gustavo Rojas Pinilla International Airport", "NameAr": "مطار سان أندريس الدولي" },
+      { "NameEn": "Pereira Matecaña International Airport", "NameAr": "مطار بيريرا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Comoros",
+    "NameAr": "جزر القمر",
+    "Code": "KM",
+    "Airports": [
+      { "NameEn": "Prince Said Ibrahim International Airport", "NameAr": "مطار الأمير سعيد إبراهيم الدولي" },
+      { "NameEn": "Mohéli Bandar Es Salam Airport", "NameAr": "مطار موهيلي بندر السلام" },
+      { "NameEn": "Ouani Airport", "NameAr": "مطار أواني" }
+    ]
+  },
+  {
+    "NameEn": "Congo",
+    "NameAr": "الكونغو",
+    "Code": "CG",
+    "Airports": [
+      { "NameEn": "Maya-Maya Airport", "NameAr": "مطار مايا مايا" },
+      { "NameEn": "Pointe Noire Airport", "NameAr": "مطار بوانت نوار" },
+      { "NameEn": "Ollombo Airport", "NameAr": "مطار أولومبو" }
+    ]
+  },
+  {
+    "NameEn": "Congo (Democratic Republic)",
+    "NameAr": "جمهورية الكونغو الديمقراطية",
+    "Code": "CD",
+    "Airports": [
+      { "NameEn": "N'Djili International Airport", "NameAr": "مطار نجيلي الدولي" },
+      { "NameEn": "Lubumbashi Luano International Airport", "NameAr": "مطار لوبومباشي الدولي" },
+      { "NameEn": "Kisangani Bangoka International Airport", "NameAr": "مطار كيسنغاني الدولي" },
+      { "NameEn": "Goma International Airport", "NameAr": "مطار غوما الدولي" },
+      { "NameEn": "Mbuji-Mayi Airport", "NameAr": "مطار مبوجي مايي" }
+    ]
+  },
+  {
+    "NameEn": "Costa Rica",
+    "NameAr": "كوستاريكا",
+    "Code": "CR",
+    "Airports": [
+      { "NameEn": "Juan Santamaría International Airport", "NameAr": "مطار خوان سانتاماريا الدولي" },
+      { "NameEn": "Daniel Oduber Quirós International Airport", "NameAr": "مطار دانيال أودوبر الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Côte d'Ivoire",
+    "NameAr": "ساحل العاج",
+    "Code": "CI",
+    "Airports": [
+      { "NameEn": "Félix-Houphouët-Boigny International Airport", "NameAr": "مطار فيلكس هوفويه بوانيي الدولي" },
+      { "NameEn": "Bouaké Airport", "NameAr": "مطار بواكي" },
+      { "NameEn": "Yamoussoukro Airport", "NameAr": "مطار ياموسوكرو" },
+      { "NameEn": "San Pedro Airport", "NameAr": "مطار سان بيدرو" }
+    ]
+  },
+  {
+    "NameEn": "Croatia",
+    "NameAr": "كرواتيا",
+    "Code": "HR",
+    "Airports": [
+      { "NameEn": "Zagreb Franjo Tuđman Airport", "NameAr": "مطار زغرب الدولي" },
+      { "NameEn": "Split Airport", "NameAr": "مطار سبليت" },
+      { "NameEn": "Dubrovnik Airport", "NameAr": "مطار دوبروفنيك" },
+      { "NameEn": "Zadar Airport", "NameAr": "مطار زادار" },
+      { "NameEn": "Pula Airport", "NameAr": "مطار بولا" },
+      { "NameEn": "Rijeka Airport", "NameAr": "مطار رييكا" },
+      { "NameEn": "Osijek Airport", "NameAr": "مطار أوسييك" }
+    ]
+  },
+  {
+    "NameEn": "Cuba",
+    "NameAr": "كوبا",
+    "Code": "CU",
+    "Airports": [
+      { "NameEn": "José Martí International Airport", "NameAr": "مطار خوسيه مارتي الدولي" },
+      { "NameEn": "Juan Gualberto Gómez Airport", "NameAr": "مطار خوان غوالبرتو غوميز" },
+      { "NameEn": "Abel Santamaría Airport", "NameAr": "مطار أبيل سانتاماريا" },
+      { "NameEn": "Frank País Airport", "NameAr": "مطار فرانك بايس" },
+      { "NameEn": "Antonio Maceo Airport", "NameAr": "مطار أنطونيو ماسيو" },
+      { "NameEn": "Ignacio Agramonte International Airport", "NameAr": "مطار إغناسيو أغرامونتي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Cyprus",
+    "NameAr": "قبرص",
+    "Code": "CY",
+    "Airports": [
+      { "NameEn": "Larnaca International Airport", "NameAr": "مطار لارنكا الدولي" },
+      { "NameEn": "Paphos International Airport", "NameAr": "مطار بافوس الدولي" },
+      { "NameEn": "Ercan International Airport", "NameAr": "مطار إرجان الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Czechia",
+    "NameAr": "التشيك",
+    "Code": "CZ",
+    "Airports": [
+      { "NameEn": "Václav Havel Airport Prague", "NameAr": "مطار فاتسلاف هافل براغ" },
+      { "NameEn": "Brno–Tuřany Airport", "NameAr": "مطار برنو توراني" },
+      { "NameEn": "Ostrava Leoš Janáček Airport", "NameAr": "مطار أوسترافا" },
+      { "NameEn": "Pardubice Airport", "NameAr": "مطار باردوبيتسي" },
+      { "NameEn": "Karlovy Vary Airport", "NameAr": "مطار كارلوفي فاري" }
+    ]
+  },
+  {
+    "NameEn": "Denmark",
+    "NameAr": "الدنمارك",
+    "Code": "DK",
+    "Airports": [
+      { "NameEn": "Copenhagen Airport", "NameAr": "مطار كوبنهاغن" },
+      { "NameEn": "Billund Airport", "NameAr": "مطار بيلوند" },
+      { "NameEn": "Aalborg Airport", "NameAr": "مطار آلبورغ" },
+      { "NameEn": "Aarhus Airport", "NameAr": "مطار آرهوس" }
+    ]
+  },
+  {
+    "NameEn": "Djibouti",
+    "NameAr": "جيبوتي",
+    "Code": "DJ",
+    "Airports": [
+      { "NameEn": "Djibouti–Ambouli International Airport", "NameAr": "مطار جيبوتي أمبولي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Dominica",
+    "NameAr": "دومينيكا",
+    "Code": "DM",
+    "Airports": [
+      { "NameEn": "Douglas–Charles Airport", "NameAr": "مطار دوغلاس تشارلز" },
+      { "NameEn": "Canefield Airport", "NameAr": "مطار كانفيلد" }
+    ]
+  },
+  {
+    "NameEn": "Dominican Republic",
+    "NameAr": "جمهورية الدومينيكان",
+    "Code": "DO",
+    "Airports": [
+      { "NameEn": "Punta Cana International Airport", "NameAr": "مطار بونتا كانا الدولي" },
+      { "NameEn": "Las Américas International Airport", "NameAr": "مطار لاس أميريكاس الدولي" },
+      { "NameEn": "Cibao International Airport", "NameAr": "مطار سيباو الدولي" },
+      { "NameEn": "Gregorio Luperón International Airport", "NameAr": "مطار غريغوريو لوبيرون الدولي" },
+      { "NameEn": "La Romana International Airport", "NameAr": "مطار لا رومانا الدولي" },
+      { "NameEn": "Samaná El Catey International Airport", "NameAr": "مطار سامانا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Ecuador",
+    "NameAr": "الإكوادور",
+    "Code": "EC",
+    "Airports": [
+      { "NameEn": "Quito Mariscal Sucre International Airport", "NameAr": "مطار كيتو الدولي" },
+      { "NameEn": "Guayaquil José Joaquín de Olmedo International Airport", "NameAr": "مطار غواياكيل الدولي" },
+      { "NameEn": "Cuenca Mariscal Lamar Airport", "NameAr": "مطار كوينكا" },
+      { "NameEn": "Seymour Airport (Galápagos)", "NameAr": "مطار سيمور (غالاباغوس)" },
+      { "NameEn": "Manta Eloy Alfaro International Airport", "NameAr": "مطار مانتا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Egypt",
+    "NameAr": "مصر",
+    "Code": "EG",
+    "Airports": [
+      { "NameEn": "Cairo International Airport", "NameAr": "مطار القاهرة الدولي" },
+      { "NameEn": "Hurghada International Airport", "NameAr": "مطار الغردقة الدولي" },
+      { "NameEn": "Sharm El Sheikh International Airport", "NameAr": "مطار شرم الشيخ الدولي" },
+      { "NameEn": "Borg El Arab Airport", "NameAr": "مطار برج العرب" },
+      { "NameEn": "Luxor International Airport", "NameAr": "مطار الأقصر الدولي" },
+      { "NameEn": "Aswan International Airport", "NameAr": "مطار أسوان الدولي" },
+      { "NameEn": "Marsa Alam International Airport", "NameAr": "مطار مرسى علم الدولي" },
+      { "NameEn": "Sphinx International Airport", "NameAr": "مطار سفنكس الدولي" },
+      { "NameEn": "Sohag International Airport", "NameAr": "مطار سوهاج الدولي" },
+      { "NameEn": "Taba International Airport", "NameAr": "مطار طابا الدولي" },
+      { "NameEn": "El Alamein International Airport", "NameAr": "مطار العلمين الدولي" },
+      { "NameEn": "Berenice International Airport", "NameAr": "مطار برنيس الدولي" }
+    ]
+  },
+  {
+    "NameEn": "El Salvador",
+    "NameAr": "السلفادور",
+    "Code": "SV",
+    "Airports": [
+      { "NameEn": "Monseñor Óscar Arnulfo Romero International Airport", "NameAr": "مطار مونسينيور أوسكار روميرو الدولي" },
+      { "NameEn": "Ilopango International Airport", "NameAr": "مطار إيلوبانغو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Equatorial Guinea",
+    "NameAr": "غينيا الاستوائية",
+    "Code": "GQ",
+    "Airports": [
+      { "NameEn": "Malabo International Airport", "NameAr": "مطار مالابو الدولي" },
+      { "NameEn": "Bata Airport", "NameAr": "مطار باتا" },
+      { "NameEn": "Mongomeyen Airport", "NameAr": "مطار مونغوميين" }
+    ]
+  },
+  {
+    "NameEn": "Eritrea",
+    "NameAr": "إريتريا",
+    "Code": "ER",
+    "Airports": [
+      { "NameEn": "Asmara International Airport", "NameAr": "مطار أسمرة الدولي" },
+      { "NameEn": "Massawa International Airport", "NameAr": "مطار مصوع الدولي" },
+      { "NameEn": "Assab International Airport", "NameAr": "مطار عصب الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Estonia",
+    "NameAr": "إستونيا",
+    "Code": "EE",
+    "Airports": [
+      { "NameEn": "Lennart Meri Tallinn Airport", "NameAr": "مطار تالين لينارت ميري" },
+      { "NameEn": "Tartu Airport", "NameAr": "مطار تارتو" },
+      { "NameEn": "Kuressaare Airport", "NameAr": "مطار كوريساري" },
+      { "NameEn": "Pärnu Airport", "NameAr": "مطار بارنو" }
+    ]
+  },
+  {
+    "NameEn": "Eswatini",
+    "NameAr": "إسواتيني",
+    "Code": "SZ",
+    "Airports": [
+      { "NameEn": "King Mswati III International Airport", "NameAr": "مطار الملك مسواتي الثالث الدولي" },
+      { "NameEn": "Matsapha Airport", "NameAr": "مطار ماتسافا" }
+    ]
+  },
+  {
+    "NameEn": "Ethiopia",
+    "NameAr": "إثيوبيا",
+    "Code": "ET",
+    "Airports": [
+      { "NameEn": "Addis Ababa Bole International Airport", "NameAr": "مطار أديس أبابا بولي الدولي" },
+      { "NameEn": "Dire Dawa Airport", "NameAr": "مطار ديري داوا" },
+      { "NameEn": "Bahir Dar Airport", "NameAr": "مطار بحر دار" },
+      { "NameEn": "Mekelle Alula Aba Nega Airport", "NameAr": "مطار ميكيلي" },
+      { "NameEn": "Jimma Airport", "NameAr": "مطار جيما" },
+      { "NameEn": "Lalibela Airport", "NameAr": "مطار لاليبيلا" },
+      { "NameEn": "Axum Airport", "NameAr": "مطار أكسوم" }
+    ]
+  },
+  {
+    "NameEn": "Fiji",
+    "NameAr": "فيجي",
+    "Code": "FJ",
+    "Airports": [
+      { "NameEn": "Nadi International Airport", "NameAr": "مطار نادي الدولي" },
+      { "NameEn": "Nausori International Airport", "NameAr": "مطار ناوسوري الدولي" },
+      { "NameEn": "Labasa Airport", "NameAr": "مطار لاباسا" }
+    ]
+  },
+  {
+    "NameEn": "Finland",
+    "NameAr": "فنلندا",
+    "Code": "FI",
+    "Airports": [
+      { "NameEn": "Helsinki-Vantaa Airport", "NameAr": "مطار هلسنكي فانتا" },
+      { "NameEn": "Oulu Airport", "NameAr": "مطار أولو" },
+      { "NameEn": "Tampere-Pirkkala Airport", "NameAr": "مطار تامبيري" },
+      { "NameEn": "Turku Airport", "NameAr": "مطار توركو" },
+      { "NameEn": "Rovaniemi Airport", "NameAr": "مطار روفانيمي" },
+      { "NameEn": "Kuopio Airport", "NameAr": "مطار كوبيو" },
+      { "NameEn": "Vaasa Airport", "NameAr": "مطار فاسا" },
+      { "NameEn": "Ivalo Airport", "NameAr": "مطار إيفالو" },
+      { "NameEn": "Kittilä Airport", "NameAr": "مطار كيتيلا" }
+    ]
+  },
+  {
+    "NameEn": "France",
+    "NameAr": "فرنسا",
+    "Code": "FR",
+    "Airports": [
+      { "NameEn": "Paris Charles de Gaulle Airport", "NameAr": "مطار باريس شارل ديغول" },
+      { "NameEn": "Paris Orly Airport", "NameAr": "مطار باريس أورلي" },
+      { "NameEn": "Nice Côte d'Azur Airport", "NameAr": "مطار نيس كوت دازور" },
+      { "NameEn": "Lyon–Saint-Exupéry Airport", "NameAr": "مطار ليون سانت إكزوبيري" },
+      { "NameEn": "Marseille Provence Airport", "NameAr": "مطار مارسيليا بروفانس" },
+      { "NameEn": "Toulouse–Blagnac Airport", "NameAr": "مطار تولوز بلانياك" },
+      { "NameEn": "Bordeaux–Mérignac Airport", "NameAr": "مطار بوردو ميرينياك" },
+      { "NameEn": "Nantes Atlantique Airport", "NameAr": "مطار نانت أتلانتيك" },
+      { "NameEn": "Strasbourg Airport", "NameAr": "مطار ستراسبورغ" },
+      { "NameEn": "Montpellier–Méditerranée Airport", "NameAr": "مطار مونبلييه" },
+      { "NameEn": "Lille Airport", "NameAr": "مطار ليل" },
+      { "NameEn": "EuroAirport Basel-Mulhouse-Freiburg", "NameAr": "مطار يوروإيربورت بازل مولوز" },
+      { "NameEn": "Ajaccio Napoleon Bonaparte Airport", "NameAr": "مطار أجاكسيو" },
+      { "NameEn": "Bastia Poretta Airport", "NameAr": "مطار باستيا" }
+    ]
+  },
+  {
+    "NameEn": "Gabon",
+    "NameAr": "الغابون",
+    "Code": "GA",
+    "Airports": [
+      { "NameEn": "Libreville Léon-Mba International Airport", "NameAr": "مطار ليبرفيل الدولي" },
+      { "NameEn": "Port-Gentil Airport", "NameAr": "مطار بور جنتيل" },
+      { "NameEn": "Franceville Mvengue Airport", "NameAr": "مطار فرانسفيل" }
+    ]
+  },
+  {
+    "NameEn": "Gambia",
+    "NameAr": "غامبيا",
+    "Code": "GM",
+    "Airports": [
+      { "NameEn": "Banjul International Airport", "NameAr": "مطار بانجول الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Georgia",
+    "NameAr": "جورجيا",
+    "Code": "GE",
+    "Airports": [
+      { "NameEn": "Tbilisi International Airport", "NameAr": "مطار تبليسي الدولي" },
+      { "NameEn": "Kutaisi International Airport", "NameAr": "مطار كوتايسي الدولي" },
+      { "NameEn": "Batumi International Airport", "NameAr": "مطار باتومي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Germany",
+    "NameAr": "ألمانيا",
+    "Code": "DE",
+    "Airports": [
+      { "NameEn": "Frankfurt Airport", "NameAr": "مطار فرانكفورت" },
+      { "NameEn": "Munich Airport", "NameAr": "مطار ميونخ" },
+      { "NameEn": "Berlin Brandenburg Airport", "NameAr": "مطار برلين براندنبورغ" },
+      { "NameEn": "Düsseldorf Airport", "NameAr": "مطار دوسلدورف" },
+      { "NameEn": "Hamburg Airport", "NameAr": "مطار هامبورغ" },
+      { "NameEn": "Cologne Bonn Airport", "NameAr": "مطار كولونيا بون" },
+      { "NameEn": "Stuttgart Airport", "NameAr": "مطار شتوتغارت" },
+      { "NameEn": "Hannover Airport", "NameAr": "مطار هانوفر" },
+      { "NameEn": "Nuremberg Airport", "NameAr": "مطار نورنبرغ" },
+      { "NameEn": "Leipzig/Halle Airport", "NameAr": "مطار لايبزيغ هالي" },
+      { "NameEn": "Bremen Airport", "NameAr": "مطار بريمن" },
+      { "NameEn": "Dresden Airport", "NameAr": "مطار درسدن" },
+      { "NameEn": "Dortmund Airport", "NameAr": "مطار دورتموند" }
+    ]
+  },
+  {
+    "NameEn": "Ghana",
+    "NameAr": "غانا",
+    "Code": "GH",
+    "Airports": [
+      { "NameEn": "Kotoka International Airport", "NameAr": "مطار كوتوكا الدولي" },
+      { "NameEn": "Kumasi Airport", "NameAr": "مطار كوماسي" },
+      { "NameEn": "Tamale Airport", "NameAr": "مطار تامالي" }
+    ]
+  },
+  {
+    "NameEn": "Greece",
+    "NameAr": "اليونان",
+    "Code": "GR",
+    "Airports": [
+      { "NameEn": "Athens International Airport Eleftherios Venizelos", "NameAr": "مطار أثينا الدولي" },
+      { "NameEn": "Thessaloniki Macedonia International Airport", "NameAr": "مطار سالونيك مقدونيا الدولي" },
+      { "NameEn": "Heraklion Nikos Kazantzakis Airport", "NameAr": "مطار هيراكليون" },
+      { "NameEn": "Rhodes Diagoras International Airport", "NameAr": "مطار رودس الدولي" },
+      { "NameEn": "Corfu Ioannis Kapodistrias International Airport", "NameAr": "مطار كورفو الدولي" },
+      { "NameEn": "Chania Daskalogiannis Airport", "NameAr": "مطار خانيا" },
+      { "NameEn": "Santorini (Thira) National Airport", "NameAr": "مطار سانتوريني" },
+      { "NameEn": "Kos Island International Airport", "NameAr": "مطار كوس الدولي" },
+      { "NameEn": "Mykonos Island National Airport", "NameAr": "مطار ميكونوس" },
+      { "NameEn": "Zakynthos International Airport", "NameAr": "مطار زاكينثوس الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Grenada",
+    "NameAr": "غرينادا",
+    "Code": "GD",
+    "Airports": [
+      { "NameEn": "Maurice Bishop International Airport", "NameAr": "مطار موريس بيشوب الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Guatemala",
+    "NameAr": "غواتيمالا",
+    "Code": "GT",
+    "Airports": [
+      { "NameEn": "La Aurora International Airport", "NameAr": "مطار لا أورورا الدولي" },
+      { "NameEn": "Mundo Maya International Airport", "NameAr": "مطار موندو مايا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Guinea",
+    "NameAr": "غينيا",
+    "Code": "GN",
+    "Airports": [
+      { "NameEn": "Conakry Ahmed Sékou Touré International Airport", "NameAr": "مطار كوناكري أحمد سيكو توري الدولي" },
+      { "NameEn": "Labé Airport", "NameAr": "مطار لابي" },
+      { "NameEn": "Nzérékoré Airport", "NameAr": "مطار نزيريكوري" }
+    ]
+  },
+  {
+    "NameEn": "Guinea-Bissau",
+    "NameAr": "غينيا بيساو",
+    "Code": "GW",
+    "Airports": [
+      { "NameEn": "Osvaldo Vieira International Airport", "NameAr": "مطار أوسفالدو فييرا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Guyana",
+    "NameAr": "غيانا",
+    "Code": "GY",
+    "Airports": [
+      { "NameEn": "Cheddi Jagan International Airport", "NameAr": "مطار تشيدي جاغان الدولي" },
+      { "NameEn": "Eugene F. Correia International Airport", "NameAr": "مطار يوجين كوريا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Haiti",
+    "NameAr": "هايتي",
+    "Code": "HT",
+    "Airports": [
+      { "NameEn": "Toussaint Louverture International Airport", "NameAr": "مطار توسان لوفرتور الدولي" },
+      { "NameEn": "Cap-Haïtien International Airport", "NameAr": "مطار كاب هايتيان الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Honduras",
+    "NameAr": "هندوراس",
+    "Code": "HN",
+    "Airports": [
+      { "NameEn": "Toncontín International Airport", "NameAr": "مطار تونكونتين الدولي" },
+      { "NameEn": "Ramón Villeda Morales International Airport", "NameAr": "مطار رامون فييدا موراليس الدولي" },
+      { "NameEn": "Juan Manuel Gálvez International Airport", "NameAr": "مطار خوان مانويل غالفيز الدولي" },
+      { "NameEn": "Palmerola International Airport", "NameAr": "مطار بالميرولا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Hungary",
+    "NameAr": "المجر",
+    "Code": "HU",
+    "Airports": [
+      { "NameEn": "Budapest Ferenc Liszt International Airport", "NameAr": "مطار بودابست فيرينتس ليست الدولي" },
+      { "NameEn": "Debrecen International Airport", "NameAr": "مطار دبرتسن الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Iceland",
+    "NameAr": "آيسلندا",
+    "Code": "IS",
+    "Airports": [
+      { "NameEn": "Keflavík International Airport", "NameAr": "مطار كيفلافيك الدولي" },
+      { "NameEn": "Reykjavík Airport", "NameAr": "مطار ريكيافيك" },
+      { "NameEn": "Akureyri Airport", "NameAr": "مطار أكوريري" },
+      { "NameEn": "Egilsstaðir Airport", "NameAr": "مطار إيغيلسستادير" }
+    ]
+  },
+  {
+    "NameEn": "India",
+    "NameAr": "الهند",
+    "Code": "IN",
+    "Airports": [
+      { "NameEn": "Indira Gandhi International Airport", "NameAr": "مطار إنديرا غاندي الدولي" },
+      { "NameEn": "Chhatrapati Shivaji Maharaj International Airport", "NameAr": "مطار تشاتراباتي شيفاجي الدولي" },
+      { "NameEn": "Kempegowda International Airport", "NameAr": "مطار كيمبيغودا الدولي" },
+      { "NameEn": "Rajiv Gandhi International Airport", "NameAr": "مطار راجيف غاندي الدولي" },
+      { "NameEn": "Netaji Subhas Chandra Bose International Airport", "NameAr": "مطار نيتاجي سوبهاش تشاندرا بوس الدولي" },
+      { "NameEn": "Chennai International Airport", "NameAr": "مطار تشيناي الدولي" },
+      { "NameEn": "Cochin International Airport", "NameAr": "مطار كوتشين الدولي" },
+      { "NameEn": "Sardar Vallabhbhai Patel International Airport", "NameAr": "مطار سردار فالابهباي باتيل الدولي" },
+      { "NameEn": "Goa Manohar International Airport", "NameAr": "مطار غوا مانوهار الدولي" },
+      { "NameEn": "Pune Airport", "NameAr": "مطار بيون" },
+      { "NameEn": "Jaipur International Airport", "NameAr": "مطار جايبور الدولي" },
+      { "NameEn": "Lucknow Chaudhary Charan Singh International Airport", "NameAr": "مطار لكناو الدولي" },
+      { "NameEn": "Trivandrum International Airport", "NameAr": "مطار تريفاندرم الدولي" },
+      { "NameEn": "Calicut International Airport", "NameAr": "مطار كاليكوت الدولي" },
+      { "NameEn": "Amritsar Sri Guru Ram Dass Jee International Airport", "NameAr": "مطار أمريتسار الدولي" },
+      { "NameEn": "Noida International Airport", "NameAr": "مطار نويدا الدولي" },
+      { "NameEn": "Navi Mumbai International Airport", "NameAr": "مطار نافي مومباي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Indonesia",
+    "NameAr": "إندونيسيا",
+    "Code": "ID",
+    "Airports": [
+      { "NameEn": "Soekarno–Hatta International Airport", "NameAr": "مطار سوكارنو هاتا الدولي" },
+      { "NameEn": "Ngurah Rai International Airport", "NameAr": "مطار نغوراه راي الدولي" },
+      { "NameEn": "Juanda International Airport", "NameAr": "مطار جواندا الدولي" },
+      { "NameEn": "Sultan Hasanuddin International Airport", "NameAr": "مطار السلطان حسن الدين الدولي" },
+      { "NameEn": "Kualanamu International Airport", "NameAr": "مطار كوالانامو الدولي" },
+      { "NameEn": "Sultan Aji Muhammad Sulaiman Airport", "NameAr": "مطار السلطان أجي محمد سليمان" },
+      { "NameEn": "Yogyakarta International Airport", "NameAr": "مطار يوغياكارتا الدولي" },
+      { "NameEn": "Minangkabau International Airport", "NameAr": "مطار مينانغكاباو الدولي" },
+      { "NameEn": "Sultan Syarif Kasim II International Airport", "NameAr": "مطار السلطان شريف قاسم الثاني الدولي" },
+      { "NameEn": "Lombok International Airport", "NameAr": "مطار لومبوك الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Iran",
+    "NameAr": "إيران",
+    "Code": "IR",
+    "Airports": [
+      { "NameEn": "Imam Khomeini International Airport", "NameAr": "مطار الإمام الخميني الدولي" },
+      { "NameEn": "Mehrabad International Airport", "NameAr": "مطار مهرآباد الدولي" },
+      { "NameEn": "Mashhad International Airport", "NameAr": "مطار مشهد الدولي" },
+      { "NameEn": "Isfahan International Airport", "NameAr": "مطار أصفهان الدولي" },
+      { "NameEn": "Shiraz International Airport", "NameAr": "مطار شيراز الدولي" },
+      { "NameEn": "Tabriz International Airport", "NameAr": "مطار تبريز الدولي" },
+      { "NameEn": "Ahvaz International Airport", "NameAr": "مطار الأهواز الدولي" },
+      { "NameEn": "Kish International Airport", "NameAr": "مطار كيش الدولي" },
+      { "NameEn": "Bandar Abbas International Airport", "NameAr": "مطار بندر عباس الدولي" },
+      { "NameEn": "Kerman Airport", "NameAr": "مطار كرمان" }
+    ]
+  },
+  {
+    "NameEn": "Iraq",
+    "NameAr": "العراق",
+    "Code": "IQ",
+    "Airports": [
+      { "NameEn": "Baghdad International Airport", "NameAr": "مطار بغداد الدولي" },
+      { "NameEn": "Erbil International Airport", "NameAr": "مطار أربيل الدولي" },
+      { "NameEn": "Sulaymaniyah International Airport", "NameAr": "مطار السليمانية الدولي" },
+      { "NameEn": "Basra International Airport", "NameAr": "مطار البصرة الدولي" },
+      { "NameEn": "Najaf International Airport", "NameAr": "مطار النجف الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Ireland",
+    "NameAr": "أيرلندا",
+    "Code": "IE",
+    "Airports": [
+      { "NameEn": "Dublin Airport", "NameAr": "مطار دبلن" },
+      { "NameEn": "Cork Airport", "NameAr": "مطار كورك" },
+      { "NameEn": "Shannon Airport", "NameAr": "مطار شانون" },
+      { "NameEn": "Ireland West Airport Knock", "NameAr": "مطار أيرلندا الغربي نوك" },
+      { "NameEn": "Kerry Airport", "NameAr": "مطار كيري" }
+    ]
+  },
+  {
+    "NameEn": "Israel",
+    "NameAr": "إسرائيل",
+    "Code": "IL",
+    "Airports": [
+      { "NameEn": "Ben Gurion International Airport", "NameAr": "مطار بن غوريون الدولي" },
+      { "NameEn": "Ramon International Airport", "NameAr": "مطار رامون الدولي" },
+      { "NameEn": "Haifa Airport", "NameAr": "مطار حيفا" }
+    ]
+  },
+  {
+    "NameEn": "Italy",
+    "NameAr": "إيطاليا",
+    "Code": "IT",
+    "Airports": [
+      { "NameEn": "Rome Leonardo da Vinci–Fiumicino Airport", "NameAr": "مطار روما فيوميتشينو" },
+      { "NameEn": "Milan Malpensa Airport", "NameAr": "مطار ميلانو مالبينسا" },
+      { "NameEn": "Milan Linate Airport", "NameAr": "مطار ميلانو ليناتي" },
+      { "NameEn": "Venice Marco Polo Airport", "NameAr": "مطار فينيسيا ماركو بولو" },
+      { "NameEn": "Naples International Airport", "NameAr": "مطار نابولي الدولي" },
+      { "NameEn": "Milan Bergamo Orio al Serio Airport", "NameAr": "مطار بيرغامو" },
+      { "NameEn": "Catania Fontanarossa Airport", "NameAr": "مطار كاتانيا" },
+      { "NameEn": "Bologna Guglielmo Marconi Airport", "NameAr": "مطار بولونيا" },
+      { "NameEn": "Palermo Falcone–Borsellino Airport", "NameAr": "مطار باليرمو" },
+      { "NameEn": "Rome Ciampino Airport", "NameAr": "مطار روما تشامبينو" },
+      { "NameEn": "Pisa Galileo Galilei Airport", "NameAr": "مطار بيزا" },
+      { "NameEn": "Turin Airport", "NameAr": "مطار تورينو" },
+      { "NameEn": "Bari Karol Wojtyła Airport", "NameAr": "مطار باري" },
+      { "NameEn": "Florence Peretola Airport", "NameAr": "مطار فلورنسا" },
+      { "NameEn": "Cagliari Elmas Airport", "NameAr": "مطار كالياري" }
+    ]
+  },
+  {
+    "NameEn": "Jamaica",
+    "NameAr": "جامايكا",
+    "Code": "JM",
+    "Airports": [
+      { "NameEn": "Norman Manley International Airport", "NameAr": "مطار نورمان مانلي الدولي" },
+      { "NameEn": "Sangster International Airport", "NameAr": "مطار سانغستر الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Japan",
+    "NameAr": "اليابان",
+    "Code": "JP",
+    "Airports": [
+      { "NameEn": "Tokyo Narita International Airport", "NameAr": "مطار طوكيو ناريتا الدولي" },
+      { "NameEn": "Tokyo Haneda Airport", "NameAr": "مطار طوكيو هانيدا" },
+      { "NameEn": "Kansai International Airport", "NameAr": "مطار كانساي الدولي" },
+      { "NameEn": "Osaka Itami Airport", "NameAr": "مطار أوساكا إيتامي" },
+      { "NameEn": "Chubu Centrair International Airport", "NameAr": "مطار تشوبو سنتراير الدولي" },
+      { "NameEn": "Fukuoka Airport", "NameAr": "مطار فوكوكا" },
+      { "NameEn": "New Chitose Airport", "NameAr": "مطار نيو تشيتوسي" },
+      { "NameEn": "Naha Airport", "NameAr": "مطار ناها" },
+      { "NameEn": "Sendai Airport", "NameAr": "مطار سينداي" },
+      { "NameEn": "Hiroshima Airport", "NameAr": "مطار هيروشيما" },
+      { "NameEn": "Kobe Airport", "NameAr": "مطار كوبي" },
+      { "NameEn": "Kitakyushu Airport", "NameAr": "مطار كيتاكيوشو" },
+      { "NameEn": "Kagoshima Airport", "NameAr": "مطار كاغوشيما" }
+    ]
+  },
+  {
+    "NameEn": "Jordan",
+    "NameAr": "الأردن",
+    "Code": "JO",
+    "Airports": [
+      { "NameEn": "Queen Alia International Airport", "NameAr": "مطار الملكة علياء الدولي" },
+      { "NameEn": "King Hussein International Airport", "NameAr": "مطار الملك حسين الدولي" },
+      { "NameEn": "Amman Civil Airport", "NameAr": "مطار عمان المدني" }
+    ]
+  },
+  {
+    "NameEn": "Kazakhstan",
+    "NameAr": "كازاخستان",
+    "Code": "KZ",
+    "Airports": [
+      { "NameEn": "Nursultan Nazarbayev International Airport", "NameAr": "مطار نور سلطان نزارباييف الدولي" },
+      { "NameEn": "Almaty International Airport", "NameAr": "مطار ألماتي الدولي" },
+      { "NameEn": "Shymkent International Airport", "NameAr": "مطار شيمكنت الدولي" },
+      { "NameEn": "Aktau International Airport", "NameAr": "مطار أكتاو الدولي" },
+      { "NameEn": "Karaganda Airport", "NameAr": "مطار كاراغاندا" },
+      { "NameEn": "Atyrau Airport", "NameAr": "مطار أتيراو" }
+    ]
+  },
+  {
+    "NameEn": "Kenya",
+    "NameAr": "كينيا",
+    "Code": "KE",
+    "Airports": [
+      { "NameEn": "Jomo Kenyatta International Airport", "NameAr": "مطار جومو كينياتا الدولي" },
+      { "NameEn": "Moi International Airport", "NameAr": "مطار موي الدولي" },
+      { "NameEn": "Kisumu International Airport", "NameAr": "مطار كيسومو الدولي" },
+      { "NameEn": "Eldoret International Airport", "NameAr": "مطار إلدوريت الدولي" },
+      { "NameEn": "Wilson Airport", "NameAr": "مطار ويلسون" },
+      { "NameEn": "Malindi Airport", "NameAr": "مطار ماليندي" }
+    ]
+  },
+  {
+    "NameEn": "Kiribati",
+    "NameAr": "كيريباتي",
+    "Code": "KI",
+    "Airports": [
+      { "NameEn": "Bonriki International Airport", "NameAr": "مطار بونريكي الدولي" },
+      { "NameEn": "Cassidy International Airport", "NameAr": "مطار كاسيدي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Korea (North)",
+    "NameAr": "كوريا الشمالية",
+    "Code": "KP",
+    "Airports": [
+      { "NameEn": "Pyongyang Sunan International Airport", "NameAr": "مطار بيونغ يانغ سونان الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Korea (South)",
+    "NameAr": "كوريا الجنوبية",
+    "Code": "KR",
+    "Airports": [
+      { "NameEn": "Incheon International Airport", "NameAr": "مطار إنتشون الدولي" },
+      { "NameEn": "Gimpo International Airport", "NameAr": "مطار غيمبو الدولي" },
+      { "NameEn": "Gimhae International Airport", "NameAr": "مطار غيمهي الدولي" },
+      { "NameEn": "Jeju International Airport", "NameAr": "مطار جيجو الدولي" },
+      { "NameEn": "Daegu International Airport", "NameAr": "مطار دايغو الدولي" },
+      { "NameEn": "Cheongju International Airport", "NameAr": "مطار تشونغجو الدولي" },
+      { "NameEn": "Muan International Airport", "NameAr": "مطار موان الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Kuwait",
+    "NameAr": "الكويت",
+    "Code": "KW",
+    "Airports": [
+      { "NameEn": "Kuwait International Airport", "NameAr": "مطار الكويت الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Kyrgyzstan",
+    "NameAr": "قيرغيزستان",
+    "Code": "KG",
+    "Airports": [
+      { "NameEn": "Manas International Airport", "NameAr": "مطار ماناس الدولي" },
+      { "NameEn": "Osh Airport", "NameAr": "مطار أوش" },
+      { "NameEn": "Issyk-Kul International Airport", "NameAr": "مطار إيسيك كول الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Laos",
+    "NameAr": "لاوس",
+    "Code": "LA",
+    "Airports": [
+      { "NameEn": "Wattay International Airport", "NameAr": "مطار واتاي الدولي" },
+      { "NameEn": "Luang Prabang International Airport", "NameAr": "مطار لوانغ برابانغ الدولي" },
+      { "NameEn": "Pakse International Airport", "NameAr": "مطار باكسي الدولي" },
+      { "NameEn": "Savannakhet Airport", "NameAr": "مطار سافاناخيت" }
+    ]
+  },
+  {
+    "NameEn": "Latvia",
+    "NameAr": "لاتفيا",
+    "Code": "LV",
+    "Airports": [
+      { "NameEn": "Riga International Airport", "NameAr": "مطار ريغا الدولي" },
+      { "NameEn": "Liepāja International Airport", "NameAr": "مطار ليبايا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Lebanon",
+    "NameAr": "لبنان",
+    "Code": "LB",
+    "Airports": [
+      { "NameEn": "Beirut–Rafic Hariri International Airport", "NameAr": "مطار بيروت رفيق الحريري الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Lesotho",
+    "NameAr": "ليسوتو",
+    "Code": "LS",
+    "Airports": [
+      { "NameEn": "Moshoeshoe I International Airport", "NameAr": "مطار موشويشوي الأول الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Liberia",
+    "NameAr": "ليبيريا",
+    "Code": "LR",
+    "Airports": [
+      { "NameEn": "Roberts International Airport", "NameAr": "مطار روبرتس الدولي" },
+      { "NameEn": "Spriggs Payne Airport", "NameAr": "مطار سبريغز باين" }
+    ]
+  },
+  {
+    "NameEn": "Libya",
+    "NameAr": "ليبيا",
+    "Code": "LY",
+    "Airports": [
+      { "NameEn": "Mitiga International Airport", "NameAr": "مطار معيتيقة الدولي" },
+      { "NameEn": "Tripoli International Airport", "NameAr": "مطار طرابلس الدولي" },
+      { "NameEn": "Benina International Airport", "NameAr": "مطار بنينا الدولي" },
+      { "NameEn": "Misrata Airport", "NameAr": "مطار مصراتة" },
+      { "NameEn": "Sabha Airport", "NameAr": "مطار سبها" }
+    ]
+  },
+  {
+    "NameEn": "Liechtenstein",
+    "NameAr": "ليختنشتاين",
+    "Code": "LI",
+    "Airports": []
+  },
+  {
+    "NameEn": "Lithuania",
+    "NameAr": "ليتوانيا",
+    "Code": "LT",
+    "Airports": [
+      { "NameEn": "Vilnius Airport", "NameAr": "مطار فيلنيوس" },
+      { "NameEn": "Kaunas Airport", "NameAr": "مطار كاوناس" },
+      { "NameEn": "Palanga International Airport", "NameAr": "مطار بالانغا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Luxembourg",
+    "NameAr": "لوكسمبورغ",
+    "Code": "LU",
+    "Airports": [
+      { "NameEn": "Luxembourg Findel Airport", "NameAr": "مطار لوكسمبورغ فيندل" }
+    ]
+  },
+  {
+    "NameEn": "Madagascar",
+    "NameAr": "مدغشقر",
+    "Code": "MG",
+    "Airports": [
+      { "NameEn": "Ivato International Airport", "NameAr": "مطار إيفاتو الدولي" },
+      { "NameEn": "Fascene Airport", "NameAr": "مطار فاسين" },
+      { "NameEn": "Toamasina Ambalamanasy Airport", "NameAr": "مطار تواماسينا" },
+      { "NameEn": "Sainte Marie Airport", "NameAr": "مطار سانت ماري" }
+    ]
+  },
+  {
+    "NameEn": "Malawi",
+    "NameAr": "مالاوي",
+    "Code": "MW",
+    "Airports": [
+      { "NameEn": "Kamuzu International Airport", "NameAr": "مطار كاموزو الدولي" },
+      { "NameEn": "Chileka International Airport", "NameAr": "مطار تشيليكا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Malaysia",
+    "NameAr": "ماليزيا",
+    "Code": "MY",
+    "Airports": [
+      { "NameEn": "Kuala Lumpur International Airport", "NameAr": "مطار كوالالمبور الدولي" },
+      { "NameEn": "Kota Kinabalu International Airport", "NameAr": "مطار كوتا كينابالو الدولي" },
+      { "NameEn": "Penang International Airport", "NameAr": "مطار بينانغ الدولي" },
+      { "NameEn": "Kuching International Airport", "NameAr": "مطار كوتشينغ الدولي" },
+      { "NameEn": "Langkawi International Airport", "NameAr": "مطار لانكاوي الدولي" },
+      { "NameEn": "Johor Bahru Senai International Airport", "NameAr": "مطار جوهور بارو الدولي" },
+      { "NameEn": "Sultan Abdul Aziz Shah Airport", "NameAr": "مطار السلطان عبد العزيز شاه" }
+    ]
+  },
+  {
+    "NameEn": "Maldives",
+    "NameAr": "المالديف",
+    "Code": "MV",
+    "Airports": [
+      { "NameEn": "Velana International Airport", "NameAr": "مطار فيلانا الدولي" },
+      { "NameEn": "Gan International Airport", "NameAr": "مطار غان الدولي" },
+      { "NameEn": "Hanimaadhoo International Airport", "NameAr": "مطار هانيمادو الدولي" },
+      { "NameEn": "Maafaru International Airport", "NameAr": "مطار مافارو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Mali",
+    "NameAr": "مالي",
+    "Code": "ML",
+    "Airports": [
+      { "NameEn": "Bamako–Sénou International Airport", "NameAr": "مطار باماكو سينو الدولي" },
+      { "NameEn": "Mopti Ambodédjo Airport", "NameAr": "مطار موبتي" },
+      { "NameEn": "Timbuktu Airport", "NameAr": "مطار تمبكتو" }
+    ]
+  },
+  {
+    "NameEn": "Malta",
+    "NameAr": "مالطا",
+    "Code": "MT",
+    "Airports": [
+      { "NameEn": "Malta International Airport", "NameAr": "مطار مالطا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Marshall Islands",
+    "NameAr": "جزر مارشال",
+    "Code": "MH",
+    "Airports": [
+      { "NameEn": "Marshall Islands International Airport", "NameAr": "مطار جزر مارشال الدولي" },
+      { "NameEn": "Bucholz Army Airfield", "NameAr": "مطار بوخولز" }
+    ]
+  },
+  {
+    "NameEn": "Mauritania",
+    "NameAr": "موريتانيا",
+    "Code": "MR",
+    "Airports": [
+      { "NameEn": "Nouakchott–Oumtounsy International Airport", "NameAr": "مطار نواكشوط أم التونسي الدولي" },
+      { "NameEn": "Nouadhibou International Airport", "NameAr": "مطار نواذيبو الدولي" },
+      { "NameEn": "Atar International Airport", "NameAr": "مطار أطار الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Mauritius",
+    "NameAr": "موريشيوس",
+    "Code": "MU",
+    "Airports": [
+      { "NameEn": "Sir Seewoosagur Ramgoolam International Airport", "NameAr": "مطار سير سيوساغور رامغولام الدولي" },
+      { "NameEn": "Sir Gaëtan Duval Airport (Rodrigues)", "NameAr": "مطار سير غايتان دوفال" }
+    ]
+  },
+  {
+    "NameEn": "Mexico",
+    "NameAr": "المكسيك",
+    "Code": "MX",
+    "Airports": [
+      { "NameEn": "Mexico City International Airport", "NameAr": "مطار مكسيكو سيتي الدولي" },
+      { "NameEn": "Felipe Ángeles International Airport", "NameAr": "مطار فيليبي أنخيليس الدولي" },
+      { "NameEn": "Cancún International Airport", "NameAr": "مطار كانكون الدولي" },
+      { "NameEn": "Guadalajara Miguel Hidalgo y Costilla International Airport", "NameAr": "مطار غوادالاخارا الدولي" },
+      { "NameEn": "Monterrey General Mariano Escobedo International Airport", "NameAr": "مطار مونتيري الدولي" },
+      { "NameEn": "Tijuana General Abelardo L. Rodríguez International Airport", "NameAr": "مطار تيخوانا الدولي" },
+      { "NameEn": "Los Cabos International Airport", "NameAr": "مطار لوس كابوس الدولي" },
+      { "NameEn": "Puerto Vallarta Gustavo Díaz Ordaz International Airport", "NameAr": "مطار بويرتو فالارتا الدولي" },
+      { "NameEn": "Mérida Manuel Crescencio Rejón International Airport", "NameAr": "مطار ميريدا الدولي" },
+      { "NameEn": "Tulum International Airport", "NameAr": "مطار تولوم الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Micronesia",
+    "NameAr": "ميكرونيزيا",
+    "Code": "FM",
+    "Airports": [
+      { "NameEn": "Chuuk International Airport", "NameAr": "مطار تشوك الدولي" },
+      { "NameEn": "Pohnpei International Airport", "NameAr": "مطار بونبي الدولي" },
+      { "NameEn": "Kosrae International Airport", "NameAr": "مطار كوسراي الدولي" },
+      { "NameEn": "Yap International Airport", "NameAr": "مطار ياب الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Moldova",
+    "NameAr": "مولدوفا",
+    "Code": "MD",
+    "Airports": [
+      { "NameEn": "Chișinău International Airport", "NameAr": "مطار كيشيناو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Monaco",
+    "NameAr": "موناكو",
+    "Code": "MC",
+    "Airports": [
+      { "NameEn": "Monaco Heliport", "NameAr": "مهبط مروحيات موناكو" }
+    ]
+  },
+  {
+    "NameEn": "Mongolia",
+    "NameAr": "منغوليا",
+    "Code": "MN",
+    "Airports": [
+      { "NameEn": "Chinggis Khaan International Airport", "NameAr": "مطار جنكيز خان الدولي" },
+      { "NameEn": "Murun Airport", "NameAr": "مطار مورون" },
+      { "NameEn": "Choibalsan Airport", "NameAr": "مطار تشويبالسان" }
+    ]
+  },
+  {
+    "NameEn": "Montenegro",
+    "NameAr": "الجبل الأسود",
+    "Code": "ME",
+    "Airports": [
+      { "NameEn": "Podgorica Airport", "NameAr": "مطار بودغوريتسا" },
+      { "NameEn": "Tivat Airport", "NameAr": "مطار تيفات" }
+    ]
+  },
+  {
+    "NameEn": "Morocco",
+    "NameAr": "المغرب",
+    "Code": "MA",
+    "Airports": [
+      { "NameEn": "Mohammed V International Airport", "NameAr": "مطار محمد الخامس الدولي" },
+      { "NameEn": "Marrakech Menara Airport", "NameAr": "مطار مراكش المنارة" },
+      { "NameEn": "Rabat–Salé Airport", "NameAr": "مطار الرباط سلا" },
+      { "NameEn": "Fès–Saïss Airport", "NameAr": "مطار فاس سايس" },
+      { "NameEn": "Tangier Ibn Battouta Airport", "NameAr": "مطار طنجة ابن بطوطة" },
+      { "NameEn": "Agadir Al Massira Airport", "NameAr": "مطار أغادير المسيرة" },
+      { "NameEn": "Nador International Airport", "NameAr": "مطار الناظور الدولي" },
+      { "NameEn": "Oujda Angads Airport", "NameAr": "مطار وجدة أنكاد" }
+    ]
+  },
+  {
+    "NameEn": "Mozambique",
+    "NameAr": "موزمبيق",
+    "Code": "MZ",
+    "Airports": [
+      { "NameEn": "Maputo International Airport", "NameAr": "مطار مابوتو الدولي" },
+      { "NameEn": "Beira Airport", "NameAr": "مطار بيرا" },
+      { "NameEn": "Nampula Airport", "NameAr": "مطار نامبولا" },
+      { "NameEn": "Vilankulo Airport", "NameAr": "مطار فيلانكولو" }
+    ]
+  },
+  {
+    "NameEn": "Myanmar",
+    "NameAr": "ميانمار",
+    "Code": "MM",
+    "Airports": [
+      { "NameEn": "Yangon International Airport", "NameAr": "مطار يانغون الدولي" },
+      { "NameEn": "Mandalay International Airport", "NameAr": "مطار ماندالاي الدولي" },
+      { "NameEn": "Nay Pyi Taw International Airport", "NameAr": "مطار ناي بي تاو الدولي" },
+      { "NameEn": "Nyaung U Airport", "NameAr": "مطار نياونغ أو" },
+      { "NameEn": "Heho Airport", "NameAr": "مطار هيهو" }
+    ]
+  },
+  {
+    "NameEn": "Namibia",
+    "NameAr": "ناميبيا",
+    "Code": "NA",
+    "Airports": [
+      { "NameEn": "Hosea Kutako International Airport", "NameAr": "مطار هوسيا كوتاكو الدولي" },
+      { "NameEn": "Walvis Bay Airport", "NameAr": "مطار والفيس باي" },
+      { "NameEn": "Eros Airport", "NameAr": "مطار إيروس" }
+    ]
+  },
+  {
+    "NameEn": "Nauru",
+    "NameAr": "ناورو",
+    "Code": "NR",
+    "Airports": [
+      { "NameEn": "Nauru International Airport", "NameAr": "مطار ناورو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Nepal",
+    "NameAr": "نيبال",
+    "Code": "NP",
+    "Airports": [
+      { "NameEn": "Tribhuvan International Airport", "NameAr": "مطار تريبوفان الدولي" },
+      { "NameEn": "Gautam Buddha International Airport", "NameAr": "مطار غوتام بوذا الدولي" },
+      { "NameEn": "Pokhara International Airport", "NameAr": "مطار بوخارا الدولي" },
+      { "NameEn": "Tenzing-Hillary Airport (Lukla)", "NameAr": "مطار تنزينغ هيلاري" }
+    ]
+  },
+  {
+    "NameEn": "Netherlands",
+    "NameAr": "هولندا",
+    "Code": "NL",
+    "Airports": [
+      { "NameEn": "Amsterdam Airport Schiphol", "NameAr": "مطار أمستردام سخيبول" },
+      { "NameEn": "Eindhoven Airport", "NameAr": "مطار آيندهوفن" },
+      { "NameEn": "Rotterdam The Hague Airport", "NameAr": "مطار روتردام لاهاي" },
+      { "NameEn": "Groningen Airport Eelde", "NameAr": "مطار خرونينغن" },
+      { "NameEn": "Maastricht Aachen Airport", "NameAr": "مطار ماستريخت آخن" }
+    ]
+  },
+  {
+    "NameEn": "New Zealand",
+    "NameAr": "نيوزيلندا",
+    "Code": "NZ",
+    "Airports": [
+      { "NameEn": "Auckland Airport", "NameAr": "مطار أوكلاند" },
+      { "NameEn": "Wellington Airport", "NameAr": "مطار ويلينغتون" },
+      { "NameEn": "Christchurch Airport", "NameAr": "مطار كرايستشيرش" },
+      { "NameEn": "Queenstown Airport", "NameAr": "مطار كوينزتاون" },
+      { "NameEn": "Dunedin Airport", "NameAr": "مطار دنيدن" },
+      { "NameEn": "Rotorua Airport", "NameAr": "مطار روتوروا" }
+    ]
+  },
+  {
+    "NameEn": "Nicaragua",
+    "NameAr": "نيكاراغوا",
+    "Code": "NI",
+    "Airports": [
+      { "NameEn": "Augusto C. Sandino International Airport", "NameAr": "مطار أوغوستو ساندينو الدولي" },
+      { "NameEn": "Costa Esmeralda Airport", "NameAr": "مطار كوستا إسميرالدا" }
+    ]
+  },
+  {
+    "NameEn": "Niger",
+    "NameAr": "النيجر",
+    "Code": "NE",
+    "Airports": [
+      { "NameEn": "Diori Hamani International Airport", "NameAr": "مطار ديوري حماني الدولي" },
+      { "NameEn": "Mano Dayak Airport", "NameAr": "مطار مانو داياك" },
+      { "NameEn": "Zinder Airport", "NameAr": "مطار زيندر" }
+    ]
+  },
+  {
+    "NameEn": "Nigeria",
+    "NameAr": "نيجيريا",
+    "Code": "NG",
+    "Airports": [
+      { "NameEn": "Murtala Muhammed International Airport", "NameAr": "مطار مرتالا محمد الدولي" },
+      { "NameEn": "Nnamdi Azikiwe International Airport", "NameAr": "مطار نامدي أزيكوي الدولي" },
+      { "NameEn": "Mallam Aminu Kano International Airport", "NameAr": "مطار ملم أمينو كانو الدولي" },
+      { "NameEn": "Port Harcourt International Airport", "NameAr": "مطار بورت هاركورت الدولي" },
+      { "NameEn": "Akanu Ibiam International Airport", "NameAr": "مطار أكانو إيبيام الدولي" },
+      { "NameEn": "Sam Mbakwe Airport", "NameAr": "مطار سام مباكوي" },
+      { "NameEn": "Benin Airport", "NameAr": "مطار بنين" },
+      { "NameEn": "Kaduna Airport", "NameAr": "مطار كادونا" }
+    ]
+  },
+  {
+    "NameEn": "North Macedonia",
+    "NameAr": "مقدونيا الشمالية",
+    "Code": "MK",
+    "Airports": [
+      { "NameEn": "Skopje International Airport", "NameAr": "مطار سكوبيه الدولي" },
+      { "NameEn": "Ohrid St. Paul the Apostle Airport", "NameAr": "مطار أوهريد" }
+    ]
+  },
+  {
+    "NameEn": "Norway",
+    "NameAr": "النرويج",
+    "Code": "NO",
+    "Airports": [
+      { "NameEn": "Oslo Gardermoen Airport", "NameAr": "مطار أوسلو غاردرموين" },
+      { "NameEn": "Bergen Flesland Airport", "NameAr": "مطار بيرغن فليسلاند" },
+      { "NameEn": "Stavanger Sola Airport", "NameAr": "مطار ستافانغر سولا" },
+      { "NameEn": "Trondheim Værnes Airport", "NameAr": "مطار تروندهايم فارنيس" },
+      { "NameEn": "Tromsø Langnes Airport", "NameAr": "مطار ترومسو لانغنيس" },
+      { "NameEn": "Bodø Airport", "NameAr": "مطار بودو" },
+      { "NameEn": "Kristiansand Kjevik Airport", "NameAr": "مطار كريستيانساند" },
+      { "NameEn": "Oslo Torp Sandefjord Airport", "NameAr": "مطار أوسلو تورب ساندفيورد" }
+    ]
+  },
+  {
+    "NameEn": "Oman",
+    "NameAr": "عُمان",
+    "Code": "OM",
+    "Airports": [
+      { "NameEn": "Muscat International Airport", "NameAr": "مطار مسقط الدولي" },
+      { "NameEn": "Salalah Airport", "NameAr": "مطار صلالة" },
+      { "NameEn": "Duqm Airport", "NameAr": "مطار الدقم" },
+      { "NameEn": "Sohar Airport", "NameAr": "مطار صحار" },
+      { "NameEn": "Khasab Airport", "NameAr": "مطار خصب" }
+    ]
+  },
+  {
+    "NameEn": "Pakistan",
+    "NameAr": "باكستان",
+    "Code": "PK",
+    "Airports": [
+      { "NameEn": "Jinnah International Airport", "NameAr": "مطار جناح الدولي" },
+      { "NameEn": "Allama Iqbal International Airport", "NameAr": "مطار علامة إقبال الدولي" },
+      { "NameEn": "Islamabad International Airport", "NameAr": "مطار إسلام آباد الدولي" },
+      { "NameEn": "Peshawar Bacha Khan International Airport", "NameAr": "مطار بيشاور باشا خان الدولي" },
+      { "NameEn": "Quetta International Airport", "NameAr": "مطار كويتا الدولي" },
+      { "NameEn": "Faisalabad International Airport", "NameAr": "مطار فيصل آباد الدولي" },
+      { "NameEn": "Multan International Airport", "NameAr": "مطار ملتان الدولي" },
+      { "NameEn": "Sialkot International Airport", "NameAr": "مطار سيالكوت الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Palau",
+    "NameAr": "بالاو",
+    "Code": "PW",
+    "Airports": [
+      { "NameEn": "Roman Tmetuchl International Airport", "NameAr": "مطار رومان تميتوخل الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Palestine",
+    "NameAr": "فلسطين",
+    "Code": "PS",
+    "Airports": []
+  },
+  {
+    "NameEn": "Panama",
+    "NameAr": "بنما",
+    "Code": "PA",
+    "Airports": [
+      { "NameEn": "Tocumen International Airport", "NameAr": "مطار توكومين الدولي" },
+      { "NameEn": "Enrique Malek International Airport", "NameAr": "مطار إنريكي مالك الدولي" },
+      { "NameEn": "Marcos A. Gelabert International Airport", "NameAr": "مطار ماركوس جيلابرت الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Papua New Guinea",
+    "NameAr": "بابوا غينيا الجديدة",
+    "Code": "PG",
+    "Airports": [
+      { "NameEn": "Jacksons International Airport", "NameAr": "مطار جاكسونز الدولي" },
+      { "NameEn": "Nadzab Airport", "NameAr": "مطار ناتساب" },
+      { "NameEn": "Tokua Airport", "NameAr": "مطار توكوا" },
+      { "NameEn": "Mount Hagen Kagamuga Airport", "NameAr": "مطار ماونت هاغن" }
+    ]
+  },
+  {
+    "NameEn": "Paraguay",
+    "NameAr": "باراغواي",
+    "Code": "PY",
+    "Airports": [
+      { "NameEn": "Silvio Pettirossi International Airport", "NameAr": "مطار سيلفيو بتيروسي الدولي" },
+      { "NameEn": "Guaraní International Airport", "NameAr": "مطار غواراني الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Peru",
+    "NameAr": "بيرو",
+    "Code": "PE",
+    "Airports": [
+      { "NameEn": "Jorge Chávez International Airport", "NameAr": "مطار خورخي تشافيز الدولي" },
+      { "NameEn": "Alejandro Velasco Astete International Airport", "NameAr": "مطار كوسكو الدولي" },
+      { "NameEn": "Rodríguez Ballón International Airport", "NameAr": "مطار أريكيبا الدولي" },
+      { "NameEn": "Coronel FAP Francisco Secada Vignetta Airport", "NameAr": "مطار إيكيتوس الدولي" },
+      { "NameEn": "Capitán FAP Carlos Martínez de Pinillos Airport", "NameAr": "مطار تروخيو الدولي" },
+      { "NameEn": "Chinchero International Airport", "NameAr": "مطار تشينتشيرو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Philippines",
+    "NameAr": "الفلبين",
+    "Code": "PH",
+    "Airports": [
+      { "NameEn": "Ninoy Aquino International Airport", "NameAr": "مطار نينوي أكينو الدولي" },
+      { "NameEn": "Mactan-Cebu International Airport", "NameAr": "مطار ماكتان سيبو الدولي" },
+      { "NameEn": "Clark International Airport", "NameAr": "مطار كلارك الدولي" },
+      { "NameEn": "Francisco Bangoy International Airport", "NameAr": "مطار دافاو الدولي" },
+      { "NameEn": "Iloilo International Airport", "NameAr": "مطار إيلويلو الدولي" },
+      { "NameEn": "Puerto Princesa International Airport", "NameAr": "مطار بويرتو برينسيسا الدولي" },
+      { "NameEn": "Kalibo International Airport", "NameAr": "مطار كاليبو الدولي" },
+      { "NameEn": "General Santos International Airport", "NameAr": "مطار جنرال سانتوس الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Poland",
+    "NameAr": "بولندا",
+    "Code": "PL",
+    "Airports": [
+      { "NameEn": "Warsaw Chopin Airport", "NameAr": "مطار وارسو شوبان" },
+      { "NameEn": "Kraków John Paul II International Airport", "NameAr": "مطار كراكوف الدولي" },
+      { "NameEn": "Gdańsk Lech Wałęsa Airport", "NameAr": "مطار غدانسك" },
+      { "NameEn": "Katowice Wojciech Korfanty Airport", "NameAr": "مطار كاتوفيتسه" },
+      { "NameEn": "Wrocław Copernicus Airport", "NameAr": "مطار فروتسواف" },
+      { "NameEn": "Poznań–Ławica Henryk Wieniawski Airport", "NameAr": "مطار بوزنان" },
+      { "NameEn": "Warsaw Modlin Airport", "NameAr": "مطار وارسو مودلين" },
+      { "NameEn": "Rzeszów–Jasionka Airport", "NameAr": "مطار جيشوف" },
+      { "NameEn": "Łódź Władysław Reymont Airport", "NameAr": "مطار وودج" }
+    ]
+  },
+  {
+    "NameEn": "Portugal",
+    "NameAr": "البرتغال",
+    "Code": "PT",
+    "Airports": [
+      { "NameEn": "Lisbon Humberto Delgado Airport", "NameAr": "مطار لشبونة هومبرتو ديلغادو" },
+      { "NameEn": "Porto Francisco Sá Carneiro Airport", "NameAr": "مطار بورتو" },
+      { "NameEn": "Faro Airport", "NameAr": "مطار فارو" },
+      { "NameEn": "Funchal Cristiano Ronaldo International Airport", "NameAr": "مطار فونشال كريستيانو رونالدو" },
+      { "NameEn": "Ponta Delgada João Paulo II Airport", "NameAr": "مطار بونتا ديلغادا" },
+      { "NameEn": "Lajes Airport (Terceira)", "NameAr": "مطار لاجيس" }
+    ]
+  },
+  {
+    "NameEn": "Qatar",
+    "NameAr": "قطر",
+    "Code": "QA",
+    "Airports": [
+      { "NameEn": "Hamad International Airport", "NameAr": "مطار حمد الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Romania",
+    "NameAr": "رومانيا",
+    "Code": "RO",
+    "Airports": [
+      { "NameEn": "Henri Coandă International Airport", "NameAr": "مطار هنري كواندا الدولي" },
+      { "NameEn": "Cluj-Napoca International Airport", "NameAr": "مطار كلوج نابوكا الدولي" },
+      { "NameEn": "Timișoara Traian Vuia International Airport", "NameAr": "مطار تيميشوارا الدولي" },
+      { "NameEn": "Iași International Airport", "NameAr": "مطار ياش الدولي" },
+      { "NameEn": "Sibiu International Airport", "NameAr": "مطار سيبيو الدولي" },
+      { "NameEn": "Bucharest Băneasa Aurel Vlaicu Airport", "NameAr": "مطار بوخارست بانياسا" },
+      { "NameEn": "Craiova International Airport", "NameAr": "مطار كرايوفا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Russia",
+    "NameAr": "روسيا",
+    "Code": "RU",
+    "Airports": [
+      { "NameEn": "Sheremetyevo International Airport", "NameAr": "مطار شيريميتيفو الدولي" },
+      { "NameEn": "Domodedovo International Airport", "NameAr": "مطار دوموديدوفو الدولي" },
+      { "NameEn": "Vnukovo International Airport", "NameAr": "مطار فنوكوفو الدولي" },
+      { "NameEn": "Pulkovo Airport", "NameAr": "مطار بولكوفو" },
+      { "NameEn": "Sochi International Airport", "NameAr": "مطار سوتشي الدولي" },
+      { "NameEn": "Novosibirsk Tolmachevo Airport", "NameAr": "مطار نوفوسيبيرسك" },
+      { "NameEn": "Yekaterinburg Koltsovo Airport", "NameAr": "مطار يكاترينبورغ" },
+      { "NameEn": "Kazan International Airport", "NameAr": "مطار قازان الدولي" },
+      { "NameEn": "Krasnodar Pashkovsky Airport", "NameAr": "مطار كراسنودار" },
+      { "NameEn": "Vladivostok International Airport", "NameAr": "مطار فلاديفوستوك الدولي" },
+      { "NameEn": "Krasnoyarsk Yemelyanovo Airport", "NameAr": "مطار كراسنويارسك" },
+      { "NameEn": "Samara Kurumoch Airport", "NameAr": "مطار سامارا" },
+      { "NameEn": "Rostov-on-Don Platov Airport", "NameAr": "مطار روستوف أون دون" },
+      { "NameEn": "Mineralnye Vody Airport", "NameAr": "مطار مينيرالنيي فودي" },
+      { "NameEn": "Irkutsk Airport", "NameAr": "مطار إيركوتسك" }
+    ]
+  },
+  {
+    "NameEn": "Rwanda",
+    "NameAr": "رواندا",
+    "Code": "RW",
+    "Airports": [
+      { "NameEn": "Kigali International Airport", "NameAr": "مطار كيغالي الدولي" },
+      { "NameEn": "Bugesera International Airport", "NameAr": "مطار بوغيسيرا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Saint Kitts and Nevis",
+    "NameAr": "سانت كيتس ونيفيس",
+    "Code": "KN",
+    "Airports": [
+      { "NameEn": "Robert L. Bradshaw International Airport", "NameAr": "مطار روبرت برادشو الدولي" },
+      { "NameEn": "Vance W. Amory International Airport", "NameAr": "مطار فانس أموري الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Saint Lucia",
+    "NameAr": "سانت لوسيا",
+    "Code": "LC",
+    "Airports": [
+      { "NameEn": "Hewanorra International Airport", "NameAr": "مطار هيوانورا الدولي" },
+      { "NameEn": "George F.L. Charles Airport", "NameAr": "مطار جورج تشارلز" }
+    ]
+  },
+  {
+    "NameEn": "Saint Vincent and the Grenadines",
+    "NameAr": "سانت فينسنت والغرينادين",
+    "Code": "VC",
+    "Airports": [
+      { "NameEn": "Argyle International Airport", "NameAr": "مطار أرغايل الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Samoa",
+    "NameAr": "ساموا",
+    "Code": "WS",
+    "Airports": [
+      { "NameEn": "Faleolo International Airport", "NameAr": "مطار فاليولو الدولي" },
+      { "NameEn": "Maota Airport", "NameAr": "مطار ماوتا" }
+    ]
+  },
+  {
+    "NameEn": "San Marino",
+    "NameAr": "سان مارينو",
+    "Code": "SM",
+    "Airports": []
+  },
+  {
+    "NameEn": "Sao Tome and Principe",
+    "NameAr": "ساو تومي وبرينسيبي",
+    "Code": "ST",
+    "Airports": [
+      { "NameEn": "São Tomé International Airport", "NameAr": "مطار ساو تومي الدولي" },
+      { "NameEn": "Príncipe Airport", "NameAr": "مطار برينسيبي" }
+    ]
+  },
+  {
+    "NameEn": "Saudi Arabia",
+    "NameAr": "المملكة العربية السعودية",
+    "Code": "SA",
+    "Airports": [
+      { "NameEn": "King Abdulaziz International Airport", "NameAr": "مطار الملك عبدالعزيز الدولي" },
+      { "NameEn": "King Khalid International Airport", "NameAr": "مطار الملك خالد الدولي" },
+      { "NameEn": "King Fahd International Airport", "NameAr": "مطار الملك فهد الدولي" },
+      { "NameEn": "Prince Mohammad bin Abdulaziz International Airport", "NameAr": "مطار الأمير محمد بن عبدالعزيز الدولي" },
+      { "NameEn": "Abha International Airport", "NameAr": "مطار أبها الدولي" },
+      { "NameEn": "Taif International Airport", "NameAr": "مطار الطائف الدولي" },
+      { "NameEn": "Tabuk Regional Airport", "NameAr": "مطار تبوك الإقليمي" },
+      { "NameEn": "Ha'il Regional Airport", "NameAr": "مطار حائل الإقليمي" },
+      { "NameEn": "Jizan Regional Airport", "NameAr": "مطار جازان الإقليمي" },
+      { "NameEn": "Najran Airport", "NameAr": "مطار نجران" },
+      { "NameEn": "Al-Ula International Airport", "NameAr": "مطار العلا الدولي" },
+      { "NameEn": "Red Sea International Airport", "NameAr": "مطار البحر الأحمر الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Senegal",
+    "NameAr": "السنغال",
+    "Code": "SN",
+    "Airports": [
+      { "NameEn": "Blaise Diagne International Airport", "NameAr": "مطار بليز دياني الدولي" },
+      { "NameEn": "Ziguinchor Airport", "NameAr": "مطار زيغينشور" },
+      { "NameEn": "Cap Skirring Airport", "NameAr": "مطار كاب سكيرينغ" }
+    ]
+  },
+  {
+    "NameEn": "Serbia",
+    "NameAr": "صربيا",
+    "Code": "RS",
+    "Airports": [
+      { "NameEn": "Belgrade Nikola Tesla Airport", "NameAr": "مطار بلغراد نيكولا تسلا" },
+      { "NameEn": "Niš Constantine the Great Airport", "NameAr": "مطار نيش" }
+    ]
+  },
+  {
+    "NameEn": "Seychelles",
+    "NameAr": "سيشل",
+    "Code": "SC",
+    "Airports": [
+      { "NameEn": "Seychelles International Airport", "NameAr": "مطار سيشل الدولي" },
+      { "NameEn": "Praslin Island Airport", "NameAr": "مطار جزيرة براسلين" }
+    ]
+  },
+  {
+    "NameEn": "Sierra Leone",
+    "NameAr": "سيراليون",
+    "Code": "SL",
+    "Airports": [
+      { "NameEn": "Freetown Lungi International Airport", "NameAr": "مطار فريتاون لونغي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Singapore",
+    "NameAr": "سنغافورة",
+    "Code": "SG",
+    "Airports": [
+      { "NameEn": "Singapore Changi Airport", "NameAr": "مطار سنغافورة شانغي" },
+      { "NameEn": "Seletar Airport", "NameAr": "مطار سيليتار" }
+    ]
+  },
+  {
+    "NameEn": "Slovakia",
+    "NameAr": "سلوفاكيا",
+    "Code": "SK",
+    "Airports": [
+      { "NameEn": "Bratislava M. R. Štefánik Airport", "NameAr": "مطار براتيسلافا" },
+      { "NameEn": "Košice International Airport", "NameAr": "مطار كوشيتسه الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Slovenia",
+    "NameAr": "سلوفينيا",
+    "Code": "SI",
+    "Airports": [
+      { "NameEn": "Ljubljana Jože Pučnik Airport", "NameAr": "مطار ليوبليانا" },
+      { "NameEn": "Maribor Edvard Rusjan Airport", "NameAr": "مطار ماريبور" }
+    ]
+  },
+  {
+    "NameEn": "Solomon Islands",
+    "NameAr": "جزر سليمان",
+    "Code": "SB",
+    "Airports": [
+      { "NameEn": "Honiara International Airport", "NameAr": "مطار هونيارا الدولي" },
+      { "NameEn": "Munda Airport", "NameAr": "مطار موندا" }
+    ]
+  },
+  {
+    "NameEn": "Somalia",
+    "NameAr": "الصومال",
+    "Code": "SO",
+    "Airports": [
+      { "NameEn": "Aden Abdulle International Airport", "NameAr": "مطار آدم عبدالله الدولي" },
+      { "NameEn": "Hargeisa Egal International Airport", "NameAr": "مطار هرجيسا الدولي" },
+      { "NameEn": "Bosaso Airport", "NameAr": "مطار بوساسو" },
+      { "NameEn": "Garowe Airport", "NameAr": "مطار غاروي" }
+    ]
+  },
+  {
+    "NameEn": "South Africa",
+    "NameAr": "جنوب أفريقيا",
+    "Code": "ZA",
+    "Airports": [
+      { "NameEn": "O.R. Tambo International Airport", "NameAr": "مطار أو آر تامبو الدولي" },
+      { "NameEn": "Cape Town International Airport", "NameAr": "مطار كيب تاون الدولي" },
+      { "NameEn": "King Shaka International Airport", "NameAr": "مطار كينغ شاكا الدولي" },
+      { "NameEn": "Port Elizabeth Airport", "NameAr": "مطار بورت إليزابيث" },
+      { "NameEn": "Lanseria International Airport", "NameAr": "مطار لانسيريا الدولي" },
+      { "NameEn": "George Airport", "NameAr": "مطار جورج" },
+      { "NameEn": "East London Airport", "NameAr": "مطار إيست لندن" },
+      { "NameEn": "Bloemfontein Bram Fischer International Airport", "NameAr": "مطار بلومفونتين الدولي" }
+    ]
+  },
+  {
+    "NameEn": "South Sudan",
+    "NameAr": "جنوب السودان",
+    "Code": "SS",
+    "Airports": [
+      { "NameEn": "Juba International Airport", "NameAr": "مطار جوبا الدولي" },
+      { "NameEn": "Malakal Airport", "NameAr": "مطار ملكال" },
+      { "NameEn": "Wau Airport", "NameAr": "مطار واو" }
+    ]
+  },
+  {
+    "NameEn": "Spain",
+    "NameAr": "إسبانيا",
+    "Code": "ES",
+    "Airports": [
+      { "NameEn": "Adolfo Suárez Madrid–Barajas Airport", "NameAr": "مطار مدريد باراخاس" },
+      { "NameEn": "Barcelona–El Prat Airport", "NameAr": "مطار برشلونة إل برات" },
+      { "NameEn": "Palma de Mallorca Airport", "NameAr": "مطار بالما دي مايوركا" },
+      { "NameEn": "Málaga–Costa del Sol Airport", "NameAr": "مطار مالقة" },
+      { "NameEn": "Alicante–Elche Airport", "NameAr": "مطار أليكانتي" },
+      { "NameEn": "Gran Canaria Airport", "NameAr": "مطار غران كناريا" },
+      { "NameEn": "Tenerife South Airport", "NameAr": "مطار تينيريفي الجنوبي" },
+      { "NameEn": "Tenerife North Airport", "NameAr": "مطار تينيريفي الشمالي" },
+      { "NameEn": "Ibiza Airport", "NameAr": "مطار إيبيزا" },
+      { "NameEn": "Valencia Airport", "NameAr": "مطار فالنسيا" },
+      { "NameEn": "Seville Airport", "NameAr": "مطار إشبيلية" },
+      { "NameEn": "Bilbao Airport", "NameAr": "مطار بيلباو" },
+      { "NameEn": "Lanzarote Airport", "NameAr": "مطار لانزاروتي" },
+      { "NameEn": "Fuerteventura Airport", "NameAr": "مطار فويرتيفنتورا" },
+      { "NameEn": "Santiago de Compostela Airport", "NameAr": "مطار سانتياغو دي كومبوستيلا" }
+    ]
+  },
+  {
+    "NameEn": "Sri Lanka",
+    "NameAr": "سريلانكا",
+    "Code": "LK",
+    "Airports": [
+      { "NameEn": "Bandaranaike International Airport", "NameAr": "مطار بندرانايكي الدولي" },
+      { "NameEn": "Mattala Rajapaksa International Airport", "NameAr": "مطار ماتالا راجاباكسا الدولي" },
+      { "NameEn": "Jaffna International Airport", "NameAr": "مطار جافنا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Sudan",
+    "NameAr": "السودان",
+    "Code": "SD",
+    "Airports": [
+      { "NameEn": "Khartoum International Airport", "NameAr": "مطار الخرطوم الدولي" },
+      { "NameEn": "Port Sudan New International Airport", "NameAr": "مطار بورتسودان الدولي الجديد" },
+      { "NameEn": "El Obeid Airport", "NameAr": "مطار الأبيض" },
+      { "NameEn": "Nyala Airport", "NameAr": "مطار نيالا" },
+      { "NameEn": "El Fasher Airport", "NameAr": "مطار الفاشر" }
+    ]
+  },
+  {
+    "NameEn": "Suriname",
+    "NameAr": "سورينام",
+    "Code": "SR",
+    "Airports": [
+      { "NameEn": "Johan Adolf Pengel International Airport", "NameAr": "مطار يوهان أدولف بنغل الدولي" },
+      { "NameEn": "Zorg en Hoop Airport", "NameAr": "مطار زورخ إن هوب" }
+    ]
+  },
+  {
+    "NameEn": "Sweden",
+    "NameAr": "السويد",
+    "Code": "SE",
+    "Airports": [
+      { "NameEn": "Stockholm Arlanda Airport", "NameAr": "مطار ستوكهولم أرلاندا" },
+      { "NameEn": "Gothenburg Landvetter Airport", "NameAr": "مطار غوتنبرغ لاندفيتر" },
+      { "NameEn": "Stockholm Skavsta Airport", "NameAr": "مطار ستوكهولم سكافستا" },
+      { "NameEn": "Malmö Airport", "NameAr": "مطار مالمو" },
+      { "NameEn": "Luleå Airport", "NameAr": "مطار لوليو" },
+      { "NameEn": "Umeå Airport", "NameAr": "مطار أوميو" },
+      { "NameEn": "Kiruna Airport", "NameAr": "مطار كيرونا" },
+      { "NameEn": "Visby Airport", "NameAr": "مطار فيسبي" },
+      { "NameEn": "Stockholm Bromma Airport", "NameAr": "مطار ستوكهولم بروما" }
+    ]
+  },
+  {
+    "NameEn": "Switzerland",
+    "NameAr": "سويسرا",
+    "Code": "CH",
+    "Airports": [
+      { "NameEn": "Zurich Airport", "NameAr": "مطار زيوريخ" },
+      { "NameEn": "Geneva Airport", "NameAr": "مطار جنيف" },
+      { "NameEn": "Bern Airport", "NameAr": "مطار برن" },
+      { "NameEn": "Lugano Airport", "NameAr": "مطار لوغانو" }
+    ]
+  },
+  {
+    "NameEn": "Syria",
+    "NameAr": "سوريا",
+    "Code": "SY",
+    "Airports": [
+      { "NameEn": "Damascus International Airport", "NameAr": "مطار دمشق الدولي" },
+      { "NameEn": "Aleppo International Airport", "NameAr": "مطار حلب الدولي" },
+      { "NameEn": "Latakia Bassel Al-Assad International Airport", "NameAr": "مطار اللاذقية باسل الأسد الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Tajikistan",
+    "NameAr": "طاجيكستان",
+    "Code": "TJ",
+    "Airports": [
+      { "NameEn": "Dushanbe International Airport", "NameAr": "مطار دوشنبه الدولي" },
+      { "NameEn": "Khujand International Airport", "NameAr": "مطار خوجند الدولي" },
+      { "NameEn": "Kulob Airport", "NameAr": "مطار كولاب" },
+      { "NameEn": "Bokhtar International Airport", "NameAr": "مطار بختار الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Tanzania",
+    "NameAr": "تنزانيا",
+    "Code": "TZ",
+    "Airports": [
+      { "NameEn": "Julius Nyerere International Airport", "NameAr": "مطار جوليوس نيريري الدولي" },
+      { "NameEn": "Kilimanjaro International Airport", "NameAr": "مطار كليمنجارو الدولي" },
+      { "NameEn": "Abeid Amani Karume International Airport", "NameAr": "مطار عبيد أماني كارومي الدولي" },
+      { "NameEn": "Mwanza Airport", "NameAr": "مطار موانزا" },
+      { "NameEn": "Dodoma Airport", "NameAr": "مطار دودوما" }
+    ]
+  },
+  {
+    "NameEn": "Thailand",
+    "NameAr": "تايلاند",
+    "Code": "TH",
+    "Airports": [
+      { "NameEn": "Suvarnabhumi Airport", "NameAr": "مطار سوفارنابومي" },
+      { "NameEn": "Don Mueang International Airport", "NameAr": "مطار دون موانغ الدولي" },
+      { "NameEn": "Phuket International Airport", "NameAr": "مطار فوكيت الدولي" },
+      { "NameEn": "Chiang Mai International Airport", "NameAr": "مطار شيانغ ماي الدولي" },
+      { "NameEn": "Hat Yai International Airport", "NameAr": "مطار هات ياي الدولي" },
+      { "NameEn": "Krabi Airport", "NameAr": "مطار كرابي" },
+      { "NameEn": "Samui Airport", "NameAr": "مطار ساموي" },
+      { "NameEn": "U-Tapao International Airport", "NameAr": "مطار أوتاباو الدولي" },
+      { "NameEn": "Chiang Rai Mae Fah Luang International Airport", "NameAr": "مطار شيانغ راي الدولي" },
+      { "NameEn": "Surat Thani Airport", "NameAr": "مطار سورات ثاني" }
+    ]
+  },
+  {
+    "NameEn": "Timor-Leste",
+    "NameAr": "تيمور الشرقية",
+    "Code": "TL",
+    "Airports": [
+      { "NameEn": "Presidente Nicolau Lobato International Airport", "NameAr": "مطار بريسيدنتي نيكولاو لوباتو الدولي" },
+      { "NameEn": "Suai Airport", "NameAr": "مطار سواي" }
+    ]
+  },
+  {
+    "NameEn": "Togo",
+    "NameAr": "توغو",
+    "Code": "TG",
+    "Airports": [
+      { "NameEn": "Lomé–Tokoin Airport", "NameAr": "مطار لومي توكوين" },
+      { "NameEn": "Niamtougou Airport", "NameAr": "مطار نيامتوغو" }
+    ]
+  },
+  {
+    "NameEn": "Tonga",
+    "NameAr": "تونغا",
+    "Code": "TO",
+    "Airports": [
+      { "NameEn": "Fuaʻamotu International Airport", "NameAr": "مطار فواأموتو الدولي" },
+      { "NameEn": "Vavaʻu International Airport", "NameAr": "مطار فافاو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Trinidad and Tobago",
+    "NameAr": "ترينيداد وتوباغو",
+    "Code": "TT",
+    "Airports": [
+      { "NameEn": "Piarco International Airport", "NameAr": "مطار بياركو الدولي" },
+      { "NameEn": "A.N.R. Robinson International Airport", "NameAr": "مطار إيه إن آر روبنسون الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Tunisia",
+    "NameAr": "تونس",
+    "Code": "TN",
+    "Airports": [
+      { "NameEn": "Tunis–Carthage International Airport", "NameAr": "مطار تونس قرطاج الدولي" },
+      { "NameEn": "Enfidha–Hammamet International Airport", "NameAr": "مطار النفيضة الحمامات الدولي" },
+      { "NameEn": "Monastir Habib Bourguiba International Airport", "NameAr": "مطار المنستير الحبيب بورقيبة الدولي" },
+      { "NameEn": "Djerba–Zarzis International Airport", "NameAr": "مطار جربة جرجيس الدولي" },
+      { "NameEn": "Sfax–Thyna International Airport", "NameAr": "مطار صفاقس الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Turkey",
+    "NameAr": "تركيا",
+    "Code": "TR",
+    "Airports": [
+      { "NameEn": "Istanbul Airport", "NameAr": "مطار إسطنبول" },
+      { "NameEn": "Istanbul Sabiha Gökçen International Airport", "NameAr": "مطار إسطنبول صبيحة كوكجن الدولي" },
+      { "NameEn": "Antalya Airport", "NameAr": "مطار أنطاليا" },
+      { "NameEn": "Ankara Esenboğa International Airport", "NameAr": "مطار أنقرة إيسينبوغا الدولي" },
+      { "NameEn": "Izmir Adnan Menderes Airport", "NameAr": "مطار إزمير عدنان مندريس" },
+      { "NameEn": "Dalaman Airport", "NameAr": "مطار دالامان" },
+      { "NameEn": "Bodrum Milas Airport", "NameAr": "مطار بودروم ميلاس" },
+      { "NameEn": "Trabzon Airport", "NameAr": "مطار طرابزون" },
+      { "NameEn": "Adana Şakirpaşa Airport", "NameAr": "مطار أضنة" },
+      { "NameEn": "Gaziantep Oğuzeli Airport", "NameAr": "مطار غازي عنتاب" },
+      { "NameEn": "Kayseri Erkilet Airport", "NameAr": "مطار قيصرية" },
+      { "NameEn": "Diyarbakır Airport", "NameAr": "مطار ديار بكر" }
+    ]
+  },
+  {
+    "NameEn": "Turkmenistan",
+    "NameAr": "تركمانستان",
+    "Code": "TM",
+    "Airports": [
+      { "NameEn": "Ashgabat International Airport", "NameAr": "مطار عشق آباد الدولي" },
+      { "NameEn": "Turkmenabat International Airport", "NameAr": "مطار تركمن آباد الدولي" },
+      { "NameEn": "Türkmenbaşy International Airport", "NameAr": "مطار تركمانباشي الدولي" },
+      { "NameEn": "Mary International Airport", "NameAr": "مطار ماري الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Tuvalu",
+    "NameAr": "توفالو",
+    "Code": "TV",
+    "Airports": [
+      { "NameEn": "Funafuti International Airport", "NameAr": "مطار فونافوتي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Uganda",
+    "NameAr": "أوغندا",
+    "Code": "UG",
+    "Airports": [
+      { "NameEn": "Entebbe International Airport", "NameAr": "مطار عنتيبي الدولي" },
+      { "NameEn": "Kabaale Airport (Hoima)", "NameAr": "مطار كابالي" },
+      { "NameEn": "Arua Airport", "NameAr": "مطار أروا" }
+    ]
+  },
+  {
+    "NameEn": "Ukraine",
+    "NameAr": "أوكرانيا",
+    "Code": "UA",
+    "Airports": [
+      { "NameEn": "Boryspil International Airport", "NameAr": "مطار بوريسبيل الدولي" },
+      { "NameEn": "Kyiv Zhuliany Airport", "NameAr": "مطار كييف جولياني" },
+      { "NameEn": "Lviv Danylo Halytskyi International Airport", "NameAr": "مطار لفيف الدولي" },
+      { "NameEn": "Odesa International Airport", "NameAr": "مطار أوديسا الدولي" },
+      { "NameEn": "Kharkiv International Airport", "NameAr": "مطار خاركيف الدولي" },
+      { "NameEn": "Dnipro International Airport", "NameAr": "مطار دنيبرو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "United Arab Emirates",
+    "NameAr": "الإمارات العربية المتحدة",
+    "Code": "AE",
+    "Airports": [
+      { "NameEn": "Dubai International Airport", "NameAr": "مطار دبي الدولي" },
+      { "NameEn": "Abu Dhabi International Airport", "NameAr": "مطار أبوظبي الدولي" },
+      { "NameEn": "Sharjah International Airport", "NameAr": "مطار الشارقة الدولي" },
+      { "NameEn": "Al Maktoum International Airport", "NameAr": "مطار آل مكتوم الدولي" },
+      { "NameEn": "Ras Al Khaimah International Airport", "NameAr": "مطار رأس الخيمة الدولي" }
+    ]
+  },
+  {
+    "NameEn": "United Kingdom",
+    "NameAr": "المملكة المتحدة",
+    "Code": "GB",
+    "Airports": [
+      { "NameEn": "London Heathrow Airport", "NameAr": "مطار لندن هيثرو" },
+      { "NameEn": "London Gatwick Airport", "NameAr": "مطار لندن غاتويك" },
+      { "NameEn": "Manchester Airport", "NameAr": "مطار مانشستر" },
+      { "NameEn": "London Stansted Airport", "NameAr": "مطار لندن ستانستد" },
+      { "NameEn": "London Luton Airport", "NameAr": "مطار لندن لوتن" },
+      { "NameEn": "Edinburgh Airport", "NameAr": "مطار إدنبرة" },
+      { "NameEn": "Birmingham Airport", "NameAr": "مطار برمنغهام" },
+      { "NameEn": "Bristol Airport", "NameAr": "مطار بريستول" },
+      { "NameEn": "Glasgow Airport", "NameAr": "مطار غلاسكو" },
+      { "NameEn": "Liverpool John Lennon Airport", "NameAr": "مطار ليفربول جون لينون" },
+      { "NameEn": "Newcastle Airport", "NameAr": "مطار نيوكاسل" },
+      { "NameEn": "Leeds Bradford Airport", "NameAr": "مطار ليدز برادفورد" },
+      { "NameEn": "Belfast International Airport", "NameAr": "مطار بلفاست الدولي" },
+      { "NameEn": "East Midlands Airport", "NameAr": "مطار إيست ميدلاندز" },
+      { "NameEn": "London City Airport", "NameAr": "مطار لندن سيتي" },
+      { "NameEn": "Cardiff Airport", "NameAr": "مطار كارديف" },
+      { "NameEn": "Aberdeen Airport", "NameAr": "مطار أبردين" }
+    ]
+  },
+  {
+    "NameEn": "United States",
+    "NameAr": "الولايات المتحدة",
+    "Code": "US",
+    "Airports": [
+      { "NameEn": "Hartsfield-Jackson Atlanta International Airport", "NameAr": "مطار هارتسفيلد جاكسون أتلانتا الدولي" },
+      { "NameEn": "Dallas/Fort Worth International Airport", "NameAr": "مطار دالاس فورت وورث الدولي" },
+      { "NameEn": "Denver International Airport", "NameAr": "مطار دنفر الدولي" },
+      { "NameEn": "Chicago O'Hare International Airport", "NameAr": "مطار شيكاغو أوهير الدولي" },
+      { "NameEn": "Los Angeles International Airport", "NameAr": "مطار لوس أنجلوس الدولي" },
+      { "NameEn": "John F. Kennedy International Airport", "NameAr": "مطار جون إف كينيدي الدولي" },
+      { "NameEn": "Orlando International Airport", "NameAr": "مطار أورلاندو الدولي" },
+      { "NameEn": "Charlotte Douglas International Airport", "NameAr": "مطار شارلوت دوغلاس الدولي" },
+      { "NameEn": "Las Vegas Harry Reid International Airport", "NameAr": "مطار لاس فيغاس هاري ريد الدولي" },
+      { "NameEn": "Miami International Airport", "NameAr": "مطار ميامي الدولي" },
+      { "NameEn": "Seattle-Tacoma International Airport", "NameAr": "مطار سياتل تاكوما الدولي" },
+      { "NameEn": "San Francisco International Airport", "NameAr": "مطار سان فرانسيسكو الدولي" },
+      { "NameEn": "Newark Liberty International Airport", "NameAr": "مطار نيوارك ليبرتي الدولي" },
+      { "NameEn": "George Bush Intercontinental Airport", "NameAr": "مطار جورج بوش القاري" },
+      { "NameEn": "Phoenix Sky Harbor International Airport", "NameAr": "مطار فينيكس سكاي هاربور الدولي" },
+      { "NameEn": "Boston Logan International Airport", "NameAr": "مطار بوسطن لوغان الدولي" },
+      { "NameEn": "Minneapolis-Saint Paul International Airport", "NameAr": "مطار مينيابوليس سانت بول الدولي" },
+      { "NameEn": "Fort Lauderdale-Hollywood International Airport", "NameAr": "مطار فورت لودرديل هوليوود الدولي" },
+      { "NameEn": "Detroit Metropolitan Wayne County Airport", "NameAr": "مطار ديترويت متروبوليتان" },
+      { "NameEn": "Philadelphia International Airport", "NameAr": "مطار فيلادلفيا الدولي" },
+      { "NameEn": "LaGuardia Airport", "NameAr": "مطار لاغوارديا" },
+      { "NameEn": "Washington Dulles International Airport", "NameAr": "مطار واشنطن دالاس الدولي" },
+      { "NameEn": "Ronald Reagan Washington National Airport", "NameAr": "مطار رونالد ريغان واشنطن الوطني" },
+      { "NameEn": "Salt Lake City International Airport", "NameAr": "مطار سولت ليك سيتي الدولي" },
+      { "NameEn": "Honolulu Daniel K. Inouye International Airport", "NameAr": "مطار هونولولو الدولي" },
+      { "NameEn": "San Diego International Airport", "NameAr": "مطار سان دييغو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Uruguay",
+    "NameAr": "أوروغواي",
+    "Code": "UY",
+    "Airports": [
+      { "NameEn": "Carrasco International Airport", "NameAr": "مطار كاراسكو الدولي" },
+      { "NameEn": "Carlos A. Curbelo International Airport", "NameAr": "مطار كارلوس كوربيلو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Uzbekistan",
+    "NameAr": "أوزبكستان",
+    "Code": "UZ",
+    "Airports": [
+      { "NameEn": "Islam Karimov Tashkent International Airport", "NameAr": "مطار طشقند الدولي" },
+      { "NameEn": "Samarkand International Airport", "NameAr": "مطار سمرقند الدولي" },
+      { "NameEn": "Bukhara International Airport", "NameAr": "مطار بخارى الدولي" },
+      { "NameEn": "Fergana International Airport", "NameAr": "مطار فرغانة الدولي" },
+      { "NameEn": "Nukus Airport", "NameAr": "مطار نوكوس" },
+      { "NameEn": "Urgench International Airport", "NameAr": "مطار أورغينتش الدولي" },
+      { "NameEn": "Navoi International Airport", "NameAr": "مطار نوائي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Vanuatu",
+    "NameAr": "فانواتو",
+    "Code": "VU",
+    "Airports": [
+      { "NameEn": "Bauerfield International Airport", "NameAr": "مطار باورفيلد الدولي" },
+      { "NameEn": "Pekoa International Airport", "NameAr": "مطار بيكوا الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Vatican City",
+    "NameAr": "الفاتيكان",
+    "Code": "VA",
+    "Airports": []
+  },
+  {
+    "NameEn": "Venezuela",
+    "NameAr": "فنزويلا",
+    "Code": "VE",
+    "Airports": [
+      { "NameEn": "Simón Bolívar International Airport", "NameAr": "مطار سيمون بوليفار الدولي" },
+      { "NameEn": "Arturo Michelena International Airport", "NameAr": "مطار أرتورو ميتشيلينا الدولي" },
+      { "NameEn": "La Chinita International Airport", "NameAr": "مطار لا تشينيتا الدولي" },
+      { "NameEn": "Santiago Mariño International Airport", "NameAr": "مطار سانتياغو مارينو الدولي" },
+      { "NameEn": "Josefa Camejo International Airport", "NameAr": "مطار خوسيفا كاميخو الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Vietnam",
+    "NameAr": "فيتنام",
+    "Code": "VN",
+    "Airports": [
+      { "NameEn": "Noi Bai International Airport", "NameAr": "مطار نوي باي الدولي" },
+      { "NameEn": "Tan Son Nhat International Airport", "NameAr": "مطار تان سون نات الدولي" },
+      { "NameEn": "Da Nang International Airport", "NameAr": "مطار دا نانغ الدولي" },
+      { "NameEn": "Cam Ranh International Airport", "NameAr": "مطار كام رانه الدولي" },
+      { "NameEn": "Phu Quoc International Airport", "NameAr": "مطار فو كووك الدولي" },
+      { "NameEn": "Cat Bi International Airport", "NameAr": "مطار كات بي الدولي" },
+      { "NameEn": "Can Tho International Airport", "NameAr": "مطار كان تو الدولي" },
+      { "NameEn": "Phu Bai International Airport", "NameAr": "مطار فو باي الدولي" },
+      { "NameEn": "Long Thanh International Airport", "NameAr": "مطار لونغ ثانه الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Yemen",
+    "NameAr": "اليمن",
+    "Code": "YE",
+    "Airports": [
+      { "NameEn": "Sana'a International Airport", "NameAr": "مطار صنعاء الدولي" },
+      { "NameEn": "Aden International Airport", "NameAr": "مطار عدن الدولي" },
+      { "NameEn": "Seiyun Airport", "NameAr": "مطار سيئون" },
+      { "NameEn": "Al Mukalla Airport", "NameAr": "مطار المكلا" },
+      { "NameEn": "Socotra Airport", "NameAr": "مطار سقطرى" }
+    ]
+  },
+  {
+    "NameEn": "Zambia",
+    "NameAr": "زامبيا",
+    "Code": "ZM",
+    "Airports": [
+      { "NameEn": "Kenneth Kaunda International Airport", "NameAr": "مطار كينيث كاوندا الدولي" },
+      { "NameEn": "Harry Mwanga Nkumbula International Airport", "NameAr": "مطار هاري موانغا نكومبولا الدولي" },
+      { "NameEn": "Simon Mwansa Kapwepwe International Airport", "NameAr": "مطار سيمون موانسا كابويبوي الدولي" }
+    ]
+  },
+  {
+    "NameEn": "Zimbabwe",
+    "NameAr": "زيمبابوي",
+    "Code": "ZW",
+    "Airports": [
+      { "NameEn": "Robert Gabriel Mugabe International Airport", "NameAr": "مطار روبرت غابرييل موغابي الدولي" },
+      { "NameEn": "Joshua Mqabuko Nkomo International Airport", "NameAr": "مطار جوشوا نكومو الدولي" },
+      { "NameEn": "Victoria Falls International Airport", "NameAr": "مطار شلالات فيكتوريا الدولي" }
+    ]
+  }
+]

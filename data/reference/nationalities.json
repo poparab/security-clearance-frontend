@@ -1,0 +1,1172 @@
+[
+  {
+    "NameEn": "Afghan",
+    "NameAr": "أفغاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Albanian",
+    "NameAr": "ألباني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Algerian",
+    "NameAr": "جزائري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Andorran",
+    "NameAr": "أندوري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Angolan",
+    "NameAr": "أنغولي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Antiguan and Barbudan",
+    "NameAr": "أنتيغوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Argentine",
+    "NameAr": "أرجنتيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Armenian",
+    "NameAr": "أرميني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Australian",
+    "NameAr": "أسترالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Austrian",
+    "NameAr": "نمساوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Azerbaijani",
+    "NameAr": "أذربيجاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bahamian",
+    "NameAr": "باهامي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bahraini",
+    "NameAr": "بحريني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bangladeshi",
+    "NameAr": "بنغلاديشي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Barbadian",
+    "NameAr": "باربادوسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Belarusian",
+    "NameAr": "بيلاروسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Belgian",
+    "NameAr": "بلجيكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Belizean",
+    "NameAr": "بليزي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Beninese",
+    "NameAr": "بنيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bhutanese",
+    "NameAr": "بوتاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bolivian",
+    "NameAr": "بوليفي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bosnian",
+    "NameAr": "بوسني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Motswana",
+    "NameAr": "بوتسواني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Brazilian",
+    "NameAr": "برازيلي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bruneian",
+    "NameAr": "بروناوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bulgarian",
+    "NameAr": "بلغاري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Burkinabé",
+    "NameAr": "بوركيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Burundian",
+    "NameAr": "بوروندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Cabo Verdean",
+    "NameAr": "رأس أخضري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Cambodian",
+    "NameAr": "كمبودي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Cameroonian",
+    "NameAr": "كاميروني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Canadian",
+    "NameAr": "كندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Central African",
+    "NameAr": "أفريقي وسطى",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Chadian",
+    "NameAr": "تشادي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Chilean",
+    "NameAr": "تشيلي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Chinese",
+    "NameAr": "صيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Colombian",
+    "NameAr": "كولومبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Comorian",
+    "NameAr": "قمري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Congolese",
+    "NameAr": "كونغولي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Congolese (DR)",
+    "NameAr": "كونغولي ديمقراطي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Costa Rican",
+    "NameAr": "كوستاريكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Ivorian",
+    "NameAr": "إيفواري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Croatian",
+    "NameAr": "كرواتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Cuban",
+    "NameAr": "كوبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Cypriot",
+    "NameAr": "قبرصي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Czech",
+    "NameAr": "تشيكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Danish",
+    "NameAr": "دنماركي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Djiboutian",
+    "NameAr": "جيبوتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Dominican (Commonwealth)",
+    "NameAr": "دومينيكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Dominican (Republic)",
+    "NameAr": "دومينيكاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Ecuadorian",
+    "NameAr": "إكوادوري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Egyptian",
+    "NameAr": "مصري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Salvadoran",
+    "NameAr": "سلفادوري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Equatoguinean",
+    "NameAr": "غيني استوائي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Eritrean",
+    "NameAr": "إريتري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Estonian",
+    "NameAr": "إستوني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Eswatini",
+    "NameAr": "سوازيلندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Ethiopian",
+    "NameAr": "إثيوبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Fijian",
+    "NameAr": "فيجي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Finnish",
+    "NameAr": "فنلندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "French",
+    "NameAr": "فرنسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Gabonese",
+    "NameAr": "غابوني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Gambian",
+    "NameAr": "غامبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Georgian",
+    "NameAr": "جورجي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "German",
+    "NameAr": "ألماني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Ghanaian",
+    "NameAr": "غاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Greek",
+    "NameAr": "يوناني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Grenadian",
+    "NameAr": "غرينادي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Guatemalan",
+    "NameAr": "غواتيمالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Guinean",
+    "NameAr": "غيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Bissau-Guinean",
+    "NameAr": "غيني بيساوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Guyanese",
+    "NameAr": "غياني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Haitian",
+    "NameAr": "هايتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Honduran",
+    "NameAr": "هندوراسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Hungarian",
+    "NameAr": "مجري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Icelandic",
+    "NameAr": "آيسلندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Indian",
+    "NameAr": "هندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Indonesian",
+    "NameAr": "إندونيسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Iranian",
+    "NameAr": "إيراني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Iraqi",
+    "NameAr": "عراقي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Irish",
+    "NameAr": "أيرلندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Israeli",
+    "NameAr": "إسرائيلي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Italian",
+    "NameAr": "إيطالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Jamaican",
+    "NameAr": "جامايكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Japanese",
+    "NameAr": "ياباني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Jordanian",
+    "NameAr": "أردني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Kazakh",
+    "NameAr": "كازاخستاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Kenyan",
+    "NameAr": "كيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "I-Kiribati",
+    "NameAr": "كيريباتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "North Korean",
+    "NameAr": "كوري شمالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "South Korean",
+    "NameAr": "كوري جنوبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Kuwaiti",
+    "NameAr": "كويتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Kyrgyz",
+    "NameAr": "قيرغيزستاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Laotian",
+    "NameAr": "لاوسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Latvian",
+    "NameAr": "لاتفي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Lebanese",
+    "NameAr": "لبناني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Basotho",
+    "NameAr": "ليسوتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Liberian",
+    "NameAr": "ليبيري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Libyan",
+    "NameAr": "ليبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Liechtensteiner",
+    "NameAr": "ليختنشتايني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Lithuanian",
+    "NameAr": "ليتواني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Luxembourgish",
+    "NameAr": "لوكسمبورغي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Malagasy",
+    "NameAr": "مدغشقري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Malawian",
+    "NameAr": "مالاوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Malaysian",
+    "NameAr": "ماليزي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Maldivian",
+    "NameAr": "مالديفي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Malian",
+    "NameAr": "مالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Maltese",
+    "NameAr": "مالطي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Marshallese",
+    "NameAr": "مارشالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Mauritanian",
+    "NameAr": "موريتاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Mauritian",
+    "NameAr": "موريشيوسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Mexican",
+    "NameAr": "مكسيكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Micronesian",
+    "NameAr": "ميكرونيزي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Moldovan",
+    "NameAr": "مولدوفي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Monégasque",
+    "NameAr": "موناكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Mongolian",
+    "NameAr": "منغولي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Montenegrin",
+    "NameAr": "جبل أسودي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Moroccan",
+    "NameAr": "مغربي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Mozambican",
+    "NameAr": "موزمبيقي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Burmese",
+    "NameAr": "ميانماري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Namibian",
+    "NameAr": "ناميبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Nauruan",
+    "NameAr": "ناوروي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Nepali",
+    "NameAr": "نيبالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Dutch",
+    "NameAr": "هولندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "New Zealander",
+    "NameAr": "نيوزيلندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Nicaraguan",
+    "NameAr": "نيكاراغوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Nigerien",
+    "NameAr": "نيجري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Nigerian",
+    "NameAr": "نيجيري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "North Macedonian",
+    "NameAr": "مقدوني شمالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Norwegian",
+    "NameAr": "نرويجي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Omani",
+    "NameAr": "عُماني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Pakistani",
+    "NameAr": "باكستاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Palauan",
+    "NameAr": "بالاوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Palestinian",
+    "NameAr": "فلسطيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Panamanian",
+    "NameAr": "بنمي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Papua New Guinean",
+    "NameAr": "بابوي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Paraguayan",
+    "NameAr": "باراغواياني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Peruvian",
+    "NameAr": "بيروفي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Filipino",
+    "NameAr": "فلبيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Polish",
+    "NameAr": "بولندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Portuguese",
+    "NameAr": "برتغالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Qatari",
+    "NameAr": "قطري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Romanian",
+    "NameAr": "روماني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Russian",
+    "NameAr": "روسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Rwandan",
+    "NameAr": "رواندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Kittitian and Nevisian",
+    "NameAr": "كيتسي ونيفيسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Saint Lucian",
+    "NameAr": "سانت لوسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Vincentian",
+    "NameAr": "فينسنتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Samoan",
+    "NameAr": "ساموي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Sammarinese",
+    "NameAr": "سان ماريني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "São Toméan",
+    "NameAr": "ساوتومي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Saudi",
+    "NameAr": "سعودي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Senegalese",
+    "NameAr": "سنغالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Serbian",
+    "NameAr": "صربي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Seychellois",
+    "NameAr": "سيشلي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Sierra Leonean",
+    "NameAr": "سيراليوني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Singaporean",
+    "NameAr": "سنغافوري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Slovak",
+    "NameAr": "سلوفاكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Slovenian",
+    "NameAr": "سلوفيني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Solomon Islander",
+    "NameAr": "سليماني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Somali",
+    "NameAr": "صومالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "South African",
+    "NameAr": "جنوب أفريقي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "South Sudanese",
+    "NameAr": "جنوب سوداني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Spanish",
+    "NameAr": "إسباني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Sri Lankan",
+    "NameAr": "سريلانكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Sudanese",
+    "NameAr": "سوداني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Surinamese",
+    "NameAr": "سورينامي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Swedish",
+    "NameAr": "سويدي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Swiss",
+    "NameAr": "سويسري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Syrian",
+    "NameAr": "سوري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Tajik",
+    "NameAr": "طاجيكستاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Tanzanian",
+    "NameAr": "تنزاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Thai",
+    "NameAr": "تايلاندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Timorese",
+    "NameAr": "تيموري",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Togolese",
+    "NameAr": "توغولي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Tongan",
+    "NameAr": "تونغي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Trinidadian and Tobagonian",
+    "NameAr": "ترينيدادي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Tunisian",
+    "NameAr": "تونسي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Turkish",
+    "NameAr": "تركي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Turkmen",
+    "NameAr": "تركماني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Tuvaluan",
+    "NameAr": "توفالي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Ugandan",
+    "NameAr": "أوغندي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Ukrainian",
+    "NameAr": "أوكراني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Emirati",
+    "NameAr": "إماراتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "British",
+    "NameAr": "بريطاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "American",
+    "NameAr": "أمريكي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Uruguayan",
+    "NameAr": "أوروغوياني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Uzbek",
+    "NameAr": "أوزبكستاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Ni-Vanuatu",
+    "NameAr": "فانواتي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Vatican",
+    "NameAr": "فاتيكاني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Venezuelan",
+    "NameAr": "فنزويلي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Vietnamese",
+    "NameAr": "فيتنامي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Yemeni",
+    "NameAr": "يمني",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Zambian",
+    "NameAr": "زامبي",
+    "Price": 0,
+    "IsEnabled": true
+  },
+  {
+    "NameEn": "Zimbabwean",
+    "NameAr": "زيمبابوي",
+    "Price": 0,
+    "IsEnabled": true
+  }
+]

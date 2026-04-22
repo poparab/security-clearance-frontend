@@ -8,8 +8,37 @@ body.portal-page {
     background: #f1f5f9;
     padding-top: 76px; /* space for fixed header */
     overflow-x: hidden;
+    font-family: Tajawal-Regular, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: right;
 }
 body.portal-page * { box-sizing: border-box; }
+body.portal-page section { padding: 0; }
+body.portal-page h1,
+body.portal-page h2,
+body.portal-page h3,
+body.portal-page h4,
+body.portal-page h5,
+body.portal-page h6,
+body.portal-page p { line-height: 1.4; }
+body.portal-page .portal-body,
+body.portal-page .stat-card,
+body.portal-page .filter-bar,
+body.portal-page .data-table-card,
+body.portal-page .dash-action-card,
+body.portal-page .agency-bar,
+body.portal-page .detail-card,
+body.portal-page .quick-stat,
+body.portal-page .wallet-stat { text-align: right; }
+body.portal-page .data-table th,
+body.portal-page .data-table td,
+body.portal-page .filter-bar label,
+body.portal-page .filter-bar input,
+body.portal-page .filter-bar select,
+body.portal-page .btn-filter,
+body.portal-page .btn-add-new,
+body.portal-page .page-btn { line-height: 1.35; }
 
 /* ── HEADER: Always sticky white for portal ─────────────── */
 body.portal-page header {
@@ -1062,6 +1091,16 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
 /* ── PORTAL FOOTER OVERRIDES ────────────────────────────── */
 body.portal-page footer.footer {
     padding: 3.5rem 0 0;
+    display: block;
+    font-size: calc(0.9375rem + 0.015vw);
+    color: #cce4ff;
+    border-top: none;
+}
+body.portal-page footer.footer .container,
+body.portal-page footer.footer .row { display: block; }
+body.portal-page footer.footer .row {
+    display: flex;
+    align-items: flex-start;
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
@@ -1078,12 +1117,14 @@ body.portal-page footer.footer {
     .agency-bar .agency-details { width: 100%; margin-right: 0; }
     body.portal-page header a.navbar-brand { margin-left: auto; }
     .data-table-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .data-table { min-width: 640px; }
+    .data-table { min-width: 560px; }
 }
 @media (max-width: 768px) {
     .portal-hero { padding: 1.25rem 0; }
     .portal-hero h1 { font-size: 1.25rem; }
     .portal-hero p { font-size: 0.8rem; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .btn-add-new { width: 100%; justify-content: center; }
     .agency-bar { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1rem; }
     .agency-bar .agency-details { flex-direction: column; gap: 0.5rem; }
     .agency-bar .agency-detail { min-width: auto; }
@@ -1093,6 +1134,8 @@ body.portal-page footer.footer {
     .filter-group { min-width: auto !important; width: 100%; }
     .filter-group input,
     .filter-group select { width: 100% !important; max-width: none; }
+    .filter-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .btn-filter { width: 100%; justify-content: center; }
 }
 @media (max-width: 575px) {
     .stat-cards { grid-template-columns: 1fr !important; }
@@ -1102,10 +1145,21 @@ body.portal-page footer.footer {
     .table-pagination { flex-direction: column; gap: 0.75rem; }
     .status-cards-row { grid-template-columns: 1fr 1fr; }
     .dash-actions { grid-template-columns: 1fr; }
+    .portal-body { padding-top: 1rem; }
+    .stat-card,
+    .data-table-card,
+    .filter-bar,
+    .dash-action-card,
+    .agency-bar,
+    .detail-card { padding-left: 0.875rem; padding-right: 0.875rem; }
     .data-table th,
-    .data-table td { padding: 0.5rem 0.625rem; font-size: 0.75rem; }
+    .data-table td { padding: 0.625rem; font-size: 0.8125rem; }
     .portal-breadcrumb { font-size: 0.75rem; }
     body.portal-page { padding-top: 60px; }
     .action-icons { gap: 0.25rem; }
     .action-icon { width: 1.75rem; height: 1.75rem; font-size: 0.7rem; }
+    .filter-actions { grid-template-columns: 1fr; }
+    .data-table { min-width: 520px; }
+    .table-pagination .pagination-pages { flex-wrap: wrap; justify-content: center; }
+    .table-pagination .pagination-info { width: 100%; justify-content: center; }
 }

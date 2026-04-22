@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Abdelrahman.Mamdouh/.claude//**)",
+      "Read(//c/Users/Abdelrahman.Mamdouh/.claude/**)",
+      "Bash(dir \"D:\\\\Claude\\\\Security clearance\\\\\")",
+      "Bash(npm list:*)",
+      "Read(//c//**)",
+      "Bash(ls /mnt/)",
+      "Bash(node tools/scripts/build_mvp.js)",
+      "Bash(where node:*)",
+      "Bash(cmd.exe /c \"where node 2>&1 && node --version 2>&1\")",
+      "Bash(powershell.exe -Command \"Get-Command node -ErrorAction SilentlyContinue; node --version 2>&1\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Program Files\\\\nodejs\\\\'' -ErrorAction SilentlyContinue; Get-ChildItem ''C:\\\\Program Files \\(x86\\)\\\\nodejs\\\\'' -ErrorAction SilentlyContinue; Get-ChildItem Env:PATH\")",
+      "Bash(powershell.exe -Command \"\\(Get-ChildItem Env:PATH\\).Value\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem -Path ''C:\\\\'', ''D:\\\\'', ''C:\\\\Users\\\\Abdelrahman.Mamdouh'' -Filter ''node.exe'' -Recurse -ErrorAction SilentlyContinue -Depth 5 | Select-Object FullName | Format-List\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem -Path ''C:\\\\Program Files\\\\'' -ErrorAction SilentlyContinue | Select-Object Name\")",
+      "Bash(powershell.exe -Command \"python --version 2>&1; python3 --version 2>&1; py --version 2>&1\")",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(dir \"D:\\\\Claude\\\\Security clearance\\\\\")",
+      "Bash(dir \"D:\\\\Claude\\\\Security clearance\\\\docs\\\\plans\")",
+      "Bash(dir \"D:\\\\Claude\\\\Security clearance\\\\styles\")",
+      "Bash(claude mcp:*)",
+      "mcp__f824dade-b136-4de5-beb2-e3ff3db7abd7__create_new_file",
+      "mcp__f824dade-b136-4de5-beb2-e3ff3db7abd7__use_figma"
+    ]
+  }
+}
