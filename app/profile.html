@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف التعريفي للوكالة — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.rtl.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/portal.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+</head>
+<body class="portal-page">
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="home.html"></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inquiry-list.html">قائمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="batch-list.html">حزمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="representatives.html">الممثلون</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile.html">الإعدادات</a></li>
+                </ul>
+            </div>
+            <a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><img class="icon" src="icons/language.svg" alt="">EN</a>
+        </nav>
+    </div>
+</header>
+
+<section class="portal-hero">
+    <div class="container">
+        <h1>الملف التعريفي للوكالة</h1>
+        <p>عرض بيانات التسجيل المعتمدة للوكالة كما هي داخل النظام.</p>
+    </div>
+</section>
+
+<div class="portal-breadcrumb">
+    <div class="container">
+        <nav>
+            <a href="home.html"><i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-chevron-left separator"></i>
+            <span class="current">الملف التعريفي</span>
+        </nav>
+    </div>
+</div>
+
+<div class="container portal-body">
+    <div class="section-header">
+        <h2><span class="title-icon"><i class="fa-solid fa-building-shield"></i></span>بيانات الوكالة</h2>
+        <div class="page-head-actions">
+            <a class="btn btn-secondary" href="representatives.html"><i class="fa-solid fa-users"></i>إدارة الممثلين</a>
+            <a class="btn btn-primary" href="change-password.html"><i class="fa-solid fa-key"></i>تغيير كلمة المرور</a>
+        </div>
+    </div>
+
+    <div class="account-grid">
+        <section class="account-card accent-card">
+            <div class="card-top">
+                <div>
+                    <h3>عرض فقط</h3>
+                    <p>هذه البيانات هي النسخة المعتمدة من ملف تسجيل الوكالة.</p>
+                </div>
+                <span class="read-only-chip"><i class="fa-solid fa-lock"></i>قراءة فقط</span>
+            </div>
+            <div class="readonly-list">
+                <div class="readonly-item"><span class="readonly-label">اسم الوكالة</span><span class="readonly-value">شركة النيل للسفر والسياحة</span></div>
+                <div class="readonly-item"><span class="readonly-label">اسم شخص التواصل</span><span class="readonly-value">أحمد سالم حسن</span></div>
+                <div class="readonly-item"><span class="readonly-label">البريد الإلكتروني للتواصل</span><span class="readonly-value" dir="ltr">agency.ops@niletravel.eg</span></div>
+                <div class="readonly-item"><span class="readonly-label">رقم هاتف التواصل</span><span class="readonly-value" dir="ltr">+20 102 555 0198</span></div>
+                <div class="readonly-item"><span class="readonly-label">الدولة</span><span class="readonly-value">مصر</span></div>
+                <div class="readonly-item"><span class="readonly-label">المدينة</span><span class="readonly-value">القاهرة</span></div>
+                <div class="readonly-item full-span"><span class="readonly-label">عنوان المكتب</span><span class="readonly-value">برج النيل الإداري، الدور السادس، شارع التسعين الشمالي، القاهرة الجديدة</span></div>
+                <div class="readonly-item full-span"><span class="readonly-label">السجل التجاري</span><span class="readonly-value value-placeholder">غير متوفر حالياً</span></div>
+            </div>
+        </section>
+
+        <aside class="account-card">
+            <div class="card-top">
+                <div>
+                    <h3>إجراءات مرتبطة</h3>
+                    <p>الوظائف المتاحة من نفس مساحة الإعدادات.</p>
+                </div>
+                <span class="inline-note note-info"><i class="fa-solid fa-shield-halved"></i>وكالة معتمدة</span>
+            </div>
+            <div class="page-head-actions">
+                <a class="btn btn-primary" href="change-password.html"><i class="fa-solid fa-key"></i>تغيير كلمة المرور</a>
+                <a class="btn btn-outline-primary" href="representatives.html"><i class="fa-solid fa-users"></i>إدارة الممثلين</a>
+            </div>
+            <div class="callout-box warning-box">
+                <i class="fa-solid fa-ban"></i>
+                <div>
+                    <strong>وصول الممثل محجوب</strong>
+                    <p>هذه الصفحة متاحة لحساب الوكالة فقط. يتم توجيه الممثل إلى صفحة الحزم إذا حاول فتحها.</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script src="js/jquery-4.0.0.min.js"></script>
+<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>

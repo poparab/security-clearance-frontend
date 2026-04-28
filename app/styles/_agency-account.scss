@@ -1,0 +1,191 @@
+// ══════════════════════════════════════════════════════════════════════════
+// AGENCY ACCOUNT — Profile, representatives, password flows
+// ══════════════════════════════════════════════════════════════════════════
+
+body.portal-page header a.nav-link.disabled-link { opacity: .5; pointer-events: none; cursor: not-allowed; }
+
+.page-head-actions { display: flex; align-items: center; gap: $space-3; flex-wrap: wrap; }
+.page-head-actions .btn { min-width: 9rem; }
+
+.account-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: $space-6; margin-bottom: $space-6;
+  @media (max-width: 991px) { grid-template-columns: 1fr; }
+}
+
+.account-card { @include card-base; padding: $space-6; height: 100%;
+  .card-top { @include flex-between; gap: $space-3; margin-bottom: $space-5;
+    h3 { margin: 0; font-size: $font-size-xl; font-weight: 800; color: $color-text-primary; }
+    p { margin: $space-1 0 0; font-size: $font-size-base; color: $color-text-muted; }
+  }
+}
+.account-card.accent-card { background: linear-gradient(180deg, $color-primary-light 0%, $color-bg-card 100%); border-color: $color-primary-subtle; }
+
+.inline-note { display: inline-flex; align-items: center; gap: $space-2; padding: $space-2 $space-3; border-radius: $radius-pill; font-size: $font-size-sm; font-weight: 700; }
+.inline-note.note-success { background: $color-success-bg; color: $color-success-dark; }
+.inline-note.note-warning { background: $color-warning-bg; color: $color-warning-dark; }
+.inline-note.note-info { background: $color-primary-light; color: $color-primary-mid; }
+.inline-note.note-danger { background: $color-danger-bg; color: $color-danger-dark; }
+
+.readonly-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: $space-4;
+  @media (max-width: 767px) { grid-template-columns: 1fr; }
+}
+.readonly-item { background: $color-bg-alt; border: 1px solid $color-border-alt; border-radius: $radius-lg; padding: $space-4;
+  .readonly-label { display: block; margin-bottom: $space-2; font-size: $font-size-sm; font-weight: 700; color: $color-text-muted; }
+  .readonly-value { display: block; font-size: $font-size-lg; font-weight: 700; color: $color-text-primary; line-height: 1.8; }
+  .readonly-value.value-placeholder { color: $color-text-placeholder; }
+}
+.readonly-item.full-span { grid-column: 1 / -1; }
+
+.callout-box { border-radius: $radius-lg; padding: $space-4 $space-5; display: flex; align-items: flex-start; gap: $space-3; margin-bottom: $space-5;
+  i { margin-top: $space-1; font-size: $font-size-lg; }
+  strong { display: block; margin-bottom: $space-1; font-size: $font-size-base; color: $color-text-primary; }
+  p { margin: 0; font-size: $font-size-base; line-height: 1.9; color: $color-text-secondary; }
+}
+.callout-box.info-box { background: $color-primary-light; border: 1px solid $color-primary-subtle;
+  i { color: $color-primary; }
+}
+.callout-box.warning-box { background: $color-warning-bg; border: 1px solid $color-warning-border;
+  i { color: $color-warning; }
+}
+.callout-box.success-box { background: $color-success-bg; border: 1px solid $color-success-border;
+  i { color: $color-success; }
+}
+.callout-box.danger-box { background: $color-danger-bg; border: 1px solid $color-danger-border;
+  i { color: $color-danger; }
+}
+
+.read-only-chip { display: inline-flex; align-items: center; gap: $space-2; padding: $space-2 $space-3; border-radius: $radius-pill; background: $color-bg-alt; color: $color-text-secondary; font-size: $font-size-sm; font-weight: 700; }
+
+.policy-list { list-style: none; padding: 0; margin: 0;
+  li { position: relative; padding-inline-start: $space-5; margin-bottom: $space-3; font-size: $font-size-base; line-height: 1.8; color: $color-text-secondary;
+    &::before { content: ''; position: absolute; inset-inline-start: 0; top: .6rem; width: .5rem; height: .5rem; border-radius: 50%; background: $color-success; }
+  }
+  li:last-child { margin-bottom: 0; }
+}
+
+.form-shell { display: grid; gap: $space-4; }
+.form-field { display: grid; gap: $space-2;
+  label { font-size: $font-size-base; font-weight: 700; color: $color-text-primary; }
+  input, textarea, select { @include input-base; min-height: 3.25rem; padding: 0 $space-4; }
+  textarea { min-height: 8rem; padding: $space-3 $space-4; resize: vertical; }
+  .field-help { font-size: $font-size-sm; line-height: 1.8; color: $color-text-muted; }
+}
+
+.form-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: $space-4;
+  @media (max-width: 767px) { grid-template-columns: 1fr; }
+}
+
+.validation-stack { display: grid; gap: $space-3; }
+.validation-item { border-radius: $radius-md; padding: $space-3 $space-4; font-size: $font-size-sm; line-height: 1.9; display: flex; align-items: flex-start; gap: $space-2;
+  i { margin-top: .15rem; }
+}
+.validation-item.is-error { background: $color-danger-bg; color: $color-danger-dark; }
+.validation-item.is-warning { background: $color-warning-bg; color: $color-warning-dark; }
+.validation-item.is-success { background: $color-success-bg; color: $color-success-dark; }
+.validation-item.is-info { background: $color-primary-light; color: $color-primary-mid; }
+
+.form-actions { display: flex; align-items: center; gap: $space-3; flex-wrap: wrap; margin-top: $space-2; }
+.form-actions .btn-secondary { background: $color-bg-card; }
+
+.table-note { display: flex; align-items: center; gap: $space-2; margin-bottom: $space-4; font-size: $font-size-sm; font-weight: 700; color: $color-text-muted; }
+.table-note i { color: $color-primary; }
+
+.representatives-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: $space-6; align-items: start;
+  @media (max-width: 1199px) { grid-template-columns: 1fr; }
+}
+
+.table-actions { display: flex; align-items: center; gap: $space-2; flex-wrap: wrap; }
+.mini-action { display: inline-flex; align-items: center; justify-content: center; gap: $space-2; min-height: 2.25rem; padding: 0 $space-3; border-radius: $radius-md; border: 1px solid $color-border; background: $color-bg-card; color: $color-text-secondary; font-size: $font-size-sm; font-weight: 700; text-decoration: none; }
+.mini-action.action-primary { border-color: $color-primary-subtle; color: $color-primary-mid; background: $color-primary-light; }
+.mini-action.action-danger { border-color: $color-danger-border; color: $color-danger-dark; background: $color-danger-bg; }
+
+.status-toggle { display: inline-flex; align-items: center; gap: $space-2; }
+.toggle-switch { position: relative; width: 3.25rem; height: 1.875rem; border-radius: $radius-pill; background: $color-border; border: none; flex-shrink: 0;
+  &::after { content: ''; position: absolute; top: .1875rem; inset-inline-start: .1875rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: $color-bg-card; box-shadow: $shadow-card; }
+}
+.toggle-switch.is-active { background: $color-success;
+  &::after { inset-inline-start: 1.5625rem; }
+}
+.toggle-text { font-size: $font-size-sm; font-weight: 700; color: $color-text-secondary; }
+
+.representative-status { @include pill-base; padding: .35rem .75rem; font-size: $font-size-sm; }
+.representative-status.status-active { background: $color-success-light; color: $color-success-dark; }
+.representative-status.status-suspended { background: $color-warning-light; color: $color-warning-dark; }
+.representative-status.status-pending { background: $color-primary-subtle; color: $color-primary-mid; }
+
+.static-side-panel { @include card-base; padding: $space-6; position: sticky; top: 6rem;
+  .panel-title { display: flex; align-items: center; gap: $space-2; margin-bottom: $space-3; font-size: $font-size-xl; font-weight: 800; color: $color-text-primary; }
+  .panel-copy { margin-bottom: $space-5; font-size: $font-size-base; line-height: 1.9; color: $color-text-muted; }
+}
+
+.confirmation-message { border-radius: $radius-md; background: $color-warning-bg; color: $color-warning-deep; padding: $space-3 $space-4; margin-bottom: $space-4; font-size: $font-size-sm; line-height: 1.8; font-weight: 700; }
+
+.menu-preview { @include card-base; padding: $space-5; background: linear-gradient(180deg, $color-bg-card 0%, $color-bg-alt 100%); margin-top: $space-5;
+  .preview-head { margin-bottom: $space-3;
+    strong { display: block; font-size: $font-size-base; color: $color-text-primary; }
+    span { font-size: $font-size-sm; color: $color-text-muted; }
+  }
+}
+.menu-preview-list { list-style: none; padding: 0; margin: 0; display: grid; gap: $space-3;
+  li { @include flex-between; gap: $space-3; padding: $space-3 $space-4; border-radius: $radius-md; font-size: $font-size-base; font-weight: 700; }
+  li.visible-item { background: $color-success-bg; color: $color-success-dark; }
+  li.hidden-item { background: $color-bg-page; color: $color-text-placeholder; text-decoration: line-through; }
+}
+
+.auth-flow-page { display: block; min-height: 100vh; overflow-x: hidden; overflow-y: auto; background: linear-gradient(180deg, $color-primary-light 0%, $color-bg-card 40%, $color-bg-alt 100%); }
+.auth-flow-shell { min-height: 100vh; display: flex; align-items: center; padding: $space-8 0; }
+.auth-flow-card { @include card-base; border-color: $color-primary-subtle; box-shadow: $shadow-lg; overflow: hidden; width: 100%; }
+.auth-flow-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  @media (max-width: 991px) { grid-template-columns: 1fr; }
+}
+
+.auth-side { background: $hero-gradient; color: $color-bg-card; padding: $space-8; position: relative; overflow: hidden;
+  &::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 55%); }
+  .auth-side-content { position: relative; z-index: 1; }
+  .brand-mark { display: inline-flex; align-items: center; gap: $space-2; padding: $space-2 $space-4; border-radius: $radius-pill; background: rgba(255,255,255,.1); margin-bottom: $space-5; font-size: $font-size-sm; font-weight: 700; }
+  h1 { margin-bottom: $space-4; font-size: calc(1.25rem + .35vw); font-weight: 800; line-height: 1.6; }
+  p { margin-bottom: $space-5; font-size: $font-size-base; line-height: 2; color: rgba(255,255,255,.82); }
+}
+
+.auth-side-points { list-style: none; padding: 0; margin: 0; display: grid; gap: $space-3;
+  li { display: flex; align-items: flex-start; gap: $space-2; font-size: $font-size-base; line-height: 1.8;
+    i { margin-top: .2rem; color: #bfdbfe; }
+  }
+}
+
+.auth-main { padding: $space-8; background: $color-bg-card;
+  @media (max-width: 567px) { padding: $space-6; }
+}
+.auth-badge { display: inline-flex; align-items: center; gap: $space-2; margin-bottom: $space-4; padding: $space-2 $space-3; border-radius: $radius-pill; background: $color-primary-light; color: $color-primary-mid; font-size: $font-size-sm; font-weight: 700; }
+.auth-main h2 { margin-bottom: $space-3; font-size: calc(1.1rem + .18vw); font-weight: 800; color: $color-text-primary; }
+.auth-main .lead-copy { margin-bottom: $space-5; font-size: $font-size-base; line-height: 1.95; color: $color-text-muted; }
+.auth-state-stack { display: grid; gap: $space-3; margin-top: $space-5; }
+
+.auth-state-card { border-radius: $radius-lg; padding: $space-4 $space-5;
+  strong { display: block; margin-bottom: $space-1; font-size: $font-size-base; }
+  p { margin: 0; font-size: $font-size-sm; line-height: 1.8; }
+}
+.auth-state-card.state-neutral { background: $color-primary-light; color: $color-primary-mid; }
+.auth-state-card.state-error { background: $color-danger-bg; color: $color-danger-dark; }
+.auth-state-card.state-success { background: $color-success-bg; color: $color-success-dark; }
+.auth-state-card.state-warning { background: $color-warning-bg; color: $color-warning-dark; }
+
+.blocking-banner { border-radius: $radius-lg; background: $color-warning-bg; border: 1px solid $color-warning-border; padding: $space-4 $space-5; margin-bottom: $space-5;
+  strong { display: block; margin-bottom: $space-1; font-size: $font-size-base; color: $color-warning-deep; }
+  p { margin: 0; font-size: $font-size-sm; line-height: 1.8; color: $color-warning-dark; }
+}
+
+.link-row { display: flex; align-items: center; justify-content: space-between; gap: $space-3; flex-wrap: wrap; margin-top: $space-5; }
+.link-row a { font-size: $font-size-base; font-weight: 700; color: $color-primary-mid; text-decoration: underline; }
+
+.home-preview { @include card-base; padding: $space-4; background: $color-bg-alt; margin-top: $space-5;
+  strong { display: block; margin-bottom: $space-2; font-size: $font-size-base; color: $color-text-primary; }
+}
+.home-preview-list { list-style: none; padding: 0; margin: 0; display: grid; gap: $space-2;
+  li { display: flex; align-items: center; gap: $space-2; font-size: $font-size-sm; color: $color-text-secondary;
+    i { color: $color-success; }
+  }
+}
+
+@media (max-width: 991px) {
+  .static-side-panel { position: static; }
+}

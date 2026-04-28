@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الممثلين — نظام الموافقات الأمنية</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.rtl.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/portal.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+</head>
+<body class="portal-page">
+
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="home.html"></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inquiry-list.html">قائمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="batch-list.html">حزمة الطلبات</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="representatives.html">الممثلون</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">الإعدادات</a></li>
+                </ul>
+            </div>
+            <a class="language col-auto d-none d-lg-flex float-end" href="javascript:;"><img class="icon" src="icons/language.svg" alt="">EN</a>
+        </nav>
+    </div>
+</header>
+
+<section class="portal-hero">
+    <div class="container">
+        <h1>إدارة الممثلين</h1>
+        <p>عرض حسابات الممثلين الحالية وإضافة حساب جديد أو تحديث حالة الوصول عند الحاجة.</p>
+    </div>
+</section>
+
+<div class="portal-breadcrumb">
+    <div class="container">
+        <nav>
+            <a href="home.html"><i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-chevron-left separator"></i>
+            <span class="current">إدارة الممثلين</span>
+        </nav>
+    </div>
+</div>
+
+<div class="container portal-body">
+    <div class="section-header">
+        <h2><span class="title-icon"><i class="fa-solid fa-users"></i></span>قائمة الممثلين</h2>
+        <div class="page-head-actions">
+            <a class="btn btn-secondary" href="profile.html"><i class="fa-solid fa-id-card"></i>الملف التعريفي</a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addRepresentativeModal"><i class="fa-solid fa-user-plus"></i>إضافة ممثل</button>
+        </div>
+    </div>
+
+    <section class="account-card accent-card">
+        <div class="card-top">
+            <div>
+                <h3>الحسابات الحالية</h3>
+                <p>يمكنك مراجعة الاسم واسم المستخدم والبريد الإلكتروني والحالة الحالية لكل ممثل.</p>
+            </div>
+            <span class="inline-note note-info"><i class="fa-solid fa-users"></i>3 ممثلين</span>
+        </div>
+
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label>البحث</label>
+                <div class="search-input-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="ابحث بالاسم أو اسم المستخدم أو البريد الإلكتروني">
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>الحالة</label>
+                <select>
+                    <option>كل الحالات</option>
+                    <option>مفعل</option>
+                    <option>موقوف</option>
+                    <option>بانتظار التفعيل</option>
+                </select>
+            </div>
+            <div class="filter-actions">
+                <button class="btn-filter btn-search" type="button"><i class="fa-solid fa-magnifying-glass"></i>بحث</button>
+                <button class="btn-filter btn-reset" type="button"><i class="fa-solid fa-rotate-right"></i>إعادة تعيين</button>
+            </div>
+        </div>
+
+        <div class="data-table-card">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>الاسم الكامل</th>
+                        <th>اسم المستخدم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>الحالة</th>
+                        <th>آخر تسجيل دخول</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>سارة محمد علي</td>
+                        <td dir="ltr">sara.ali</td>
+                        <td dir="ltr">sara.ali@niletravel.eg</td>
+                        <td><span class="representative-status status-active"><i class="fa-solid fa-circle-check"></i>مفعل</span></td>
+                        <td>اليوم، 09:15 ص</td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="mini-action action-danger" type="button" data-bs-toggle="modal" data-bs-target="#statusModal" data-name="سارة محمد علي" data-status="إيقاف"><i class="fa-solid fa-user-slash"></i>إيقاف</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>محمود عبد الله حسن</td>
+                        <td dir="ltr">mahmoud.hassan</td>
+                        <td dir="ltr">m.hassan@niletravel.eg</td>
+                        <td><span class="representative-status status-suspended"><i class="fa-solid fa-pause-circle"></i>موقوف</span></td>
+                        <td>23 أبريل 2026</td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="mini-action action-primary" type="button" data-bs-toggle="modal" data-bs-target="#statusModal" data-name="محمود عبد الله حسن" data-status="إعادة التفعيل"><i class="fa-solid fa-user-check"></i>إعادة التفعيل</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ريم أشرف كمال</td>
+                        <td dir="ltr">reem.kamal</td>
+                        <td dir="ltr">reem.kamal@niletravel.eg</td>
+                        <td><span class="representative-status status-pending"><i class="fa-solid fa-clock"></i>بانتظار التفعيل</span></td>
+                        <td>لم يسجل الدخول بعد</td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="mini-action action-primary" type="button" data-bs-toggle="modal" data-bs-target="#statusModal" data-name="ريم أشرف كمال" data-status="إعادة إرسال بيانات الدخول"><i class="fa-solid fa-paper-plane"></i>إعادة إرسال</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade" id="addRepresentativeModal" tabindex="-1" aria-labelledby="addRepresentativeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="addRepresentativeModalLabel">إضافة ممثل جديد</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-shell">
+                    <div class="form-grid-2">
+                        <div class="form-field">
+                            <label for="repName">الاسم الكامل</label>
+                            <input id="repName" type="text" placeholder="أدخل الاسم الكامل">
+                            <span class="field-help">يظهر هذا الاسم داخل قائمة الممثلين.</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="repEmail">البريد الإلكتروني</label>
+                            <input id="repEmail" type="email" dir="ltr" placeholder="name@agency.eg">
+                            <span class="field-help">يستخدم البريد الإلكتروني لتسليم بيانات الدخول والإشعارات.</span>
+                        </div>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-field">
+                            <label for="repUsername">اسم المستخدم</label>
+                            <input id="repUsername" type="text" dir="ltr" placeholder="agency.rep01">
+                            <span class="field-help">اختر اسماً واضحاً وسهل التمييز داخل الوكالة.</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="tempPassword">كلمة المرور المؤقتة</label>
+                            <input id="tempPassword" type="password" placeholder="أنشئ كلمة مرور مؤقتة">
+                            <span class="field-help">تستخدم هذه الكلمة عند أول تسجيل دخول فقط.</span>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="tempPasswordConfirm">تأكيد كلمة المرور المؤقتة</label>
+                        <input id="tempPasswordConfirm" type="password" placeholder="أعد إدخال كلمة المرور المؤقتة">
+                        <span class="field-help">يجب أن تتطابق هذه الخانة مع كلمة المرور المؤقتة.</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">إلغاء</button>
+                <button type="button" class="btn btn-primary">حفظ الممثل</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="statusModalLabel">تأكيد الإجراء</h5>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0" id="statusModalText">هل تريد متابعة هذا الإجراء؟</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">إلغاء</button>
+                <button type="button" class="btn btn-primary">تأكيد</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-4.0.0.min.js"></script>
+<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+<script>
+const statusModal = document.getElementById('statusModal');
+if (statusModal) {
+    statusModal.addEventListener('show.bs.modal', function (event) {
+        const trigger = event.relatedTarget;
+        const name = trigger?.getAttribute('data-name') || 'هذا الحساب';
+        const action = trigger?.getAttribute('data-status') || 'تغيير الحالة';
+        const modalText = statusModal.querySelector('#statusModalText');
+        modalText.textContent = `هل تريد ${action} للحساب ${name}؟`;
+    });
+}
+</script>
+</body>
+</html>
