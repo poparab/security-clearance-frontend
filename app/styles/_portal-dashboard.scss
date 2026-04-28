@@ -30,6 +30,7 @@
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: $space-5; margin-bottom: $space-8;
 }
+.dash-actions.dash-actions--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .dash-action-card {
   background: $color-bg-card; border: 2px solid $color-border;
   border-radius: $radius-card; padding: $space-6; text-align: center;
@@ -64,8 +65,9 @@
 /* Wallet balance card */
 .dash-action-card.dac-wallet { border-color: $color-success; }
 .dash-action-card.dac-wallet .dac-icon { background: linear-gradient(135deg, $color-success, $color-success-dark); }
+.dash-action-card.dac-wallet .dac-btn { background: $color-success; }
 .dash-action-card .dac-balance {
   font-weight: 800; font-size: calc(1.125rem + 0.65vw); color: $color-primary-mid;
   line-height: 1; direction: ltr;
 }
-.dash-action-card .dac-balance-label { font-size: $font-size-md; color: $color-text-muted; }
+.dash-actions.dash-actions--two .dash-action-card { min-height: $space-40; }

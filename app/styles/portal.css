@@ -1011,6 +1011,9 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
     gap: 1.25rem;
     margin-bottom: 2rem;
 }
+.dash-actions.dash-actions--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .dash-action-card {
     background: #ffffff;
     border: 2px solid #e2e8f0;
@@ -1076,6 +1079,7 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
 /* Wallet balance card */
 .dash-action-card.dac-wallet { border-color: #4FB848; }
 .dash-action-card.dac-wallet .dac-icon { background: linear-gradient(135deg, #4FB848, #3a9e32); }
+.dash-action-card.dac-wallet .dac-btn { background: #4FB848; }
 .dash-action-card .dac-balance {
     font-family: Tajawal-ExtraBold, sans-serif;
     font-size: calc(1.125rem + 0.65vw);
@@ -1083,10 +1087,7 @@ body.portal-page .portal-hero { padding-top: 3.5rem; padding-bottom: 2.5rem; }
     line-height: 1;
     direction: ltr;
 }
-.dash-action-card .dac-balance-label {
-    font-size: calc(0.875rem + 0.02vw);
-    color: #64748b;
-}
+.dash-actions.dash-actions--two .dash-action-card { min-height: 250px; }
 
 /* ── PORTAL FOOTER OVERRIDES ────────────────────────────── */
 body.portal-page footer.footer {
@@ -1113,6 +1114,7 @@ body.portal-page footer.footer .row {
     .batch-meta-grid { grid-template-columns: 1fr 1fr; }
     .status-cards-row { grid-template-columns: repeat(2, 1fr); }
     .dash-actions { grid-template-columns: repeat(2, 1fr); }
+    .dash-actions.dash-actions--two { grid-template-columns: repeat(2, 1fr); }
     .agency-bar { flex-wrap: wrap; }
     .agency-bar .agency-details { width: 100%; margin-right: 0; }
     body.portal-page header a.navbar-brand { margin-left: auto; }
@@ -1145,6 +1147,7 @@ body.portal-page footer.footer .row {
     .table-pagination { flex-direction: column; gap: 0.75rem; }
     .status-cards-row { grid-template-columns: 1fr 1fr; }
     .dash-actions { grid-template-columns: 1fr; }
+    .dash-actions.dash-actions--two { grid-template-columns: 1fr; }
     .portal-body { padding-top: 1rem; }
     .stat-card,
     .data-table-card,
