@@ -1,0 +1,21 @@
+# Forbidden patterns — run these as grep assertions against every generated page.
+# Each line is: <id>|<severity>|<regex>|<human message>
+# Severity: ERROR (block the run) or WARN (report but allow).
+#
+# The subagent must re-check this file before emitting NOTES.md and must refuse
+# to report "done" while any ERROR-severity pattern matches its output.
+
+INLINE_STYLE|ERROR|style\s*=\s*["'][^"']+["']|Inline style attribute found. Move the rule into page.css.
+STYLE_BLOCK|ERROR|<style[^>]*>|<style> block found. Put CSS in page.css instead.
+FLAT_INTERNAL_HEADER|ERROR|<header\s+class=["'][^"']*\binternal\b|SCG anti-pattern. Use the full .wrapper > #sidebar + #content shell from page-template.html.
+BARE_BUTTON_NO_BTN|WARN|<button(?![^>]*class=["'][^"']*\bbtn\b)|Every <button> must carry a .btn class or variant (e.g. .btn-primary, .btn-input-search, btn-x-sm).
+INVENTED_PREFIX_STAT|ERROR|class=["'][^"']*\bstat-(?!us\b)[a-z]|Invented ".stat-*" class. Reuse the designer's .widjets-theme-2 > .neutral-widjet tile.
+INVENTED_PREFIX_PORTAL|ERROR|class=["'][^"']*\bportal-[a-z]|Invented ".portal-*" class. Map the need to an existing Admin Panel component.
+INVENTED_FILTER_BAR|ERROR|class=["'][^"']*\bfilter-bar\b|Use .filter-container, not .filter-bar.
+MISSING_RTL|ERROR|^(?!.*<html[^>]*dir=["']rtl["']).*<html|Every page must declare <html dir="rtl">.
+MISSING_WRAPPER|ERROR|(?s)<body[^>]*>(?!.*<div\s+class=["'][^"']*\bwrapper\b).*</body>|.wrapper container missing. The whole page body must sit inside <div class="wrapper"><nav id="sidebar">...</nav><div id="content">...</div></div>.
+MISSING_SIDEBAR|ERROR|(?s)<body[^>]*>(?!.*<nav[^>]*id=["']sidebar["']).*</body>|<nav id="sidebar"> missing. Do not invent a flat header layout.
+MISSING_CONTENT|ERROR|(?s)<body[^>]*>(?!.*id=["']content["']).*</body>|<div id="content"> missing. Keep the two-pane shell intact.
+MISSING_OVERLAY|WARN|(?s)<body[^>]*>(?!.*class=["'][^"']*\boverlay\b).*</body>|<div class="overlay"></div> missing. The mobile backdrop relies on it.
+MISSING_SIDEBAR_SCRIPT|ERROR|(?s)</body>(?!.*sidebarCollapse)|Sidebar-toggle script missing. Without it, the hamburger button does nothing.
+EDIT_IN_DESIGNER_FOLDER|ERROR|Designer UI/Admin\.Panel\.HTML_v21-04-2026/scss-scg-admin-panel/.*modified|The designer's SCSS folder was edited during this run. Revert. Per-page styles go into generated/<slug>/page.css only.

@@ -1,0 +1,549 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تفاصيل الوكالة — الإدارة</title>
+
+<!-- Bootstrap RTL -->
+<link rel="stylesheet" type="text/css" href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/css/bootstrap/bootstrap.rtl.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<!-- Designer's compiled design system (DO NOT EDIT the source files) -->
+<link href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/css/styles.css" rel="stylesheet" type="text/css">
+<!-- Page-scoped overrides only -->
+<link href="page.css" rel="stylesheet" type="text/css">
+<!-- Favicon -->
+<link rel="shortcut icon" href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+<!-- Main Wrapper Container -->
+<div class="wrapper">
+
+  <!-- Side Nav -->
+  <nav id="sidebar">
+    <span class="top-triangle"></span>
+    <div id="dismiss"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="sidebar-header">
+      <div class="logo">
+        <img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/logo.png" alt=""/>
+      </div>
+    </div>
+    <ul id="main-menu">
+      <li><a href="../../app/admin/admin-index.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/dashboard-2.svg" alt="">لوحة التحكم</a></li>
+      <li><a href="../../app/admin/inquiries.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/applications.svg" alt="">إدارة الطلبات</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/user-2.svg" alt="">إدارة الأفراد</a></li>
+      <li class="active"><a href="../../app/admin/agencies.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/agency.svg" alt="">إدارة الوكلاء</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/users.svg" alt="">إدارة المستخدمين</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/report.svg" alt="">التقارير</a></li>
+      <li><a href="../../app/admin/pricing.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/chart2.svg" alt="">إدارة الجنسيات والأسعار</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/chart2.svg" alt="">اللوحة المالية</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/help.svg" alt="">المساعدة</a></li>
+    </ul>
+  </nav>
+  <!-- End Side Nav -->
+
+  <!-- Content Area -->
+  <div id="content">
+
+    <header>
+      <button type="button" id="sidebarCollapse" class="btn"><i class="fa-solid fa-bars"></i></button>
+
+      <form class="me-auto d-none d-md-flex">
+        <div class="input-group">
+          <input type="search" class="form-control" id="search" name="search" placeholder="إبحث هنــا ...">
+          <button class="btn-input-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
+
+      <div class="end-side">
+        <ul class="navbar navbar-expand topbar-menu">
+
+          <li class="nav-item dropdown d-block d-md-none">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="searchDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <div class="dropdown-menu slideIn" aria-labelledby="searchDropdown">
+              <form class="left-side-search d-flex">
+                <div class="input-group">
+                  <input type="search" class="form-control" id="leftSideSearch" name="search" placeholder="إبحث هنــا ...">
+                  <button class="btn-input-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+              </form>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="laguageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="icon" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language.svg" alt="">
+            </a>
+            <ul class="dropdown-menu slideIn" aria-labelledby="laguageDropdown">
+              <li><a class="dropdown-item" href="javascript:;"><img class="flag" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language/united-kingdom.svg" alt=""/>English</a></li>
+              <li><a class="dropdown-item" href="javascript:;"><img class="flag" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language/egypt.svg" alt=""/>عربى</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="userProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="user-profile" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/profile-photo.png">
+              <span class="user-info">
+                <span class="user-name">عبد الله مرزووق</span>
+                <span class="user-title">مدير تنفيذي</span>
+              </span>
+            </a>
+            <ul class="dropdown-menu slideIn" aria-labelledby="userProfileDropdown">
+              <li><a class="dropdown-item" href="javascript:;"><i class="fa-solid fa-gear"></i>الإعدادات</a></li>
+              <li><a class="dropdown-item" href="javascript:;"><i class="fa-solid fa-arrow-right-from-bracket"></i>تسجيل الخروج</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </header>
+
+    <!-- ===== PAGE CONTENT ===== -->
+
+    <!-- Section: Page Title + Back Button -->
+    <section class="sm-padding">
+      <div class="container-fluid">
+        <div class="section-title row gy-3">
+          <div class="title col-auto">
+            <h3 class="underline-title">تفاصيل الوكالة</h3>
+          </div>
+          <div class="end-side col-auto">
+            <a class="btn btn-back" href="../../app/admin/agencies.html">
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <span class="gray-color font-size-14">عودة لقائمة الوكلاء</span>
+          </div>
+        </div>
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+          <ol>
+            <li class="breadcrumb-item"><a href="../../app/admin/admin-index.html">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="../../app/admin/agencies.html">إدارة الوكلاء</a></li>
+            <li class="breadcrumb-item active">تفاصيل الوكالة</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Section: Agency Data + Wallet Cards -->
+    <section class="sm-padding">
+      <div class="container-fluid">
+        <div class="row g-3">
+
+          <!-- Agency Data Card -->
+          <div class="col-md-6">
+            <div class="standard-card">
+              <div class="card-header">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="icon-container agency-card-icon primary-bg">
+                    <i class="fa-solid fa-building white-color"></i>
+                  </div>
+                  <div class="card-title"><h3>بيانات الوكالة</h3></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <ul class="list-multi-column">
+                  <li class="list-row">
+                    <div class="list-item">وكالة النيل للسياحة</div>
+                    <div class="list-item gray-color">الاسم</div>
+                  </li>
+                  <li class="list-row">
+                    <div class="list-item text-dir-ltr tertiary-color">AGN001</div>
+                    <div class="list-item gray-color">الكود</div>
+                  </li>
+                  <li class="list-row">
+                    <div class="list-item text-dir-ltr">CR-99214</div>
+                    <div class="list-item gray-color">رقم السجل</div>
+                  </li>
+                  <li class="list-row">
+                    <div class="list-item text-dir-ltr">agency@nile.com</div>
+                    <div class="list-item gray-color">البريد الإلكتروني</div>
+                  </li>
+                  <li class="list-row">
+                    <div class="list-item text-dir-ltr">+201090702229</div>
+                    <div class="list-item gray-color">الجوال</div>
+                  </li>
+                  <li class="list-row">
+                    <div class="list-item"><div class="status-active-lamp"><div class="lamp"></div>نشط</div></div>
+                    <div class="list-item gray-color">الحالة</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wallet Card -->
+          <div class="col-md-6">
+            <div class="standard-card">
+              <div class="card-header">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="icon-container wallet-card-icon secondary-bg">
+                    <i class="fa-solid fa-wallet white-color"></i>
+                  </div>
+                  <div class="card-title"><h3>المحفظة</h3></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <ul class="list-multi-column">
+                  <li class="list-row">
+                    <div class="list-item secondary-color text-bold text-dir-ltr">$2,450.00</div>
+                    <div class="list-item gray-color">الرصيد الحالي</div>
+                  </li>
+                  <li class="list-row">
+                    <div class="list-item">12 مارس 2026</div>
+                    <div class="list-item gray-color">آخر شحن</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer card-footer-bt">
+                <button class="btn btn-secondary d-flex gap-1 align-items-center" onclick="openCredit()">
+                  <i class="fa-solid fa-plus"></i>
+                  شحن المحفظة
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Registration Documents -->
+    <section class="sm-padding">
+      <div class="container-fluid">
+        <div class="section-title row gy-3">
+          <div class="title col-auto">
+            <h3 class="underline-title">مستندات التسجيل</h3>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col">
+            <div class="table-responsive">
+              <table class="table custom-grid-list">
+                <thead>
+                  <tr>
+                    <th>المستند</th>
+                    <th>الحالة</th>
+                    <th>المعاينة</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><p>السجل التجاري</p></td>
+                    <td><div class="status-active-lamp"><div class="lamp"></div>مرفق</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="#" title="عرض المستند">
+                        <i class="fa-regular fa-eye"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><p>الترخيص السياحي</p></td>
+                    <td><div class="status-active-lamp"><div class="lamp"></div>مرفق</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="#" title="عرض المستند">
+                        <i class="fa-regular fa-eye"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Agency-Specific Pricing -->
+    <section class="sm-padding">
+      <div class="container-fluid">
+        <div class="section-title row gy-3">
+          <div class="title col-auto">
+            <h3 class="underline-title">
+              <i class="fa-solid fa-file-invoice-dollar primary-color"></i>
+              تسعير خاص بالوكالة
+            </h3>
+          </div>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="custom-card info-banner-card">
+          <div class="card-body d-flex gap-2 align-items-center">
+            <i class="fa-solid fa-circle-info tertiary-color font-size-18"></i>
+            <p class="gray-color font-size-14">
+              تعرض هذه القائمة جميع الجنسيات المُعدَّة في النظام بأسعارها العامة. يمكنك تعديل السعر لتخصيصه لهذه الوكالة — السعر الخاص يحل محل العام فوراً عند الحفظ. إذا لم يُحدَّد سعر خاص، يُطبَّق السعر العام تلقائياً.
+            </p>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col">
+            <div class="table-responsive">
+              <table class="table custom-grid-list" id="agencyPricingTable">
+                <thead>
+                  <tr>
+                    <th>الجنسية</th>
+                    <th>السعر العام (USD)</th>
+                    <th>سعر الوكالة (USD)</th>
+                    <th>آخر تحديث</th>
+                    <th>النوع</th>
+                    <th>الإجراء</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><p>سوريا</p></td>
+                    <td><p class="text-dir-ltr">50.00</p></td>
+                    <td><p class="text-dir-ltr tertiary-color">42.00</p></td>
+                    <td><p>01 يناير 2026</p></td>
+                    <td><div class="status-warning-solid">خاص</div></td>
+                    <td>
+                      <a class="grid-options-btn edit-icon" href="javascript:;" onclick="editAgencyPrice(this.closest('tr'))" title="تعديل السعر">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><p>العراق</p></td>
+                    <td><p class="text-dir-ltr">50.00</p></td>
+                    <td><p class="text-dir-ltr tertiary-color">40.00</p></td>
+                    <td><p>01 يناير 2026</p></td>
+                    <td><div class="status-warning-solid">خاص</div></td>
+                    <td>
+                      <a class="grid-options-btn edit-icon" href="javascript:;" onclick="editAgencyPrice(this.closest('tr'))" title="تعديل السعر">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><p>اليمن</p></td>
+                    <td><p class="text-dir-ltr">50.00</p></td>
+                    <td><p class="text-dir-ltr tertiary-color">42.00</p></td>
+                    <td><p>15 فبراير 2026</p></td>
+                    <td><div class="status-warning-solid">خاص</div></td>
+                    <td>
+                      <a class="grid-options-btn edit-icon" href="javascript:;" onclick="editAgencyPrice(this.closest('tr'))" title="تعديل السعر">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><p>فلسطين</p></td>
+                    <td><p class="text-dir-ltr">50.00</p></td>
+                    <td><p class="text-dir-ltr gray-color">—</p></td>
+                    <td><p class="gray-color">—</p></td>
+                    <td><div class="status-active-solid">عام</div></td>
+                    <td>
+                      <a class="grid-options-btn edit-icon" href="javascript:;" onclick="editAgencyPrice(this.closest('tr'))" title="تعديل السعر">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><p>الصومال</p></td>
+                    <td><p class="text-dir-ltr">45.00</p></td>
+                    <td><p class="text-dir-ltr gray-color">—</p></td>
+                    <td><p class="gray-color">—</p></td>
+                    <td><div class="status-active-solid">عام</div></td>
+                    <td>
+                      <a class="grid-options-btn edit-icon" href="javascript:;" onclick="editAgencyPrice(this.closest('tr'))" title="تعديل السعر">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><p>لبنان</p></td>
+                    <td><p class="text-dir-ltr">50.00</p></td>
+                    <td><p class="text-dir-ltr gray-color">—</p></td>
+                    <td><p class="gray-color">—</p></td>
+                    <td><div class="status-active-solid">عام</div></td>
+                    <td>
+                      <a class="grid-options-btn edit-icon" href="javascript:;" onclick="editAgencyPrice(this.closest('tr'))" title="تعديل السعر">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Approve / Reject Actions -->
+    <section class="sm-padding">
+      <div class="container-fluid">
+        <div class="buttons-container d-flex gap-2">
+          <button class="btn btn-secondary d-flex gap-1 align-items-center" onclick="approveAgency()">
+            <i class="fa-solid fa-check"></i>
+            اعتماد
+          </button>
+          <button class="btn btn-danger-action d-flex gap-1 align-items-center" onclick="rejectAgency()">
+            <i class="fa-solid fa-xmark"></i>
+            رفض
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== END PAGE CONTENT ===== -->
+
+  </div>
+  <!-- End Content Area -->
+</div>
+<!-- End Wrapper -->
+
+<div class="overlay"></div>
+
+<!-- Scripts -->
+<script src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/js/jquery-4.0.0.min.js"></script>
+<script src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+<!-- Sidebar toggle -->
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#dismiss, .overlay').on('click', function () {
+    $('#sidebar').removeClass('active');
+    $('.overlay').removeClass('active');
+  });
+  $('#sidebarCollapse').on('click', function () {
+    $('#sidebar, #content').toggleClass('active');
+    $('.overlay').addClass('active');
+    $('.collapse.in').toggleClass('in');
+    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+  });
+});
+</script>
+
+<!-- Page logic -->
+<script type="text/javascript">
+/* ─── Modal helpers ─── */
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('active');
+}
+
+function _openModal(id) {
+  var el = document.getElementById(id);
+  if (el) { el.classList.add('modal-open'); }
+}
+function _closeModal(id) {
+  var el = document.getElementById(id);
+  if (el) { el.classList.remove('modal-open'); }
+}
+
+/* ─── Credit Modal ─── */
+function openCredit() {
+  document.getElementById('mErr').classList.add('d-none');
+  document.getElementById('mErr').textContent = '';
+  _openModal('creditModal');
+}
+function closeCredit() {
+  _closeModal('creditModal');
+  document.getElementById('mErr').classList.add('d-none');
+}
+function submitCredit() {
+  var v = parseFloat(document.getElementById('amt').value);
+  var method = document.getElementById('payMethod').value;
+  var proof = document.getElementById('payProof').files[0];
+  var errEl = document.getElementById('mErr');
+
+  if (!v || v <= 0) {
+    errEl.textContent = 'يرجى إدخال مبلغ صحيح أكبر من صفر.';
+    errEl.classList.remove('d-none');
+    return;
+  }
+  if (!method) {
+    errEl.textContent = 'يرجى اختيار طريقة الدفع.';
+    errEl.classList.remove('d-none');
+    return;
+  }
+  if (proof) {
+    var allowed = ['application/pdf', 'image/jpeg', 'image/png'];
+    if (!allowed.includes(proof.type) || proof.size > 5 * 1024 * 1024) {
+      errEl.textContent = 'صيغة الملف غير مدعومة أو حجمه يتجاوز 5 ميجابايت.';
+      errEl.classList.remove('d-none');
+      return;
+    }
+  }
+  errEl.classList.add('d-none');
+  closeCredit();
+  alert('تم شحن المحفظة بنجاح');
+}
+
+/* ─── Agency Approval ─── */
+function approveAgency() {
+  var pending = JSON.parse(localStorage.getItem('pendingAgencyRegistration') || 'null');
+  var agencyEmail = pending && pending.email ? pending.email : 'agency@nile.com';
+  var contactName = pending && pending.contactName ? pending.contactName : 'Agency User';
+  var agencyId = pending && pending.agencyId ? pending.agencyId : 'AGN001';
+  var loginUrl = new URL('../../app/admin/login.html', window.location.href).href;
+
+  if (window.EmailNotifications) {
+    window.EmailNotifications.sendTemplateEmail(
+      'EMAIL-REG-APPROVED', agencyEmail,
+      { Contact_Name: contactName, Portal_Login_URL: loginUrl, Registered_Email: agencyEmail, Agency_ID: agencyId },
+      { event: 'agency_registration_approved' }
+    );
+  }
+  if (pending) {
+    pending.status = 'approved';
+    pending.approvedAt = new Date().toISOString();
+    localStorage.setItem('approvedAgencyRegistration', JSON.stringify(pending));
+    localStorage.removeItem('pendingAgencyRegistration');
+  }
+  alert('تم اعتماد الوكالة بنجاح وتم إرسال إشعار بالموافقة.');
+}
+function rejectAgency() {
+  alert('تم رفض الوكالة.');
+}
+
+/* ─── Agency Pricing Modal ─── */
+function openAgencyPricingModal(editRow) {
+  document.getElementById('apErr').classList.add('d-none');
+  if (editRow) {
+    var cells = editRow.querySelectorAll('td');
+    document.getElementById('apNat').value = cells[0].textContent.trim();
+    document.getElementById('apDefault').value = cells[1].textContent.trim();
+    var customFee = cells[2].textContent.trim();
+    document.getElementById('apFee').value = (customFee === '—') ? '' : customFee;
+  }
+  _openModal('agencyPricingModal');
+}
+function closeAgencyPricingModal() {
+  _closeModal('agencyPricingModal');
+  document.getElementById('apErr').classList.add('d-none');
+}
+function saveAgencyPrice() {
+  var feeVal = document.getElementById('apFee').value.trim();
+  var fee = parseFloat(feeVal);
+  if (feeVal !== '' && (!fee || fee <= 0)) {
+    document.getElementById('apErr').classList.remove('d-none');
+    return;
+  }
+  closeAgencyPricingModal();
+  alert('تم حفظ السعر الخاص بالوكالة بنجاح. السعر أصبح نشطاً فوراً.');
+}
+function editAgencyPrice(row) {
+  openAgencyPricingModal(row);
+}
+</script>
+
+<script src="../../app/js/utils.js"></script>
+<script src="../../app/scripts/email-notifications.js"></script>
+<script src="../../app/i18n/i18n.js"></script>
+<script>
+if (typeof i18n !== 'undefined') {
+  i18n.init({ defaultLang: 'ar', localePath: '../../app/i18n/locales/admin' });
+}
+</script>
+
+</body>
+</html>

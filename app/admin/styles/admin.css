@@ -773,10 +773,10 @@ body.admin-body {
 .admin-modal {
     background: #ffffff;
     width: 92%;
-    max-width: 480px;
+    max-width: 540px;
     border-radius: 16px;
     border: 1px solid #e2ecf5;
-    padding: 28px 32px;
+    padding: 32px 36px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     text-align: right;
 }
@@ -800,8 +800,12 @@ body.admin-body {
 
 .admin-modal .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 16px;
+}
+
+.admin-modal .form-grid > * {
+    min-width: 0;
 }
 
 .admin-modal .form-field {
@@ -1187,14 +1191,16 @@ html[dir="rtl"] .topbar-user {
 
 .admin-inline-modal { border: 1px dashed #bfdbfe; background: #f8fbff; border-radius: 16px; padding: 18px; }
 .admin-inline-modal h4 { margin: 0 0 14px; color: #005FCC; font-size: 16px; font-weight: 800; }
-.admin-form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.admin-form-grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 18px; align-items: start; }
+.admin-form-grid-2 > * { min-width: 0; }
 .admin-field { display: grid; gap: 8px; margin-bottom: 14px; }
 .admin-field label { color: #334155; font-size: 13px; font-weight: 700; }
 .admin-field input,
-.admin-field select { width: 100%; min-height: 44px; border: 1px solid #d4dde8; border-radius: 10px; padding: 0 14px; background: #ffffff; color: #334155; font-family: 'Tajawal', sans-serif; font-size: 13px; }
+.admin-field select { width: 100%; min-height: 44px; border: 1px solid #d4dde8; border-radius: 10px; padding: 0 14px; background: #ffffff; color: #334155; font-family: 'Tajawal', sans-serif; font-size: 13px; box-sizing: border-box; min-width: 0; }
 .admin-field input:focus,
 .admin-field select:focus { border-color: #005FCC; outline: none; box-shadow: 0 0 0 3px rgba(0,95,204,.08); }
 .admin-field-help { color: #64748b; font-size: 12px; line-height: 1.7; }
+.admin-field-help.admin-field-help-spacer { visibility: hidden; }
 
 .admin-inline-alert { border-radius: 12px; padding: 12px 14px; font-size: 13px; line-height: 1.8; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
 .admin-inline-alert i { margin-top: 2px; }
@@ -1215,7 +1221,7 @@ html[dir="rtl"] .topbar-user {
 .admin-auth-points li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.8; }
 .admin-auth-points i { color: #93c5fd; margin-top: 2px; }
 
-.admin-auth-main { padding: 34px; }
+.admin-auth-main { padding-block: 36px; padding-inline-start: 34px; padding-inline-end: 44px; }
 .admin-auth-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
 .admin-auth-main h2 { margin: 0 0 10px; font-size: 26px; font-weight: 800; color: #0f172a; }
 .admin-auth-main .lead-copy { margin: 0 0 18px; color: #64748b; font-size: 14px; line-height: 1.9; }

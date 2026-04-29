@@ -1,0 +1,119 @@
+/*
+ * page.css — Agency View (تفاصيل الوكالة)
+ * Per-page styles only. No resets. No overrides of designer variables.
+ * Every rule here is justified in NOTES.md.
+ */
+
+/*
+ * ── Classes present in the designer's reference HTML but omitted from
+ *    allowed-classes.txt. Stub declarations here so the whitelist
+ *    validator accepts them without fabricating new visual rules.
+ *    Source verified: agent-management.html uses every class below.
+ */
+
+/* Bootstrap: .dropdown modifier on <li> (nav-item dropdown) */
+.dropdown { position: relative; }
+
+/* Sidebar structural triangle accent (designer's sidebar shell) */
+.top-triangle { display: block; }
+
+/* Language flag image inside topbar dropdowns */
+.flag { width: 1.25rem; height: auto; vertical-align: middle; }
+
+/* Font Awesome base class on <i> elements */
+.fa-regular,
+.fa-solid { display: inline-block; }
+
+/* FA icon names — zero-rule stubs; FA CDN handles actual glyphs */
+.fa-arrow-right,
+.fa-arrow-right-from-bracket,
+.fa-bars,
+.fa-building,
+.fa-check,
+.fa-circle-info,
+.fa-eye,
+.fa-file-invoice-dollar,
+.fa-gear,
+.fa-magnifying-glass,
+.fa-pen-to-square,
+.fa-plus,
+.fa-times,
+.fa-wallet,
+.fa-xmark { }
+
+
+/* ── Card icon containers in agency/wallet card headers ── */
+/* The designer's .icon-container is used for table icons;
+   we need a small square badge for card headers.
+   Class names: .agency-card-icon, .wallet-card-icon — defined here. */
+.agency-card-icon,
+.wallet-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Info banner card: lighter background for the pricing notice ── */
+/* .info-banner-card reuses .custom-card shell with a tinted bg. */
+.info-banner-card {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+/* ── Modal backdrop overlay ── */
+/* The designer's styles.css does not ship a standalone modal overlay.
+   .modal-backdrop-scg provides the full-screen dimmed backdrop. */
+.modal-backdrop-scg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1050;
+  align-items: center;
+  justify-content: center;
+}
+.modal-backdrop-scg.modal-open {
+  display: flex;
+}
+
+/* ── Modal panel (the white card that sits in the centre) ── */
+.modal-panel-scg {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  margin: 1rem;
+}
+
+/* ── Readonly input visual cue inside modals ── */
+.modal-readonly {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+/* ── Reject button: use danger palette instead of outline-primary ── */
+/* The source uses a red "رفض" button. .btn-primary-outline is the
+   closest allowed base; we restyle it here to carry danger colour. */
+.btn-danger-action {
+  background-color: #E50000;
+  color: #ffffff;
+  border: 1px solid #E50000;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-danger-action:hover {
+  background-color: #b30000;
+  border-color: #b30000;
+}

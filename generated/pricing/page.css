@@ -1,0 +1,60 @@
+/*
+ * page.css — Nationality & Pricing Management page
+ * Scoped additions only. No overrides of designer variables.
+ */
+
+/*
+ * The following classes are injected and owned by scg-modal.js — do not add rules here:
+ * .scg-field, .scg-label, .scg-error, .req
+ */
+
+/* ── Clickable table rows ─────────────────────────────────── */
+.clickable-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.clickable-row:hover {
+  background: #f0f6ff !important;
+}
+
+/* ── Searchable nationality dropdown ─────────────────────── */
+.nat-select-wrap {
+  position: relative;
+}
+
+.ss-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1200;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 2px;
+}
+
+.ss-dropdown.open {
+  display: block;
+}
+
+.ss-option {
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Tajawal", sans-serif;
+  text-align: right;
+  direction: rtl;
+}
+
+.ss-option:hover {
+  background: #f0f6ff;
+}
+
+.ss-option.hidden {
+  display: none;
+}

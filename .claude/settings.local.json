@@ -22,7 +22,27 @@
       "Bash(dir \"D:\\\\Claude\\\\Security clearance\\\\styles\")",
       "Bash(claude mcp:*)",
       "mcp__f824dade-b136-4de5-beb2-e3ff3db7abd7__create_new_file",
-      "mcp__f824dade-b136-4de5-beb2-e3ff3db7abd7__use_figma"
+      "mcp__f824dade-b136-4de5-beb2-e3ff3db7abd7__use_figma",
+      "Bash(python3 -)",
+      "Bash(python -)",
+      "Bash(where python *)",
+      "Bash(where python3 *)",
+      "Bash(where py *)",
+      "Bash(py -c ' *)",
+      "Bash(\"C:/Users/Abdelrahman.Mamdouh/AppData/Local/Microsoft/WindowsApps/python3.exe\" -)",
+      "Bash(py --version)",
+      "Bash(py -)",
+      "Bash(node --check \"D:/Claude/Security clearance/app/js/scg-modal.js\")",
+      "Bash(node.exe --check \"D:/Claude/Security clearance/app/js/scg-modal.js\")",
+      "Bash(cmd.exe /c \"node --check \\\\\"D:\\\\\\\\Claude\\\\\\\\Security clearance\\\\\\\\app\\\\\\\\js\\\\\\\\scg-modal.js\\\\\" && echo SYNTAX OK\")",
+      "Bash(py -c \"import sys; print\\(sys.version\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(where nodejs *)",
+      "Read(//usr/**)",
+      "Read(//c/Program Files/nodejs/**)",
+      "Read(//c/Program Files \\(x86\\)/nodejs/**)",
+      "Bash(grep -qE '^\\\\.__TRACKED_VAR__$|^\\\\.__TRACKED_VAR__' docs/design-system/allowed-classes.txt)",
+      "Bash(grep -qE '\\\\.__TRACKED_VAR__[\\\\s{,\\\\[]' generated/pricing/page.css)"
     ]
   }
 }

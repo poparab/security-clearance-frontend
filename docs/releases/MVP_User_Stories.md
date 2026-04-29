@@ -3,7 +3,7 @@
 
 *Scope: To Egypt only | Wallet payment only (Admin-funded) | Web form batch entry*
 
-*32 stories — 18 Agency + 14 Admin*
+*35 stories — 20 Agency + 15 Admin*
 
 ---
 
@@ -28,11 +28,12 @@ Submitted → Under Processing → Approved / Rejected / Failed
 
 - US-1 — Agency registers and submits for approval
 - US-2 — Agency logs in to the portal
-- US-3A — Agency views account and wallet summary
-- US-3B — Agency views monthly inquiry KPIs
-- US-3C — Agency views recent batch activity
-- US-3D — Agency uses dashboard quick action cards
-- US-3E — Agency views inquiry analytics charts
+- US-3A — Agency dashboard views account summary
+- US-3B — Agency dashboard views monthly inquiry KPIs
+- US-3C — Agency dashboard views recent batch activity
+- US-3D — Agency dashboard uses dashboard quick action cards
+- US-3E — Agency dashboard views nationality analytics chart
+- US-3F — Agency dashboard views 7-day inquiry trend
 - US-4A — Agency views wallet balance and transactions
 - US-4B — Agency views balance coverage by nationality
 - US-5 — Agency builds batch inquiry via web form
@@ -44,6 +45,7 @@ Submitted → Under Processing → Approved / Rejected / Failed
 - US-11 — Agency monitors full inquiry list
 - US-12 — Agency views detailed inquiry record
 - US-21 — Agency logs out of portal
+- US-23 — Agency downloads traveler PDF from batch
 
 ## Epic: Account Registration & Onboarding
 
@@ -139,15 +141,15 @@ Submitted → Under Processing → Approved / Rejected / Failed
 |---|---|---|---|---|---|
 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-> All INVEST criteria are met. The landing dashboard is covered in **(Agency) dashboard views account and wallet summary**, **(Agency) dashboard views monthly inquiry KPIs**, **(Agency) dashboard views recent batch activity**, **(Agency) dashboard uses dashboard quick action cards**, and **(Agency) dashboard views inquiry analytics charts**.
+> All INVEST criteria are met. The landing dashboard is covered in **(Agency) dashboard views account summary**, **(Agency) dashboard views monthly inquiry KPIs**, **(Agency) dashboard views recent batch activity**, **(Agency) dashboard uses dashboard quick action cards**, **(Agency) dashboard views nationality analytics chart**, and **(Agency) dashboard views 7-day inquiry trend**.
 
 ### Scope Boundaries
 
-> This story covers authentication and session creation only. The dashboard that loads after login is defined in **(Agency) dashboard views account and wallet summary**, **(Agency) dashboard views monthly inquiry KPIs**, **(Agency) dashboard views recent batch activity**, **(Agency) dashboard uses dashboard quick action cards**, and **(Agency) dashboard views inquiry analytics charts**.
+> This story covers authentication and session creation only. The dashboard that loads after login is defined in **(Agency) dashboard views account summary**, **(Agency) dashboard views monthly inquiry KPIs**, **(Agency) dashboard views recent batch activity**, **(Agency) dashboard uses dashboard quick action cards**, **(Agency) dashboard views nationality analytics chart**, and **(Agency) dashboard views 7-day inquiry trend**.
 
 ---
 
-## US-3A | (Agency) dashboard views account and wallet summary
+## US-3A | (Agency) dashboard views account summary
 
 | Field | Value |
 |---|---|
@@ -160,15 +162,14 @@ Submitted → Under Processing → Approved / Rejected / Failed
 ### User Story Statement
 
 - **As a…** an approved agency that just logged in
-- **I want to…** see my agency details and current wallet balance on the dashboard
-- **So that…** I can confirm my account status and available balance at a glance
+- **I want to…** see my agency details on the dashboard
+- **So that…** I can confirm my account status at a glance
 
 ### Acceptance Criteria
 
 | **#** | **Scenario** | **Given** | **When** | **Then** |
 |---|---|---|---|---|
 | AC1 | Agency info card | the agency logs in | the dashboard loads | an agency info card shows the agency name, commercial registration number, account status, and last login timestamp. |
-| AC2 | Wallet balance card | the dashboard loads | the overview section renders | a wallet card is shown with:<br>- Current balance in USD.<br>- Read-only display with no top-up action.<br>- A note stating that wallet funding is managed by Admin. |
 
 ### INVEST Check
 
@@ -273,8 +274,8 @@ Submitted → Under Processing → Approved / Rejected / Failed
 ### User Story Statement
 
 - **As a…** an approved agency
-- **I want to…** see two clear action cards on the dashboard for my main tasks
-- **So that…** I can reach batch inquiry or wallet management in one click
+- **I want to…** see two clear action cards on the dashboard for my main tasks and review the available wallet balance on the wallet card
+- **So that…** I can reach batch inquiry quickly and check available funds in one place
 
 ### Acceptance Criteria
 
@@ -282,7 +283,8 @@ Submitted → Under Processing → Approved / Rejected / Failed
 |---|---|---|---|---|
 | AC1 | Quick action cards visible | the dashboard loads | the quick actions section renders | two action cards are shown: one for Batch Inquiry and one for Wallet Management. Each card has a label and a clear action button. |
 | AC2 | Batch inquiry card navigates | the agency selects the Batch Inquiry card action | the action is triggered | the batch inquiry page opens. |
-| AC3 | Wallet management card navigates | the agency selects the Wallet Management card action | the action is triggered | the wallet page opens. |
+| AC3 | Wallet management card shows balance | the dashboard loads | the quick actions section renders | the Wallet Management card shows the available balance in USD and a note that wallet funding is managed by Admin. |
+| AC4 | Wallet management card navigates | the agency selects the Wallet Management card action | the action is triggered | the wallet page opens. |
 
 ### INVEST Check
 
@@ -294,7 +296,7 @@ Submitted → Under Processing → Approved / Rejected / Failed
 
 ---
 
-## US-3E | (Agency) dashboard views inquiry analytics charts
+## US-3E | (Agency) dashboard views nationality analytics chart
 
 | Field | Value |
 |---|---|
@@ -307,16 +309,50 @@ Submitted → Under Processing → Approved / Rejected / Failed
 ### User Story Statement
 
 - **As a…** an approved agency
-- **I want to…** see a nationality breakdown and a 7-day inquiry trend on the dashboard
-- **So that…** I can spot patterns in my inquiry activity without running a report
+- **I want to…** see a nationality breakdown chart on the dashboard
+- **So that…** I can spot which nationalities make up my inquiry volume without running a report
 
 ### Acceptance Criteria
 
 | **#** | **Scenario** | **Given** | **When** | **Then** |
 |---|---|---|---|---|
 | AC1 | Nationality pie chart | the dashboard loads | the analytics section renders | a pie chart titled الطلبات حسب الجنسية shows the percentage of inquiries submitted per nationality for the current month. |
-| AC2 | Trend line chart | the dashboard loads | the analytics section renders | a line chart titled اتجاه الطلبات — آخر 7 أيام shows the daily inquiry count for the last 7 days. |
-| AC3 | No inquiry data for charts | the agency has not submitted any inquiries | the analytics section renders | charts show an empty state with a message that data will appear after inquiries are submitted. |
+| AC2 | Current-month chart scope | the agency has submitted inquiries in more than one month | the nationality chart is displayed | the chart includes only inquiries from the current month. |
+| AC3 | No inquiry data for chart | the agency has not submitted any inquiries | the analytics section renders | the nationality chart shows an empty state with a message that data will appear after inquiries are submitted. |
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> All INVEST criteria are met.
+
+---
+
+## US-3F | (Agency) dashboard views 7-day inquiry trend
+
+| Field | Value |
+|---|---|
+| **Persona** | Agency |
+| **Priority** | Priority 2 — High |
+| **Release** | MVP |
+| **Epic** | Agency Dashboard |
+| **Sprint** | Sprint 2 |
+
+### User Story Statement
+
+- **As a…** an approved agency
+- **I want to…** see a 7-day inquiry trend on the dashboard
+- **So that…** I can spot short-term changes in my inquiry activity without opening the full list
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Trend line chart | the dashboard loads | the analytics section renders | a line chart titled اتجاه الطلبات — آخر 7 أيام shows the daily inquiry count for the last 7 days. |
+| AC2 | Rolling 7-day window | the dashboard loads | the trend chart is displayed | the chart covers the most recent 7 calendar days only. |
+| AC3 | No inquiry data for chart | the agency has not submitted any inquiries | the analytics section renders | the trend chart shows an empty state with a message that data will appear after inquiries are submitted. |
 
 ### INVEST Check
 
@@ -850,20 +886,70 @@ Submitted → Under Processing → Approved / Rejected / Failed
 
 ---
 
+## US-23 | (Agency) downloads traveler PDF from batch
+
+| Field | Value |
+|---|---|
+| **Persona** | Agency |
+| **Priority** | Priority 2 — High |
+| **Release** | MVP |
+| **Epic** | Batch Inquiry |
+
+### User Story Statement
+
+- **As a…** an approved agency managing a batch with approved travelers
+- **I want to…** download one traveler's approval PDF from the batch details page
+- **So that…** I can send the correct document to that traveler without downloading the full batch
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Approved traveler shows download action | the batch details page is open | a traveler row is approved | that row shows a Download PDF action. |
+| AC2 | Downloaded PDF contains required details | an approved traveler row is shown | Download PDF is selected | the PDF includes the traveler name, nationality, direction, approval reference, validity dates, and QR code. |
+| AC3 | Expired approval stays downloadable | the traveler was approved in the past | the approval validity has ended | the download action is still available and the PDF shows that the approval is expired. |
+| AC4 | Unapproved traveler has no download action | the batch details page is open | a traveler row is not approved | no PDF download action is shown for that row. |
+| AC5 | Download is recorded | an approved traveler row is shown | the PDF is downloaded | the download action is recorded in the audit log. |
+
+### Grid Specification
+
+| Column | Sortable | Filterable | Filter Type |
+|---|---|---|---|
+| Traveler Name | No | No | — |
+| Passport Number | No | No | — |
+| Direction | No | No | — |
+| Current Status | No | No | — |
+| Decision Date | No | No | — |
+| Approval Reference | No | No | — |
+| Actions | No | No | — |
+
+**Pagination:** No sorting, filtering, or pagination needed — the list shows only travelers in the current batch.
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ⚠️ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> ⚠️ Depends on the existing batch details screen.
+
+---
+
 # Back-office User Stories
 
 ## Back-office Story List
 
 - US-13 — Admin logs into back-office portal
-- US-14A — Admin views platform KPI summary cards
-- US-14B — Admin uses dashboard quick action navigation
-- US-14C — Admin views inquiry analytics charts
+- US-14A — Admin dashboard views platform KPI summary cards
+- US-14B — Admin dashboard uses dashboard quick action navigation
+- US-14C — Admin dashboard views nationality analytics chart
+- US-14D — Admin dashboard views 7-day inquiry trend
 - US-15 — Admin adds nationality with fee
 - US-16 — Admin views pricing list and details
 - US-17 — Admin views agency list
 - US-17A — Admin reviews agency registration details
 - US-17B — Admin approves or rejects agency registration
-- US-17C — Admin sets agency-specific inquiry fee
+- US-17C — Admin sets agency-specific inquiry fee *(✔ New Story — CH-6)*
 - US-18 — Admin credits agency wallet balance
 - US-19 — Admin monitors and filters inquiries
 - US-20 — Admin views detailed inquiry record
@@ -979,7 +1065,7 @@ Submitted → Under Processing → Approved / Rejected / Failed
 
 ---
 
-## US-14C | (Admin) dashboard views inquiry analytics charts
+## US-14C | (Admin) dashboard views nationality analytics chart
 
 | Field | Value |
 |---|---|
@@ -992,16 +1078,50 @@ Submitted → Under Processing → Approved / Rejected / Failed
 ### User Story Statement
 
 - **As a…** an authenticated Admin
-- **I want to…** see a nationality breakdown and a 7-day inquiry trend on the dashboard
-- **So that…** I can spot system-wide patterns without running a full report
+- **I want to…** see a nationality breakdown chart on the dashboard
+- **So that…** I can spot which nationalities make up overall inquiry volume without running a full report
 
 ### Acceptance Criteria
 
 | **#** | **Scenario** | **Given** | **When** | **Then** |
 |---|---|---|---|---|
 | AC1 | Nationality pie chart | the dashboard loads | the analytics section renders | a pie chart titled الطلبات حسب الجنسية shows the percentage breakdown of all inquiries by nationality for the current month. |
-| AC2 | Trend line chart | the dashboard loads | the analytics section renders | a line chart titled اتجاه الطلبات — آخر 7 أيام shows the total daily inquiry count across all agencies for the last 7 days. |
-| AC3 | No inquiry data for charts | no inquiries have been submitted across any agency | the analytics section renders | charts show an empty state with a message that data will appear after inquiries are submitted. |
+| AC2 | Current-month chart scope | inquiries exist across more than one month | the nationality chart is displayed | the chart includes only inquiries from the current month. |
+| AC3 | No inquiry data for chart | no inquiries have been submitted across any agency | the analytics section renders | the nationality chart shows an empty state with a message that data will appear after inquiries are submitted. |
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> All INVEST criteria are met.
+
+---
+
+## US-14D | (Admin) dashboard views 7-day inquiry trend
+
+| Field | Value |
+|---|---|
+| **Persona** | Admin |
+| **Priority** | Priority 2 — High |
+| **Release** | MVP |
+| **Epic** | Authentication & Access |
+| **Sprint** | Sprint 2 |
+
+### User Story Statement
+
+- **As a…** an authenticated Admin
+- **I want to…** see a 7-day inquiry trend on the dashboard
+- **So that…** I can spot short-term changes in platform activity without running a full report
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Trend line chart | the dashboard loads | the analytics section renders | a line chart titled اتجاه الطلبات — آخر 7 أيام shows the total daily inquiry count across all agencies for the last 7 days. |
+| AC2 | Rolling 7-day window | the dashboard loads | the trend chart is displayed | the chart covers the most recent 7 calendar days only. |
+| AC3 | No inquiry data for chart | no inquiries have been submitted across any agency | the analytics section renders | the trend chart shows an empty state with a message that data will appear after inquiries are submitted. |
 
 ### INVEST Check
 
@@ -1355,7 +1475,7 @@ Submitted → Under Processing → Approved / Rejected / Failed
 |---|---|---|---|---|---|
 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-> All INVEST criteria are met. Agency dashboard and wallet views in **(Agency) dashboard views account and wallet summary** and **(Agency) views wallet balance and transactions** should reflect the updated balance.
+> All INVEST criteria are met. Agency dashboard and wallet views in **(Agency) dashboard uses dashboard quick action cards** and **(Agency) views wallet balance and transactions** should reflect the updated balance.
 
 ### Scope Boundaries
 

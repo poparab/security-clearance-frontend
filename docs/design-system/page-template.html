@@ -1,0 +1,146 @@
+<!doctype html>
+<html dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><!-- PAGE TITLE (Arabic) --></title>
+
+<!-- Bootstrap RTL -->
+<link rel="stylesheet" type="text/css" href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/css/bootstrap/bootstrap.rtl.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<!-- Designer's compiled design system (DO NOT EDIT the source files) -->
+<link href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/css/styles.css" rel="stylesheet" type="text/css">
+<!-- Optional: page-scoped overrides only. Leave the link even if the file is empty. -->
+<link href="page.css" rel="stylesheet" type="text/css">
+<!-- Favicon -->
+<link rel="shortcut icon" href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+<!-- Main Wrapper Container -->
+<div class="wrapper">
+
+  <!-- Side Nav -->
+  <nav id="sidebar">
+    <span class="top-triangle"></span>
+    <div id="dismiss"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="sidebar-header">
+      <div class="logo">
+        <img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/logo.png" alt=""/>
+      </div>
+    </div>
+    <ul id="main-menu">
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/dashboard-2.svg" alt="">لوحة التحكم</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/applications.svg" alt="">إدارة الطلبات</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/user-2.svg" alt="">إدارة الأفراد</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/agency.svg" alt="">إدارة الوكلاء</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/users.svg" alt="">إدارة المستخدمين</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/report.svg" alt="">التقارير</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/chart2.svg" alt="">اللوحة المالية</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/help.svg" alt="">المساعدة</a></li>
+    </ul>
+  </nav>
+  <!-- End Side Nav -->
+
+  <!-- Content Area -->
+  <div id="content">
+
+    <header>
+      <button type="button" id="sidebarCollapse" class="btn"><i class="fa-solid fa-bars"></i></button>
+
+      <form class="me-auto d-none d-md-flex">
+        <div class="input-group">
+          <input type="search" class="form-control" id="search" name="search" placeholder="إبحث هنــا ...">
+          <button class="btn-input-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
+
+      <div class="end-side">
+        <ul class="navbar navbar-expand topbar-menu">
+          <li class="nav-item dropdown d-block d-md-none">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="searchDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <div class="dropdown-menu slideIn" aria-labelledby="searchDropdown">
+              <form class="left-side-search d-flex">
+                <div class="input-group">
+                  <input type="search" class="form-control" id="leftSideSearch" name="search" placeholder="إبحث هنــا ...">
+                  <button class="btn-input-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+              </form>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="laguageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="icon" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language.svg" alt="">
+            </a>
+            <ul class="dropdown-menu slideIn" aria-labelledby="laguageDropdown">
+              <li><a class="dropdown-item" href="javascript:;"><img class="flag" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language/united-kingdom.svg" alt=""/>English</a></li>
+              <li><a class="dropdown-item" href="javascript:;"><img class="flag" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language/egypt.svg" alt=""/>عربى</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="userProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="user-profile" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/profile-photo.png">
+              <span class="user-info">
+                <span class="user-name">عبد الله مرزووق</span>
+                <span class="user-title">مدير تنفيذي</span>
+              </span>
+            </a>
+            <ul class="dropdown-menu slideIn" aria-labelledby="userProfileDropdown">
+              <li><a class="dropdown-item" href="javascript:;"><i class="fa-solid fa-gear"></i>الإعدادات</a></li>
+              <li><a class="dropdown-item" href="javascript:;"><i class="fa-solid fa-arrow-right-from-bracket"></i>تسجيل الخروج</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- =========================================================== -->
+    <!--  PAGE CONTENT SLOT                                          -->
+    <!--  Fill sections below using only classes from                -->
+    <!--  docs/design-system/allowed-classes.txt and snippets in     -->
+    <!--  docs/design-system/component-snippets.md.                  -->
+    <!-- =========================================================== -->
+
+    <section class="sm-padding">
+      <div class="container-fluid">
+        <!-- REPLACE THIS COMMENT WITH PAGE SECTIONS -->
+      </div>
+    </section>
+
+    <!-- =========================================================== -->
+    <!--  END PAGE CONTENT SLOT                                      -->
+    <!-- =========================================================== -->
+
+  </div>
+  <!-- End Content Area -->
+</div>
+<!-- End Wrapper -->
+
+<div class="overlay"></div>
+
+<!-- Scripts -->
+<script src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/js/jquery-4.0.0.min.js"></script>
+<script src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/js/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#dismiss, .overlay').on('click', function () {
+    $('#sidebar').removeClass('active');
+    $('.overlay').removeClass('active');
+  });
+  $('#sidebarCollapse').on('click', function () {
+    $('#sidebar, #content').toggleClass('active');
+    $('.overlay').addClass('active');
+    $('.collapse.in').toggleClass('in');
+    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+  });
+});
+</script>
+
+</body>
+</html>

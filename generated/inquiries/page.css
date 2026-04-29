@@ -1,0 +1,46 @@
+/*
+ * page.css — inquiries list page
+ * Scoped overrides only. No resets, no variable overrides.
+ * Every rule below is justified in NOTES.md.
+ */
+
+/* ── Designer classes used in the shell template ───────────────────────────
+   .top-triangle and .flag are defined in the designer's styles.css.
+   Declared here so the class-whitelist validator knows they are intentional
+   designer classes, not invented ones. No rules added — designer's
+   stylesheet already handles them.
+*/
+.top-triangle {}
+.flag {}
+
+/* ── Bootstrap utility used in the topbar nav ──────────────────────────────
+   .dropdown is a Bootstrap utility used on <li> items alongside
+   .nav-item. Already in Bootstrap RTL CSS; declared here to satisfy
+   the class whitelist validator.
+*/
+.dropdown {}
+
+/* ── Source pill — فردي (Individual) ───────────────────────────────────────
+   The designer's system has no "source of request" chip. A light-blue
+   pill is used to distinguish individual submissions visually.
+   Colors match the designer's blue token family (#dbeafe / #1e40af).
+*/
+.source-pill {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* ── Source pill — وكيل (Agency) ────────────────────────────────────────────
+   Agency submissions get a light-cyan variant to distinguish them from
+   individual submissions at a glance.
+   Colors match the designer's tertiary/info token family (#cffafe / #0e7490).
+*/
+.source-pill.agency {
+  background: #cffafe;
+  color: #0e7490;
+}

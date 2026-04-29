@@ -2697,6 +2697,8 @@ body.portal-page header a.nav-link.disabled-link {
 .form-field input,
 .form-field textarea,
 .form-field select {
+  width: 100%;
+  min-width: 0;
   border: 1.5px solid #e2e8f0;
   border-radius: 0.5rem;
   padding: 0 1rem;
@@ -2704,6 +2706,7 @@ body.portal-page header a.nav-link.disabled-link {
   font-size: calc(0.875rem + 0.02vw);
   color: #002e5c;
   background: #ffffff;
+  box-sizing: border-box;
   outline: none;
   transition: border-color .2s ease, box-shadow .2s ease;
   min-height: 3.25rem;
@@ -2732,11 +2735,18 @@ body.portal-page header a.nav-link.disabled-link {
   line-height: 1.8;
   color: #64748b;
 }
+.form-field .field-help.field-help-spacer {
+  visibility: hidden;
+}
 
 .form-grid-2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  align-items: start;
+}
+.form-grid-2 > * {
+  min-width: 0;
 }
 
 .validation-stack {

@@ -1,9 +1,9 @@
 ﻿# Security Clearance & Inquiry System
 ## Release 2 — User Stories
 
-*Scope: Individual traveler self-service portal — registration, eligibility check, inquiry submission, ESC payment, result tracking, approval document download | To Egypt + From Egypt (CH-1) | Structured transit stops (CH-2)*
+*Scope: Individual traveler self-service portal — registration, eligibility check, inquiry submission, ESC payment, result tracking, approval document download | Agency single-inquiry submission and result tracking | To Egypt + From Egypt (CH-1) | Structured transit stops (CH-2)*
 
-*23 stories — 23 Individual*
+*27 stories — 23 Individual + 4 Agency*
 
 ---
 
@@ -12,6 +12,7 @@
 | Persona | Scope | Description |
 |---|---|---|
 | **Individual** | Portal | A citizen or independent traveller who submits security inquiries directly through the portal, tracks their inquiry status, and downloads approval documents upon clearance. |
+| **Agency** | Portal | An approved travel agency that submits single-traveler inquiries through the portal, tracks inquiry status, and downloads approval documents on behalf of their travelers. |
 
 ---
 
@@ -19,11 +20,47 @@
 
 | Item | Count |
 |---|---|
-| Total Release 2 Stories | 23 |
+| Total Release 2 Stories | 27 |
 | Individual Stories | 23 |
-| Priority 1 — Critical | 17 |
-| Priority 2 — High | 4 |
+| Agency Stories | 4 |
+| Priority 1 — Critical | 20 |
+| Priority 2 — High | 5 |
 | Priority 3 — Medium | 2 |
+
+---
+
+## Individual Story List
+
+- US-01 — Individual registers portal account with OTP
+- US-02 — Individual handles OTP resend and expiry
+- US-03 — Individual logs in to the portal
+- US-04 — Individual account locks after failed logins
+- US-05 — Individual resets forgotten password via OTP
+- US-NEW-01 — Individual selects inquiry direction before eligibility check *(✔ New Story — CH-1)*
+- US-06 — Individual checks nationality + direction eligibility before form *(✎ Change Request — CH-1 — Modified)*
+- US-07 — Individual submits personal details — Step 1 *(✎ Change Request — CH-1 — Modified)*
+- US-08 — Individual submits passport details — Step 2
+- US-NEW-04 — Individual declares structured transit stops for multi-leg journey *(✔ New Story — CH-2)*
+- US-09 — Individual submits travel details — Step 3 (direction-aware + structured transit) *(✎ Change Request — CH-1 + CH-2 — Modified)*
+- US-10 — Individual views fee before confirming submission
+- US-11 — Individual reviews, declares and confirms submission *(✎ Change Request — CH-1 + CH-2 — Modified)*
+- US-12 — Individual pays inquiry fee via ESC payment gateway
+- US-13 — Individual receives payment confirmation record
+- US-14 — Individual retries payment for Payment Pending inquiry
+- US-15 — Individual receives inquiry status change notifications
+- US-16 — Individual views their own inquiry list
+- US-17 — Individual tracks inquiry status and processing stages
+- US-19 — Individual downloads approved PDF and QR code
+- US-20 — Individual prints approval document from portal
+- US-21 — Individual views approval validity and expiry warning
+- US-NEW-02 — Individual submits outbound travel details for From Egypt journey *(✔ New Story — CH-1)*
+
+## Agency Story List
+
+- US-AG-23 — Agency selects inquiry travel direction
+- US-AG-24 — Agency submits single traveler inquiry
+- US-AG-25 — Agency receives single inquiry confirmation
+- US-AG-26 — Agency views single inquiry result
 
 ---
 
@@ -953,3 +990,175 @@
 > ⚠️ Not fully Independent — depends on **(Individual) selects inquiry direction before eligibility check** and **(Individual) checks nationality + direction eligibility before form**. New story for CH-1.
 
 ---
+
+
+---
+
+# Portal — Agency Single-Inquiry Stories
+
+## Epic: Eligibility & Submission
+
+## US-AG-23 | (Agency) selects inquiry travel direction
+
+| Field | Value |
+|---|---|
+| **Persona** | Agency |
+| **Priority** | Priority 1 — Critical |
+| **Release** | Release 2 |
+| **Epic** | Eligibility & Submission |
+
+### User Story Statement
+
+- **As a…** an approved agency starting a new single inquiry
+- **I want to…** choose the travel direction before I enter traveler details
+- **So that…** the portal shows the correct travel fields for that journey
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Direction selector shown first | the agency opens the single inquiry page | the page loads | the travel direction selector is the first required field shown. |
+| AC2 | To Egypt shows inbound section | the agency is on the direction step | To Egypt is selected | the portal shows the inbound travel section. |
+| AC3 | From Egypt shows outbound section | the agency is on the direction step | From Egypt is selected | the portal shows the outbound travel section. |
+| AC4 | No direction blocks progress | the agency did not choose a direction | Continue is selected | the system displays: ***يرجى اختيار اتجاه السفر قبل المتابعة. (Please select the travel direction before you continue.)*** |
+| AC5 | Changing direction clears travel details | the agency already entered travel details | the travel direction is changed | the system displays: ***سيؤدي تغيير اتجاه السفر إلى مسح تفاصيل الرحلة. هل تريد المتابعة؟ (Changing the travel direction will clear the travel details. Do you want to continue?)*** and clears the travel fields after confirmation. |
+
+### Form Validation Table
+
+| Field | Type | Required | Constraints | Error Message |
+|---|---|---|---|---|
+| **Direction of Travel** | Select | Yes | Must be either To Egypt or From Egypt | ***يرجى اختيار اتجاه السفر. (Please select the travel direction.)*** |
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> All INVEST criteria met.
+
+---
+
+## US-AG-24 | (Agency) submits single traveler inquiry
+
+| Field | Value |
+|---|---|
+| **Persona** | Agency |
+| **Priority** | Priority 1 — Critical |
+| **Release** | Release 2 |
+| **Epic** | Eligibility & Submission |
+
+### User Story Statement
+
+- **As a…** an approved agency creating a single security inquiry
+- **I want to…** enter one traveler's details, including direction-based travel details and up to three transit stops, and submit the inquiry
+- **So that…** the traveler can be processed without joining a batch
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Ineligible nationality is blocked | the agency starts a single inquiry | a nationality that does not require inquiry is selected | the system displays: ***هذه الجنسية لا تحتاج إلى استعلام أمني لهذا المسار. (This nationality does not require a security inquiry for this travel direction.)*** |
+| AC2 | Direction-based form is shown | the agency selected a valid direction and an eligible nationality | the agency continues to the form | the correct travel section is shown. For all fields, types, and constraints, see the Form Validation table below. |
+| AC3 | Transit stops can be added | the agency is filling in travel details | Add Transit Stop is selected | one new transit row is added. Up to 3 rows can be added. |
+| AC4 | Review screen shows summary only | all required details are valid | the agency selects Review | the review step shows the traveler name, nationality, direction, and travel date. No fee or wallet amounts are shown. |
+| AC5 | Valid submission creates inquiry | all required details are valid and the wallet balance is sufficient | the agency confirms submission | the inquiry is created and the confirmation screen opens in the processing stage. |
+| AC6 | Low balance blocks submission | the agency reaches the review step | the wallet balance is not sufficient | the system displays: ***رصيد المحفظة غير كاف. يرجى التواصل مع الدعم للمساعدة. (Insufficient wallet balance. Please contact support for assistance.)*** |
+
+### Form Validation Table
+
+| Field | Type | Required | Constraints | Error Message |
+|---|---|---|---|---|
+| **Traveler Full Name** | Text | Yes | Min 2 characters. Max 150 characters | ***اسم المسافر مطلوب. (Traveler name is required.)*** |
+| **Nationality** | Select | Yes | Must be chosen from the available nationality list | ***يرجى اختيار جنسية المسافر. (Please select the traveler's nationality.)*** |
+| **Passport Number** | Text | Yes | 6 to 20 letters or numbers | ***يجب أن يتكون رقم جواز السفر من 6 إلى 20 حرفاً أو رقماً. (Passport number must be 6 to 20 letters or numbers.)*** |
+| **Passport Expiry Date** | Date | Yes | Must be at least 6 months after the travel date | ***يجب أن يكون جواز السفر صالحاً لمدة 6 أشهر على الأقل بعد تاريخ السفر. (Passport must be valid for at least 6 months after the travel date.)*** |
+| **Travel Date** | Date | Yes | Must be today or a future date | ***يجب أن يكون تاريخ السفر اليوم أو تاريخاً مستقبلياً. (Travel date must be today or a future date.)*** |
+| **Departure Country** | Select | Conditional | Required when Direction of Travel is To Egypt | ***يرجى اختيار بلد المغادرة. (Please select the departure country.)*** |
+| **Arrival Airport in Egypt** | Select | Conditional | Required when Direction of Travel is To Egypt | ***يرجى اختيار مطار الوصول في مصر. (Please select the arrival airport in Egypt.)*** |
+| **Departure Airport in Egypt** | Select | Conditional | Required when Direction of Travel is From Egypt | ***يرجى اختيار مطار المغادرة في مصر. (Please select the departure airport in Egypt.)*** |
+| **Destination Country** | Select | Conditional | Required when Direction of Travel is From Egypt | ***يرجى اختيار بلد الوصول. (Please select the destination country.)*** |
+| **Purpose of Travel** | Select | Yes | Must be chosen from the available purpose list | ***يرجى اختيار غرض السفر. (Please select the purpose of travel.)*** |
+| **Flight Number** | Text | No | Max 10 letters or numbers | ***يجب ألا يزيد رقم الرحلة عن 10 أحرف أو أرقام. (Flight number must not exceed 10 letters or numbers.)*** |
+| **Transit Country (per stop)** | Select | Conditional | Required when a transit row is added | ***يرجى اختيار بلد الترانزيت لهذه المحطة. (Please select the transit country for this stop.)*** |
+| **Layover Duration (per stop)** | Number | No | Whole number from 0 to 72 hours | ***يجب أن تكون مدة التوقف بين 0 و72 ساعة. (Layover duration must be between 0 and 72 hours.)*** |
+| **Connecting Flight Number (per stop)** | Text | No | Max 10 letters or numbers | ***يجب ألا يزيد رقم الرحلة التالية عن 10 أحرف أو أرقام. (Connecting flight number must not exceed 10 letters or numbers.)*** |
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> All INVEST criteria met.
+
+---
+
+## US-AG-25 | (Agency) receives single inquiry confirmation
+
+| Field | Value |
+|---|---|
+| **Persona** | Agency |
+| **Priority** | Priority 1 — Critical |
+| **Release** | Release 2 |
+| **Epic** | Eligibility & Submission |
+
+### User Story Statement
+
+- **As a…** an approved agency that just submitted a single inquiry
+- **I want to…** see a confirmation page and receive a confirmation email
+- **So that…** the agency has a clear record of the submission and a direct path to follow it
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Confirmation page opens after submit | the agency confirmed a valid inquiry | submission succeeds | the confirmation page shows the inquiry reference, traveler name, submission time, and an action to open inquiry details. No fee or wallet amounts are shown. |
+| AC2 | Receipt can be downloaded | the confirmation page is open | Download Receipt is selected | a receipt file is downloaded with the inquiry reference, traveler name, direction, and submission time. |
+| AC3 | Confirmation email is sent | the inquiry was submitted successfully | the page finishes loading | a confirmation email is sent to the agency's registered email address. |
+| AC4 | Submission error shows support reference | the agency confirmed the inquiry | the submission cannot be completed | the system displays: ***تعذر إكمال الإرسال الآن. يرجى المحاولة مرة أخرى أو التواصل مع الدعم مع رقم المرجع التالي. (We could not complete the submission right now. Please try again or contact support with the reference below.)*** |
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ⚠️ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> ⚠️ Depends on **(Agency) submits single traveler inquiry**.
+
+---
+
+## Epic: Inquiry Tracking & Results
+
+## US-AG-26 | (Agency) views single inquiry result
+
+| Field | Value |
+|---|---|
+| **Persona** | Agency |
+| **Priority** | Priority 2 — High |
+| **Release** | Release 2 |
+| **Epic** | Inquiry Tracking & Results |
+
+### User Story Statement
+
+- **As a…** an approved agency that submitted a single inquiry
+- **I want to…** open the inquiry details and see the current outcome
+- **So that…** the agency can give the traveler an accurate update
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Decided inquiry shows outcome | the inquiry has a final decision | the agency opens the detail page | the page shows the decision status, decision date, traveler details, and journey details. |
+| AC2 | Approved inquiry shows document action | the inquiry is approved | the detail page opens | the page shows the approval reference, validity dates, and a Download PDF action. |
+| AC3 | Approved PDF can be downloaded | the inquiry is approved | Download PDF is selected | the approval PDF is downloaded with the QR code. |
+| AC4 | Rejected inquiry stays read only | the inquiry is rejected | the detail page opens | the page shows the rejected status and a support note. No rejection reason is shown. |
+| AC5 | Processing inquiry shows current stage | the inquiry is still being processed | the detail page opens | the current stage is shown and no decision section is displayed. |
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ⚠️ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> ⚠️ Depends on a submitted inquiry reaching a viewable state.

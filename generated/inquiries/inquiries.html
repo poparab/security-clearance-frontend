@@ -1,0 +1,539 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إدارة الطلبات — لوحة الإدارة</title>
+
+<!-- Bootstrap RTL -->
+<link rel="stylesheet" type="text/css" href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/css/bootstrap/bootstrap.rtl.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<!-- Designer's compiled design system (DO NOT EDIT the source files) -->
+<link href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/css/styles.css" rel="stylesheet" type="text/css">
+<!-- Page-scoped overrides only -->
+<link href="page.css" rel="stylesheet" type="text/css">
+<!-- Favicon -->
+<link rel="shortcut icon" href="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+<!-- Main Wrapper Container -->
+<div class="wrapper">
+
+  <!-- Side Nav -->
+  <nav id="sidebar">
+    <span class="top-triangle"></span>
+    <div id="dismiss"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="sidebar-header">
+      <div class="logo">
+        <img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/logo.png" alt="">
+      </div>
+    </div>
+    <ul id="main-menu">
+      <li><a href="admin-index.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/dashboard-2.svg" alt="">لوحة التحكم</a></li>
+      <li class="active"><a href="inquiries.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/applications.svg" alt="">إدارة الطلبات</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/user-2.svg" alt="">إدارة الأفراد</a></li>
+      <li><a href="agencies.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/agency.svg" alt="">إدارة الوكلاء</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/users.svg" alt="">إدارة المستخدمين</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/report.svg" alt="">التقارير</a></li>
+      <li><a href="pricing.html"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/prices.svg" alt="">إدارة الجنسيات والأسعار</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/chart2.svg" alt="">اللوحة المالية</a></li>
+      <li><a href="#"><img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/help.svg" alt="">المساعدة</a></li>
+    </ul>
+  </nav>
+  <!-- End Side Nav -->
+
+  <!-- Content Area -->
+  <div id="content">
+
+    <header>
+      <button type="button" id="sidebarCollapse" class="btn"><i class="fa-solid fa-bars"></i></button>
+
+      <form class="me-auto d-none d-md-flex">
+        <div class="input-group">
+          <input type="search" class="form-control" id="search" name="search" placeholder="إبحث هنــا ...">
+          <button class="btn-input-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
+
+      <div class="end-side">
+        <ul class="navbar navbar-expand topbar-menu">
+          <!-- Mobile search dropdown -->
+          <li class="nav-item dropdown d-block d-md-none">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="searchDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <div class="dropdown-menu slideIn" aria-labelledby="searchDropdown">
+              <form class="left-side-search d-flex">
+                <div class="input-group">
+                  <input type="search" class="form-control" id="leftSideSearch" name="search" placeholder="إبحث هنــا ...">
+                  <button class="btn-input-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+              </form>
+            </div>
+          </li>
+
+          <!-- Language dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="laguageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="icon" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language.svg" alt="">
+            </a>
+            <ul class="dropdown-menu slideIn" aria-labelledby="laguageDropdown">
+              <li><a class="dropdown-item" href="javascript:;"><img class="flag" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language/united-kingdom.svg" alt="">English</a></li>
+              <li><a class="dropdown-item" href="javascript:;"><img class="flag" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/language/egypt.svg" alt="">عربى</a></li>
+            </ul>
+          </li>
+
+          <!-- User profile dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:;" id="userProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="user-profile" src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/img/profile-photo.png" alt="">
+              <span class="user-info">
+                <span class="user-name">طلعت جادو</span>
+                <span class="user-title">مدير تنفيذي</span>
+              </span>
+            </a>
+            <ul class="dropdown-menu slideIn" aria-labelledby="userProfileDropdown">
+              <li><a class="dropdown-item" href="javascript:;"><i class="fa-solid fa-gear"></i>الإعدادات</a></li>
+              <li><a class="dropdown-item" href="javascript:;"><i class="fa-solid fa-arrow-right-from-bracket"></i>تسجيل الخروج</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!--  PAGE CONTENT                              -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <!-- KPI Widgets Section -->
+    <section class="sm-padding">
+      <div class="container-fluid">
+        <div class="widjets-theme-2">
+          <div class="row g-3">
+
+            <!-- طلبات جديد -->
+            <div class="col-sm-6 col-md-6 col-lg-3">
+              <div class="neutral-widjet blue">
+                <div class="widjet-body">
+                  <div class="icon">
+                    <img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/new-application.svg" alt="">
+                  </div>
+                  <div class="content">
+                    <p class="number">128</p>
+                    <p>طلبات جديد</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- طلبات موافق عليها -->
+            <div class="col-sm-6 col-md-6 col-lg-3">
+              <div class="neutral-widjet success">
+                <div class="widjet-body">
+                  <div class="icon">
+                    <img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/approved-applications.svg" alt="">
+                  </div>
+                  <div class="content">
+                    <p class="number">96</p>
+                    <p>طلبات موافق عليها</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- طلبات قيد المعالجة -->
+            <div class="col-sm-6 col-md-6 col-lg-3">
+              <div class="neutral-widjet warning">
+                <div class="widjet-body">
+                  <div class="icon">
+                    <img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/application-status.svg" alt="">
+                  </div>
+                  <div class="content">
+                    <p class="number">175</p>
+                    <p>طلبات قيد المعالجة</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- طلبات مرفوضة -->
+            <div class="col-sm-6 col-md-6 col-lg-3">
+              <div class="neutral-widjet danger">
+                <div class="widjet-body">
+                  <div class="icon">
+                    <img src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/icons/applications.svg" alt="">
+                  </div>
+                  <div class="content">
+                    <p class="number">23</p>
+                    <p>طلبات مرفوضة</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End KPI Widgets Section -->
+
+    <!-- Table Section -->
+    <section class="sm-padding">
+      <div class="container-fluid">
+
+        <!-- Section Title + Toolbar -->
+        <div class="section-title row gy-3">
+          <div class="title col-auto">
+            <h3 class="underline-title">إدارة الطلبات</h3>
+          </div>
+          <div class="end-side col-auto">
+            <button class="btn btn-light d-flex gap-1 align-items-center">
+              <i class="fa-solid fa-rotate"></i>تحديث
+            </button>
+            <div class="input-group">
+              <input type="search" class="form-control" id="filterSearch" name="filterSearch" placeholder="إبحث برقم الطلب أو اسم المسافر ...">
+              <button class="btn-input-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <select class="form-select form-control" id="sourceFilter" name="sourceFilter">
+              <option value="">مصدر الطلب</option>
+              <option value="individual">فردي</option>
+              <option value="agency">وكيل</option>
+            </select>
+            <select class="form-select form-control" id="statusFilter" name="statusFilter">
+              <option value="">جميع الطلبات</option>
+              <option value="new">جديد</option>
+              <option value="processing">قيد المعالجة</option>
+              <option value="replied">تم الرد</option>
+              <option value="suspended">موقوف</option>
+            </select>
+            <button class="btn btn-light d-flex gap-1 align-items-center">
+              <i class="fa-solid fa-sliders"></i>فلاتر متقدمة
+            </button>
+          </div>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="row mt-2">
+          <div class="col">
+            <div class="table-responsive">
+              <table class="table custom-grid-list">
+                <thead>
+                  <tr>
+                    <th>رقم الطلب</th>
+                    <th>اسم المسافر</th>
+                    <th>الجنسية</th>
+                    <th>مصدر الطلب</th>
+                    <th>تاريخ التقديم</th>
+                    <th>الحالة</th>
+                    <th>الإجراء</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <!-- Row 1 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001257</p>
+                    </td>
+                    <td>
+                      <p>محمد أحمد السيد</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Mohamed Ahmed Elsayed</p>
+                    </td>
+                    <td><p>مصري</p></td>
+                    <td><span class="source-pill">فردي</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-18</p>
+                      <p class="gray-color font-size-13">02:30 PM</p>
+                    </td>
+                    <td><div class="status-blue-lamp"><div class="lamp"></div>جديد</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 2 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001256</p>
+                    </td>
+                    <td>
+                      <p>سارة خالد</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Sara Khalid</p>
+                    </td>
+                    <td><p>سوري</p></td>
+                    <td><span class="source-pill agency">وكيل</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-18</p>
+                      <p class="gray-color font-size-13">01:15 PM</p>
+                    </td>
+                    <td><div class="status-blue-lamp"><div class="lamp"></div>جديد</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 3 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001255</p>
+                    </td>
+                    <td>
+                      <p>أحمد عبدالله</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Ahmed Abdullah</p>
+                    </td>
+                    <td><p>يمني</p></td>
+                    <td><span class="source-pill agency">وكيل</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-17</p>
+                      <p class="gray-color font-size-13">11:45 AM</p>
+                    </td>
+                    <td><div class="status-warning-lamp"><div class="lamp"></div>قيد المعالجة</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 4 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001254</p>
+                    </td>
+                    <td>
+                      <p>فاطمة حسين</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Fatma Hussein</p>
+                    </td>
+                    <td><p>عراقي</p></td>
+                    <td><span class="source-pill">فردي</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-17</p>
+                      <p class="gray-color font-size-13">10:30 AM</p>
+                    </td>
+                    <td><div class="status-warning-lamp"><div class="lamp"></div>قيد المعالجة</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 5 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001253</p>
+                    </td>
+                    <td>
+                      <p>عمر محمد</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Omar Mohamed</p>
+                    </td>
+                    <td><p>فلسطيني</p></td>
+                    <td><span class="source-pill agency">وكيل</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-17</p>
+                      <p class="gray-color font-size-13">09:15 AM</p>
+                    </td>
+                    <td><div class="status-warning-lamp"><div class="lamp"></div>قيد المعالجة</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 6 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001252</p>
+                    </td>
+                    <td>
+                      <p>نادية إبراهيم</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Nadia Ibrahim</p>
+                    </td>
+                    <td><p>لبناني</p></td>
+                    <td><span class="source-pill">فردي</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-16</p>
+                      <p class="gray-color font-size-13">04:20 PM</p>
+                    </td>
+                    <td><div class="status-active-lamp"><div class="lamp"></div>تم الرد</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 7 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001251</p>
+                    </td>
+                    <td>
+                      <p>كريم عمر</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Karim Omar</p>
+                    </td>
+                    <td><p>سوري</p></td>
+                    <td><span class="source-pill agency">وكيل</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-16</p>
+                      <p class="gray-color font-size-13">03:05 PM</p>
+                    </td>
+                    <td><div class="status-active-lamp"><div class="lamp"></div>تم الرد</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 8 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001250</p>
+                    </td>
+                    <td>
+                      <p>منى جمال</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Mona Gamal</p>
+                    </td>
+                    <td><p>صومالي</p></td>
+                    <td><span class="source-pill">فردي</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-16</p>
+                      <p class="gray-color font-size-13">01:45 PM</p>
+                    </td>
+                    <td><div class="status-active-lamp"><div class="lamp"></div>تم الرد</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 9 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001249</p>
+                    </td>
+                    <td>
+                      <p>حسام علي</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Hossam Ali</p>
+                    </td>
+                    <td><p>يمني</p></td>
+                    <td><span class="source-pill agency">وكيل</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-15</p>
+                      <p class="gray-color font-size-13">11:20 AM</p>
+                    </td>
+                    <td><div class="status-danger-lamp"><div class="lamp"></div>موقوف</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                  <!-- Row 10 -->
+                  <tr>
+                    <td>
+                      <p class="tertiary-color text-dir-ltr">REQ-2024-001248</p>
+                    </td>
+                    <td>
+                      <p>ليلى محمود</p>
+                      <p class="gray-color font-size-13 text-dir-ltr">Layla Mahmoud</p>
+                    </td>
+                    <td><p>عراقي</p></td>
+                    <td><span class="source-pill">فردي</span></td>
+                    <td class="text-dir-ltr">
+                      <p>2024-12-15</p>
+                      <p class="gray-color font-size-13">09:00 AM</p>
+                    </td>
+                    <td><div class="status-danger-lamp"><div class="lamp"></div>موقوف</div></td>
+                    <td>
+                      <a class="grid-options-btn view-icon" href="inquiry-view.html" title="عرض التفاصيل"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                  </tr>
+
+                </tbody>
+
+                <tfoot>
+                  <tr>
+                    <td colspan="3">
+                      <div class="row br-left">
+                        <div class="col-auto align-content-center">
+                          <label for="selectVisableRows" class="col-form-label rows-number-title">عدد السطــور</label>
+                        </div>
+                        <div class="col-auto">
+                          <select id="selectVisableRows" class="form-select rows-number">
+                            <option selected>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td colspan="4">
+                      <ul class="pagination">
+                        <li class="page-item disabled">
+                          <a class="page-link" href="javascript:;" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-chevron-right"></i></a>
+                        </li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="javascript:;">1</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">4</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">5</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">6</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">7</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">8</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;"><i class="fa-solid fa-chevron-left"></i></a></li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Table Section -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!--  END PAGE CONTENT                          -->
+    <!-- ═══════════════════════════════════════════ -->
+
+  </div>
+  <!-- End Content Area -->
+</div>
+<!-- End Wrapper -->
+
+<div class="overlay"></div>
+
+<!-- Scripts -->
+<script src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/js/jquery-4.0.0.min.js"></script>
+<script src="../../Designer UI/Admin.Panel.HTML_v21-04-2026/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+<!-- Sidebar toggle -->
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#dismiss, .overlay').on('click', function () {
+    $('#sidebar').removeClass('active');
+    $('.overlay').removeClass('active');
+  });
+  $('#sidebarCollapse').on('click', function () {
+    $('#sidebar, #content').toggleClass('active');
+    $('.overlay').addClass('active');
+    $('.collapse.in').toggleClass('in');
+    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+  });
+});
+</script>
+
+<!-- Page functions -->
+<script type="text/javascript">
+function toggleSidebar() {
+  $('#sidebar, #content').toggleClass('active');
+}
+</script>
+
+<script src="../../app/js/scg-modal.js"></script>
+<script src="../../app/js/utils.js"></script>
+<script src="../../app/i18n/i18n.js"></script>
+<script>
+if (typeof i18n !== 'undefined') {
+  i18n.init({ defaultLang: 'ar', localePath: '../../app/i18n/locales/admin' });
+}
+</script>
+
+</body>
+</html>
