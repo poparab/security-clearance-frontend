@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تغيير كلمة المرور — لوحة الإدارة</title>
+  <title>الملف الشخصي — لوحة الإدارة</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,20 +24,64 @@
     <div class="content-shell">
       <section class="admin-page-intro">
         <div>
-          <h2>تغيير كلمة المرور</h2>
-          <p>يمكن لحسابات الإدارة تغيير كلمة المرور أثناء الجلسة الحالية ثم تسجيل الدخول مرة أخرى بعد الحفظ.</p>
+          <h2>الملف الشخصي</h2>
+          <p>عرض بيانات حساب الإدارة كما هي مسجلة في النظام. لا يمكن تعديل البيانات من هذه الصفحة.</p>
+        </div>
+        <div class="modal-actions">
+          <a class="admin-btn primary" href="change-password.html"><i class="fas fa-key"></i>تغيير كلمة المرور</a>
         </div>
       </section>
 
       <section class="admin-side-card">
-        <div class="admin-field"><label for="currentPassword">كلمة المرور الحالية</label><input id="currentPassword" type="password" placeholder="أدخل كلمة المرور الحالية"></div>
-        <div class="admin-form-grid-2">
-          <div class="admin-field"><label for="newPassword">كلمة المرور الجديدة</label><input id="newPassword" type="password" placeholder="أنشئ كلمة مرور جديدة"><span class="admin-field-help">يجب أن تحتوي على 8 أحرف على الأقل مع حرف كبير وحرف صغير ورقم ورمز خاص.</span></div>
-          <div class="admin-field"><label for="confirmPassword">تأكيد كلمة المرور الجديدة</label><input id="confirmPassword" type="password" placeholder="أعد إدخال كلمة المرور"><span class="admin-field-help admin-field-help-spacer" aria-hidden="true">.</span></div>
+        <h3>بيانات الحساب</h3>
+        <p>هذه البيانات مرتبطة بحساب الإدارة الحالي وتُستخدم في تسجيل الدخول والمراجعة.</p>
+
+        <div class="admin-inline-alert info">
+          <i class="fas fa-circle-info"></i>
+          <div>
+            <strong>عرض فقط</strong>
+            <div>لتغيير كلمة المرور استخدم الزر أعلاه. لتعديل بيانات الحساب يرجى التواصل مع المدير العام.</div>
+          </div>
         </div>
+
+        <div class="admin-readonly-list">
+          <div class="admin-readonly-row">
+            <span class="label">الاسم الكامل</span>
+            <span class="value">طلعت جادو حسن</span>
+          </div>
+          <div class="admin-readonly-row">
+            <span class="label">البريد الإلكتروني</span>
+            <span class="value" dir="ltr">talaat.gado@scg.gov.eg</span>
+          </div>
+          <div class="admin-readonly-row">
+            <span class="label">الدور</span>
+            <span class="value"><span class="pill info"><i class="fas fa-shield-halved"></i>Admin</span></span>
+          </div>
+          <div class="admin-readonly-row">
+            <span class="label">حالة الحساب</span>
+            <span class="value"><span class="pill success"><i class="fas fa-circle-check"></i>نشط</span></span>
+          </div>
+          <div class="admin-readonly-row">
+            <span class="label">آخر تسجيل دخول</span>
+            <span class="value" dir="ltr">29 Apr 2026 — 09:42</span>
+          </div>
+          <div class="admin-readonly-row">
+            <span class="label">المصادقة الثنائية (2FA)</span>
+            <span class="value"><span class="pill success"><i class="fas fa-mobile-screen"></i>مُفعّلة</span></span>
+          </div>
+          <div class="admin-readonly-row full-span">
+            <span class="label">رقم هاتف التواصل</span>
+            <span class="value placeholder">غير متوفر حالياً</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-side-card">
+        <h3>إجراءات الأمان</h3>
+        <p>الإجراءات المتاحة من نفس مساحة الملف الشخصي.</p>
         <div class="modal-actions">
-          <a class="admin-btn primary" href="login.html"><i class="fas fa-check"></i>حفظ التغيير</a>
-          <a class="admin-btn light" href="profile.html"><i class="fas fa-arrow-right"></i>العودة إلى الملف الشخصي</a>
+          <a class="admin-btn primary" href="change-password.html"><i class="fas fa-key"></i>تغيير كلمة المرور</a>
+          <a class="admin-btn light" href="admin-index.html"><i class="fas fa-arrow-right"></i>العودة إلى لوحة التحكم</a>
         </div>
       </section>
     </div>

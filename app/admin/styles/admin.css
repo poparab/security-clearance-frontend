@@ -1202,6 +1202,20 @@ html[dir="rtl"] .topbar-user {
 .admin-field-help { color: #64748b; font-size: 12px; line-height: 1.7; }
 .admin-field-help.admin-field-help-spacer { visibility: hidden; }
 
+.admin-readonly-list { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 18px; margin-top: 4px; }
+.admin-readonly-list .full-span { grid-column: 1 / -1; }
+.admin-readonly-row { display: grid; gap: 4px; padding: 12px 14px; background: #f8fafc; border: 1px solid #e2ecf5; border-radius: 12px; }
+.admin-readonly-row .label { color: #64748b; font-size: 12px; font-weight: 700; }
+.admin-readonly-row .value { color: #0f172a; font-size: 14px; font-weight: 600; line-height: 1.7; word-break: break-word; }
+.admin-readonly-row .value.placeholder { color: #94a3b8; font-weight: 500; font-style: italic; }
+.admin-readonly-row .value .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.admin-readonly-row .value .pill.success { background: #dcfce7; color: #166534; }
+.admin-readonly-row .value .pill.info { background: #eff6ff; color: #1d4ed8; }
+.admin-readonly-row .value .pill.warning { background: #fef3c7; color: #92400e; }
+@media (max-width: 768px) {
+    .admin-readonly-list { grid-template-columns: 1fr; }
+}
+
 .admin-inline-alert { border-radius: 12px; padding: 12px 14px; font-size: 13px; line-height: 1.8; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
 .admin-inline-alert i { margin-top: 2px; }
 .admin-inline-alert.info { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }

@@ -48,6 +48,7 @@
 - US-46 — Admin enrolls authenticator app for 2FA
 - US-47 — Admin signs in with 2FA code
 - US-48 — Super Admin resets another admin's 2FA device
+- US-63 — Admin views own admin profile details
 - US-59 — Admin changes own password while signed in
 - US-60 — New User sets new password on first login
 - US-56 — Admin switches back-office language and direction
@@ -1111,6 +1112,49 @@ This story covers only the 2FA device reset action for lost-device recovery. Wro
 
 ---
 
+## Epic: Profile Management
+
+## US-63 | (Admin) views own admin profile details
+
+| Field | Value |
+|---|---|
+| **Persona** | Admin |
+| **Priority** | Priority 2 — High |
+| **Release** | Release 1 |
+| **Epic** | Profile Management |
+
+### User Story Statement
+
+- **As a…** an Admin or Operator signed in to the back-office
+- **I want to…** view my own admin profile details on a dedicated page with a Change Password button
+- **So that…** I can confirm my saved account information and start a password change without searching the side menu
+
+### Acceptance Criteria
+
+| **#** | **Scenario** | **Given** | **When** | **Then** |
+|---|---|---|---|---|
+| AC1 | Profile page shows saved account details | the Admin or Operator is signed in | the Admin Profile page is opened | the page shows the saved values for:<br>- Full Name<br>- Email Address<br>- Role (Admin / Super Admin / Operator)<br>- Account Status<br>- Last Sign-In Date and Time<br>- Two-Factor Authentication Status |
+| AC2 | Profile page is read-only | the Admin or Operator is on the Admin Profile page | the page loads | no Edit Profile button, Save button, Cancel button, or editable input fields are shown. |
+| AC3 | Change Password button opens password change form | the Admin or Operator is on the Admin Profile page | the Change Password button is selected | the back-office Change Password form is opened. |
+| AC4 | Missing optional data shows clear placeholder | the Admin or Operator is on the Admin Profile page | a profile field has no saved value | the page shows: ***غير متوفر حالياً. (Not available.)*** for that field instead of a broken or blank layout. |
+| AC5 | Side menu no longer exposes Change Password directly | the Admin or Operator is signed in | the back-office side menu is opened | no Change Password item is shown in the side menu. The only entry point for changing the password is the Change Password button on the Admin Profile page. |
+
+### Scope Boundaries
+
+This story covers viewing the admin profile details and exposing the Change Password entry point only. The actual password change form, validation, and session termination are defined in **(Admin) changes own password while signed in**. Two-factor enrollment and reset are defined in **(Admin) enrolls authenticator app for 2FA** and **(Super Admin) resets another admin's 2FA device**. Profile editing remains deferred to a later release.
+
+### INVEST Check
+
+| I — Independent | N — Negotiable | V — Valuable | E — Estimable | S — Small | T — Testable |
+|---|---|---|---|---|---|
+| ⚠️ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+> ⚠️ Depends on the existing back-office sign-in session.
+
+---
+
+## Epic: Authentication & Access
+
 ## US-59 | (Admin) changes own password while signed in
 
 | Field | Value |
@@ -1123,18 +1167,19 @@ This story covers only the 2FA device reset action for lost-device recovery. Wro
 ### User Story Statement
 
 - **As a…** an Admin or Operator signed in to the back-office
-- **I want to…** change my password from the account settings page
+- **I want to…** change my password from a Change Password button on my Admin Profile page
 - **So that…** my credentials are up to date without needing the forgotten-password reset flow
 
 ### Acceptance Criteria
 
 | **#** | **Scenario** | **Given** | **When** | **Then** |
 |---|---|---|---|---|
-| AC1 | Successful change terminates session and redirects | the Admin or Operator is on the Change Password form | valid values are submitted for all three fields | the password is updated.<br>The current session is terminated immediately.<br>The user is redirected to the back-office login page with the message: ***تم تغيير كلمة المرور. يرجى تسجيل الدخول مرة أخرى. (Your password has been changed. Please sign in again.)*** |
-| AC2 | Wrong current password is blocked | the Change Password form is open | an incorrect Current Password is submitted | the system displays: ***كلمة المرور الحالية غير صحيحة. (Current password is incorrect.)*** and the form is not submitted. |
-| AC3 | New password same as current is blocked | the Change Password form is open | the New Password value matches the Current Password | the system displays: ***يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور الحالية. (New password must be different from the current password.)*** and the form is not submitted. |
-| AC4 | Confirm password mismatch is blocked | the Change Password form is open | Confirm New Password does not match New Password | the system displays: ***كلمتا المرور غير متطابقتين. (Passwords do not match.)*** and the form is not submitted. |
-| AC5 | Password policy not met is blocked | the Change Password form is open | a New Password that does not meet the policy is submitted | the policy error message is displayed and the form is not submitted. For field constraints and error messages, see the Form Validation table below. |
+| AC1 | Entry point is the Admin Profile page | the Admin or Operator is signed in to the back-office | the Admin Profile page is opened and the Change Password button is selected | the Change Password form is opened.<br>No Change Password link is shown in the back-office side menu. |
+| AC2 | Successful change terminates session and redirects | the Admin or Operator is on the Change Password form | valid values are submitted for all three fields | the password is updated.<br>The current session is terminated immediately.<br>The user is redirected to the back-office login page with the message: ***تم تغيير كلمة المرور. يرجى تسجيل الدخول مرة أخرى. (Your password has been changed. Please sign in again.)*** |
+| AC3 | Wrong current password is blocked | the Change Password form is open | an incorrect Current Password is submitted | the system displays: ***كلمة المرور الحالية غير صحيحة. (Current password is incorrect.)*** and the form is not submitted. |
+| AC4 | New password same as current is blocked | the Change Password form is open | the New Password value matches the Current Password | the system displays: ***يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور الحالية. (New password must be different from the current password.)*** and the form is not submitted. |
+| AC5 | Confirm password mismatch is blocked | the Change Password form is open | Confirm New Password does not match New Password | the system displays: ***كلمتا المرور غير متطابقتين. (Passwords do not match.)*** and the form is not submitted. |
+| AC6 | Password policy not met is blocked | the Change Password form is open | a New Password that does not meet the policy is submitted | the policy error message is displayed and the form is not submitted. For field constraints and error messages, see the Form Validation table below. |
 
 ### Form Validation Table
 
@@ -1146,7 +1191,7 @@ This story covers only the 2FA device reset action for lost-device recovery. Wro
 
 ### Scope Boundaries
 
-This story covers the back-office password change for Admin and Operator accounts. The Agency portal equivalent is **(Agency) changes own password while signed in**. First-login forced password change is covered in **(New User) sets new password on first login**.
+This story covers the back-office password change for Admin and Operator accounts. The entry point — a Change Password button on the Admin Profile page — is defined in **(Admin) views own admin profile details**. The Agency portal equivalent is **(Agency) and representative change own password**. First-login forced password change is covered in **(New User) sets new password on first login**.
 
 ### INVEST Check
 
