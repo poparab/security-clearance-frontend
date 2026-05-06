@@ -36,7 +36,7 @@
     <section class="admin-auth-main">
       <span class="admin-auth-badge"><i class="fas fa-lock"></i>ربط تطبيق التحقق</span>
       <h2>فعّل 2FA لهذا الحساب</h2>
-      <p class="lead-copy">امسح الرمز أو أدخل المفتاح يدوياً داخل التطبيق، ثم اكتب أول رمز تحقق مكوّن من 6 أرقام لتأكيد الربط.</p>
+      <p class="lead-copy">امسح الرمز أو أدخل المفتاح يدوياً داخل التطبيق، ثم أدخل رمز التحقق الحالي لتأكيد الربط.</p>
 
       <div id="enrollAccountMeta" class="admin-auth-meta"><i class="fas fa-user"></i><span>الحساب: <strong dir="ltr" id="enrollAccountEmail">talat.gado@scg.gov.eg</strong></span></div>
 
@@ -83,7 +83,7 @@
               <label for="enrollCode">رمز التحقق المكوّن من 6 أرقام</label>
               <div class="admin-auth-input-wrap">
                 <i class="fas fa-hashtag admin-auth-icon"></i>
-                <input id="enrollCode" type="text" inputmode="numeric" maxlength="6" placeholder="000000" dir="ltr">
+                <input id="enrollCode" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="000000" dir="ltr">
               </div>
               <span id="enrollCodeError" class="admin-auth-error" hidden>***يرجى إدخال رمز مكوّن من 6 أرقام. (Please enter a 6-digit code.)***</span>
             </div>

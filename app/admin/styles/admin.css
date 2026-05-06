@@ -1282,13 +1282,6 @@ html[dir="rtl"] .topbar-user {
 .admin-manual-key-row { display: flex; align-items: stretch; gap: 10px; margin-top: 14px; }
 .admin-manual-key { flex: 1; min-height: 44px; display: flex; align-items: center; border-radius: 12px; border: 1px solid #d4dde8; background: #ffffff; padding-inline: 14px; color: #0f172a; font-family: Consolas, 'Courier New', monospace; font-size: 13px; font-weight: 700; direction: ltr; text-align: left; }
 .admin-manual-key-row .admin-btn { min-width: 128px; justify-content: center; }
-.admin-backup-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 16px; direction: ltr; }
-.admin-backup-code { border: 1px solid #dbe7f3; background: #ffffff; border-radius: 12px; padding: 12px 14px; color: #0f172a; font-family: Consolas, 'Courier New', monospace; font-size: 14px; font-weight: 700; text-align: center; }
-.admin-check-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 18px; color: #334155; font-size: 13px; line-height: 1.8; }
-.admin-check-row input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: #005FCC; }
-.admin-auth-switch { display: inline-flex; align-items: center; gap: 8px; padding: 6px; background: #f8fafc; border: 1px solid #e2ecf5; border-radius: 14px; margin-bottom: 16px; }
-.admin-auth-switch button { border: none; background: transparent; color: #64748b; border-radius: 10px; padding: 10px 14px; font-family: 'Tajawal', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
-.admin-auth-switch button.active { background: #005FCC; color: #ffffff; }
 .admin-attempt-meter { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
 .admin-attempt-chip { width: 34px; height: 10px; border-radius: 999px; background: #dbe7f3; }
 .admin-attempt-chip.is-used { background: #f59e0b; }
@@ -1334,8 +1327,7 @@ html[dir="rtl"] .topbar-user {
     .admin-form-grid-2 { grid-template-columns: 1fr; }
     .admin-auth-side,
     .admin-auth-main { padding: 24px; }
-    .admin-auth-qr-layout,
-    .admin-backup-grid { grid-template-columns: 1fr; }
+    .admin-auth-qr-layout { grid-template-columns: 1fr; }
     .admin-auth-actions { flex-direction: column; align-items: stretch; }
     .admin-manual-key-row { flex-direction: column; }
 }

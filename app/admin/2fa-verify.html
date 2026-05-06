@@ -50,7 +50,7 @@
           <label id="verifyCodeLabel" for="verifyCode">رمز التحقق</label>
           <div class="admin-auth-input-wrap">
             <i class="fas fa-keyboard admin-auth-icon"></i>
-            <input id="verifyCode" type="text" inputmode="numeric" maxlength="10" placeholder="000000" dir="ltr">
+            <input id="verifyCode" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="000000" dir="ltr">
           </div>
           <span id="verifyCodeError" class="admin-auth-error" hidden>***يرجى إدخال رمز مكوّن من 6 أرقام. (Please enter a 6-digit code.)***</span>
         </div>
@@ -62,17 +62,8 @@
 
         <div class="admin-auth-actions">
           <button id="verifySubmit" class="admin-btn primary" type="submit"><i class="fas fa-arrow-left"></i>تحقق وادخل</button>
-          <a class="admin-btn light" href="login.html"><i class="fas fa-arrow-right"></i>العودة إلى تسجيل الدخول</a>
         </div>
       </form>
-
-      <div class="admin-auth-summary">
-        <strong>ملاحظات الدخول</strong>
-        <ul>
-          <li><i class="fas fa-check"></i><span>الرمز الصحيح الافتراضي للمعاينة هو <strong dir="ltr">246810</strong>.</span></li>
-          <li><i class="fas fa-check"></i><span>عند فقدان الوصول إلى التطبيق يلزم طلب إعادة ضبط 2FA من Super Admin.</span></li>
-        </ul>
-      </div>
     </section>
   </div>
 
