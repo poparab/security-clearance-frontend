@@ -13,22 +13,17 @@
 <body class="admin-body admin-auth-page">
   <div class="admin-auth-shell">
     <section class="admin-auth-side">
-      <span class="admin-auth-mark"><i class="fas fa-mobile-screen-button"></i>إعداد المصادقة الثنائية</span>
-      <h1>اربط تطبيق التحقق قبل الدخول</h1>
-      <p>هذه الخطوة مطلوبة للحسابات الجديدة أو للحسابات التي تمت إعادة ضبط 2FA لها من قبل Super Admin.</p>
-      <ul class="admin-auth-points">
-        <li><i class="fas fa-circle-check"></i><span>امسح رمز QR أو أدخل المفتاح اليدوي داخل تطبيق التحقق الداعم لـ TOTP.</span></li>
-        <li><i class="fas fa-circle-check"></i><span>أدخل أول رمز تحقق صحيح مكوّن من 6 أرقام لتفعيل 2FA على الحساب.</span></li>
-        <li><i class="fas fa-circle-check"></i><span>بعد نجاح التفعيل يصبح الحساب جاهزاً للدخول إلى لوحة الإدارة مباشرة.</span></li>
-      </ul>
+      <span class="admin-auth-mark"><i class="fas fa-mobile-screen-button"></i>المصادقة الثنائية</span>
+      <h1>تفعيل تطبيق التحقق</h1>
+      <p>أكمل ربط تطبيق التحقق للحساب ثم أدخل الرمز الحالي لتفعيل المصادقة الثنائية.</p>
       <div class="admin-auth-states">
         <div class="admin-auth-state info">
-          <strong>مطلوب قبل الوصول</strong>
-          لا يمكن متابعة الدخول إلى أي صفحة إدارية حتى يكتمل ربط تطبيق التحقق.
+          <strong>خطوة إلزامية</strong>
+          لا يمكن فتح أي صفحة داخل الإدارة قبل اكتمال هذا التفعيل.
         </div>
         <div class="admin-auth-state warning">
-          <strong>لديك تطبيق مختلف؟</strong>
-          يمكنك استخدام المفتاح اليدوي بدلاً من مسح رمز QR إذا تعذر فتح الكاميرا أو لم يعمل المسح.
+          <strong>بديل المسح</strong>
+          إذا تعذر مسح رمز QR، استخدم المفتاح اليدوي الظاهر في هذه الصفحة داخل تطبيق التحقق.
         </div>
       </div>
     </section>

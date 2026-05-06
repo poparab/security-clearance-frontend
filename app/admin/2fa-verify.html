@@ -13,22 +13,17 @@
 <body class="admin-body admin-auth-page">
   <div class="admin-auth-shell">
     <section class="admin-auth-side">
-      <span class="admin-auth-mark"><i class="fas fa-user-lock"></i>الخطوة الثانية بعد كلمة المرور</span>
-      <h1>أدخل رمز التحقق قبل فتح اللوحة</h1>
-      <p>بعد قبول البريد الإلكتروني وكلمة المرور، يطلب النظام رمز التحقق من تطبيق المصادقة قبل فتح أي صفحة داخل الإدارة.</p>
-      <ul class="admin-auth-points">
-        <li><i class="fas fa-circle-check"></i><span>الرمز القياسي يجب أن يكون مكوّناً من 6 أرقام فقط.</span></li>
-        <li><i class="fas fa-circle-check"></i><span>الرمز يُدخل من تطبيق التحقق المرتبط بالحساب نفسه.</span></li>
-        <li><i class="fas fa-circle-check"></i><span>بعد خمس محاولات متتالية غير صحيحة يصبح الحساب غير نشط ويحتاج إلى إعادة تفعيل.</span></li>
-      </ul>
+      <span class="admin-auth-mark"><i class="fas fa-user-lock"></i>التحقق الثاني</span>
+      <h1>تأكيد تسجيل الدخول</h1>
+      <p>أدخل رمز التحقق الحالي من تطبيق المصادقة لإكمال تسجيل الدخول إلى لوحة الإدارة.</p>
       <div class="admin-auth-states">
         <div class="admin-auth-state info">
-          <strong>الرمز المطلوب</strong>
-          تقبل الصفحة رمز TOTP الحالي فقط والمكوّن من 6 أرقام.
+          <strong>الرمز المقبول</strong>
+          هذه الصفحة تقبل رمز TOTP الحالي فقط والمكوّن من 6 أرقام.
         </div>
         <div class="admin-auth-state danger">
-          <strong>فقدان الجهاز</strong>
-          إذا فقدت الوصول إلى تطبيق التحقق، يجب التواصل مع Super Admin لإعادة ضبط 2FA للحساب.
+          <strong>تعذر الوصول إلى التطبيق</strong>
+          إذا لم يعد التطبيق متاحاً، يجب طلب إعادة ضبط 2FA من Super Admin قبل المتابعة.
         </div>
       </div>
     </section>
