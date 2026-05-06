@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التحقق بخطوتين — لوحة الإدارة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body class="admin-body admin-auth-page">
+  <div class="admin-auth-shell">
+    <section class="admin-auth-side">
+      <span class="admin-auth-mark"><i class="fas fa-user-lock"></i>الخطوة الثانية بعد كلمة المرور</span>
+      <h1>أدخل رمز التحقق قبل فتح اللوحة</h1>
+      <p>بعد قبول البريد الإلكتروني وكلمة المرور، يطلب النظام رمز التحقق من تطبيق المصادقة قبل فتح أي صفحة داخل الإدارة.</p>
+      <ul class="admin-auth-points">
+        <li><i class="fas fa-circle-check"></i><span>الرمز القياسي يجب أن يكون مكوّناً من 6 أرقام فقط.</span></li>
+        <li><i class="fas fa-circle-check"></i><span>الرمز يُدخل من تطبيق التحقق المرتبط بالحساب نفسه.</span></li>
+        <li><i class="fas fa-circle-check"></i><span>بعد خمس محاولات متتالية غير صحيحة يصبح الحساب غير نشط ويحتاج إلى إعادة تفعيل.</span></li>
+      </ul>
+      <div class="admin-auth-states">
+        <div class="admin-auth-state info">
+          <strong>الرمز المطلوب</strong>
+          تقبل الصفحة رمز TOTP الحالي فقط والمكوّن من 6 أرقام.
+        </div>
+        <div class="admin-auth-state danger">
+          <strong>فقدان الجهاز</strong>
+          إذا فقدت الوصول إلى تطبيق التحقق، يجب التواصل مع Super Admin لإعادة ضبط 2FA للحساب.
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-auth-main">
+      <span class="admin-auth-badge"><i class="fas fa-shield"></i>التحقق الثاني</span>
+      <h2>أكمل التحقق الأمني</h2>
+      <p class="lead-copy">أدخل رمز التطبيق الحالي المكوّن من 6 أرقام لإكمال الدخول إلى لوحة الإدارة.</p>
+
+      <div class="admin-auth-meta"><i class="fas fa-user"></i><span>الحساب: <strong dir="ltr" id="verifyAccountEmail">talat.gado@scg.gov.eg</strong></span></div>
+
+      <div id="verifyAlert" class="admin-auth-alert info">
+        <strong>أدخل رمز التطبيق الحالي.</strong>
+        <span>بعد نجاح التحقق سيفتح النظام الصفحة الرئيسية للإدارة مباشرة.</span>
+      </div>
+
+      <form id="verifyForm" class="admin-auth-form" novalidate>
+        <div class="admin-field">
+          <label id="verifyCodeLabel" for="verifyCode">رمز التحقق</label>
+          <div class="admin-auth-input-wrap">
+            <i class="fas fa-keyboard admin-auth-icon"></i>
+            <input id="verifyCode" type="text" inputmode="numeric" maxlength="10" placeholder="000000" dir="ltr">
+          </div>
+          <span id="verifyCodeError" class="admin-auth-error" hidden>***يرجى إدخال رمز مكوّن من 6 أرقام. (Please enter a 6-digit code.)***</span>
+        </div>
+
+        <div>
+          <div class="admin-auth-footnote">عدد المحاولات غير الصحيحة المتتالية</div>
+          <div id="attemptMeter" class="admin-attempt-meter" aria-label="عدد المحاولات غير الصحيحة"></div>
+        </div>
+
+        <div class="admin-auth-actions">
+          <button id="verifySubmit" class="admin-btn primary" type="submit"><i class="fas fa-arrow-left"></i>تحقق وادخل</button>
+          <a class="admin-btn light" href="login.html"><i class="fas fa-arrow-right"></i>العودة إلى تسجيل الدخول</a>
+        </div>
+      </form>
+
+      <div class="admin-auth-summary">
+        <strong>ملاحظات الدخول</strong>
+        <ul>
+          <li><i class="fas fa-check"></i><span>الرمز الصحيح الافتراضي للمعاينة هو <strong dir="ltr">246810</strong>.</span></li>
+          <li><i class="fas fa-check"></i><span>عند فقدان الوصول إلى التطبيق يلزم طلب إعادة ضبط 2FA من Super Admin.</span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script>
+  function getCurrentUser() {
+    return sessionStorage.getItem('admin2faCurrentUser') || 'talat.gado@scg.gov.eg';
+  }
+
+  function renderAttemptMeter(attempts, blocked) {
+    const meter = document.getElementById('attemptMeter');
+    let chips = '';
+    for (let index = 0; index < 5; index += 1) {
+      let chipClass = 'admin-attempt-chip';
+      if (blocked) {
+        chipClass += ' is-blocked';
+      } else if (index < attempts) {
+        chipClass += ' is-used';
+      }
+      chips += '<span class="' + chipClass + '"></span>';
+    }
+    meter.innerHTML = chips;
+  }
+
+  function showVerifyAlert(type, title, message) {
+    const alert = document.getElementById('verifyAlert');
+    alert.className = 'admin-auth-alert ' + type;
+    alert.innerHTML = '<strong>' + title + '</strong><span>' + message + '</span>';
+  }
+
+  function blockAccount() {
+    sessionStorage.setItem('admin2faAttempts', '5');
+    renderAttemptMeter(5, true);
+    document.getElementById('verifySubmit').disabled = true;
+    document.getElementById('verifyCode').disabled = true;
+    showVerifyAlert('danger', 'تم إيقاف الحساب', '***تم إيقاف هذا الحساب بعد محاولات متكررة لرمز تحقق غير صحيح. يرجى التواصل مع مسؤول آخر لإعادة تفعيل الحساب. (This account has been deactivated after repeated incorrect verification code attempts. Please contact another administrator to reactivate the account.)***');
+  }
+
+  function handleSuccessfulSignIn() {
+    sessionStorage.setItem('admin2faAttempts', '0');
+    window.location.href = 'admin-index.html';
+  }
+
+  function verifyTotp(code) {
+    const attempts = Number(sessionStorage.getItem('admin2faAttempts') || '0');
+    if (!/^\d{6}$/.test(code)) {
+      document.getElementById('verifyCodeError').hidden = false;
+      return;
+    }
+
+    if (code === '246810') {
+      handleSuccessfulSignIn();
+      return;
+    }
+
+    const nextAttempts = attempts + 1;
+    sessionStorage.setItem('admin2faAttempts', String(nextAttempts));
+    renderAttemptMeter(nextAttempts, false);
+    showVerifyAlert('danger', 'رمز غير صحيح', '***رمز التحقق غير صحيح. يرجى المحاولة مرة أخرى. (Verification code is incorrect. Please try again.)***');
+
+    if (nextAttempts >= 5) {
+      blockAccount();
+    }
+  }
+
+  document.getElementById('verifyForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    document.getElementById('verifyCodeError').hidden = true;
+
+    const code = document.getElementById('verifyCode').value.trim();
+    verifyTotp(code);
+  });
+
+  document.getElementById('verifyAccountEmail').textContent = getCurrentUser();
+  renderAttemptMeter(Number(sessionStorage.getItem('admin2faAttempts') || '0'), false);
+  if ((Number(sessionStorage.getItem('admin2faAttempts') || '0')) >= 5) {
+    blockAccount();
+  }
+  </script>
+  <script src="../js/utils.js"></script>
+  <script src="../i18n/i18n.js"></script>
+  <script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
+</body>
+</html>

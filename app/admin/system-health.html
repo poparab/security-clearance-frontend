@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فحص صحة النظام — لوحة الإدارة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body class="admin-body">
+<div class="admin-layout">
+  <main class="admin-content">
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <div class="topbar-user">
+          <img src="https://i.pravatar.cc/80?img=12" alt="admin">
+          <div>
+            <div class="name">طلعت جادو</div>
+            <div class="role">مدير تنفيذي</div>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <i class="fas fa-bell"></i>
+          <span>EN</span>
+          <i class="fas fa-globe"></i>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="ابحث هنا ...">
+        </div>
+        <i class="fas fa-bars" onclick="toggleSidebar()"></i>
+      </div>
+    </div>
+
+    <div class="content-shell">
+      <section class="admin-page-intro">
+        <div>
+          <h2>فحص صحة النظام</h2>
+          <p>مراقبة حالة الخدمات الأساسية لحظة بلحظة لمعرفة الخدمة المتأثرة بسرعة عند ظهور أي مشكلة تشغيلية.</p>
+        </div>
+        <div class="toolbar-group">
+          <span id="healthOverallTag" class="admin-tag warning"><i class="fas fa-triangle-exclamation"></i>تشغيل متدهور</span>
+          <span class="admin-tag info"><i class="fas fa-clock"></i>آخر تحديث: <span id="healthLastRefresh">29 Apr 2026 - 11:45</span></span>
+          <span class="admin-tag info"><i class="fas fa-rotate"></i>التحديث خلال <span id="healthCountdown">60</span> ثانية</span>
+          <button class="admin-btn primary" type="button" onclick="refreshHealthPage()"><i class="fas fa-rotate"></i>تحديث الآن</button>
+        </div>
+      </section>
+
+      <div id="healthAlert" class="admin-inline-alert warning">
+        <i class="fas fa-triangle-exclamation"></i>
+        <div>
+          <strong>أحد أنظمة التشغيل يعاني من مشكلة.</strong>
+          <span>تحقق من التفاصيل أدناه لتحديد الخدمة التي تحتاج إلى متابعة فورية.</span>
+        </div>
+      </div>
+
+      <section class="admin-stats-row">
+        <article class="admin-stat stat-green">
+          <div class="meta"><div class="num" id="onlineCount">4</div><div class="lbl">خدمات Online</div></div>
+          <div class="icon"><i class="fas fa-circle-check"></i></div>
+        </article>
+        <article class="admin-stat stat-amber">
+          <div class="meta"><div class="num" id="degradedCount">1</div><div class="lbl">خدمات Degraded</div></div>
+          <div class="icon"><i class="fas fa-gauge-high"></i></div>
+        </article>
+        <article class="admin-stat stat-red">
+          <div class="meta"><div class="num" id="offlineCount">1</div><div class="lbl">خدمات Offline</div></div>
+          <div class="icon"><i class="fas fa-plug-circle-xmark"></i></div>
+        </article>
+        <article class="admin-stat stat-blue">
+          <div class="meta"><div class="num" id="averageResponse">473</div><div class="lbl">متوسط الاستجابة (ms)</div></div>
+          <div class="icon"><i class="fas fa-tachograph-digital"></i></div>
+        </article>
+      </section>
+
+      <div class="admin-split-grid">
+        <section class="admin-table-wrap">
+          <div class="admin-table-head">
+            <span class="title">حالة الخدمات الأساسية</span>
+            <span class="admin-tag info"><i class="fas fa-server"></i>6 خدمات مراقبة</span>
+          </div>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>اسم الخدمة</th>
+                <th>الحالة</th>
+                <th>آخر فحص</th>
+                <th>زمن الاستجابة (ms)</th>
+              </tr>
+            </thead>
+            <tbody id="healthTableBody">
+              <tr data-status="online" data-response="142">
+                <td>Application Server</td>
+                <td><span class="status done"><span class="dot"></span>Online</span></td>
+                <td class="health-last-checked">29 Apr 2026 - 11:45</td>
+                <td dir="ltr">142</td>
+              </tr>
+              <tr data-status="online" data-response="118">
+                <td>Database</td>
+                <td><span class="status done"><span class="dot"></span>Online</span></td>
+                <td class="health-last-checked">29 Apr 2026 - 11:45</td>
+                <td dir="ltr">118</td>
+              </tr>
+              <tr data-status="degraded" data-response="860">
+                <td>ESC Payment Gateway</td>
+                <td><span class="status processing"><span class="dot"></span>Degraded</span></td>
+                <td class="health-last-checked">29 Apr 2026 - 11:44</td>
+                <td dir="ltr">860</td>
+              </tr>
+              <tr data-status="offline" data-response="0">
+                <td>Clearance Engine API</td>
+                <td><span class="status stopped"><span class="dot"></span>Offline</span></td>
+                <td class="health-last-checked">29 Apr 2026 - 11:44</td>
+                <td dir="ltr">0</td>
+              </tr>
+              <tr data-status="online" data-response="261">
+                <td>Email Service</td>
+                <td><span class="status done"><span class="dot"></span>Online</span></td>
+                <td class="health-last-checked">29 Apr 2026 - 11:45</td>
+                <td dir="ltr">261</td>
+              </tr>
+              <tr data-status="online" data-response="455">
+                <td>File Storage</td>
+                <td><span class="status done"><span class="dot"></span>Online</span></td>
+                <td class="health-last-checked">29 Apr 2026 - 11:45</td>
+                <td dir="ltr">455</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div>
+          <section class="admin-side-card sticky">
+            <h3>ملخص المراقبة</h3>
+            <p>تتحدث هذه الصفحة تلقائياً كل 60 ثانية مع إمكانية إعادة الفحص يدوياً عند الحاجة.</p>
+            <div class="admin-readonly-list">
+              <div class="admin-readonly-row full-span">
+                <span class="label">الوصول</span>
+                <span class="value"><span class="pill warning"><i class="fas fa-user-shield"></i>Admin فقط</span></span>
+              </div>
+              <div class="admin-readonly-row">
+                <span class="label">الخدمة الأبطأ</span>
+                <span class="value">ESC Payment Gateway</span>
+              </div>
+              <div class="admin-readonly-row">
+                <span class="label">أعلى أولوية الآن</span>
+                <span class="value">Clearance Engine API</span>
+              </div>
+              <div class="admin-readonly-row full-span">
+                <span class="label">ملاحظة التشغيل</span>
+                <span class="value">إذا ظهرت حالة Degraded أو Offline فستظهر رسالة تنبيه أعلى الصفحة تلقائياً.</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-brand">
+        <img src="../img/logo.png" alt="Logo" onerror="this.outerHTML='<svg width=52 height=52 viewBox=&quot;0 0 26 26&quot; fill=&quot;none&quot;><path d=&quot;M13 2L22 6V15C22 20 13 24 13 24C13 24 4 20 4 15V6Z&quot; stroke=&quot;#005FCC&quot; stroke-width=&quot;1.7&quot; stroke-linejoin=&quot;round&quot;/><rect x=&quot;9&quot; y=&quot;14&quot; width=&quot;8&quot; height=&quot;7&quot; rx=&quot;1.5&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot;/><path d=&quot;M10.5 14V11C10.5 8.8 15.5 8.8 15.5 11V14&quot; stroke=&quot;#16a34a&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot;/></svg>'">
+        <div class="brand-text"><h1>نظام الموافقات الأمنية</h1><p>Security Approval System</p></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link" href="admin-index.html"><span>لوحة التحكم</span><i class="fas fa-table-cells-large"></i></a>
+        <a class="sidebar-link" href="inquiries.html"><span>إدارة الطلبات</span><i class="fas fa-file-lines"></i></a>
+        <a class="sidebar-link" href="agencies.html"><span>إدارة الوكلاء</span><i class="fas fa-building"></i></a>
+        <a class="sidebar-link" href="admin-users.html"><span>إدارة المستخدمين</span><i class="fas fa-users-cog"></i></a>
+        <a class="sidebar-link" href="pricing.html"><span>إدارة الجنسيات والأسعار</span><i class="fas fa-file-invoice-dollar"></i></a>
+        <a class="sidebar-link" href="audit-log.html"><span>سجل التدقيق</span><i class="fas fa-clipboard-list"></i></a>
+        <a class="sidebar-link active" href="system-health.html"><span>فحص صحة النظام</span><i class="fas fa-heart-pulse"></i></a>
+        <a class="sidebar-link" href="profile.html"><span>الملف الشخصي</span><i class="fas fa-user"></i></a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom"><a class="sidebar-logout" href="login.html"><span>تسجيل الخروج</span><i class="fas fa-power-off"></i></a></div>
+  </aside>
+</div>
+
+<script>
+let healthCountdown = 60;
+
+function toggleSidebar(){document.getElementById('adminSidebar').classList.toggle('open');}
+
+function evaluateHealthState() {
+  const rows = Array.from(document.querySelectorAll('#healthTableBody tr'));
+  let online = 0;
+  let degraded = 0;
+  let offline = 0;
+  let totalResponse = 0;
+  let measurableRows = 0;
+
+  rows.forEach(function (row) {
+    const status = row.dataset.status;
+    const response = Number(row.dataset.response);
+    if (status === 'online') {
+      online += 1;
+    } else if (status === 'degraded') {
+      degraded += 1;
+    } else if (status === 'offline') {
+      offline += 1;
+    }
+
+    if (response > 0) {
+      totalResponse += response;
+      measurableRows += 1;
+    }
+  });
+
+  document.getElementById('onlineCount').textContent = String(online);
+  document.getElementById('degradedCount').textContent = String(degraded);
+  document.getElementById('offlineCount').textContent = String(offline);
+  document.getElementById('averageResponse').textContent = measurableRows ? String(Math.round(totalResponse / measurableRows)) : '0';
+
+  const hasIssue = degraded > 0 || offline > 0;
+  const overallTag = document.getElementById('healthOverallTag');
+  const healthAlert = document.getElementById('healthAlert');
+
+  if (hasIssue) {
+    overallTag.className = 'admin-tag warning';
+    overallTag.innerHTML = '<i class="fas fa-triangle-exclamation"></i>تشغيل متدهور';
+    healthAlert.hidden = false;
+  } else {
+    overallTag.className = 'admin-tag success';
+    overallTag.innerHTML = '<i class="fas fa-circle-check"></i>كل الخدمات Online';
+    healthAlert.hidden = true;
+  }
+}
+
+function updateHealthTimestamp() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const formatted = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ' - ' + hours + ':' + minutes;
+
+  document.getElementById('healthLastRefresh').textContent = formatted;
+  document.querySelectorAll('.health-last-checked').forEach(function (cell) {
+    cell.textContent = formatted;
+  });
+}
+
+function refreshHealthPage() {
+  updateHealthTimestamp();
+  healthCountdown = 60;
+  document.getElementById('healthCountdown').textContent = String(healthCountdown);
+  evaluateHealthState();
+}
+
+setInterval(function () {
+  healthCountdown -= 1;
+  if (healthCountdown <= 0) {
+    refreshHealthPage();
+    return;
+  }
+  document.getElementById('healthCountdown').textContent = String(healthCountdown);
+}, 1000);
+
+evaluateHealthState();
+</script>
+<script src="../js/utils.js"></script>
+<script src="../i18n/i18n.js"></script>
+<script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
+</body>
+</html>

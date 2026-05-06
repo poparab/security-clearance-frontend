@@ -1,71 +1,161 @@
 ﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>دخول الإدارة — نظام الموافقات الأمنية</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box} html,body{height:100%;margin:0;font-family:'Tajawal',sans-serif}
-    body{display:flex;background:#f8fafc}
-    .hero{flex:0 0 58%;background:linear-gradient(160deg,#061435,#0b2f6b 50%,#123f84);color:#fff;display:flex;align-items:center;justify-content:center;padding:30px;position:relative;overflow:hidden}
-    .hero:before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(125,211,252,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(125,211,252,.12) 1px,transparent 1px);background-size:42px 42px}
-    .hero-card{position:relative;z-index:1;text-align:center;max-width:520px}
-    .hero h1{font-size:40px;margin:0 0 12px}.hero p{font-size:18px;color:#bfdbfe;line-height:1.8;margin:0}
-    .panel{flex:0 0 42%;display:flex;align-items:center;justify-content:center;padding:20px}
-    .box{width:100%;max-width:420px;background:#fff;border:1px solid #dbeafe;border-radius:16px;padding:24px;box-shadow:0 10px 28px rgba(0,0,0,.07)}
-    .head{display:flex;align-items:center;gap:10px;margin-bottom:18px}.head h2{margin:0;font-size:28px;color:#0f172a}.sub{color:#64748b;font-size:14px;margin:0 0 16px}
-    .field{margin-bottom:12px}.wrap{position:relative}.inp{width:100%;height:46px;border:1px solid #cbd5e1;border-radius:10px;padding:0 38px 0 12px;background:#f8fafc;font-size:14px;outline:none}
-    .inp:focus{border-color:#60a5fa;background:#fff}.icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#94a3b8}
-    .eye{position:absolute;left:10px;top:50%;transform:translateY(-50%);border:none;background:none;color:#94a3b8;cursor:pointer}
-    .err{font-size:12px;color:#dc2626;display:none;margin-top:4px}.alert{display:none;border:1px solid;padding:10px 12px;border-radius:10px;font-size:13px;margin-bottom:10px}
-    .alert.error{background:#fef2f2;border-color:#fecaca;color:#991b1b}.alert.warn{background:#fffbeb;border-color:#fde68a;color:#92400e}
-    .btn{width:100%;height:48px;border:none;border-radius:10px;background:#1d4ed8;color:#fff;font-weight:800;font-size:16px;cursor:pointer}
-    @media (max-width:980px){body{flex-direction:column}.hero,.panel{flex:0 0 auto;width:100%}.hero{min-height:240px}}
-    @media (max-width:576px){.hero{min-height:160px;padding:16px}.hero-card h1{font-size:22px}.panel{padding:12px}.form-box{padding:20px 16px}.inp{height:42px;font-size:13px}}
-  </style>
+  <link rel="stylesheet" href="styles/admin.css">
 </head>
-<body>
-  <section class="hero"><div class="hero-card"><h1>بوابة الإدارة</h1><p>منصة التحكم في الطلبات والوكالات والأسعار مع صلاحيات آمنة للمشرفين والمشغلين.</p></div></section>
-  <section class="panel">
-    <div class="box">
-      <div class="head"><i class="fas fa-user-shield" style="font-size:24px;color:#1d4ed8"></i><h2>دخول الإدارة</h2></div>
-      <p class="sub">استخدم حساب الإدارة أو المشغل للوصول إلى لوحة التحكم.</p>
-      <div id="aError" class="alert error"></div>
-      <div id="aWarn" class="alert warn"></div>
-      <form id="adminLogin" novalidate>
-        <div class="field"><div class="wrap"><i class="fas fa-envelope icon"></i><input id="email" class="inp" type="email" dir="ltr" style="text-align:left" placeholder="البريد الإلكتروني"></div><div id="e1" class="err">يرجى إدخال بريد إلكتروني صحيح.</div></div>
-        <div class="field"><div class="wrap"><i class="fas fa-lock icon"></i><button type="button" class="eye" onclick="togglePw()"><i id="eyeI" class="fas fa-eye"></i></button><input id="password" class="inp" type="password" placeholder="كلمة المرور"></div><div id="e2" class="err">كلمة المرور مطلوبة.</div></div>
-        <div class="field"><a href="forgot-password.html">نسيت كلمة المرور؟</a></div>
-        <button class="btn" type="submit">تسجيل الدخول</button>
+<body class="admin-body admin-auth-page">
+  <div class="admin-auth-shell">
+    <section class="admin-auth-side">
+      <span class="admin-auth-mark"><i class="fas fa-shield-halved"></i>بوابة الإدارة</span>
+      <h1>وصول محمي إلى لوحة الإدارة</h1>
+      <p>سجل الدخول بحساب الإدارة أو المشغل، ثم أكمل خطوة المصادقة الثنائية قبل الوصول إلى صفحات الإدارة.</p>
+      <ul class="admin-auth-points">
+        <li><i class="fas fa-circle-check"></i><span>بعد قبول البريد الإلكتروني وكلمة المرور يتم طلب رمز تحقق مكوّن من 6 أرقام.</span></li>
+        <li><i class="fas fa-circle-check"></i><span>إذا كان الحساب جديداً أو تمت إعادة ضبط 2FA له، يتم توجيه صاحبه إلى شاشة ربط تطبيق التحقق أولاً.</span></li>
+        <li><i class="fas fa-circle-check"></i><span>لا يفتح النظام أي صفحة إدارية قبل نجاح إدخال رمز التحقق الصحيح.</span></li>
+      </ul>
+      <div class="admin-auth-states">
+        <div class="admin-auth-state info">
+          <strong>الخطوة التالية</strong>
+          إذا كانت بيانات الدخول صحيحة فسيتم فتح شاشة التحقق الثانية مباشرة.
+        </div>
+        <div class="admin-auth-state warning">
+          <strong>تنبيه أمني</strong>
+          بعد خمس محاولات متتالية غير صحيحة لرمز التحقق يصبح الحساب غير نشط حتى يعاد تفعيله.
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-auth-main">
+      <span class="admin-auth-badge"><i class="fas fa-user-shield"></i>دخول الإدارة</span>
+      <h2>تسجيل الدخول إلى البوابة</h2>
+      <p class="lead-copy">استخدم حساب الإدارة للوصول إلى لوحة التحكم، ثم أكمل خطوة التحقق الثانية بحسب حالة الحساب.</p>
+
+      <div id="loginAlert" class="admin-auth-alert info" hidden></div>
+
+      <form id="adminLogin" class="admin-auth-form" novalidate>
+        <div class="admin-field">
+          <label for="email">البريد الإلكتروني</label>
+          <div class="admin-auth-input-wrap">
+            <i class="fas fa-envelope admin-auth-icon"></i>
+            <input id="email" type="email" dir="ltr" placeholder="name@scg.example.com">
+          </div>
+          <span id="emailError" class="admin-auth-error" hidden>يرجى إدخال بريد إلكتروني صحيح.</span>
+        </div>
+
+        <div class="admin-field">
+          <label for="password">كلمة المرور</label>
+          <div class="admin-auth-input-wrap with-toggle">
+            <i class="fas fa-lock admin-auth-icon"></i>
+            <button id="togglePassword" class="admin-auth-toggle" type="button" aria-label="إظهار أو إخفاء كلمة المرور">
+              <i id="togglePasswordIcon" class="fas fa-eye"></i>
+            </button>
+            <input id="password" type="password" placeholder="كلمة المرور">
+          </div>
+          <span id="passwordError" class="admin-auth-error" hidden>كلمة المرور مطلوبة.</span>
+        </div>
+
+        <div class="admin-link-row">
+          <a class="admin-auth-muted-link" href="forgot-password.html">نسيت كلمة المرور؟</a>
+        </div>
+
+        <div class="admin-auth-actions">
+          <button class="admin-btn primary" type="submit"><i class="fas fa-arrow-left"></i>متابعة إلى التحقق الثاني</button>
+        </div>
       </form>
-    </div>
-  </section>
+
+      <p class="admin-auth-footnote">للمعاينة: الحساب الافتراضي يستخدم كلمة المرور <strong dir="ltr">Admin@123</strong>.</p>
+    </section>
+  </div>
 
 <script>
 const form = document.getElementById('adminLogin');
-function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
-function setErr(id,show){document.getElementById(id).style.display = show ? 'block' : 'none';}
-function showAlert(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
-function resetAlerts(){document.getElementById('aError').style.display='none';document.getElementById('aWarn').style.display='none';}
-function togglePw(){const p=document.getElementById('password');const i=document.getElementById('eyeI');const t=p.type==='password';p.type=t?'text':'password';i.className=t?'fas fa-eye-slash':'fas fa-eye';}
-form.addEventListener('submit',function(e){
-  e.preventDefault(); resetAlerts();
-  const email=document.getElementById('email').value.trim().toLowerCase();
-  const password=document.getElementById('password').value;
-  const badEmail=!validEmail(email), badPwd=!password;
-  setErr('e1',badEmail); setErr('e2',badPwd);
-  if(badEmail||badPwd) return;
-  if(email==='expired@admin.gov.eg'){showAlert('aWarn','انتهت الجلسة بسبب عدم النشاط لمدة 30 دقيقة. يرجى تسجيل الدخول مرة أخرى.');return;}
-  if(password!=='Admin@123'){showAlert('aError','البريد الإلكتروني أو كلمة المرور غير صحيحة.');return;}
-  window.location.href='admin-index.html';
+const togglePasswordButton = document.getElementById('togglePassword');
+
+function validEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function getEnrolledUsers() {
+  const saved = localStorage.getItem('adminEnrolledUsers');
+  if (saved) {
+    return JSON.parse(saved);
+  }
+  const defaults = [
+    'talat.gado@scg.example.com',
+    'talat.gado@scg.gov.eg',
+    'reem.salah@scg.example.com',
+    'sara.lotfy@scg.example.com'
+  ];
+  localStorage.setItem('adminEnrolledUsers', JSON.stringify(defaults));
+  return defaults;
+}
+
+function showAlert(type, title, message) {
+  const alert = document.getElementById('loginAlert');
+  alert.className = 'admin-auth-alert ' + type;
+  alert.innerHTML = '<strong>' + title + '</strong><span>' + message + '</span>';
+  alert.hidden = false;
+}
+
+function resetView() {
+  document.getElementById('loginAlert').hidden = true;
+  document.getElementById('emailError').hidden = true;
+  document.getElementById('passwordError').hidden = true;
+}
+
+togglePasswordButton.addEventListener('click', function () {
+  const passwordInput = document.getElementById('password');
+  const passwordIcon = document.getElementById('togglePasswordIcon');
+  const isPassword = passwordInput.type === 'password';
+  passwordInput.type = isPassword ? 'text' : 'password';
+  passwordIcon.className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
+});
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  resetView();
+
+  const email = document.getElementById('email').value.trim().toLowerCase();
+  const password = document.getElementById('password').value;
+  const hasBadEmail = !validEmail(email);
+  const hasBadPassword = !password;
+
+  document.getElementById('emailError').hidden = !hasBadEmail;
+  document.getElementById('passwordError').hidden = !hasBadPassword;
+  if (hasBadEmail || hasBadPassword) {
+    return;
+  }
+
+  if (email === 'expired@admin.gov.eg') {
+    showAlert('warning', 'انتهت الجلسة', 'انتهت الجلسة بسبب عدم النشاط لمدة 30 دقيقة. يرجى تسجيل الدخول مرة أخرى.');
+    return;
+  }
+
+  if (password !== 'Admin@123') {
+    showAlert('danger', 'تعذر تسجيل الدخول', 'البريد الإلكتروني أو كلمة المرور غير صحيحة.');
+    return;
+  }
+
+  sessionStorage.setItem('admin2faCurrentUser', email);
+  sessionStorage.setItem('admin2faAttempts', '0');
+
+  const resetTarget = localStorage.getItem('admin2faResetTarget');
+  const enrolledUsers = getEnrolledUsers();
+  const needsEnrollment = resetTarget === email || !enrolledUsers.includes(email);
+
+  window.location.href = needsEnrollment ? '2fa-enroll.html' : '2fa-verify.html';
 });
 </script>
 <script src="../js/utils.js"></script>
 <script src="../i18n/i18n.js"></script>
-<script>
-  i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });
-</script>
+<script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
 </body>
 </html>

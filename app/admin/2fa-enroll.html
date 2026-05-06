@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفعيل 2FA — لوحة الإدارة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body class="admin-body admin-auth-page">
+  <div class="admin-auth-shell">
+    <section class="admin-auth-side">
+      <span class="admin-auth-mark"><i class="fas fa-mobile-screen-button"></i>إعداد المصادقة الثنائية</span>
+      <h1>اربط تطبيق التحقق قبل الدخول</h1>
+      <p>هذه الخطوة مطلوبة للحسابات الجديدة أو للحسابات التي تمت إعادة ضبط 2FA لها من قبل Super Admin.</p>
+      <ul class="admin-auth-points">
+        <li><i class="fas fa-circle-check"></i><span>امسح رمز QR أو أدخل المفتاح اليدوي داخل تطبيق التحقق الداعم لـ TOTP.</span></li>
+        <li><i class="fas fa-circle-check"></i><span>أدخل أول رمز تحقق صحيح مكوّن من 6 أرقام لتفعيل 2FA على الحساب.</span></li>
+        <li><i class="fas fa-circle-check"></i><span>بعد نجاح التفعيل يصبح الحساب جاهزاً للدخول إلى لوحة الإدارة مباشرة.</span></li>
+      </ul>
+      <div class="admin-auth-states">
+        <div class="admin-auth-state info">
+          <strong>مطلوب قبل الوصول</strong>
+          لا يمكن متابعة الدخول إلى أي صفحة إدارية حتى يكتمل ربط تطبيق التحقق.
+        </div>
+        <div class="admin-auth-state warning">
+          <strong>لديك تطبيق مختلف؟</strong>
+          يمكنك استخدام المفتاح اليدوي بدلاً من مسح رمز QR إذا تعذر فتح الكاميرا أو لم يعمل المسح.
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-auth-main">
+      <span class="admin-auth-badge"><i class="fas fa-lock"></i>ربط تطبيق التحقق</span>
+      <h2>فعّل 2FA لهذا الحساب</h2>
+      <p class="lead-copy">امسح الرمز أو أدخل المفتاح يدوياً داخل التطبيق، ثم اكتب أول رمز تحقق مكوّن من 6 أرقام لتأكيد الربط.</p>
+
+      <div id="enrollAccountMeta" class="admin-auth-meta"><i class="fas fa-user"></i><span>الحساب: <strong dir="ltr" id="enrollAccountEmail">talat.gado@scg.gov.eg</strong></span></div>
+
+      <div class="admin-blocking-banner">
+        <strong>لا يمكن تخطي هذه الخطوة.</strong>
+        سيبقى هذا الحساب على شاشة التفعيل حتى يكتمل ربط تطبيق التحقق بنجاح.
+      </div>
+
+      <div id="enrollAlert" class="admin-auth-alert info" hidden></div>
+
+      <div class="admin-auth-card-grid">
+        <section class="admin-auth-card">
+          <h3>1. اربط التطبيق</h3>
+          <p>استخدم أحد الخيارين التاليين داخل تطبيق التحقق على الهاتف أو الحاسوب.</p>
+
+          <div class="admin-auth-qr-layout">
+            <div class="admin-auth-qr-box">
+              <div class="admin-auth-qr-code" aria-hidden="true"></div>
+              <div class="admin-auth-qr-note">امسح هذا الرمز من داخل تطبيق التحقق لبدء الربط.</div>
+            </div>
+
+            <div>
+              <div class="admin-auth-summary">
+                <strong>المفتاح اليدوي</strong>
+                <ul>
+                  <li><i class="fas fa-key"></i><span>استخدم هذا المفتاح إذا كنت لا تريد مسح رمز QR.</span></li>
+                  <li><i class="fas fa-shield"></i><span>المفتاح مخصص لهذا الحساب فقط ويجب حفظه داخل التطبيق الآمن.</span></li>
+                </ul>
+              </div>
+              <div class="admin-manual-key-row">
+                <div id="manualKey" class="admin-manual-key">SCG-ADM-TOTP-2K9W-8QF3</div>
+                <button class="admin-btn light" type="button" id="copyManualKey"><i class="fas fa-copy"></i>نسخ المفتاح</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-auth-card">
+          <h3>2. أدخل أول رمز تحقق</h3>
+          <p>بعد ربط التطبيق، اكتب الرمز الحالي المكوّن من 6 أرقام لتفعيل المصادقة الثنائية.</p>
+
+          <form id="enrollForm" class="admin-auth-form" novalidate>
+            <div class="admin-field">
+              <label for="enrollCode">رمز التحقق المكوّن من 6 أرقام</label>
+              <div class="admin-auth-input-wrap">
+                <i class="fas fa-hashtag admin-auth-icon"></i>
+                <input id="enrollCode" type="text" inputmode="numeric" maxlength="6" placeholder="000000" dir="ltr">
+              </div>
+              <span id="enrollCodeError" class="admin-auth-error" hidden>***يرجى إدخال رمز مكوّن من 6 أرقام. (Please enter a 6-digit code.)***</span>
+            </div>
+
+            <div class="admin-auth-actions">
+              <button class="admin-btn primary" type="submit"><i class="fas fa-check"></i>تحقق وتفعيل 2FA</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <script>
+  function showEnrollAlert(type, title, message) {
+    const alert = document.getElementById('enrollAlert');
+    alert.className = 'admin-auth-alert ' + type;
+    alert.innerHTML = '<strong>' + title + '</strong><span>' + message + '</span>';
+    alert.hidden = false;
+  }
+
+  function getCurrentUser() {
+    return sessionStorage.getItem('admin2faCurrentUser') || 'talat.gado@scg.gov.eg';
+  }
+
+  function getEnrolledUsers() {
+    const saved = localStorage.getItem('adminEnrolledUsers');
+    return saved ? JSON.parse(saved) : [];
+  }
+
+  function setCurrentUser() {
+    document.getElementById('enrollAccountEmail').textContent = getCurrentUser();
+  }
+
+  document.getElementById('copyManualKey').addEventListener('click', async function () {
+    const manualKey = document.getElementById('manualKey').textContent.trim();
+    try {
+      await navigator.clipboard.writeText(manualKey);
+      showEnrollAlert('success', 'تم نسخ المفتاح', 'يمكنك الآن لصق المفتاح اليدوي داخل تطبيق التحقق ومتابعة إدخال أول رمز تحقق.');
+    } catch (error) {
+      showEnrollAlert('warning', 'تعذر النسخ التلقائي', 'انسخ المفتاح اليدوي يدوياً من الشاشة ثم الصقه داخل تطبيق التحقق.');
+    }
+  });
+
+  document.getElementById('enrollForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const codeInput = document.getElementById('enrollCode');
+    const code = codeInput.value.trim();
+    const codeError = document.getElementById('enrollCodeError');
+    const email = getCurrentUser();
+
+    codeError.hidden = /^\d{6}$/.test(code);
+    if (!/^\d{6}$/.test(code)) {
+      return;
+    }
+
+    if (code !== '246810') {
+      showEnrollAlert('danger', 'فشل التحقق', '***الرمز الذي أدخلته غير صحيح. يرجى التحقق من التطبيق والمحاولة مرة أخرى. (The code you entered is not correct. Please check your app and try again.)***');
+      return;
+    }
+
+    const enrolledUsers = getEnrolledUsers();
+    if (!enrolledUsers.includes(email)) {
+      enrolledUsers.push(email);
+      localStorage.setItem('adminEnrolledUsers', JSON.stringify(enrolledUsers));
+    }
+    localStorage.removeItem('admin2faResetTarget');
+    window.location.href = 'admin-index.html';
+  });
+
+  setCurrentUser();
+  </script>
+  <script src="../js/utils.js"></script>
+  <script src="../i18n/i18n.js"></script>
+  <script>i18n.init({ defaultLang: 'ar', localePath: '../i18n/locales/admin' });</script>
+</body>
+</html>
